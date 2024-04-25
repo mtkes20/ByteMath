@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import {createHashRouter, RouterProvider} from 'react-router-dom';
+import Root from "./Root";
 
-function App() {
+const router = createHashRouter([
+    {
+        path: "/",
+        element: <Root/>,
+        errorElement: <></>,
+        children: [
+            {
+                path: "courses",
+                element: <div>courses</div>,
+            },
+            {
+                path: "quizzes",
+                element: <div>quizzes</div>,
+            },
+            {
+                path: "login",
+                element: <div>login</div>,
+            },
+            {
+                path: "signup",
+                element: <div>signup</div>,
+            }
+        ]
+    }]);
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <RouterProvider router={router}/>
   );
-}
+};
 
 export default App;
