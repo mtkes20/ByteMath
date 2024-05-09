@@ -1,4 +1,5 @@
 import Navbar from "./components/navbar/Navbar";
+import BinarySystemContent from "./components/binary-system/BinarySystemContent";
 
 
 const Root = () => {
@@ -10,6 +11,8 @@ const Root = () => {
             height: "100vh"
         }}>
             <Navbar/>
+            {/*TODO component according to routing*/}
+            <BinarySystemContent/>
         </div>
     )
 }
