@@ -1,0 +1,75 @@
+body {
+    background-color: #282a36; /* Dark background */
+    color: #ffffff; /* Light text */
+    font-family: 'Roboto', sans-serif;
+}
+
+#kc-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#kc-container-wrapper {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #44475a; /* Lighter dark background */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+#kc-header {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff; /* Accent color */
+}
+
+#kc-form {
+    color: #f8f8f2;
+    width: 100%;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    color: #f8f8f2;
+}
+
+input[type="submit"] {
+    background-color: #6e8bb6;
+    color: #282a36;
+    cursor: pointer;
+    font-weight: bold;
+    border-color: #ffffff;
+    font-family: Roboto, inherit, serif;
+    font-size: 1rem;
+    /*interit*/
+}
+
+input[type="submit"]:hover {
+    background-color: #6e8bb6;
+}
+
+
+.kc-form-options {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.kc-forgot-password, .kc-register {
+    color: #6e8bb6;
+    text-decoration: none;
+}
+
+.kc-forgot-password:hover, .kc-register:hover {
+    text-decoration: underline;
+}

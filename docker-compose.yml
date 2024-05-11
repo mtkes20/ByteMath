@@ -4,7 +4,7 @@ services:
   postgres:
     image: postgres:13
     environment:
-      POSTGRES_DB: postgres
+      POSTGRES_DB: bytemath
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     ports:
@@ -17,7 +17,7 @@ services:
     build: ./bytemath-service
     environment:
       SPRING_PROFILES_ACTIVE: production
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bytemath
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: password
     depends_on:
@@ -29,7 +29,29 @@ services:
   bytemath-ui:
     build: ./bytemath-ui
     ports:
-      - "3000:80"
+      - 3000:3000
+
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak.tsx
+    ports:
+      - "8080:8080"
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://postgres:5432/bytemath
+      - KC_DB_USERNAME=postgres
+      - KC_DB_PASSWORD=password
+      - KEYCLOAK_HOSTNAME=keycloak.tsx
+      - KC_HEALTH_ENABLED=true
+    command: start-dev  # --import-realm
+    volumes:
+      - './keycloak/themes/custom-theme/theme:/opt/keycloak/themes'
+      - './keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json'
+    depends_on:
+      - postgres
     restart: always
 
 volumes:

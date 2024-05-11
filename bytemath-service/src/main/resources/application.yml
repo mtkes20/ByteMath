@@ -25,7 +25,7 @@ spring:
     activate:
       on-profile: production
   datasource:
-    url: jdbc:postgresql://postgres:5432/postgres
+    url: jdbc:postgresql://postgres:5432/bytemath
     username: postgres
     password: password
     driver-class-name: org.postgresql.Driver
