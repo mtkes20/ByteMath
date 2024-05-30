@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
-import {Button} from "@mui/material";
+import React from 'react';
+import { Button } from "@mui/material";
 
-const LanguageSwitcher = () => {
-    const [language, setLanguage] = useState('en');
+interface LanguageSwitcherProps {
+    language: 'en' | 'ka';
+    onLanguageChange: () => void;
+}
 
-    const handleLanguageChange = () => {
-        setLanguage(language === 'en' ? 'ka' : 'en');
-    };
-
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ language, onLanguageChange }) => {
     return (
-        <Button onClick={handleLanguageChange} style={{
-            color: "#ffffff",
-        }}>
+        <Button onClick={onLanguageChange} style={{ color: "#ffffff" }}>
             {language === 'en' ? 'Eng' : 'Geo'}
         </Button>
     );

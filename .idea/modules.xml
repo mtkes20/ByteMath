@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ByteMath.iml" filepath="$PROJECT_DIR$/.idea/ByteMath.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bytemath-service/bytemath-service.iml" filepath="$PROJECT_DIR$/bytemath-service/bytemath-service.iml" />
     </modules>
   </component>
 </project>
