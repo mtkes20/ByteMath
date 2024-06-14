@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -11,12 +11,11 @@ interface SideMenuProps {
     icon: JSX.Element;
     title: string;
     items: { title: string, value: string }[];
+    selectedItem: string;
+    setSelectedItem: (item: string) => void
 }
 
-const SideMenu: React.FC<SideMenuProps> = ({ icon, title, items }) => {
-    const [selectedItem, setSelectedItem] = useState<string | null>(
-        items.length > 0 ? items[0].value : null
-    );
+const SideMenu: React.FC<SideMenuProps> = ({ icon, title, items, selectedItem, setSelectedItem }) => {
 
     const handleItemClick = (value: string) => {
         setSelectedItem(value);
@@ -24,7 +23,9 @@ const SideMenu: React.FC<SideMenuProps> = ({ icon, title, items }) => {
 
     return (
         <Box sx={{ width: 300, backgroundColor: "#1a1a1a", color: "white", height: "100%" }}>
-            <Paper sx={{ backgroundColor: "#1a1a1a", height: "100%" }}>
+            <Paper sx={{
+                backgroundColor: "#1a1a1a",
+                height: "100%" }}>
                 <List>
                     <ListItem style={{
                         display: "flex",

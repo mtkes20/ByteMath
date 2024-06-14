@@ -51,6 +51,9 @@ const LogicalOperatorsContent: React.FC<LogicalOperatorsContentProps> = ({ langu
                 icon={<Code />}
                 title={"Logical Operators"}
                 items={menuItems}
+                // TODO
+                selectedItem={""}
+                setSelectedItem={() => {}}
                 // onItemSelect={(item: MenuItem) => setSelectedItem(item.value)}
             />
             <div style={{ flex: 1 }}>

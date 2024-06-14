@@ -15,7 +15,7 @@ const Root = () => {
             display: "flex",
             flexDirection: "column",
             backgroundColor: "#1a1a1a",
-            height: "100vh"
+            height: "100%"
         }}>
             <Navbar language={language} onLanguageChange={handleLanguageChange} />
             {/* TODO component according to routing */}
