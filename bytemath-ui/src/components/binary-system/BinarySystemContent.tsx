@@ -13,7 +13,9 @@ const BinarySystemContent = () => {
     );
 
     return (
-        <Stack display={"flex"} flexDirection={"row"} height={"100%"}>
+        <Stack display={"flex"} flexDirection={"row"} height={'calc(100vh - 70px)'} style={{
+            height: "auto"
+        }}>
             <SideMenu icon={<Code/>} title={"Binary System"}
                       items={[{title: "Introduction", value: "introduction"},
                           {title: "Converting", value: "converting"},

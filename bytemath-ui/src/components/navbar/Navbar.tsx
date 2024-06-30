@@ -3,6 +3,7 @@ import { Button, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from "
 import { AccountTree, Code, ExpandLess, ExpandMore, Functions, SettingsInputComponent } from '@mui/icons-material';
 import LoginButton from "./LoginButton";
 import LanguageSwitcher from "./LanguageSwitcher";
+import {useNavigate} from "react-router-dom";
 
 interface NavbarProps {
     language: 'en' | 'ka';
@@ -12,6 +13,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate()
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
         const target = e.currentTarget as HTMLElement;
@@ -23,11 +25,12 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
     };
 
     const onSelect = (course: string) => {
-        console.log(course);
+        navigate("courses/" + course);
     };
 
     return (
         <div style={{
+            height: "70px",
             padding: "10px 20px",
             color: "#3a3939",
             borderBottom: "1px solid",
@@ -52,25 +55,25 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                 onClose={handleClose}
                 MenuListProps={{ 'aria-labelledby': 'categories-btn' }}
             >
-                <MenuItem onClick={() => onSelect('Binary System')}>
+                <MenuItem onClick={() => onSelect('binary-system')}>
                     <ListItemIcon>
                         <Code />
                     </ListItemIcon>
                     <ListItemText>Binary System</ListItemText>
                 </MenuItem>
-                <MenuItem onClick={() => onSelect('Logic Operands')}>
+                <MenuItem onClick={() => onSelect('logic-operands')}>
                     <ListItemIcon>
                         <SettingsInputComponent fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Logic Operands</ListItemText>
                 </MenuItem>
-                <MenuItem onClick={() => onSelect('Theory of Graphs')}>
+                <MenuItem onClick={() => onSelect('graphs')}>
                     <ListItemIcon>
                         <AccountTree fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Theory of Graphs</ListItemText>
                 </MenuItem>
-                <MenuItem onClick={() => onSelect('Theory of Numbers')}>
+                <MenuItem onClick={() => onSelect('numbers-theory')}>
                     <ListItemIcon>
                         <Functions fontSize="small" />
                     </ListItemIcon>

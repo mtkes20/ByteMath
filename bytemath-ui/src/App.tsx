@@ -1,6 +1,8 @@
 import React from 'react';
-import {createHashRouter, RouterProvider} from 'react-router-dom';
+import {createHashRouter, Outlet, RouterProvider} from 'react-router-dom';
 import Root from "./Root";
+import BinarySystemContent from "./components/binary-system/BinarySystemContent";
+import LogicalOperatorsContent from "./components/logical-operators/LogicalOperatorsContent";
 
 const router = createHashRouter([
     {
@@ -10,7 +12,26 @@ const router = createHashRouter([
         children: [
             {
                 path: "courses",
-                element: <div>courses</div>,
+                element: <Outlet/>,
+                children: [
+                    {
+                        path: "binary-system",
+                        element: <BinarySystemContent/>
+                    },
+                    {
+                        path: "logic-operands",
+                        //TODO do something about language
+                        element: <LogicalOperatorsContent language={"en"}/>
+                    },
+                    {
+                        path: "graphs",
+                        element: <div>graphs</div>
+                    },
+                    {
+                        path: "numbers-theory",
+                        element: <div>numbers theory</div>
+                    }
+                ]
             },
             {
                 path: "quizzes",

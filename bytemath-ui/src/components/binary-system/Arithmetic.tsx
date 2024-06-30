@@ -14,6 +14,8 @@ const Arithmetic = () => {
             gap: "15px",
             display: "flex",
             flexDirection: "column",
+            backgroundColor: "#1a1a1a",
+            overflowY: "auto"
         }}>
             <Text>Binary arithmetic operates similarly to decimal arithmetic but follows the rules of binary. Let's
                 discuss primary operations: addition, subtraction, multiplication, and division.</Text>

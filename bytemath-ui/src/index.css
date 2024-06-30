@@ -3,7 +3,14 @@ body {
   /*-webkit-font-smoothing: antialiased;*/
   /*-moz-osx-font-smoothing: grayscale;*/
 }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 
-code {
-
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
 }

@@ -12,7 +12,7 @@ interface SideMenuProps {
     title: string;
     items: { title: string, value: string }[];
     selectedItem: string;
-    setSelectedItem: (item: string) => void
+    setSelectedItem: (item: any) => void
 }
 
 const SideMenu: React.FC<SideMenuProps> = ({ icon, title, items, selectedItem, setSelectedItem }) => {

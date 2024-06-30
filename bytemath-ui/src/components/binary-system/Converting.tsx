@@ -13,6 +13,8 @@ const Converting = () => {
             gap: "15px",
             display: "flex",
             flexDirection: "column",
+            backgroundColor: "#1a1a1a",
+            overflowY: "auto"
         }}>
             <Title>Converting Binary to Decimal</Title>
             <Text>To convert a binary number to decimal, you need to sum the products of each bit and its corresponding

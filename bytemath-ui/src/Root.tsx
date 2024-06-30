@@ -1,6 +1,6 @@
 import Navbar from "./components/navbar/Navbar";
-import LogicalOperatorsContent from "./components/logical-operators/LogicalOperatorsContent";
 import {useState} from "react";
+import {Outlet} from "react-router-dom";
 
 
 const Root = () => {
@@ -15,12 +15,10 @@ const Root = () => {
             display: "flex",
             flexDirection: "column",
             backgroundColor: "#1a1a1a",
-            height: "100%"
+            height: "100vh",
         }}>
             <Navbar language={language} onLanguageChange={handleLanguageChange} />
-            {/* TODO component according to routing */}
-            {/* <BinarySystemContent /> */}
-            <LogicalOperatorsContent language={language} />
+            <Outlet/>
         </div>
     );
 }
