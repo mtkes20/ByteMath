@@ -4,6 +4,7 @@ import { AccountTree, Code, ExpandLess, ExpandMore, Functions, SettingsInputComp
 import LoginButton from "./LoginButton";
 import LanguageSwitcher from "./LanguageSwitcher";
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 interface NavbarProps {
     language: 'en' | 'ka';
@@ -14,6 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const open = Boolean(anchorEl);
     const navigate = useNavigate()
+    const { t } = useTranslation();
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
         const target = e.currentTarget as HTMLElement;
@@ -45,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                 onClick={handleClick}
                 style={{ textTransform: 'none' }}
             >
-                <Typography variant={"inherit"} color={"#ffffff"} fontSize={18} fontFamily={"Roboto"}>Courses</Typography>
+                <Typography variant={"inherit"} color={"#ffffff"} fontSize={18} fontFamily={"Roboto"}>{t("courses")}</Typography>
                 {open ? <ExpandLess style={{ color: "#ffffff" }} /> : <ExpandMore style={{ color: "#ffffff" }} />}
             </Button>
             <Menu
