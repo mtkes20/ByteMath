@@ -1,65 +1,57 @@
-import React from 'react';
-import { Stack } from '@mui/material';
 import SideMenu from "../content-side-menu/SideMenu";
-import { Code } from '@mui/icons-material';
-import { translations, Translations, TranslationContent } from './resources';
-
-type MenuItem = {
-    title: string;
-    value: keyof Translations["en"];
-};
-
-interface LogicalOperatorsContentProps {
-    language: 'en' | 'ka';
-}
-
-const LogicalOperatorsContent: React.FC<LogicalOperatorsContentProps> = ({ language }) => {
-    const [selectedItem, setSelectedItem] = React.useState<keyof Translations["en"]>('introductionToLogicalOperators');
-
-    const renderContent = () => {
-        const content: TranslationContent = translations[language][selectedItem];
-
-        return (
-            <div style={{
-                padding: '20px',
-                color: "#ffffff",
-                fontFamily: "Roboto",
-                fontSize: "1.2rem"
-            }}>
-                <h1>{content.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: content.content }} />
-            </div>
-        );
-    };
+import {Code, SettingsInputComponent} from '@mui/icons-material';
+import {Stack} from "@mui/material";
+import React, {useState} from "react";
+import Introduction from "./Introduction";
+import BasicOperators from "./BasicOperators";
+import AdvancedOperators from "./AdvancedOperators";
+import TruthTables from "./TruthTables";
+import BooleanAlgebra from "./BooleanAlgebra";
+import ApplicationOfOperators from "./ApplicationOfOperators";
 
 
-    const menuItems: MenuItem[] = [
-        { title: "Introduction to Logical Operators", value: "introductionToLogicalOperators" },
-        { title: "Basic Logical Operators", value: "basicLogicalOperators" },
-        { title: "Advanced Logical Operators", value: "advancedLogicalOperators" },
-        { title: "Truth Tables", value: "truthTables" },
-        { title: "Boolean Algebra", value: "booleanAlgebra" },
-        { title: "Applications of Logical Operators", value: "applicationsOfLogicalOperators" },
-        { title: "Practical Examples", value: "practicalExamples" },
-    ];
-
-
+const LogicalOperatorsContent = () => {
+    const [selectedItem, setSelectedItem] = useState<string>(
+        "introduction"
+    );
 
     return (
-        <Stack display={"flex"} flexDirection={"row"} style={{ height: "100%" }}>
-            <SideMenu
-                icon={<Code />}
-                title={"Logical Operators"}
-                items={menuItems}
-                selectedItem={selectedItem}
-                setSelectedItem={setSelectedItem}
-                // onItemSelect={(item: MenuItem) => setSelectedItem(item.value)}
+        <Stack display={"flex"} flexDirection={"row"} height={'calc(1 n00vh - 70px)'} style={{
+            height: "auto"
+        }}>
+            <SideMenu icon={<SettingsInputComponent fontSize="small" />} title={"Logical Operands"}
+                      items={[{title: "Introduction to Logical Operators", value: "introduction"},
+                          {title: "Basic Logical Operators", value: "basic-operators"},
+                          {title: "Advanced Logical Operators", value: "advanced-operators"},
+                          {title: "Truth Tables", value: "truth-tables"},
+                          {title: "Boolean Algebra", value: "boolean-algebra"},
+                          {title: "Applications of Logical Operators", value: "application-of-operators"},
+
+                      ]}
+                      selectedItem={selectedItem}
+                      setSelectedItem={setSelectedItem}
             />
-            <div style={{ flex: 1 }}>
-                {renderContent()}
-            </div>
+            {
+                selectedItem === "introduction" && <Introduction/>
+            }
+            {
+                selectedItem === "basic-operators" && <BasicOperators/>
+            }
+            {
+                selectedItem === "advanced-operators" && <AdvancedOperators/>
+            }
+            {
+                selectedItem === "truth-tables" && <TruthTables/>
+            }
+            {
+                selectedItem === "boolean-algebra" && <BooleanAlgebra/>
+            }
+            {
+                selectedItem === "application-of-operators" && <ApplicationOfOperators/>
+            }
+            <div/>
         </Stack>
-    );
+    )
 }
 
 export default LogicalOperatorsContent;

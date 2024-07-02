@@ -20,8 +20,7 @@ const router = createHashRouter([
                     },
                     {
                         path: "logic-operands",
-                        //TODO do something about language
-                        element: <LogicalOperatorsContent language={"en"}/>
+                        element: <LogicalOperatorsContent/>
                     },
                     {
                         path: "graphs",
