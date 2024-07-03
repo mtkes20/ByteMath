@@ -1,7 +1,16 @@
 spring:
   application:
     name: bytemath-service
-
+  profiles:
+    active: local
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  flyway:
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
 server:
   port: 1111
 
@@ -30,8 +39,6 @@ spring:
     password: password
     driver-class-name: org.postgresql.Driver
   jpa:
-    hibernate:
-      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
