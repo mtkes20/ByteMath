@@ -1,8 +1,58 @@
 import {styled, Typography} from "@mui/material";
 import BinaryVisualization from "./BinaryVisualization";
+import {QuestionType, TakeQuiz} from "../../types/TakeQuiz";
+import {QuizAnswers} from "../../types/QuizAnswers";
+import Quiz from "../quizz/Quiz";
 
 
 const Introduction = () => {
+
+    const quiz : TakeQuiz = {
+        id: 123,
+        title: "საცდელი ქუიზი",
+        questions: [
+            {
+                id: 1,
+                questionText: "რა არის თქვენი გენ გეგმა?",
+                questionType: QuestionType.SINGLE_CHOICE,
+                possibleAnswers: [
+                    {
+                        id: 1,
+                        answerText: "თავის მოკვლა"
+                    },
+                    {
+                        id: 2,
+                        answerText: "უნივერსიტეტის დამთავრება"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                questionText: "რა არის თქვენი ფერარი?",
+                questionType: QuestionType.SINGLE_CHOICE,
+                possibleAnswers: [
+                    {
+                        id: 1,
+                        answerText: "უბერავს უკიდეგანო ქარი"
+                    },
+                    {
+                        id: 2,
+                        answerText: "არ მყავს ფერარი"
+                    }
+                ]
+            },
+            {
+                id: 3,
+                questionText: "რა არის თქვენი სახელი?",
+                questionType: QuestionType.TEXT
+            }
+        ]
+    }
+
+    const handleQuizSubmit = (answers: QuizAnswers) => {
+        // Send answers to the backend
+        console.log(answers);
+    };
 
 
     return (
@@ -13,6 +63,7 @@ const Introduction = () => {
             gap: "15px",
             display: "flex",
             flexDirection: "column",
+            backgroundColor: "#1a1a1a"
         }}>
             <Title>Understanding the Binary System</Title>
             <Text>The binary system, also known as the base-2 numeral system, is fundamental to computer science and
@@ -32,6 +83,7 @@ const Introduction = () => {
             }}>
                 <BinaryVisualization/>
             </div>
+            <Quiz quiz={quiz} onSubmit={handleQuizSubmit} />;
         </div>
     )
 }

@@ -7,15 +7,6 @@ interface LanguageSwitcherProps {
     onLanguageChange: () => void;
 }
 
-interface Language {
-    nativeName: string;
-}
-
-const languages: Record<string, Language> = {
-    ka: { nativeName: "ქართ" },
-    en: { nativeName: "Eng" }
-};
-
 const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ language, onLanguageChange }) => {
     const { i18n } = useTranslation();
 
