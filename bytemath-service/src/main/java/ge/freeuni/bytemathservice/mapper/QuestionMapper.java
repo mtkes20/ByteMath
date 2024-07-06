@@ -2,6 +2,7 @@ package ge.freeuni.bytemathservice.mapper;
 
 import ge.freeuni.bytemathservice.domain.api.QuestionDTO;
 import ge.freeuni.bytemathservice.domain.entity.Question;
+import ge.freeuni.bytemathservice.domain.enums.QuestionType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,8 @@ public class QuestionMapper {
 
     public List<QuestionDTO> entitiesToDtos(List<Question> questions) {
         return questions.stream()
-                        .map(this::entityToDto)
-                        .collect(Collectors.toList());
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
     }
 
     private QuestionDTO entityToDto(Question question) {
@@ -25,7 +26,7 @@ public class QuestionMapper {
                 .id(question.getId())
                 .questionType(question.getQuestionType())
                 .questionText(question.getQuestionText())
-                .answers(answerMapper.entitiesToDtos(question.getAnswers()))
+                .answers(question.getQuestionType() == QuestionType.SINGLE_CHOICE ? answerMapper.entitiesToDtos(question.getAnswers()) : null)
                 .build();
     }
 }
