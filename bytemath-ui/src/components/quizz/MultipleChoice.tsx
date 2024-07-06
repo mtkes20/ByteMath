@@ -1,12 +1,12 @@
-import {TakePossibleAnswer, TakeQuizQuestion} from "../../types/TakeQuiz";
+import {Answer, Question} from "../../types/QuizType";
 import {Typography} from "@mui/material";
 import {SelectedAnswer} from "../../types/QuizAnswers";
 import React from "react";
 
 const MultipleChoice = ({question, possibleAnswers, handleAnswerChange, answers, index} :
                             {
-                                question: TakeQuizQuestion,
-                                possibleAnswers: TakePossibleAnswer[],
+                                question: Question,
+                                possibleAnswers: Answer[],
                                 handleAnswerChange: (questionId: number, answer: string) => void,
                                 answers: SelectedAnswer,
                                 index: number

@@ -1,17 +1,17 @@
-export type TakeQuiz = {
+export type QuizType = {
     id: number;
     title: string;
-    questions: TakeQuizQuestion[];
+    questions: Question[];
 }
 
-export type TakeQuizQuestion = {
+export type Question = {
     id: number;
     questionText: string;
     questionType: QuestionType;
-    possibleAnswers?: TakePossibleAnswer[]
+    answers?: Answer[]
 }
 
-export type TakePossibleAnswer = {
+export type Answer = {
     id: number;
     answerText: string;
 }

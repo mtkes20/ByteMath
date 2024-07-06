@@ -1,11 +1,11 @@
 import {Typography} from "@mui/material";
 import React from "react";
-import {TakeQuizQuestion} from "../../types/TakeQuiz";
+import {Question} from "../../types/QuizType";
 import {SelectedAnswer} from "../../types/QuizAnswers";
 
 
 const TextChoice = ({question, answers, handleAnswerChange, index} : {
-    question: TakeQuizQuestion,
+    question: Question,
     handleAnswerChange: (questionId: number, answer: string) => void,
     answers: SelectedAnswer,
     index: number

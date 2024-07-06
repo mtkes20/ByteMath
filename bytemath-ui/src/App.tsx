@@ -3,6 +3,7 @@ import {createHashRouter, Outlet, RouterProvider} from 'react-router-dom';
 import Root from "./Root";
 import BinarySystemContent from "./components/binary-system/BinarySystemContent";
 import LogicalOperatorsContent from "./components/logical-operators/LogicalOperatorsContent";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
 const router = createHashRouter([
     {
@@ -47,10 +48,16 @@ const router = createHashRouter([
         ]
     }]);
 
-const App: React.FC = () => {
-  return (
-      <RouterProvider router={router}/>
-  );
+const queryClient = new QueryClient({
+    defaultOptions: {queries: {retry: 1}},
+});
+
+const App = () => {
+    return (
+        <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router}/>
+        </QueryClientProvider>
+    );
 };
 
 export default App;

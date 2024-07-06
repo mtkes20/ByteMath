@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {QuizAnswers, SelectedAnswer} from "../../types/QuizAnswers";
-import {QuestionType, TakeQuiz} from "../../types/TakeQuiz";
+import {QuestionType, QuizType} from "../../types/QuizType";
 import MultipleChoice from "./MultipleChoice";
 import TextChoice from "./TextChoice";
 import {Button, Typography} from "@mui/material";
 
 interface QuizProps {
-    quiz: TakeQuiz;
+    quiz: QuizType;
     onSubmit: (answers: QuizAnswers) => void;
 }
 
@@ -39,7 +39,9 @@ const Quiz = ({ quiz, onSubmit } : QuizProps) => {
                 fontFamily: "Roboto",
                 fontWeight: "bold",
                 padding: "20px",
-            }}>Take A Quiz</Typography>
+            }}>
+                {quiz.title}
+            </Typography>
             <form
                 style={{
                     backgroundColor: "transparent"
@@ -50,7 +52,7 @@ const Quiz = ({ quiz, onSubmit } : QuizProps) => {
                         {question.questionType === QuestionType.SINGLE_CHOICE && (
                                 <MultipleChoice
                                     question={question}
-                                    possibleAnswers={question.possibleAnswers || []}
+                                    possibleAnswers={question.answers || []}
                                     handleAnswerChange={handleAnswerChange}
                                     answers={answers}
                                     index={index + 1}

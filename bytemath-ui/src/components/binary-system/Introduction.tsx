@@ -1,54 +1,24 @@
 import {styled, Typography} from "@mui/material";
 import BinaryVisualization from "./BinaryVisualization";
-import {QuestionType, TakeQuiz} from "../../types/TakeQuiz";
+import {QuizType} from "../../types/QuizType";
 import {QuizAnswers} from "../../types/QuizAnswers";
 import Quiz from "../quizz/Quiz";
+import {useQuery} from "@tanstack/react-query";
+import QuizApi from "../../api/quiz-api";
 
 
 const Introduction = () => {
 
-    const quiz : TakeQuiz = {
-        id: 123,
-        title: "საცდელი ქუიზი",
-        questions: [
-            {
-                id: 1,
-                questionText: "რა არის თქვენი გენ გეგმა?",
-                questionType: QuestionType.SINGLE_CHOICE,
-                possibleAnswers: [
-                    {
-                        id: 1,
-                        answerText: "თავის მოკვლა"
-                    },
-                    {
-                        id: 2,
-                        answerText: "უნივერსიტეტის დამთავრება"
-                    }
-                ]
-            },
-            {
-                id: 2,
-                questionText: "რა არის თქვენი ფერარი?",
-                questionType: QuestionType.SINGLE_CHOICE,
-                possibleAnswers: [
-                    {
-                        id: 1,
-                        answerText: "უბერავს უკიდეგანო ქარი"
-                    },
-                    {
-                        id: 2,
-                        answerText: "არ მყავს ფერარი"
-                    }
-                ]
-            },
-            {
-                id: 3,
-                questionText: "რა არის თქვენი სახელი?",
-                questionType: QuestionType.TEXT
-            }
-        ]
+    const fetchQuiz = async () => {
+        return await QuizApi.getQuiz("BINARY_SYSTEM_INTRO")
     }
 
+    const {data: quizData, error: quizError, isLoading: isQuizLoading} = useQuery<QuizType | undefined>({
+        queryKey: ["quiz"],
+        queryFn: fetchQuiz
+    })
+
+    //TODO add submit handler
     const handleQuizSubmit = (answers: QuizAnswers) => {
         // Send answers to the backend
         console.log(answers);
@@ -83,7 +53,7 @@ const Introduction = () => {
             }}>
                 <BinaryVisualization/>
             </div>
-            <Quiz quiz={quiz} onSubmit={handleQuizSubmit} />;
+            { !!quizData && <Quiz quiz={quizData} onSubmit={handleQuizSubmit}/> }
         </div>
     )
 }
