@@ -4,6 +4,7 @@ import Root from "./Root";
 import BinarySystemContent from "./components/binary-system/BinarySystemContent";
 import LogicalOperatorsContent from "./components/logical-operators/LogicalOperatorsContent";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import TheoryOfGraphsContent from "./components/graph-theory/TheoryOfGraphsContent";
 
 const router = createHashRouter([
     {
@@ -25,7 +26,7 @@ const router = createHashRouter([
                     },
                     {
                         path: "graphs",
-                        element: <div>graphs</div>
+                        element: <TheoryOfGraphsContent/>
                     },
                     {
                         path: "numbers-theory",

@@ -12,7 +12,6 @@ export interface Translations {
         truthTables: TranslationContent;
         booleanAlgebra: TranslationContent;
         applicationsOfLogicalOperators: TranslationContent;
-        practicalExamples: TranslationContent;
     }
 };
 
@@ -64,12 +63,6 @@ export const translations: Translations = {
            
             `
         },
-        practicalExamples: {
-            title: "Practical Examples",
-            content: `
-           
-            `
-        }
     },
     ka: {
         introductionToLogicalOperators: {
@@ -108,11 +101,5 @@ export const translations: Translations = {
            
             `
         },
-        practicalExamples: {
-            title: "პრაქტიკული მაგალითები",
-            content: `
-           
-            `
-        }
     }
 };
