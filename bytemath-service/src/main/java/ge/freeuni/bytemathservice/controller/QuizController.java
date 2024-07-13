@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,13 +25,13 @@ public class QuizController {
     private final GradeQuizService gradeQuizService;
 
     @GetMapping("{identifier}")
-    public ResponseEntity<QuizDTO> getQuizByIdentifier(@PathVariable String identifier) {
-        return ResponseEntity.ok(quizService.getQuizByIdentifier(identifier));
+    public ResponseEntity<QuizDTO> getQuizByIdentifier(@PathVariable String identifier, @RequestParam(required = false, defaultValue = "ENG") String language) {
+        return ResponseEntity.ok(quizService.getQuizByIdentifier(identifier, language));
     }
 
     @PostMapping("/{identifier}/submit")
-    public ResponseEntity<GradedQuiz> submitQuizAnswers(@PathVariable String identifier, @RequestBody SubmittedQuiz request) {
-        GradedQuiz response = gradeQuizService.gradeQuiz(identifier, request);
+    public ResponseEntity<GradedQuiz> submitQuizAnswers(@PathVariable String identifier, @RequestParam(required = false, defaultValue = "ENG") String language, @RequestBody SubmittedQuiz request) {
+        GradedQuiz response = gradeQuizService.gradeQuiz(identifier, language, request);
         return ResponseEntity.ok(response);
     }
 }

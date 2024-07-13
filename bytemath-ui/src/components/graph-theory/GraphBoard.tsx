@@ -35,7 +35,7 @@ const GraphBoard: React.FC = () => {
                         'width': 1,
                         'line-color': '#888',
                         'target-arrow-color': '#888',
-                        'target-arrow-shape': 'triangle',
+                        'target-arrow-shape': 'none',
                         'curve-style': 'bezier'
                     }
                 }
@@ -84,14 +84,22 @@ const GraphBoard: React.FC = () => {
             setEdgeSource(node.id());
         } else if (edgeSourceRef.current !== node.id()) {
             if (cyRef.current) {
-                cyRef.current.add({
-                    group: 'edges',
-                    data: {
-                        id: `e${edgeSourceRef.current}-${node.id()}`,
-                        source: edgeSourceRef.current,
-                        target: node.id()
-                    }
-                });
+                // Check if an edge already exists between these nodes
+                const existingEdge = cyRef.current.edges().filter(edge =>
+                    (edge.source().id() === edgeSourceRef.current && edge.target().id() === node.id()) ||
+                    (edge.source().id() === node.id() && edge.target().id() === edgeSourceRef.current)
+                );
+
+                if (existingEdge.length === 0) {
+                    cyRef.current.add({
+                        group: 'edges',
+                        data: {
+                            id: `e${edgeSourceRef.current}-${node.id()}`,
+                            source: edgeSourceRef.current,
+                            target: node.id()
+                        }
+                    });
+                }
             }
             edgeSourceRef.current = null;
             setEdgeSource(null);
