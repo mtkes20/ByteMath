@@ -1,5 +1,6 @@
 import axios from "axios";
 import {QuizType} from "../types/QuizType";
+import {SubmittedQuiz} from "../types/SubmittedQuiz";
 
 
 const getQuiz = async (quizId: string): Promise<QuizType> => {
@@ -12,8 +13,19 @@ const getQuiz = async (quizId: string): Promise<QuizType> => {
     return response.data;
 }
 
+const submitQuiz = async (quizId: string, answers: SubmittedQuiz) => {
+    const response = await axios.create({
+        baseURL: "/api/v1/quiz/",
+        headers: {
+            'Content-Type': 'application/json',
+        }}).post(`${quizId}`, answers);
+
+    return response.data;
+}
+
 const QuizApi = {
-    getQuiz
+    getQuiz,
+    submitQuiz
 };
 
 
