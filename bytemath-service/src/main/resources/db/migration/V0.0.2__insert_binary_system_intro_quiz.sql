@@ -1,5 +1,5 @@
-INSERT INTO BYTEMATH.QUIZ (ID, IDENTIFIER, TITLE)
-VALUES (1, 'BINARY_SYSTEM_INTRO', 'Binary System Introduction Quiz');
+INSERT INTO BYTEMATH.QUIZ (ID, IDENTIFIER, LANGUAGE, TITLE)
+VALUES (1, 'BINARY_SYSTEM_INTRO', 'ENG', 'Binary System Introduction Quiz');
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
 VALUES (1, 'What is the base of the binary numeral system? (Enter a number)', 'TEXT', 1);
@@ -52,3 +52,60 @@ VALUES (18, '10', 6, FALSE),
        (19, '2', 6, TRUE),
        (20, '8', 6, FALSE),
        (21, '16', 6, FALSE);
+
+
+
+
+INSERT INTO BYTEMATH.QUIZ (ID, IDENTIFIER, LANGUAGE, TITLE)
+VALUES (2, 'BINARY_SYSTEM_INTRO', 'GEO', 'ორობითი სისტემის შესავალი - ქვიზი');
+
+INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
+VALUES (7, 'რა არის ორობითი რიცხვითი სისტემის ფუძე? (შეიყვანეთ რიცხვი)', 'TEXT', 2);
+
+INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
+VALUES (22, '2', 7, TRUE);
+
+INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
+VALUES (8, 'რომელი ციფრები გამოიყენება ორობით სისტემაში?', 'SINGLE_CHOICE', 2);
+
+INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
+VALUES (23, '0 და 1', 8, TRUE),
+       (24, '1 და 2', 8, FALSE),
+       (25, '0-დან 9-მდე', 8, FALSE),
+       (26, 'A და B', 8, FALSE);
+
+INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
+VALUES (9, 'რას წარმოადგენს "1" ორობით სისტემაში კომპიუტერულ ოპერაციებში?', 'SINGLE_CHOICE', 2);
+
+INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
+VALUES (27, 'გამორთულ მდგომარეობას', 9, FALSE),
+       (28, 'ჩართულ მდგომარეობას', 9, TRUE),
+       (29, 'ნეიტრალურ მდგომარეობას', 9, FALSE),
+       (30, 'შეცდომის მდგომარეობას', 9, FALSE);
+
+INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
+VALUES (10, 'რა ეწოდება ორობითი სისტემის ერთ ციფრს?', 'SINGLE_CHOICE', 2);
+
+INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
+VALUES (31, 'ბაიტი', 10, FALSE),
+       (32, 'ნიბლი', 10, FALSE),
+       (33, 'ბიტი', 10, TRUE),
+       (34, 'ციფრი', 10, FALSE);
+
+INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
+VALUES (11, 'რომელ ათობით რიცხვს წარმოადგენს ორობითი რიცხვი 1011?', 'SINGLE_CHOICE', 2);
+
+INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
+VALUES (35, '9', 11, FALSE),
+       (36, '10', 11, FALSE),
+       (37, '11', 11, TRUE),
+       (38, '13', 11, FALSE);
+
+INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
+VALUES (12, 'ორობით რიცხვში, თითოეული ციფრი წარმოადგენს რომელი რიცხვის მზარდ ხარისხს?', 'SINGLE_CHOICE', 2);
+
+INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
+VALUES (39, '10', 12, FALSE),
+       (40, '2', 12, TRUE),
+       (41, '8', 12, FALSE),
+       (42, '16', 12, FALSE);

@@ -22,8 +22,8 @@ public class GradeQuizService {
 
     private final QuizRepository quizRepository;
 
-    public GradedQuiz gradeQuiz(String quizIdentifier, SubmittedQuiz request) {
-        Quiz quiz = quizRepository.findByIdentifier(quizIdentifier).orElseThrow(RuntimeException::new);
+    public GradedQuiz gradeQuiz(String quizIdentifier, String language, SubmittedQuiz request) {
+        Quiz quiz = quizRepository.findByIdentifierAndLanguage(quizIdentifier, language).orElseThrow(RuntimeException::new);
 
         Map<Long, Question> questionsMap = quiz.getQuestions()
                 .stream()

@@ -15,8 +15,8 @@ public class QuizService {
 
     private final QuizMapper quizMapper;
 
-    public QuizDTO getQuizByIdentifier(String identifier) {
-        Quiz quiz = quizRepository.findByIdentifier(identifier).orElseThrow(RuntimeException::new);
+    public QuizDTO getQuizByIdentifier(String identifier, String language) {
+        Quiz quiz = quizRepository.findByIdentifierAndLanguage(identifier, language).orElseThrow(RuntimeException::new);
         return quizMapper.entityToDto(quiz);
     }
 }

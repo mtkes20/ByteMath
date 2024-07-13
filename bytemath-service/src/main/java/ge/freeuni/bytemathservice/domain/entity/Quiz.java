@@ -25,6 +25,8 @@ public class Quiz {
 
     private String title;
 
+    private String language;
+
     @OneToMany(mappedBy = "quiz")
     @Cascade(CascadeType.ALL)
     private List<Question> questions;
