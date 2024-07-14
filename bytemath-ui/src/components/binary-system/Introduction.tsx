@@ -1,7 +1,7 @@
 import {styled, Typography} from "@mui/material";
 import BinaryVisualization from "./BinaryVisualization";
 import {QuizType} from "../../types/QuizType";
-import {QuizAnswers} from "../../types/QuizAnswers";
+import {SubmittedQuiz} from "../../types/SubmittedQuiz";
 import Quiz from "../quizz/Quiz";
 import {useQuery} from "@tanstack/react-query";
 import QuizApi from "../../api/quiz-api";
@@ -19,7 +19,7 @@ const Introduction = () => {
     })
 
     //TODO add submit handler
-    const handleQuizSubmit = (answers: QuizAnswers) => {
+    const handleQuizSubmit = (answers: SubmittedQuiz) => {
         // Send answers to the backend
         console.log(answers);
     };
@@ -53,7 +53,9 @@ const Introduction = () => {
             }}>
                 <BinaryVisualization/>
             </div>
-            { !!quizData && <Quiz quiz={quizData} onSubmit={handleQuizSubmit}/> }
+            { !!quizData && <Quiz
+                quiz={quizData}
+                onSubmit={handleQuizSubmit}/> }
         </div>
     )
 }

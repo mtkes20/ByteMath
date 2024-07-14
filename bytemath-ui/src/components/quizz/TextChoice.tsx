@@ -1,46 +1,46 @@
-import {Typography} from "@mui/material";
 import React from "react";
 import {Question} from "../../types/QuizType";
-import {SelectedAnswer} from "../../types/QuizAnswers";
+import {SubmittedAnswer} from "../../types/SubmittedQuiz";
 
 
-const TextChoice = ({question, answers, handleAnswerChange, index} : {
+const TextChoice = ({question, answers, setAnswers} : {
     question: Question,
-    handleAnswerChange: (questionId: number, answer: string) => void,
-    answers: SelectedAnswer,
-    index: number
+    answers: SubmittedAnswer[],
+    setAnswers: React.Dispatch<React.SetStateAction<SubmittedAnswer[]>>
 }) => {
 
+    const handleTextChoiceAnswerChange = (questionId: number, answer: string) => {
+        setAnswers(prev => {
+            const existingAnswerIndex = prev.findIndex(a => a.questionId === questionId);
+            const newAnswer: SubmittedAnswer = {
+                questionId,
+                textAnswer: answer
+            };
+
+            if (existingAnswerIndex !== -1) {
+                const newAnswers = [...prev];
+                newAnswers[existingAnswerIndex] = newAnswer;
+                return newAnswers;
+            } else {
+                return [...prev, newAnswer];
+            }
+        });
+    }
 
     return (
-        <div style={{
-            padding: "10px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px"
-        }}>
-            <Typography
-                style={{
-                    color: "white",
-                    fontSize: "20px",
-                    fontFamily: "Roboto",
-                    fontWeight: "bold"
-                }}
-                variant="h6">{`${index}. ${question.questionText}`}</Typography>
-            <input
-                style={{
-                    padding: "10px",
-                    fontSize: "16px",
-                    fontFamily: "Roboto",
-                    borderRadius: "5px",
-                    border: "1px solid #ccc",
-                    width: "500px"
-                }}
-                type="text"
-                onChange={(e) => handleAnswerChange(question.id, e.target.value)}
-                value={answers[question.id] || ''}
-            />
-        </div>
+        <input
+            style={{
+                padding: "10px",
+                fontSize: "16px",
+                fontFamily: "Roboto",
+                borderRadius: "5px",
+                border: "1px solid #ccc",
+                width: "500px"
+            }}
+            type="text"
+            onChange={(e) => handleTextChoiceAnswerChange(question.id, e.target.value)}
+            value={answers.find(a => a.questionId === question.id)?.textAnswer || ""}
+        />
     )
 }
 
