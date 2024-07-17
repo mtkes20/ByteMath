@@ -29,9 +29,20 @@ public class GradeQuizService {
                 .stream()
                 .collect(Collectors.toMap(Question::getId, q -> q));
 
-        List<GradedQuestion> results = request.getAnswers()
+        Map<Long, SubmittedAnswer> submittedAnswersMap = request.getAnswers()
                 .stream()
-                .map(submittedAnswer -> gradeQuestion(submittedAnswer, questionsMap.get(submittedAnswer.getQuestionId())))
+                .collect(Collectors.toMap(SubmittedAnswer::getQuestionId, a -> a));
+
+        List<GradedQuestion> results = questionsMap.values()
+                .stream()
+                .map(question -> {
+                    SubmittedAnswer submittedAnswer = submittedAnswersMap.get(question.getId());
+                    if (submittedAnswer != null) {
+                        return gradeQuestion(submittedAnswer, question);
+                    } else {
+                        return createUnansweredGradedQuestion(question);
+                    }
+                })
                 .collect(Collectors.toList());
 
         int correctCount = (int) results.stream().filter(GradedQuestion::isCorrect).count();
@@ -41,6 +52,23 @@ public class GradeQuizService {
                 .totalQuestions(quiz.getQuestions().size())
                 .results(results)
                 .build();
+    }
+
+    private GradedQuestion createUnansweredGradedQuestion(Question question) {
+        return GradedQuestion.builder()
+                .questionId(question.getId())
+                .correct(false)
+                .correctAnswer(getCorrectAnswerText(question))
+                .userAnswer("Not answered")
+                .build();
+    }
+
+    private String getCorrectAnswerText(Question question) {
+        return question.getAnswers().stream()
+                .filter(Answer::getIsCorrect)
+                .findFirst()
+                .map(Answer::getAnswerText)
+                .orElse("No correct answer found");
     }
 
     private GradedQuestion gradeQuestion(SubmittedAnswer submittedAnswer, Question question) {
