@@ -13,7 +13,12 @@ const Introduction = () => {
         return await QuizApi.getQuiz("BINARY_SYSTEM_INTRO")
     }
 
-    const {data: quizData, error: quizError, isLoading: isQuizLoading} = useQuery<QuizType | undefined>({
+    const {
+        data: quizData,
+        error: quizError,
+        isLoading: isQuizLoading,
+        refetch: refetchQuiz
+    } = useQuery<QuizType | undefined>({
         queryKey: ["quiz"],
         queryFn: fetchQuiz
     })
@@ -53,9 +58,13 @@ const Introduction = () => {
             }}>
                 <BinaryVisualization/>
             </div>
+            {/*<Outlet/>*/}
             { !!quizData && <Quiz
-                quiz={quizData}
-                onSubmit={handleQuizSubmit}/> }
+                refetchQuiz={refetchQuiz}
+                quizz={quizData}
+                //TODO change
+                identifier={"BINARY_SYSTEM_INTRO"}
+            /> }
         </div>
     )
 }

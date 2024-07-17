@@ -4,56 +4,95 @@ import {SubmittedAnswer, SubmittedQuiz} from "../../types/SubmittedQuiz";
 import {Button, styled, Typography} from "@mui/material";
 import SingleChoice from "./SingleChoice";
 import TextChoice from "./TextChoice";
+import {GradedQuiz} from "../../types/GradedQuiz";
+import QuizResults from "./QuizResults";
+import QuizApi from "../../api/quiz-api";
+import {QueryObserverResult, RefetchOptions} from "@tanstack/react-query";
 
 interface QuizProps {
-    quiz: QuizType;
-    onSubmit: (submittedQuiz: SubmittedQuiz) => void;
+    quizz: QuizType;
+    identifier: string,
+    refetchQuiz: (options?: RefetchOptions | undefined) => Promise<QueryObserverResult<QuizType | undefined, Error>>
 }
 
-const Quiz: React.FC<QuizProps> = ({quiz, onSubmit}) => {
+const Quiz: React.FC<QuizProps> = ({
+                                       quizz,
+                                       identifier,
+                                       refetchQuiz
+                                   }) => {
     const [answers, setAnswers] = useState<SubmittedAnswer[]>([]);
+    const [gradedQuiz, setGradedQuiz] = useState<GradedQuiz | null>(null);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const submittedQuiz: SubmittedQuiz = {
-            id: quiz.id,
+            id: quizz.id,
             answers: answers
         };
-        onSubmit(submittedQuiz);
+        handleQuizSubmit(submittedQuiz);
+    };
+
+    const fetchQuiz = async () => {
+        await QuizApi.getQuiz(identifier)
+    }
+
+    const handleQuizSubmit = async (submittedQuiz: SubmittedQuiz) => {
+        await QuizApi.submitQuiz(identifier, submittedQuiz).then((gradedQuiz) => {
+            setGradedQuiz(gradedQuiz);
+
+        }).catch((error) => {
+            console.error('Error grading quiz:', error);
+            // Handle error (e.g., show error message to user)
+        });
+    };
+
+    const handleTryAgain = () => {
+        setGradedQuiz(null);
+        refetchQuiz();
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <MainContainer>
-                <Typography variant="h4" style={{color: "white", fontFamily: "Roboto", fontWeight: "bold"}}>
-                    {quiz.title}
-                </Typography>
-                <Questions>
-                    {quiz.questions.map((question, index) => (
-                        <Question>
-                            <QuestionTitle>{`${index + 1}. ${question.questionText}`}</QuestionTitle>
-                            {question.questionType === QuestionType.SINGLE_CHOICE ? (
-                                <SingleChoice
-                                    question={question}
-                                    answers={answers}
-                                    setAnswers={setAnswers}
-                                />
-                            ) : (
-                                <TextChoice
-                                    question={question}
-                                    answers={answers}
-                                    setAnswers={setAnswers}
-                                />
-                            )
-                            }
-                        </Question>
-                    ))}
-                </Questions>
-                <div style={{ display: "flex" }}>
-                    <SubmitButton type="submit">Submit Quiz</SubmitButton>
-                </div>
-            </MainContainer>
-        </form>
+        <>
+            {gradedQuiz && (<QuizResults
+                    gradedQuiz={gradedQuiz}
+                    quiz={quizz}
+                    onTryAgain={handleTryAgain}
+                />
+            )}
+            {!gradedQuiz && (
+                <form onSubmit={handleSubmit}>
+                    <MainContainer>
+                        <QuizTitle>
+                            {quizz.title}
+                        </QuizTitle>
+                        <Questions>
+                            {quizz.questions.map((question, index) => (
+                                <Question>
+                                    <QuestionTitle>{`${index + 1}. ${question.questionText}`}</QuestionTitle>
+                                    {question.questionType === QuestionType.SINGLE_CHOICE ? (
+                                        <SingleChoice
+                                            question={question}
+                                            answers={answers}
+                                            setAnswers={setAnswers}
+                                        />
+                                    ) : (
+                                        <TextChoice
+                                            question={question}
+                                            answers={answers}
+                                            setAnswers={setAnswers}
+                                        />
+                                    )
+                                    }
+                                </Question>
+                            ))}
+                        </Questions>
+                        <div style={{display: "flex"}}>
+                            <SubmitButton type="submit">Submit Quiz</SubmitButton>
+                        </div>
+                    </MainContainer>
+                </form>
+            )}
+        </>
     );
 };
 
@@ -62,6 +101,15 @@ const MainContainer = styled('div')(() => ({
     flexDirection: "column",
     gap: "20px",
     // alignItems: "center"
+}))
+//variant="h4" style={{color: "white", fontFamily: "Roboto", fontWeight: "bold"
+
+const QuizTitle = styled(Typography)(() => ({
+    color: "white",
+    fontSize: "24px",
+    fontFamily: "Roboto",
+    fontWeight: "bold",
+    variant: "h4"
 }))
 
 const QuestionTitle = styled(Typography)(() => ({

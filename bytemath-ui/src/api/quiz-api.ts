@@ -19,7 +19,7 @@ const submitQuiz = async (quizId: string, answers: SubmittedQuiz): Promise<Grade
         baseURL: "/api/v1/quiz/",
         headers: {
             'Content-Type': 'application/json',
-        }}).post(`${quizId}`, answers);
+        }}).post(`${quizId}/submit`, answers);
 
     return response.data;
 }

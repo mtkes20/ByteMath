@@ -9,7 +9,7 @@ import Arithmetic from "./Arithmetic";
 
 const BinarySystemContent = () => {
     const [selectedItem, setSelectedItem] = useState<string>(
-        "converting"
+        "introduction"
     );
 
     return (
