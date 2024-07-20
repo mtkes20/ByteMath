@@ -5,12 +5,14 @@ import {SubmittedQuiz} from "../../types/SubmittedQuiz";
 import Quiz from "../quizz/Quiz";
 import {useQuery} from "@tanstack/react-query";
 import QuizApi from "../../api/quiz-api";
+import {useTranslation} from "react-i18next";
 
 
 const Introduction = () => {
+    const { i18n } = useTranslation()
 
     const fetchQuiz = async () => {
-        return await QuizApi.getQuiz("BINARY_SYSTEM_INTRO")
+        return await QuizApi.getQuiz("BINARY_SYSTEM_INTRO", i18n.resolvedLanguage == 'en' ? "ENG" : "GEO")
     }
 
     const {
