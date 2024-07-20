@@ -2,6 +2,30 @@ import React, {useState} from 'react';
 import {Button, Card, styled, TextField, Typography} from "@mui/material";
 
 const LCMandGCD = () => {
+    const [num1, setNum1] = useState('');
+    const [num2, setNum2] = useState('');
+    const [lcm, setLcm] = useState<null | number>(null);
+    const [gcd, setGcd] = useState<null | number>(null);
+
+    const calculateLcmGcd = () => {
+        const a = parseInt(num1);
+        const b = parseInt(num2);
+
+        if (isNaN(a) || isNaN(b)) {
+            alert('Please enter valid numbers');
+            return;
+        }
+
+        const gcdValue = calculateGcd(a, b);
+        const lcmValue = (a * b) / gcdValue;
+
+        setGcd(gcdValue);
+        setLcm(lcmValue);
+    };
+
+    const calculateGcd = (a: number, b: number): number => {
+        return b === 0 ? a : calculateGcd(b, a % b);
+    };
 
     return (
         <div style={{
@@ -92,6 +116,50 @@ const LCMandGCD = () => {
                 </div>
             </StyledCard>
 
+            <div style={{
+                padding: "60px 0"
+            }}>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: "20px"
+                }}>
+                    <StyledTextField
+                        type="number"
+                        placeholder="Enter first number"
+                        value={num1}
+                        onChange={(e) => setNum1(e.target.value)}
+                    />
+                    <StyledTextField
+                        type="number"
+                        placeholder="Enter second number"
+                        value={num2}
+                        onChange={(e) => setNum2(e.target.value)}
+                    />
+                    <Button style={{
+                        color: "#5C6BC0"
+                    }} onClick={calculateLcmGcd}>Calculate</Button>
+                </div>
+                {lcm !== null && gcd !== null && (
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "20px",
+                        padding: "20px 0"
+                    }}>
+                        <Typography style={{
+                            color: "#5C6BC0",
+                            fontSize: "1rem",
+                            fontFamily: "Roboto",
+                        }}>LCM: {lcm}</Typography>
+                        <Typography style={{
+                            color: "#5C6BC0",
+                            fontSize: "1rem",
+                            fontFamily: "Roboto",
+                        }}>GCD: {gcd}</Typography>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
