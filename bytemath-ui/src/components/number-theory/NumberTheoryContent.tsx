@@ -4,6 +4,7 @@ import SideMenu from "../content-side-menu/SideMenu";
 import {Functions} from "@mui/icons-material";
 import Introduction from "./Introduction";
 import LCMandGCD from "./LCMandGCD";
+import RSAAlgorithm from "./RSAAlgorithm";
 
 
 const NumberTheoryContent = () => {
@@ -25,6 +26,7 @@ const NumberTheoryContent = () => {
                       items={[
                           {title: "Introduction", value: "introduction"},
                           {title: "LCM and GCD", value: "lcm-gcd"},
+                          {title: "RSA Algorithm", value: "rsa-algorithm"}
                       ]}
                       selectedItem={selectedItem}
                       setSelectedItem={setSelectedItem}
@@ -34,6 +36,9 @@ const NumberTheoryContent = () => {
             }
             {
                 selectedItem === "lcm-gcd" && <LCMandGCD/>
+            }
+            {
+                selectedItem === "rsa-algorithm" && <RSAAlgorithm/>
             }
             <div/>
         </Stack>
