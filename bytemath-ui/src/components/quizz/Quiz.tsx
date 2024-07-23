@@ -33,7 +33,7 @@ const Quiz: React.FC<QuizProps> = ({
     };
 
     const fetchQuiz = async () => {
-        await QuizApi.getQuiz(identifier)
+        await QuizApi.getQuiz(identifier, 'ENG')
     }
 
     const handleQuizSubmit = async (submittedQuiz: SubmittedQuiz) => {
@@ -143,5 +143,3 @@ const SubmitButton = styled(Button)(() => ({
 
 
 export default Quiz;
-
-
