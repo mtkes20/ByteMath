@@ -6,7 +6,7 @@ import {GradedQuiz} from "../types/GradedQuiz";
 
 const getQuiz = async (quizId: string, language: string): Promise<QuizType> => {
     const response = await axios.create({
-        baseURL: "/api/v1/quiz/",
+        baseURL: `${process.env.REACT_APP_API_URL}/api/v1/quiz/`,
         headers: {
             'Content-Type': 'application/json',
         },
@@ -18,7 +18,7 @@ const getQuiz = async (quizId: string, language: string): Promise<QuizType> => {
 //TODO pass correct language
 const submitQuiz = async (quizId: string, answers: SubmittedQuiz): Promise<GradedQuiz> => {
     const response = await axios.create({
-        baseURL: "/api/v1/quiz/",
+        baseURL: `${process.env.REACT_APP_API_URL}/api/v1/quiz/`,
         headers: {
             'Content-Type': 'application/json',
         }}).post(`${quizId}/submit?language=GEO`, answers);
