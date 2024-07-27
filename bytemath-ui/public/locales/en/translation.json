@@ -1,4 +1,40 @@
 {
   "courses": "Courses",
-  "introduction_to_logical_operators_title": "Introduction to Logical Operators"
+  "introduction_to_logical_operators_title": "Introduction to Logical Operators",
+  "calculate": "Calculate",
+
+  "numberTheory": {
+    "modularArithmetic": {
+      "title": "Modular Arithmetic",
+      "introduction": {
+        "title": "What is Modular Arithmetic?",
+        "description": "Modular arithmetic is a system of arithmetic for integers, where numbers \"wrap around\" after reaching a certain value — the modulus. It's often described as \"clock arithmetic\" because it's similar to how hours on a clock wrap around from 12 back to 1."
+      },
+      "keyConcepts": {
+        "title": "Key Concepts",
+        "list": [
+          "Congruence: We say a is congruent to b modulo m if m divides (a-b). We write this as a ≡ b (mod m).",
+          "Modular Addition: (a + b) mod m = ((a mod m) + (b mod m)) mod m",
+          "Modular Subtraction: (a - b) mod m = ((a mod m) - (b mod m) + m) mod m",
+          "Modular Multiplication: (a * b) mod m = ((a mod m) * (b mod m)) mod m",
+          "Modular Exponentiation: a^b mod m = ((a mod m)^b) mod m"
+        ]
+      },
+      "applications": {
+        "title": "Applications",
+        "description": "Modular arithmetic has many applications in computer science and cryptography:",
+        "list": [
+          "Hash functions",
+          "Random number generation",
+          "Error detection and correction codes",
+          "Cryptographic algorithms (like RSA)"
+        ]
+      },
+      "calculator": {
+        "title": "Modular Arithmetic Calculator",
+        "result": "Result: {{a}} {{operation}} {{b}} ≡ {{result}} (mod {{m}})"
+      }
+    }
+  }
+
 }

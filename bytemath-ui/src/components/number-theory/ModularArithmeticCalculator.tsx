@@ -1,5 +1,6 @@
 import {Button, Card, styled, TextField, Typography} from "@mui/material";
 import React, {useState} from "react";
+import {useTranslation} from "react-i18next";
 
 
 const ModularArithmeticCalculator = () => {
@@ -8,6 +9,8 @@ const ModularArithmeticCalculator = () => {
     const [m, setM] = useState<string>('');
     const [operation, setOperation] = useState<string>('+');
     const [result, setResult] = useState<number | null>(null);
+
+    const { t } = useTranslation();
 
     const handleCalculate = () => {
         const numA = parseInt(a);
@@ -59,7 +62,7 @@ const ModularArithmeticCalculator = () => {
                 flexDirection: "column",
                 gap: "20px",
             }}>
-                <Subtitle>Modular Arithmetic Calculator</Subtitle>
+                <Subtitle>{t('numberTheory.modularArithmetic.calculator.title')}</Subtitle>
                 <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
                     <StyledTextField
                         label="a"
@@ -98,10 +101,11 @@ const ModularArithmeticCalculator = () => {
                 <Button variant="contained" style={{
                     backgroundColor: "#800080",
                     width: "150px",
-                }} onClick={handleCalculate}>Calculate</Button>
+                }} onClick={handleCalculate}>{t("calculate")}</Button>
                 {result !== null && (
                     <Text style={{ marginTop: '10px', color: "#5C6BC0" }}>
-                        Result: {a} {operation} {b} ≡ {result} (mod {m})
+                        {t('numberTheory.modularArithmetic.calculator.result', { a, operation, b, result, m })}
+                        {/*Result: {a} {operation} {b} ≡ {result} (mod {m})*/}
                     </Text>
                 )}
             </div>

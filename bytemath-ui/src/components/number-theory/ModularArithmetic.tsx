@@ -1,76 +1,71 @@
 import React from 'react';
 import {Card, styled, Typography} from '@mui/material';
 import ModularArithmeticCalculator from "./ModularArithmeticCalculator";
+import {useTranslation} from "react-i18next";
 
 const ModularArithmetic: React.FC = () => {
+    const { t } = useTranslation()
 
     return (
         <Container>
-            <Title>Modular Arithmetic</Title>
-
+            <Title>{t('numberTheory.modularArithmetic.title')}</Title>
             <Card style={cardStyle}>
-                <Subtitle>What is Modular Arithmetic?</Subtitle>
-                <Text>
-                    Modular arithmetic is a system of arithmetic for integers, where numbers "wrap around" after reaching a certain value — the modulus.
-                    It's often described as "clock arithmetic" because it's similar to how hours on a clock wrap around from 12 back to 1.
-                </Text>
+                <SubContent>
+                    <Subtitle>{t('numberTheory.modularArithmetic.introduction.title')}</Subtitle>
+                    <Text>{t('numberTheory.modularArithmetic.introduction.description')}</Text>
+                </SubContent>
             </Card>
-
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "15px"
-            }}>
-                <Subtitle>Key Concepts</Subtitle>
+            <SubContent>
+                <Subtitle>{t('numberTheory.modularArithmetic.keyConcepts.title')}</Subtitle>
                 <StyledList>
-                    <StyledListItem>Congruence: We say a is congruent to b modulo m if m divides (a-b). We write this as a ≡ b (mod m).</StyledListItem>
-                    <StyledListItem>Modular Addition: (a + b) mod m = ((a mod m) + (b mod m)) mod m</StyledListItem>
-                    <StyledListItem>Modular Subtraction: (a - b) mod m = ((a mod m) - (b mod m) + m) mod m</StyledListItem>
-                    <StyledListItem>Modular Multiplication: (a * b) mod m = ((a mod m) * (b mod m)) mod m</StyledListItem>
-                    <StyledListItem>Modular Exponentiation: a^b mod m = ((a mod m)^b) mod m</StyledListItem>
+                    {(t('numberTheory.modularArithmetic.keyConcepts.list', { returnObjects: true }) as string[]).map((item, index) => (
+                        <StyledListItem key={index}>{item}</StyledListItem>
+                    ))}
                 </StyledList>
-            </div>
-
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "15px"
-            }}>
-                <Subtitle>Applications</Subtitle>
-                <Text>Modular arithmetic has many applications in computer science and cryptography:</Text>
+            </SubContent>
+            <SubContent>
+                <Subtitle>{t('numberTheory.modularArithmetic.applications.title')}</Subtitle>
+                <Text>{t('numberTheory.modularArithmetic.applications.description')}</Text>
                 <StyledList sx={{listStyleType: 'disc'}}>
-                    <StyledListItem>Hash functions</StyledListItem>
-                    <StyledListItem>Random number generation</StyledListItem>
-                    <StyledListItem>Error detection and correction codes</StyledListItem>
-                    <StyledListItem>Cryptographic algorithms (like RSA)</StyledListItem>
+                    <StyledList sx={{listStyleType: 'disc'}}>
+                        {(t('numberTheory.modularArithmetic.applications.list', { returnObjects: true }) as string[]).map((item, index) => (
+                            <StyledListItem key={index}>{item}</StyledListItem>
+                        ))}
+                    </StyledList>
                 </StyledList>
-            </div>
+            </SubContent>
             <ModularArithmeticCalculator/>
         </Container>
     );
 };
 
 const Container = styled('div')({
+    height: "100%",
+    width: "100%",
     padding: "50px",
-    backgroundColor: "#1a1a1a",
+    gap: "30px",
     display: "flex",
     flexDirection: "column",
-    gap: "30px",
-    color: "white",
+    backgroundColor: "#1a1a1a"
+});
+
+const SubContent = styled('div')({
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px"
 });
 
 const StyledList = styled('ol')({
-    paddingLeft: '20px',
-    listStylePosition: 'outside',
+    listStylePosition: 'inside',
+    paddingInlineStart: '0px',
     color: 'white',
     display: "flex",
     flexDirection: "column",
-    gap: "10px"
+    gap: "15px"
 });
 
 const StyledListItem = styled('li')({
     display: 'list-item',
-    marginBottom: '8px',
     fontSize: '1rem',
     fontFamily: 'Roboto',
 });
@@ -100,7 +95,6 @@ const Text = styled(Typography)({
 const cardStyle = {
     backgroundColor: "transparent",
     padding: "20px",
-    marginBottom: "20px",
     border: "0.5px solid white",
 };
 
