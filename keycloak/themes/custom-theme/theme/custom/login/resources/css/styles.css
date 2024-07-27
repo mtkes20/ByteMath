@@ -1,6 +1,6 @@
 body {
-    background-color: #282a36; /* Dark background */
-    color: #ffffff; /* Light text */
+    background-color: #1a1a1a;
+    color: #ffffff;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -15,15 +15,15 @@ body {
     width: 100%;
     max-width: 400px;
     padding: 20px;
-    background-color: #44475a; /* Lighter dark background */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 #kc-header {
     margin-bottom: 20px;
     text-align: center;
-    color: #ffffff; /* Accent color */
+    color: #ffffff;
 }
 
 #kc-form {
@@ -32,7 +32,7 @@ body {
 }
 
 input {
-    width: 80%;
+    width: 75%;
     padding: 10px;
     margin-top: 5px;
     margin-right: 10%;
@@ -41,35 +41,37 @@ input {
     background-color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 4px;
-    color: #f8f8f2;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    display: block;
 }
 
 input[type="submit"] {
-    background-color: #6e8bb6;
-    color: #282a36;
-    cursor: pointer;
-    font-weight: bold;
-    border-color: #ffffff;
-    font-family: Roboto, inherit, serif;
-    font-size: 1rem;
-    /*interit*/
+    background-color: #800080;
+    color: #ffffff;
+    border-color: #800080;
+    font-family: 'Roboto', sans-serif;
+    width: 100px;
+    margin: auto;
+    display: block;
 }
 
 input[type="submit"]:hover {
-    background-color: #6e8bb6;
+    background-color: #760080;
+    border-color: #760080;
 }
-
 
 .kc-form-options {
     margin-top: 10px;
     text-align: center;
 }
 
-.kc-forgot-password, .kc-register {
-    color: #6e8bb6;
+.kc-forgot-password, .kc-register, .kc-login {
+    color: #ffffff;
     text-decoration: none;
 }
 
-.kc-forgot-password:hover, .kc-register:hover {
+.kc-forgot-password:hover, .kc-register:hover, .kc-login:hover {
     text-decoration: underline;
 }
