@@ -1,5 +1,6 @@
 import React from 'react';
 import {Card, styled, Typography} from '@mui/material';
+import ModularArithmeticCalculator from "./ModularArithmeticCalculator";
 
 const ModularArithmetic: React.FC = () => {
 
@@ -44,6 +45,7 @@ const ModularArithmetic: React.FC = () => {
                     <StyledListItem>Cryptographic algorithms (like RSA)</StyledListItem>
                 </StyledList>
             </div>
+            <ModularArithmeticCalculator/>
         </Container>
     );
 };
