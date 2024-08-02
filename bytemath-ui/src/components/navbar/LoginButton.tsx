@@ -1,46 +1,93 @@
-import React from 'react';
-import {Button} from "@mui/material";
-import Keycloak from "keycloak-js"; // make sure this path is correct
+import React, {useEffect, useState} from 'react';
+import {Box, Button, Typography} from '@mui/material';
+import Keycloak from 'keycloak-js';
+import {useLocation, useNavigate} from 'react-router-dom';
 
-interface KeycloakOptions {
-    url: string;
-    realm: string;
-    clientId: string;
-    onLoad: Keycloak.KeycloakOnLoad;
-}
-
-let initOptions: KeycloakOptions = {
-    url: 'http://localhost:8080/',
-    realm: 'master',
+const keycloakConfig = {
+    url: 'http://localhost:8080',
+    realm: 'bytemath',
     clientId: 'bytemath',
-    onLoad: 'login-required'
-}
+};
 
-const keycloak: Keycloak = new Keycloak(initOptions);
+const keycloak = new Keycloak(keycloakConfig);
+
+const initKeycloak = async () => {
+    try {
+        const authenticated = await keycloak.init({
+            onLoad: 'check-sso',
+            silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
+            pkceMethod: 'S256',
+            responseMode: 'query'
+        });
+        return authenticated;
+    } catch (error) {
+        return false;
+    }
+};
 
 const LoginButton: React.FC = () => {
-    const handleLogin = () => {
-        keycloak.init({ onLoad: initOptions.onLoad}).then((auth: boolean) => {
-            if (!auth) {
-                console.error("Not Authenticated");
-            } else {
-                console.info("Authenticated");
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isInitialized, setIsInitialized] = useState(false);
+    const [username, setUsername] = useState<string | undefined>(undefined);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        const initialize = async () => {
+            const authenticated = await initKeycloak();
+            setIsAuthenticated(authenticated);
+            setIsInitialized(true);
+
+            if (authenticated) {
+                if (location.hash) {
+                    const cleanPath = location.pathname || '/';
+                    navigate(cleanPath, { replace: true });
+                }
+                try {
+                    await keycloak.loadUserProfile();
+                    setUsername(keycloak.profile?.username);
+                } catch (error) {
+                }
             }
-        }).catch(() => {
-            console.error("Authentication Failed");
-        });
+        };
+
+        initialize();
+    }, [location, navigate]);
+
+    const handleLogin = () => {
+        if (isAuthenticated) {
+            keycloak.logout()
+                .then(() => {
+                    setIsAuthenticated(false);
+                    setUsername(undefined);
+                })
+                .catch(console.error);
+        } else {
+            keycloak.login()
+                .catch(console.error);
+        }
     };
 
     return (
-        <Button onClick={handleLogin} style={{
-            backgroundColor: "#800080",
-            padding: "5px 10px",
-            color: "#ffffff",
-            fontFamily: "Roboto",
-        }}>
-            Sign In
-        </Button>
+        <Box display="flex" alignItems="center">
+            {isAuthenticated && username && (
+                <Typography variant="body1" style={{ marginRight: '10px' }}>
+                    Welcome, {username}!
+                </Typography>
+            )}
+            <Button
+                onClick={handleLogin}
+                style={{
+                    backgroundColor: '#800080',
+                    padding: '5px 10px',
+                    color: '#ffffff',
+                    fontFamily: 'Roboto',
+                }}
+            >
+                {isAuthenticated ? 'Sign Out' : 'Sign In'}
+            </Button>
+        </Box>
     );
-}
+};
 
 export default LoginButton;

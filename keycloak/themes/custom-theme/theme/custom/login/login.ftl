@@ -17,8 +17,7 @@
                 <input type="submit" value="Sign In">
             </div>
             <div class="kc-form-options">
-                <a class="kc-forgot-password">Forgot Password?</a><br>
-                <a class="kc-register">Register</a>
+                <a href="${url.registrationUrl}" class="kc-register">Register</a>
             </div>
         </form>
     </div>
