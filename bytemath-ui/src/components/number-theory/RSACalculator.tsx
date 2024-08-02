@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import {Button, Card, styled, TextField, Typography} from "@mui/material";
+import {StyledCard, StyledText, StyledTextField, Subtitle} from "../styles/StyledComponents";
+import {useTranslation} from "react-i18next";
 
 interface PublicKey {
     e: number;
@@ -19,6 +21,8 @@ const RSACalculator: React.FC = () => {
     const [privateKey, setPrivateKey] = useState<PrivateKey>({d: 0, n: 0});
     const [encryptedMessage, setEncryptedMessage] = useState<string>('');
     const [decryptedMessage, setDecryptedMessage] = useState<string>('');
+
+    const { t } = useTranslation()
 
     const generateKeys = (): void => {
         const pNum = parseInt(p);
@@ -109,37 +113,35 @@ const RSACalculator: React.FC = () => {
 
     return (
         <StyledCard>
-            <Subtitle>RSA Calculator</Subtitle>
+            <Subtitle>{t('numberTheory.rsaAlgorithm.calculator.title')}</Subtitle>
             <div style={{display: 'flex', gap: '10px', marginBottom: '10px'}}>
                 <StyledTextField
-                    label="Prime p"
+                    label={`${t('numberTheory.rsaAlgorithm.calculator.prime')} p`}
                     type="number"
                     value={p}
                     onChange={(e) => setP(e.target.value)}
                 />
                 <StyledTextField
-                    label="Prime q"
+                    label={`${t('numberTheory.rsaAlgorithm.calculator.prime')} q`}
                     type="number"
                     value={q}
                     onChange={(e) => setQ(e.target.value)}
                 />
-                <StyledButton onClick={generateKeys}>
-                    Generate Keys
-                </StyledButton>
+                <StyledButton onClick={generateKeys}>{t("generateKeys")}</StyledButton>
             </div>
             {publicKey.e !== 0 && (
                 <div>
-                    <Text>Public Key (e, n): ({publicKey.e}, {publicKey.n})</Text>
-                    <Text>Private Key (d, n): ({privateKey.d}, {privateKey.n})</Text>
+                    <StyledText>Public Key (e, n): ({publicKey.e}, {publicKey.n})</StyledText>
+                    <StyledText>Private Key (d, n): ({privateKey.d}, {privateKey.n})</StyledText>
                 </div>
             )}
             <div style={{marginTop: '10px', display: "flex", alignItems: "Center"}}>
                 <StyledTextField
-                    label="Message to Encrypt"
+                    label={t('numberTheory.rsaAlgorithm.calculator.messageToEncrypt')}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                 />
-                <StyledButton onClick={encrypt}>Encrypt</StyledButton>
+                <StyledButton onClick={encrypt}>{t("encrypt")}</StyledButton>
             </div>
             {encryptedMessage && (
                 <div style={{
@@ -148,71 +150,21 @@ const RSACalculator: React.FC = () => {
                     gap: "10px",
                     alignItems: "center"
                 }}>
-                    <Text>Encrypted: {encryptedMessage}</Text>
-                    <StyledButton onClick={decrypt}>Decrypt</StyledButton>
+                    <StyledText>{`${t("encrypted")}: ${encryptedMessage}`}</StyledText>
+                    <StyledText>Encrypted: {encryptedMessage}</StyledText>
+                    <StyledButton onClick={decrypt}>{t("decrypt")}</StyledButton>
                 </div>
             )}
             {decryptedMessage && (
-                <Text>Decrypted: {decryptedMessage}</Text>
+                <StyledText>Decrypted: {decryptedMessage}</StyledText>
             )}
         </StyledCard>
     );
 };
 
-const Text = styled(Typography)(() => ({
-    color: "white",
-    fontSize: "1rem",
-    fontFamily: "Roboto",
-}));
-
-const Subtitle = styled(Typography)(() => ({
-    color: "white",
-    fontSize: "1.2rem",
-    fontWeight: "bold",
-    fontFamily: "Roboto",
-    variant: "h2"
-}));
-
-const StyledCard = styled(Card)({
-    backgroundColor: "transparent",
-    padding: "20px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-    border: "0.5px solid white",
-});
 
 const StyledButton = styled(Button)({
     color: "#5C6BC0"
 });
-
-const StyledTextField = styled(TextField)(() => ({
-    '& .MuiInputBase-root': {
-        color: 'white',
-    },
-    '& .MuiInput-underline:before': {
-        borderBottomColor: 'white',
-    },
-    '& .MuiInput-underline:hover:before': {
-        borderBottomColor: 'white',
-    },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: 'white',
-    },
-    '& .MuiFormLabel-root': {
-        color: 'white',
-    },
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: 'white',
-        },
-        '&:hover fieldset': {
-            borderColor: 'white',
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: 'white',
-        },
-    },
-}));
 
 export default RSACalculator;

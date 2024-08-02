@@ -1,6 +1,7 @@
 import {Button, Card, styled, TextField, Typography} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
+import {StyledCard, StyledText, StyledTextField, Subtitle} from "../styles/StyledComponents";
 
 
 const ModularArithmeticCalculator = () => {
@@ -56,7 +57,7 @@ const ModularArithmeticCalculator = () => {
     };
 
     return (
-        <Card style={cardStyle}>
+        <StyledCard>
             <div style={{
                 display: "flex",
                 flexDirection: "column",
@@ -103,54 +104,13 @@ const ModularArithmeticCalculator = () => {
                     width: "150px",
                 }} onClick={handleCalculate}>{t("calculate")}</Button>
                 {result !== null && (
-                    <Text style={{ marginTop: '10px', color: "#5C6BC0" }}>
+                    <StyledText style={{ marginTop: '10px', color: "#5C6BC0" }}>
                         {t('numberTheory.modularArithmetic.calculator.result', { a, operation, b, result, m })}
-                        {/*Result: {a} {operation} {b} ≡ {result} (mod {m})*/}
-                    </Text>
+                    </StyledText>
                 )}
             </div>
-        </Card>
+        </StyledCard>
     )
 }
-
-const cardStyle = {
-    backgroundColor: "transparent",
-    padding: "20px",
-    border: "0.5px solid white",
-};
-
-const Subtitle = styled(Typography)({
-    fontSize: "1.2rem",
-    fontWeight: "bold",
-    marginBottom: "10px",
-    color: "white",
-    fontFamily: "Roboto",
-});
-
-const Text = styled(Typography)({
-    fontSize: "1rem",
-    marginBottom: "10px",
-    color: "white",
-});
-
-const StyledTextField = styled(TextField)({
-    '& .MuiInputBase-root': {
-        color: 'white',
-    },
-    '& .MuiInputLabel-root': {
-        color: 'white',
-    },
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: 'white',
-        },
-        '&:hover fieldset': {
-            borderColor: 'white',
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: 'white',
-        },
-    },
-});
 
 export default ModularArithmeticCalculator;
