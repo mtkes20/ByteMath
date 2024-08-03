@@ -6,12 +6,14 @@ import Introduction from "./Introduction";
 import LCMandGCD from "./LCMandGCD";
 import RSAAlgorithm from "./RSAAlgorithm";
 import ModularArithmetic from "./ModularArithmetic";
+import {useTranslation} from "react-i18next";
 
 
 const NumberTheoryContent = () => {
     const [selectedItem, setSelectedItem] = useState<string>(
         "introduction"
     );
+    const { t } = useTranslation()
 
     return (
         <Stack
@@ -23,12 +25,12 @@ const NumberTheoryContent = () => {
             }}
         >
             <SideMenu icon={<Functions fontSize="small" />}
-                      title={"Theory of Numbers"}
+                      title={t("numberTheoryTitle")}
                       items={[
-                          {title: "Introduction", value: "introduction"},
-                          {title: "LCM and GCD", value: "lcm-gcd"},
-                          {title: "RSA Algorithm", value: "rsa-algorithm"},
-                          {title: "Modular Arithmetic", value: "modular-arithmetic"}
+                          {title: t("introduction"), value: "introduction"},
+                          {title: t("lcm-gcd"), value: "lcm-gcd"},
+                          {title: t("rsa-algorithm"), value: "rsa-algorithm"},
+                          {title: t("modular-arithmetic"), value: "modular-arithmetic"}
                       ]}
                       selectedItem={selectedItem}
                       setSelectedItem={setSelectedItem}

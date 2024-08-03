@@ -1,6 +1,14 @@
 import React, {useState} from "react";
-import {Button, Card, styled, TextField, Typography} from "@mui/material";
-import {StyledCard, StyledText, StyledTextField, Subtitle} from "../styles/StyledComponents";
+import {Button, Card, Stack, styled, TextField, Typography} from "@mui/material";
+import {
+    ResultText,
+    StyledButton,
+    StyledCard,
+    StyledText,
+    StyledTextField,
+    SubContent,
+    Subtitle
+} from "../styles/StyledComponents";
 import {useTranslation} from "react-i18next";
 
 interface PublicKey {
@@ -113,58 +121,52 @@ const RSACalculator: React.FC = () => {
 
     return (
         <StyledCard>
-            <Subtitle>{t('numberTheory.rsaAlgorithm.calculator.title')}</Subtitle>
-            <div style={{display: 'flex', gap: '10px', marginBottom: '10px'}}>
-                <StyledTextField
-                    label={`${t('numberTheory.rsaAlgorithm.calculator.prime')} p`}
-                    type="number"
-                    value={p}
-                    onChange={(e) => setP(e.target.value)}
-                />
-                <StyledTextField
-                    label={`${t('numberTheory.rsaAlgorithm.calculator.prime')} q`}
-                    type="number"
-                    value={q}
-                    onChange={(e) => setQ(e.target.value)}
-                />
-                <StyledButton onClick={generateKeys}>{t("generateKeys")}</StyledButton>
-            </div>
-            {publicKey.e !== 0 && (
-                <div>
-                    <StyledText>Public Key (e, n): ({publicKey.e}, {publicKey.n})</StyledText>
-                    <StyledText>Private Key (d, n): ({privateKey.d}, {privateKey.n})</StyledText>
-                </div>
-            )}
-            <div style={{marginTop: '10px', display: "flex", alignItems: "Center"}}>
-                <StyledTextField
-                    label={t('numberTheory.rsaAlgorithm.calculator.messageToEncrypt')}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                />
-                <StyledButton onClick={encrypt}>{t("encrypt")}</StyledButton>
-            </div>
-            {encryptedMessage && (
-                <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    gap: "10px",
-                    alignItems: "center"
-                }}>
-                    <StyledText>{`${t("encrypted")}: ${encryptedMessage}`}</StyledText>
-                    <StyledText>Encrypted: {encryptedMessage}</StyledText>
-                    <StyledButton onClick={decrypt}>{t("decrypt")}</StyledButton>
-                </div>
-            )}
-            {decryptedMessage && (
-                <StyledText>Decrypted: {decryptedMessage}</StyledText>
-            )}
+            <SubContent>
+                <Subtitle>{t('numberTheory.rsaAlgorithm.calculator.title')}</Subtitle>
+                <Stack display={"flex"} flexDirection={"row"} gap={"20px"} alignItems={"center"}>
+                    <StyledTextField
+                        size={"small"}
+                        label={`${t('numberTheory.rsaAlgorithm.calculator.prime')} p`}
+                        type="number"
+                        value={p}
+                        onChange={(e) => setP(e.target.value)}
+                    />
+                    <StyledTextField
+                        size={"small"}
+                        label={`${t('numberTheory.rsaAlgorithm.calculator.prime')} q`}
+                        type="number"
+                        value={q}
+                        onChange={(e) => setQ(e.target.value)}
+                    />
+                    <StyledButton onClick={generateKeys}>{t("numberTheory.rsaAlgorithm.calculator.generateKeys")}</StyledButton>
+                </Stack>
+                {publicKey.e !== 0 && (
+                    <SubContent>
+                        <ResultText>{`${t("numberTheory.rsaAlgorithm.calculator.publicKey")} (e, n): (${publicKey.e}, ${publicKey.n})`}</ResultText>
+                        <ResultText>{`${t("numberTheory.rsaAlgorithm.calculator.privateKey")} (d, n): (${privateKey.d}, ${privateKey.n})`}</ResultText>
+                    </SubContent>
+                )}
+                <Stack display={"flex"} flexDirection={"row"} gap={"20px"} alignItems={"center"}>
+                    <StyledTextField
+                        size={"small"}
+                        label={t('numberTheory.rsaAlgorithm.calculator.messageToEncrypt')}
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                    />
+                    <StyledButton onClick={encrypt}>{t("numberTheory.rsaAlgorithm.calculator.encrypt")}</StyledButton>
+                </Stack>
+                {encryptedMessage && (
+                    <Stack display={"flex"} flexDirection={"row"} gap={"20px"} alignItems={"center"}>
+                        <ResultText>{`${t("numberTheory.rsaAlgorithm.calculator.encrypted")}: ${encryptedMessage}`}</ResultText>
+                        <StyledButton onClick={decrypt}>{t("numberTheory.rsaAlgorithm.calculator.decrypt")}</StyledButton>
+                    </Stack>
+                )}
+                {decryptedMessage && (
+                    <ResultText>{`${t("numberTheory.rsaAlgorithm.calculator.decrypted")}: ${decryptedMessage}`}</ResultText>
+                )}
+            </SubContent>
         </StyledCard>
     );
 };
-
-
-const StyledButton = styled(Button)({
-    color: "#5C6BC0"
-});
 
 export default RSACalculator;

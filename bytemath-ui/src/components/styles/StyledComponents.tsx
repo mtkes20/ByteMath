@@ -1,4 +1,4 @@
-import {Card, styled, TextField, Typography} from "@mui/material";
+import {Button, Card, styled, TextField, Typography} from "@mui/material";
 
 
 export const CoursePageMainContainer = styled('div')({
@@ -62,7 +62,14 @@ export const StyledText = styled(Typography)({
     lineHeight: "1.5",
 });
 
+export const ResultText = styled(Typography)({
+    color: "#5C6BC0",
+    fontSize: "1rem",
+    fontFamily: "Roboto",
+});
+
 export const StyledTextField = styled(TextField)(() => ({
+    size: "small",
     '& .MuiInputBase-root': {
         color: 'white',
     },
@@ -90,3 +97,10 @@ export const StyledTextField = styled(TextField)(() => ({
         },
     },
 }));
+
+export const StyledButton = styled(Button)({
+    backgroundColor: "#800080",
+    padding: "5px 10px",
+    color: "#ffffff",
+    fontFamily: "Roboto",
+});

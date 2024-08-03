@@ -2,8 +2,103 @@
   "courses": "Courses",
   "introduction_to_logical_operators_title": "Introduction to Logical Operators",
   "calculate": "Calculate",
-
+  "numberTheoryTitle": "Theory of Numbers",
+  "introduction": "Introduction",
+  "lcm-gcd": "LCM and GCD",
+  "rsa-algorithm": "RSA Algorithm",
+  "modular-arithmetic": "Modular Arithmetic",
   "numberTheory": {
+    "introduction": {
+      "title": "Introduction to the Theory of Numbers",
+      "description": "The Theory of Numbers, also known as Number Theory, is a branch of pure mathematics devoted primarily to the study of the integers and integer-valued functions. It is one of the oldest and most fundamental areas of mathematics, with a rich history dating back to ancient civilizations.",
+      "keyConcepts": {
+        "title": "Key Concepts in Number Theory:",
+        "list": [
+          "Prime Numbers: Numbers greater than 1 that have no positive divisors other than 1 and themselves.",
+          "Divisibility: The study of when one integer is divisible by another.",
+          "Greatest Common Divisor (GCD): The largest positive integer that divides each of the numbers without a remainder.",
+          "Least Common Multiple (LCM): The smallest positive integer that is divisible by each of the numbers.",
+          "Modular Arithmetic: Arithmetic that deals with the remainders after division.",
+          "Diophantine Equations: Polynomial equations where only integer solutions are sought."
+        ]
+      },
+      "applications": {
+        "title": "Applications of Number Theory:",
+        "list": [
+          "Cryptography: Many encryption methods, including RSA, are based on number theory principles.",
+          "Computer Science: Algorithms, data structures, and error-correcting codes often rely on number theory concepts.",
+          "Physics: Number theory is used in various areas of theoretical physics, including string theory.",
+          "Engineering: Applications in signal processing, control theory, and other engineering fields."
+        ]
+      },
+      "conclusion": "Number theory continues to be an active area of research, with many unsolved problems and conjectures that have puzzled mathematicians for centuries."
+    },
+    "lcmAndGcd": {
+      "title": "Least Common Multiple (LCM) and Greatest Common Divisor (GCD)",
+      "whatAre": {
+        "title": "What are LCM and GCD?",
+        "lcm": {
+          "title": "Least Common Multiple (LCM)",
+          "description": "The LCM of two or more integers is the smallest positive integer that is divisible by each of the integers. For example, the LCM of 4 and 6 is 12."
+        },
+        "gcd": {
+          "title": "Greatest Common Divisor (GCD)",
+          "description": "The GCD of two or more integers is the largest positive integer that divides each of the integers without a remainder. For example, the GCD of 8 and 12 is 4."
+        }
+      },
+      "importance": {
+        "title": "Why are LCM and GCD important?",
+        "list": [
+          "LCM is used in many areas of mathematics, including fractions, algebra, and number theory.",
+          "GCD is fundamental in simplifying fractions, solving Diophantine equations, and in various algorithms in computer science.",
+          "Both LCM and GCD are crucial in cryptography, particularly in the RSA algorithm.",
+          "In computer programming, LCM and GCD are used in various algorithms and data structures."
+        ]
+      },
+      "calculation": {
+        "title": "How to Calculate LCM and GCD",
+        "gcd": {
+          "title": "Calculating GCD",
+          "description": "The most efficient method to calculate GCD is the Euclidean algorithm:",
+          "steps": [
+            "Divide the larger number by the smaller one.",
+            "Replace the larger number with the smaller number and the smaller number with the remainder from step 1.",
+            "Repeat until the remainder is zero. The last non-zero remainder is the GCD."
+          ]
+        },
+        "lcm": {
+          "title": "Calculating LCM",
+          "description": "LCM can be calculated using the formula:",
+          "formula": "LCM(a, b) = |a * b| / GCD(a, b)",
+          "note": "Where |a * b| denotes the absolute value of a * b."
+        }
+      },
+      "examples": {
+        "title": "Examples",
+        "gcd": {
+          "title": "GCD Example: Calculate GCD(48, 18)",
+          "steps": [
+            "48 ÷ 18 = 2 remainder 12",
+            "18 ÷ 12 = 1 remainder 6",
+            "12 ÷ 6 = 2 remainder 0",
+            "The last non-zero remainder is 6, so GCD(48, 18) = 6"
+          ]
+        },
+        "lcm": {
+          "title": "LCM Example: Calculate LCM(12, 18)",
+          "steps": [
+            "First, calculate GCD(12, 18) = 6",
+            "Then, LCM(12, 18) = |12 * 18| / 6 = 216 / 6 = 36"
+          ]
+        }
+      },
+      "calculator": {
+        "enterFirstNumber": "Enter first number",
+        "enterSecondNumber": "Enter second number",
+        "lcm": "LCM",
+        "gcd": "GCD"
+      }
+    },
     "modularArithmetic": {
       "title": "Modular Arithmetic",
       "introduction": {
@@ -35,7 +130,6 @@
         "result": "Result: {{a}} {{operation}} {{b}} ≡ {{result}} (mod {{m}})"
       }
     },
-
     "rsaAlgorithm": {
       "title": "RSA Algorithm",
       "whatIsRSA": {
@@ -125,9 +219,9 @@
         "encrypt": "Encrypt",
         "decrypt": "Decrypt",
         "encrypted": "Encrypted",
+        "decrypted": "Decrypted",
         "messageToEncrypt": "Message to Encrypt"
       }
     }
   }
-
 }

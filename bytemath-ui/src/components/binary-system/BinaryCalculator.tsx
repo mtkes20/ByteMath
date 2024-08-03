@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Button, FormControl, MenuItem, Select, styled, TextField, Typography} from "@mui/material";
+import {StyledButton} from "../styles/StyledComponents";
 
 const BinaryCalculator: React.FC = () => {
     const [binary1, setBinary1] = useState<string>('');
@@ -91,18 +92,12 @@ const BinaryCalculator: React.FC = () => {
                     onChange={handleBinaryChange2}
                     placeholder="Enter second binary number"
                 />
-                <Button
-                    style={{
-                        backgroundColor: "#800080",
-                        padding: "5px 10px",
-                        color: "#ffffff",
-                        fontFamily: "Roboto",
-                    }}
+                <StyledButton
                     onClick={calculate}
                     disabled={binary1.length < 1 || binary2.length < 1}
                 >
                     Calculate
-                </Button>
+                </StyledButton>
             </div>
             {!!result && (
                 <Result>

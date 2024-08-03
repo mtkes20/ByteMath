@@ -102,7 +102,6 @@ const MainContainer = styled('div')(() => ({
     gap: "20px",
     // alignItems: "center"
 }))
-//variant="h4" style={{color: "white", fontFamily: "Roboto", fontWeight: "bold"
 
 const QuizTitle = styled(Typography)(() => ({
     color: "white",

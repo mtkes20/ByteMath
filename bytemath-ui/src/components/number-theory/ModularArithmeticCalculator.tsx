@@ -1,7 +1,7 @@
-import {Button, Card, styled, TextField, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {StyledCard, StyledText, StyledTextField, Subtitle} from "../styles/StyledComponents";
+import {ResultText, StyledButton, StyledCard, StyledTextField, SubContent, Subtitle} from "../styles/StyledComponents";
 
 
 const ModularArithmeticCalculator = () => {
@@ -58,14 +58,11 @@ const ModularArithmeticCalculator = () => {
 
     return (
         <StyledCard>
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "20px",
-            }}>
+            <SubContent>
                 <Subtitle>{t('numberTheory.modularArithmetic.calculator.title')}</Subtitle>
                 <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
                     <StyledTextField
+                        size="small"
                         label="a"
                         type="number"
                         value={a}
@@ -73,6 +70,7 @@ const ModularArithmeticCalculator = () => {
                     />
                     <StyledTextField
                         select
+                        size="small"
                         value={operation}
                         onChange={(e) => setOperation(e.target.value)}
                         SelectProps={{
@@ -85,6 +83,7 @@ const ModularArithmeticCalculator = () => {
                         <option value="^">^</option>
                     </StyledTextField>
                     <StyledTextField
+                        size="small"
                         label="b"
                         type="number"
                         value={b}
@@ -92,23 +91,21 @@ const ModularArithmeticCalculator = () => {
                     />
                     <Typography variant="h6" style={{ color: 'white', alignSelf: "center" }}>(mod</Typography>
                     <StyledTextField
+                        size="small"
                         label="m"
                         type="number"
                         value={m}
                         onChange={(e) => setM(e.target.value)}
                     />
                     <Typography variant="h6" style={{ color: 'white', alignSelf: "center" }}>)</Typography>
+                    <StyledButton onClick={handleCalculate}>{t("calculate")}</StyledButton>
                 </div>
-                <Button variant="contained" style={{
-                    backgroundColor: "#800080",
-                    width: "150px",
-                }} onClick={handleCalculate}>{t("calculate")}</Button>
                 {result !== null && (
-                    <StyledText style={{ marginTop: '10px', color: "#5C6BC0" }}>
+                    <ResultText>
                         {t('numberTheory.modularArithmetic.calculator.result', { a, operation, b, result, m })}
-                    </StyledText>
+                    </ResultText>
                 )}
-            </div>
+            </SubContent>
         </StyledCard>
     )
 }

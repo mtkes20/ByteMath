@@ -6,6 +6,7 @@ import Quiz from "../quizz/Quiz";
 import {useQuery} from "@tanstack/react-query";
 import QuizApi from "../../api/quiz-api";
 import {useTranslation} from "react-i18next";
+import {CoursePageMainContainer} from "../styles/StyledComponents";
 
 
 const Introduction = () => {
@@ -33,15 +34,7 @@ const Introduction = () => {
 
 
     return (
-        <div style={{
-            height: "100%",
-            width: "100%",
-            padding: "50px",
-            gap: "15px",
-            display: "flex",
-            flexDirection: "column",
-            backgroundColor: "#1a1a1a"
-        }}>
+        <CoursePageMainContainer>
             <Title>Understanding the Binary System</Title>
             <Text>The binary system, also known as the base-2 numeral system, is fundamental to computer science and
                 digital electronics.
@@ -67,7 +60,7 @@ const Introduction = () => {
                 //TODO change
                 identifier={"BINARY_SYSTEM_INTRO"}
             /> }
-        </div>
+        </CoursePageMainContainer>
     )
 }
 
