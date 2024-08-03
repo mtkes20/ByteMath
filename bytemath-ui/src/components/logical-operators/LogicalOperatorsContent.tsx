@@ -1,13 +1,11 @@
 import SideMenu from "../content-side-menu/SideMenu";
-import {Code, SettingsInputComponent} from '@mui/icons-material';
+import {SettingsInputComponent} from '@mui/icons-material';
 import {Stack} from "@mui/material";
 import React, {useState} from "react";
 import Introduction from "./Introduction";
 import BasicOperators from "./BasicOperators";
 import AdvancedOperators from "./AdvancedOperators";
 import TruthTables from "./TruthTables";
-import BooleanAlgebra from "./BooleanAlgebra";
-import ApplicationOfOperators from "./ApplicationOfOperators";
 
 
 const LogicalOperatorsContent = () => {
@@ -19,14 +17,11 @@ const LogicalOperatorsContent = () => {
         <Stack display={"flex"} flexDirection={"row"} height={'calc(1 n00vh - 70px)'} style={{
             height: "auto"
         }}>
-            <SideMenu icon={<SettingsInputComponent fontSize="small" />} title={"Logical Operands"}
+            <SideMenu icon={<SettingsInputComponent fontSize="small"/>} title={"Logical Operands"}
                       items={[{title: "Introduction to Logical Operators", value: "introduction"},
                           {title: "Basic Logical Operators", value: "basic-operators"},
                           {title: "Advanced Logical Operators", value: "advanced-operators"},
                           {title: "Truth Tables", value: "truth-tables"},
-                          {title: "Boolean Algebra", value: "boolean-algebra"},
-                          {title: "Applications of Logical Operators", value: "application-of-operators"},
-
                       ]}
                       selectedItem={selectedItem}
                       setSelectedItem={setSelectedItem}
@@ -42,12 +37,6 @@ const LogicalOperatorsContent = () => {
             }
             {
                 selectedItem === "truth-tables" && <TruthTables/>
-            }
-            {
-                selectedItem === "boolean-algebra" && <BooleanAlgebra/>
-            }
-            {
-                selectedItem === "application-of-operators" && <ApplicationOfOperators/>
             }
             <div/>
         </Stack>

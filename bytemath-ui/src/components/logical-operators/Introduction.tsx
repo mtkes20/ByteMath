@@ -1,45 +1,50 @@
-import {styled, Typography} from "@mui/material";
 import {useTranslation} from "react-i18next";
-
+import {
+    CoursePageMainContainer,
+    StyledList,
+    StyledListItem,
+    StyledText,
+    Subtitle,
+    Title
+} from "../styles/StyledComponents";
 
 const Introduction = () => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
-        <div style={{
-            height: "100%",
-            width: "100%",
-            padding: "50px",
-            gap: "15px",
-            display: "flex",
-            flexDirection: "column",
-        }}>
+        <CoursePageMainContainer>
             <Title>{t("introduction_to_logical_operators_title")}</Title>
-            <Text>Logical operators are essential tools in programming, allowing us to make decisions and control the
-                flow of a program based on certain conditions. They are used to combine or modify logical statements,
-                enabling more complex expressions. Understanding logical operators is fundamental for any programmer, as
-                they are used in virtually every programming language.</Text>
-            <div style={{
-                padding: "60px"
-            }}>
-            </div>
-        </div>
-    )
+            <StyledText>
+                Logical operators are fundamental concepts in discrete mathematics and computer science.
+                They allow us to create complex conditions, make decisions in programming, and form the basis of boolean
+                algebra.
+            </StyledText>
+            <Subtitle>In this module, you'll explore:</Subtitle>
+            <StyledList>
+                <StyledListItem>Basic Logical Operators</StyledListItem>
+                <StyledListItem>Advanced Logical Operators</StyledListItem>
+                <StyledListItem>Truth Tables</StyledListItem>
+            </StyledList>
+            <StyledText>
+                Understanding logical operators is crucial for several reasons:
+            </StyledText>
+            <StyledList>
+                <StyledListItem>They are essential in programming for creating conditional statements and controlling
+                    program
+                    flow.</StyledListItem>
+                <StyledListItem>They form the basis of digital circuit design in computer hardware.</StyledListItem>
+                <StyledListItem>They are used extensively in database systems for constructing complex
+                    queries.</StyledListItem>
+                <StyledListItem>They play a key role in artificial intelligence, particularly in decision-making
+                    algorithms.</StyledListItem>
+            </StyledList>
+            <StyledText>
+                As you progress through this module, you'll gain a solid foundation in logical operators,
+                preparing you for more advanced topics in computer science and discrete mathematics.
+            </StyledText>
+        </CoursePageMainContainer>
+    );
 }
-
-const Title = styled(Typography)(() => ({
-    color: "white",
-    fontSize: "1.5rem",
-    fontWeight: "bold",
-    fontFamily: "Roboto",
-    variant: "h1"
-}))
-
-const Text = styled(Typography)(() => ({
-    color: "white",
-    fontSize: "1rem",
-    fontFamily: "Roboto",
-}))
 
 export default Introduction;

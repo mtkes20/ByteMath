@@ -68,6 +68,55 @@ export const ResultText = styled(Typography)({
     fontFamily: "Roboto",
 });
 
+export const StyledExplanation = styled(Typography)({
+    fontSize: "1rem",
+    marginBottom: "20px",
+    fontStyle: "italic",
+    color: "#b0bec5",
+});
+
+export const StyledInteractionPrompt = styled(Typography)({
+    fontSize: "0.9rem",
+    marginBottom: "10px",
+    color: "#ffab91",
+});
+
+export const StyledBit = styled('button')<StyledBitProps>(({isOn}) => ({
+    width: "50px",
+    height: "50px",
+    fontSize: "20px",
+    cursor: "pointer",
+    color: "#ffffff",
+    border: "none",
+    borderRadius: "5px",
+    backgroundColor: isOn ? '#66bb6a' : '#ef5350',
+    transition: "background-color 0.3s ease",
+}));
+
+interface StyledBitProps {
+    isOn: boolean;
+}
+
+export const StyledCalculatorResult = styled(Typography)({
+    fontWeight: "bold",
+    fontSize: "1.1rem",
+    textAlign: "center",
+    color: "#ffffff",
+});
+
+export const StyledOperatorCalculator = styled('div')({
+    backgroundColor: "#2c2c2c",
+    padding: "15px",
+    borderRadius: "5px",
+});
+
+export const StyledOperatorCalculatorInput = styled('div')({
+    display: "flex",
+    justifyContent: "center",
+    gap: "15px",
+    marginBottom: "15px",
+});
+
 export const StyledTextField = styled(TextField)(() => ({
     size: "small",
     '& .MuiInputBase-root': {
