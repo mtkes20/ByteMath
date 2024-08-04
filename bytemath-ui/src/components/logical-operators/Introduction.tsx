@@ -7,14 +7,40 @@ import {
     Subtitle,
     Title
 } from "../styles/StyledComponents";
+import Quiz from "../quizz/Quiz";
+import QuizApi from "../../api/quiz-api";
+import {useQuery} from "@tanstack/react-query";
+import {QuizType} from "../../types/QuizType";
+import {SubmittedQuiz} from "../../types/SubmittedQuiz";
 
 const Introduction = () => {
 
-    const {t} = useTranslation();
+    const { i18n } = useTranslation()
+
+    const fetchQuiz = async () => {
+        return await QuizApi.getQuiz("LOGICAL_OPERANDS_INTRO", i18n.resolvedLanguage == 'en' ? "ENG" : "GEO")
+    }
+
+    const {
+        data: quizData,
+        error: quizError,
+        isLoading: isQuizLoading,
+        refetch: refetchQuiz
+    } = useQuery<QuizType | undefined>({
+        queryKey: ["quiz"],
+        queryFn: fetchQuiz
+    })
+
+    //TODO add submit handler
+    const handleQuizSubmit = (answers: SubmittedQuiz) => {
+        // Send answers to the backend
+        console.log(answers);
+    };
+
 
     return (
         <CoursePageMainContainer>
-            <Title>{t("introduction_to_logical_operators_title")}</Title>
+            <Title>Introduction to Logical Operators</Title>
             <StyledText>
                 Logical operators are fundamental concepts in discrete mathematics and computer science.
                 They allow us to create complex conditions, make decisions in programming, and form the basis of boolean
@@ -43,6 +69,13 @@ const Introduction = () => {
                 As you progress through this module, you'll gain a solid foundation in logical operators,
                 preparing you for more advanced topics in computer science and discrete mathematics.
             </StyledText>
+            {/*<Outlet/>*/}
+            { !!quizData && <Quiz
+                refetchQuiz={refetchQuiz}
+                quizz={quizData}
+                //TODO change
+                identifier={"LOGICAL_OPERANDS_INTRO"}
+            /> }
         </CoursePageMainContainer>
     );
 }
