@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import cytoscape, {Core, NodeSingular} from 'cytoscape';
-import {Button, Grid, Paper, styled, Typography} from "@mui/material";
+import {Button, Grid, Paper} from "@mui/material";
+import {StyledGraphContainer, StyledTermItem, StyledTermList, StyledText} from "../styles/StyledComponents";
 
 
 interface GraphIntroViewProps {
@@ -146,24 +147,24 @@ const GraphIntroView: React.FC<GraphIntroViewProps> = () => {
     return (
         <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-                <Text>
+                <StyledText>
                     <p>Graph theory is a fascinating way to understand connections in our world. It's like a map of
                         relationships, helping us see how things are linked, whether it's friends in a social
                         network or cities connected by roads.</p>
 
                     <h2>What Exactly is a Graph?</h2>
                     <p>Imagine a game of connect-the-dots, but with a twist. In graph theory:</p>
-                    <TermList>
-                        <TermItem onClick={() => highlightTerm('vertex')} active={selectedTerm === 'vertex'}>
+                    <StyledTermList>
+                        <StyledTermItem onClick={() => highlightTerm('vertex')} active={selectedTerm === 'vertex'}>
                             <strong>Vertices (or Nodes):</strong> These are the dots. They represent objects or
                             points of interest. In a social network graph, each vertex could be a person.
-                        </TermItem>
-                        <TermItem onClick={() => highlightTerm('edge')} active={selectedTerm === 'edge'}>
+                        </StyledTermItem>
+                        <StyledTermItem onClick={() => highlightTerm('edge')} active={selectedTerm === 'edge'}>
                             <strong>Edges:</strong> These are the lines connecting the dots. They show relationships
                             or connections between vertices. In our social network example, an edge could represent
                             a friendship between two people.
-                        </TermItem>
-                    </TermList>
+                        </StyledTermItem>
+                    </StyledTermList>
                     <p><em>Click on 'Vertices' or 'Edges' above to see them highlighted in the graph!</em></p>
 
                     <h2>Try It Yourself: Build a Graph!</h2>
@@ -174,11 +175,11 @@ const GraphIntroView: React.FC<GraphIntroViewProps> = () => {
                         <li>Use 'Clear Edges' to start over</li>
                     </ul>
                     <p>Can you create a graph that connects all vertices?</p>
-                </Text>
+                </StyledText>
             </Grid>
             <Grid item xs={12} md={6}>
                 <Paper elevation={3} style={{padding: '20px', backgroundColor: '#2a2a2a'}}>
-                    <GraphContainer ref={graphFirstExampleRef}/>
+                    <StyledGraphContainer ref={graphFirstExampleRef}/>
                     <Button variant="contained" color="secondary" onClick={clearEdges}
                             style={{marginTop: '10px', marginRight: '10px'}}>
                         Clear Edges
@@ -189,35 +190,5 @@ const GraphIntroView: React.FC<GraphIntroViewProps> = () => {
     );
 };
 
-const GraphContainer = styled('div')({
-    width: '100%',
-    height: '400px',
-    border: '1px solid #ccc',
-    margin: '20px 0',
-});
-
-const Text = styled(Typography)({
-    color: "white",
-    fontSize: "1rem",
-    fontFamily: "Roboto",
-});
-
-const TermList = styled('ul')({
-    listStyleType: 'none',
-    padding: 0,
-});
-
-const TermItem = styled('li')<{ active?: boolean }>(({active}) => ({
-    cursor: 'pointer',
-    padding: '15px',
-    marginBottom: '15px',
-    backgroundColor: active ? 'orange' : '#2a2a2a',
-    borderRadius: '5px',
-    transition: 'all 0.3s ease',
-    '&:hover': {
-        backgroundColor: active ? '#orange' : '#3a3a3a',
-        transform: 'translateX(5px)',
-    },
-}));
 
 export default GraphIntroView;

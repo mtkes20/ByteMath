@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import cytoscape from 'cytoscape';
-import {Grid, styled, Typography} from "@mui/material";
+import {Grid} from "@mui/material";
+import {StyledGraphContainer, StyledTermItem, StyledTermList, StyledText} from "../styles/StyledComponents";
 
 
 interface GraphTypesProps {
@@ -174,67 +175,36 @@ const GraphTypesView: React.FC<GraphTypesProps> = ({currentGraphType, setCurrent
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-                <GraphContainer ref={graphTypesRef}/>
+                <StyledGraphContainer ref={graphTypesRef}/>
             </Grid>
             <Grid item xs={12} md={6}>
-                <Text>
+                <StyledText>
                     <h2>Types of Graphs</h2>
                     <p>Graphs come in various forms, each with unique properties:</p>
-                    <TermList>
-                        <TermItem onClick={() => setCurrentGraphType("Undirected")}
-                                  active={currentGraphType === "Undirected"}>
+                    <StyledTermList>
+                        <StyledTermItem onClick={() => setCurrentGraphType("Undirected")}
+                                        active={currentGraphType === "Undirected"}>
                             <strong>Undirected Graph:</strong> Edges have no direction. Like friendship on Facebook.
-                        </TermItem>
-                        <TermItem onClick={() => setCurrentGraphType("Directed")}
-                                  active={currentGraphType === "Directed"}>
+                        </StyledTermItem>
+                        <StyledTermItem onClick={() => setCurrentGraphType("Directed")}
+                                        active={currentGraphType === "Directed"}>
                             <strong>Directed Graph (Digraph):</strong> Edges have a direction. Like following someone on
                             Twitter.
-                        </TermItem>
-                        <TermItem onClick={() => setCurrentGraphType("Weighted")}
-                                  active={currentGraphType === "Weighted"}>
+                        </StyledTermItem>
+                        <StyledTermItem onClick={() => setCurrentGraphType("Weighted")}
+                                        active={currentGraphType === "Weighted"}>
                             <strong>Weighted Graph:</strong> Edges have values (weights). Like distances between cities.
-                        </TermItem>
-                        <TermItem onClick={() => setCurrentGraphType("Complete")}
-                                  active={currentGraphType === "Complete"}>
+                        </StyledTermItem>
+                        <StyledTermItem onClick={() => setCurrentGraphType("Complete")}
+                                        active={currentGraphType === "Complete"}>
                             <strong>Complete Graph:</strong> Every vertex is connected to every other vertex.
-                        </TermItem>
-                    </TermList>
+                        </StyledTermItem>
+                    </StyledTermList>
                     <p><em>Click on a graph type to see an example!</em></p>
-                </Text>
+                </StyledText>
             </Grid>
         </Grid>
     );
 };
-
-const Text = styled(Typography)({
-    color: "white",
-    fontSize: "1rem",
-    fontFamily: "Roboto",
-});
-
-const GraphContainer = styled('div')({
-    width: '100%',
-    height: '400px',
-    border: '1px solid #ccc',
-    margin: '20px 0',
-});
-
-const TermList = styled('ul')({
-    listStyleType: 'none',
-    padding: 0,
-});
-
-const TermItem = styled('li')<{ active?: boolean }>(({active}) => ({
-    cursor: 'pointer',
-    padding: '15px',
-    marginBottom: '15px',
-    backgroundColor: active ? 'orange' : 'transparent',
-    color: 'white',
-    borderRadius: '5px',
-    transition: 'all 0.3s ease',
-    '&:hover': {
-        backgroundColor: active ? 'orange' : 'rgba(255, 255, 255, 0.1)',
-    },
-}));
 
 export default GraphTypesView;

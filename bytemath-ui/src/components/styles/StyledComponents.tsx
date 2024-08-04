@@ -153,3 +153,29 @@ export const StyledButton = styled(Button)({
     color: "#ffffff",
     fontFamily: "Roboto",
 });
+
+
+export const StyledTermItem = styled('li')<{ active?: boolean }>(({active}) => ({
+    cursor: 'pointer',
+    padding: '15px',
+    marginBottom: '15px',
+    backgroundColor: active ? 'orange' : '#2a2a2a',
+    borderRadius: '5px',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+        backgroundColor: active ? '#orange' : '#3a3a3a',
+        transform: 'translateX(5px)',
+    },
+}));
+
+export const StyledTermList = styled('ul')({
+    listStyleType: 'none',
+    padding: 0,
+});
+
+export const StyledGraphContainer = styled('div')({
+    width: '100%',
+    height: '400px',
+    border: '1px solid #ccc',
+    margin: '20px 0',
+});
