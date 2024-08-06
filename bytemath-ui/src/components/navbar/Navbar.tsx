@@ -3,8 +3,8 @@ import { Button, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from "
 import { AccountTree, Code, ExpandLess, ExpandMore, Functions, SettingsInputComponent } from '@mui/icons-material';
 import LoginButton from "./LoginButton";
 import LanguageSwitcher from "./LanguageSwitcher";
-import {useNavigate} from "react-router-dom";
-import {useTranslation} from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface NavbarProps {
     language: 'en' | 'ka';
@@ -14,7 +14,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const open = Boolean(anchorEl);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const { t } = useTranslation();
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -61,32 +61,32 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                     <ListItemIcon>
                         <Code />
                     </ListItemIcon>
-                    <ListItemText>Binary System</ListItemText>
+                    <ListItemText>{t("binarySystemTitle")}</ListItemText>
                 </MenuItem>
                 <MenuItem onClick={() => onSelect('logic-operands')}>
                     <ListItemIcon>
                         <SettingsInputComponent fontSize="small" />
                     </ListItemIcon>
-                    <ListItemText>Logic Operands</ListItemText>
+                    <ListItemText>{t("logicalOperandsTitle")}</ListItemText>
                 </MenuItem>
                 <MenuItem onClick={() => onSelect('graphs')}>
                     <ListItemIcon>
                         <AccountTree fontSize="small" />
                     </ListItemIcon>
-                    <ListItemText>Theory of Graphs</ListItemText>
+                    <ListItemText>{t("graphTheoryTitle")}</ListItemText>
                 </MenuItem>
                 <MenuItem onClick={() => onSelect('numbers-theory')}>
                     <ListItemIcon>
                         <Functions fontSize="small" />
                     </ListItemIcon>
-                    <ListItemText>Theory of Numbers</ListItemText>
+                    <ListItemText>{t("numberTheoryTitle")}</ListItemText>
                 </MenuItem>
             </Menu>
             <Typography style={{
                 color: "#ffffff",
                 fontSize: 24,
                 fontFamily: "Roboto",
-            }}>Math for Computer Science</Typography>
+            }}>{t("title")}</Typography>
             <div style={{
                 display: "flex",
                 gap: "10px",

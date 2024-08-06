@@ -159,11 +159,11 @@ export const StyledTermItem = styled('li')<{ active?: boolean }>(({active}) => (
     cursor: 'pointer',
     padding: '15px',
     marginBottom: '15px',
-    backgroundColor: active ? 'orange' : '#2a2a2a',
+    backgroundColor: active ? 'orange' : '#dfe8d3',
     borderRadius: '5px',
     transition: 'all 0.3s ease',
     '&:hover': {
-        backgroundColor: active ? '#orange' : '#3a3a3a',
+        backgroundColor: active ? '#orange' : '#ffffff',
         transform: 'translateX(5px)',
     },
 }));

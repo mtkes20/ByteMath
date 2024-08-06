@@ -1,7 +1,11 @@
 {
+  "title": "Math for Computer Science",
   "courses": "Courses",
   "introduction_to_logical_operators_title": "Introduction to Logical Operators",
   "calculate": "Calculate",
+  "binarySystemTitle": "Binary System",
+  "logicalOperandsTitle": "Logical Operands",
+  "graphTheoryTitle": "Theory of Graphs",
   "numberTheoryTitle": "Theory of Numbers",
   "introduction": "Introduction",
   "lcm-gcd": "LCM and GCD",
@@ -222,6 +226,93 @@
         "decrypted": "Decrypted",
         "messageToEncrypt": "Message to Encrypt"
       }
+    }
+  },
+  "graphTheory": {
+    "introduction": {
+      "title": "Introduction to Graph Theory"
+    },
+    "graphDefinition": {
+      "title": "Definition of a Graph",
+      "definition": "A graph is a mathematical structure consisting of two sets:",
+      "vertices": "V (vertices): A non-empty set of elements called vertices or nodes.",
+      "edges": "E (edges): A set of pairs of vertices, representing connections between them.",
+      "formal": "Formally, we write a graph as G = (V, E).",
+      "explanation": "The graph above shows a simple undirected graph with 6 vertices and 9 edges.",
+      "interactionPrompt": "You can click and drag the vertices to rearrange the graph!"
+    },
+    "graphDirectedness": {
+      "title": "Undirected vs Directed Graphs",
+      "definition": "Graphs can be classified as undirected or directed based on the nature of their edges:",
+      "undirected": {
+        "label": "Undirected Graph",
+        "description": "Edges have no direction. The relationship between connected vertices is symmetric."
+      },
+      "directed": {
+        "label": "Directed Graph (Digraph)",
+        "description": "Edges have a direction. The relationship between connected vertices can be asymmetric."
+      },
+      "selectedEdge": "Selected edge: {{edge}}",
+      "prompt": "Click on an edge in either graph to see the difference in representation.",
+      "interactionPrompt": "Click on edges in both graphs to compare undirected and directed representations!"
+    },
+    "verticesAndEdges": {
+      "title": "Vertices and Edges",
+      "description": "A graph consists of two main elements:",
+      "vertices": {
+        "label": "Vertices (Nodes)",
+        "description": "Points or circles in the graph"
+      },
+      "edges": {
+        "label": "Edges",
+        "description": "Lines connecting the vertices"
+      },
+      "explanation": "In the example graphs: The circles are vertices. The lines connecting these circles are edges. In the directed graph (right), edges have arrows indicating direction.",
+      "interactionPrompt": "Click on \"Vertices\" or \"Edges\" above to highlight them in both graphs!",
+      "undirectedGraph": "Undirected Graph",
+      "directedGraph": "Directed Graph"
+    },
+    "vertexDegree": {
+      "title": "Degree of a Vertex",
+      "description": "The degree of a vertex is the number of edges connected to it. In other words, it's the number of neighbors a vertex has.",
+      "undirectedGraphDescription": "For undirected graphs, it's simply the count of edges connected to the vertex.",
+      "directedGraphDescription": "For directed graphs, we distinguish between in-degree (incoming edges) and out-degree (outgoing edges).",
+      "undirectedGraph": "Undirected Graph",
+      "directedGraph": "Directed Graph",
+      "undirectedDegreeExplanation": "In the undirected graph, the degree of vertex {{selectedNode}} is {{undirectedDegree}}.",
+      "directedDegreeExplanation": "In the directed graph, vertex {{selectedNode}} has in-degree {{inDegree}} and out-degree {{outDegree}}.",
+      "selectVertexPrompt": "Click on a vertex in either graph to see its degree.",
+      "interactionPrompt": "Click on different vertices in both graphs to compare degrees in undirected and directed graphs!"
+    },
+    "pathsAndCycles": {
+      "title": "Paths and Cycles in Graphs",
+      "description": "In graph theory, paths and cycles are fundamental concepts: A path is a sequence of nodes connected by edges, without repeating any node. A cycle is a path that starts and ends at the same node.",
+      "pathExplanation": "This is a path: e → f → g → a → b → c → d. It's a sequence of connected nodes without repetition.",
+      "cycleExplanation": "This is a cycle: a → b → c → f → g → a. It starts and ends at the same node.",
+      "showPathButton": "Show Path",
+      "showCycleButton": "Show Cycle",
+      "resetButton": "Reset",
+      "interactionPrompt": "Click the buttons to see examples of a path and a cycle in the graph."
+    },
+    "graphConnectivity": {
+      "title": "Graph Connectivity",
+      "description": "Graph connectivity refers to whether all nodes in a graph are connected. A graph is connected if there is a path between every pair of nodes.",
+      "connectedGraph": "Connected Graph",
+      "disconnectedGraph": "Disconnected Graph",
+      "connectedExplanation": "In this connected graph, you can reach any node from any other node by following the edges.",
+      "disconnectedExplanation": "This disconnected graph has two separate components. You cannot reach nodes C or D from A or B.",
+      "additionalInfo": "A connected graph has only one component, while a disconnected graph has two or more components. Components are subgraphs where all nodes are connected to each other, but not to nodes in other components."
+    },
+    "subgraphs": {
+      "title": "Subgraphs",
+      "description": "A subgraph is a graph whose set of nodes and edges are subsets of another graph. It's like taking a piece of a larger graph while maintaining the connections between the selected elements.",
+      "fullGraphExplanation": "This is the full graph. A subgraph is a subset of nodes and edges from this graph.",
+      "triangleExplanation": "This triangle (A-B-C) is a subgraph. It includes some, but not all, of the original graph's nodes and edges.",
+      "pathExplanation": "This path (B-C-D-E) is also a subgraph. It's a sequence of connected nodes that's part of the larger graph.",
+      "showFullGraph": "Show Full Graph",
+      "showTriangle": "Show Triangle Subgraph",
+      "showPath": "Show Path Subgraph",
+      "resetButton": "გადატვირთვა"
     }
   }
 }
