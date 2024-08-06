@@ -124,7 +124,7 @@ const GraphDirectedness: React.FC = () => {
                 directedCy.edges().removeClass('highlighted');
                 const edge = evt.target;
                 edge.addClass('highlighted');
-                setSelectedEdge(`${edge.source().id()}-${edge.target().id()} (${t('graphTheory.graphDirectedness.undirected.label')})`);
+                setSelectedEdge(`${edge.source().id()}-${edge.target().id()} (${t('graphTheory.introduction.graphDirectedness.undirected.label')})`);
             });
 
             directedCy.on('tap', 'edge', function (evt) {
@@ -132,43 +132,43 @@ const GraphDirectedness: React.FC = () => {
                 directedCy.edges().removeClass('highlighted');
                 const edge = evt.target;
                 edge.addClass('highlighted');
-                setSelectedEdge(`${edge.source().id()}->${edge.target().id()} (${t('graphTheory.graphDirectedness.directed.label')})`);
+                setSelectedEdge(`${edge.source().id()}->${edge.target().id()} (${t('graphTheory.introduction.graphDirectedness.directed.label')})`);
             });
         }
     }, [t]);
 
     return (
         <SubContent>
-            <Subtitle>{t('graphTheory.graphDirectedness.title')}</Subtitle>
+            <Subtitle>{t('graphTheory.introduction.graphDirectedness.title')}</Subtitle>
             <StyledCard>
                 <StyledText>
-                    {t('graphTheory.graphDirectedness.definition')}
+                    {t('graphTheory.introduction.graphDirectedness.definition')}
                     <StyledList>
                         <StyledListItem>
-                            <strong>{t('graphTheory.graphDirectedness.undirected.label')}:</strong> {t('graphTheory.graphDirectedness.undirected.description')}
+                            <strong>{t('graphTheory.introduction.graphDirectedness.undirected.label')}:</strong> {t('graphTheory.introduction.graphDirectedness.undirected.description')}
                         </StyledListItem>
                         <StyledListItem>
-                            <strong>{t('graphTheory.graphDirectedness.directed.label')}:</strong> {t('graphTheory.graphDirectedness.directed.description')}
+                            <strong>{t('graphTheory.introduction.graphDirectedness.directed.label')}:</strong> {t('graphTheory.introduction.graphDirectedness.directed.description')}
                         </StyledListItem>
                     </StyledList>
                 </StyledText>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
                         <StyledGraphContainer ref={undirectedGraph}/>
-                        <StyledExplanation>{t('graphTheory.graphDirectedness.undirected.label')}</StyledExplanation>
+                        <StyledExplanation>{t('graphTheory.introduction.graphDirectedness.undirected.label')}</StyledExplanation>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <StyledGraphContainer ref={directedGraph}/>
-                        <StyledExplanation>{t('graphTheory.graphDirectedness.directed.label')}</StyledExplanation>
+                        <StyledExplanation>{t('graphTheory.introduction.graphDirectedness.directed.label')}</StyledExplanation>
                     </Grid>
                 </Grid>
                 <StyledExplanation>
                     {selectedEdge
-                        ? t('graphTheory.graphDirectedness.selectedEdge', {edge: selectedEdge})
-                        : t('graphTheory.graphDirectedness.prompt')}
+                        ? t('graphTheory.introduction.graphDirectedness.selectedEdge', {edge: selectedEdge})
+                        : t('graphTheory.introduction.graphDirectedness.prompt')}
                 </StyledExplanation>
                 <StyledInteractionPrompt>
-                    {t('graphTheory.graphDirectedness.interactionPrompt')}
+                    {t('graphTheory.introduction.graphDirectedness.interactionPrompt')}
                 </StyledInteractionPrompt>
             </StyledCard>
         </SubContent>

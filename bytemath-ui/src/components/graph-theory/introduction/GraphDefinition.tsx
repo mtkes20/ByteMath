@@ -66,21 +66,21 @@ const GraphDefinition = () => {
 
     return (
         <SubContent>
-            <Subtitle>{t('graphTheory.graphDefinition.title')}</Subtitle>
+            <Subtitle>{t('graphTheory.introduction.graphDefinition.title')}</Subtitle>
             <StyledCard>
                 <StyledText>
-                    {t('graphTheory.graphDefinition.definition')}
+                    {t('graphTheory.introduction.graphDefinition.definition')}
                     <StyledList>
-                        <StyledListItem>{t('graphTheory.graphDefinition.vertices')}</StyledListItem>
-                        <StyledListItem>{t('graphTheory.graphDefinition.edges')}</StyledListItem>
+                        <StyledListItem>{t('graphTheory.introduction.graphDefinition.vertices')}</StyledListItem>
+                        <StyledListItem>{t('graphTheory.introduction.graphDefinition.edges')}</StyledListItem>
                     </StyledList>
                 </StyledText>
                 <StyledGraphContainer ref={graph}/>
                 <StyledExplanation>
-                    {t('graphTheory.graphDefinition.explanation')}
+                    {t('graphTheory.introduction.graphDefinition.explanation')}
                 </StyledExplanation>
                 <StyledInteractionPrompt>
-                    {t('graphTheory.graphDefinition.interactionPrompt')}
+                    {t('graphTheory.introduction.graphDefinition.interactionPrompt')}
                 </StyledInteractionPrompt>
             </StyledCard>
         </SubContent>

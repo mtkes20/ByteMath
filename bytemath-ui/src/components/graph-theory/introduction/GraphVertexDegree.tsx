@@ -155,38 +155,38 @@ const GraphVertexDegree: React.FC = () => {
 
     return (
         <SubContent>
-            <Subtitle>{t('graphTheory.vertexDegree.title')}</Subtitle>
+            <Subtitle>{t('graphTheory.introduction.vertexDegree.title')}</Subtitle>
             <StyledCard>
                 <StyledText>
-                    {t('graphTheory.vertexDegree.description')}
+                    {t('graphTheory.introduction.vertexDegree.description')}
                     <StyledList>
-                        <StyledListItem>{t('graphTheory.vertexDegree.undirectedGraphDescription')}</StyledListItem>
-                        <StyledListItem>{t('graphTheory.vertexDegree.directedGraphDescription')}</StyledListItem>
+                        <StyledListItem>{t('graphTheory.introduction.vertexDegree.undirectedGraphDescription')}</StyledListItem>
+                        <StyledListItem>{t('graphTheory.introduction.vertexDegree.directedGraphDescription')}</StyledListItem>
                     </StyledList>
                 </StyledText>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
                         <StyledGraphContainer ref={undirectedGraph}/>
-                        <StyledExplanation>{t('graphTheory.vertexDegree.undirectedGraph')}</StyledExplanation>
+                        <StyledExplanation>{t('graphTheory.introduction.vertexDegree.undirectedGraph')}</StyledExplanation>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <StyledGraphContainer ref={directedGraph}/>
-                        <StyledExplanation>{t('graphTheory.vertexDegree.directedGraph')}</StyledExplanation>
+                        <StyledExplanation>{t('graphTheory.introduction.vertexDegree.directedGraph')}</StyledExplanation>
                     </Grid>
                 </Grid>
                 <StyledExplanation>
                     {selectedNode && undirectedDegree !== null
-                        ? t('graphTheory.vertexDegree.undirectedDegreeExplanation', {selectedNode, undirectedDegree})
+                        ? t('graphTheory.introduction.vertexDegree.undirectedDegreeExplanation', {selectedNode, undirectedDegree})
                         : selectedNode && inDegree !== null && outDegree !== null
-                            ? t('graphTheory.vertexDegree.directedDegreeExplanation', {
+                            ? t('graphTheory.introduction.vertexDegree.directedDegreeExplanation', {
                                 selectedNode,
                                 inDegree,
                                 outDegree
                             })
-                            : t('graphTheory.vertexDegree.selectVertexPrompt')}
+                            : t('graphTheory.introduction.vertexDegree.selectVertexPrompt')}
                 </StyledExplanation>
                 <StyledInteractionPrompt>
-                    {t('graphTheory.vertexDegree.interactionPrompt')}
+                    {t('graphTheory.introduction.vertexDegree.interactionPrompt')}
                 </StyledInteractionPrompt>
             </StyledCard>
         </SubContent>

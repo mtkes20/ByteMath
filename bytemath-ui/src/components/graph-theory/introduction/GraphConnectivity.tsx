@@ -1,6 +1,6 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import cytoscape from 'cytoscape';
-import {Grid} from "@mui/material";
+import { Grid } from "@mui/material";
 import {
     StyledCard,
     StyledExplanation,
@@ -9,32 +9,31 @@ import {
     SubContent,
     Subtitle
 } from "../../styles/StyledComponents";
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
-const SimpleGraphConnectivity: React.FC = () => {
-    const {t} = useTranslation();
-    const connectedGraph = useRef<HTMLDivElement>(null);
-    const disconnectedGraph = useRef<HTMLDivElement>(null);
+const WeightedGraphs: React.FC = () => {
+    const { t } = useTranslation();
+    const weightedGraph = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (connectedGraph.current && disconnectedGraph.current) {
+        if (weightedGraph.current) {
             cytoscape({
-                container: connectedGraph.current,
+                container: weightedGraph.current,
                 elements: [
-                    {data: {id: 'A'}},
-                    {data: {id: 'B'}},
-                    {data: {id: 'C'}},
-                    {data: {id: 'D'}},
-                    {data: {id: 'AB', source: 'A', target: 'B'}},
-                    {data: {id: 'BC', source: 'B', target: 'C'}},
-                    {data: {id: 'CD', source: 'C', target: 'D'}},
-                    {data: {id: 'DA', source: 'D', target: 'A'}},
+                    { data: { id: 'A' } },
+                    { data: { id: 'B' } },
+                    { data: { id: 'C' } },
+                    { data: { id: 'D' } },
+                    { data: { id: 'AB', source: 'A', target: 'B', weight: 5 } },
+                    { data: { id: 'BC', source: 'B', target: 'C', weight: 10 } },
+                    { data: { id: 'CD', source: 'C', target: 'D', weight: 3 } },
+                    { data: { id: 'DA', source: 'D', target: 'A', weight: 8 } }
                 ],
                 style: [
                     {
                         selector: 'node',
                         style: {
-                            'background-color': '#34879a',
+                            'background-color': '#6a8f8b',
                             'label': 'data(id)',
                             'color': 'white',
                             'text-valign': 'center',
@@ -45,48 +44,17 @@ const SimpleGraphConnectivity: React.FC = () => {
                     {
                         selector: 'edge',
                         style: {
-                            'width': 3,
-                            'line-color': '#ccc',
-                            'curve-style': 'bezier'
+                            'width': 4,
+                            'line-color': '#aaa',
+                            'curve-style': 'bezier',
+                            'label': 'data(weight)',
+                            'text-rotation': 'autorotate',
+                            'text-margin-y': -10,
+                            'color': 'black'
                         }
                     }
                 ],
-                layout: {name: 'circle'},
-                zoomingEnabled: false
-            });
-
-            cytoscape({
-                container: disconnectedGraph.current,
-                elements: [
-                    {data: {id: 'A'}},
-                    {data: {id: 'B'}},
-                    {data: {id: 'C'}},
-                    {data: {id: 'D'}},
-                    {data: {id: 'AB', source: 'A', target: 'B'}},
-                    {data: {id: 'CD', source: 'C', target: 'D'}},
-                ],
-                style: [
-                    {
-                        selector: 'node',
-                        style: {
-                            'background-color': '#295661',
-                            'label': 'data(id)',
-                            'color': 'white',
-                            'text-valign': 'center',
-                            'width': 40,
-                            'height': 40,
-                        }
-                    },
-                    {
-                        selector: 'edge',
-                        style: {
-                            'width': 3,
-                            'line-color': '#ccc',
-                            'curve-style': 'bezier'
-                        }
-                    }
-                ],
-                layout: {name: 'circle'},
+                layout: { name: 'circle' },
                 zoomingEnabled: false
             });
         }
@@ -94,33 +62,26 @@ const SimpleGraphConnectivity: React.FC = () => {
 
     return (
         <SubContent>
-            <Subtitle>{t('graphTheory.graphConnectivity.title')}</Subtitle>
+            <Subtitle>{t('graphTheory.weightedGraphs.title')}</Subtitle>
             <StyledCard>
                 <StyledText>
-                    {t('graphTheory.graphConnectivity.description')}
+                    {t('graphTheory.weightedGraphs.introduction')}
                 </StyledText>
-                <Grid container spacing={4} justifyContent="center" style={{marginTop: '20px'}}>
-                    <Grid item xs={12} md={6}>
-                        <StyledText>{t('graphTheory.graphConnectivity.connectedGraph')}</StyledText>
-                        <StyledGraphContainer ref={connectedGraph} style={{height: '200px'}}/>
+                <Grid container spacing={4} justifyContent="center" style={{ marginTop: '20px' }}>
+                    <Grid item xs={12}>
+                        <StyledText>{t('graphTheory.weightedGraphs.graphTitle')}</StyledText>
+                        <StyledGraphContainer ref={weightedGraph} style={{ height: '300px' }} />
                         <StyledExplanation>
-                            {t('graphTheory.graphConnectivity.connectedExplanation')}
-                        </StyledExplanation>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                        <StyledText>{t('graphTheory.graphConnectivity.disconnectedGraph')}</StyledText>
-                        <StyledGraphContainer ref={disconnectedGraph} style={{height: '200px'}}/>
-                        <StyledExplanation>
-                            {t('graphTheory.graphConnectivity.disconnectedExplanation')}
+                            {t('graphTheory.weightedGraphs.explanation')}
                         </StyledExplanation>
                     </Grid>
                 </Grid>
-                <StyledText style={{marginTop: '20px'}}>
-                    {t('graphTheory.graphConnectivity.additionalInfo')}
+                <StyledText style={{ marginTop: '20px' }}>
+                    {t('graphTheory.weightedGraphs.additionalInfo')}
                 </StyledText>
             </StyledCard>
         </SubContent>
     );
 };
 
-export default SimpleGraphConnectivity;
+export default WeightedGraphs;

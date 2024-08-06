@@ -82,7 +82,7 @@ const GraphPathsAndCycles: React.FC = () => {
             cy.elements().removeClass('highlighted');
             const path = cy.$('#e, #f, #g, #a, #b, #c, #d, #ab, #bc, #cd, #ef, #ga, #fg');
             path.addClass('highlighted');
-            setExplanation(t('graphTheory.pathsAndCycles.pathExplanation'));
+            setExplanation(t('graphTheory.introduction.pathsAndCycles.pathExplanation'));
         }
     };
 
@@ -91,7 +91,7 @@ const GraphPathsAndCycles: React.FC = () => {
             cy.elements().removeClass('highlighted');
             const cycle = cy.$('#a, #b, #c, #f, #g, #a, #ab, #bc, #fc, #fg, #ga');
             cycle.addClass('highlighted');
-            setExplanation(t('graphTheory.pathsAndCycles.cycleExplanation'));
+            setExplanation(t('graphTheory.introduction.pathsAndCycles.cycleExplanation'));
         }
     };
 
@@ -104,26 +104,26 @@ const GraphPathsAndCycles: React.FC = () => {
 
     return (
         <SubContent>
-            <Subtitle>{t('graphTheory.pathsAndCycles.title')}</Subtitle>
+            <Subtitle>{t('graphTheory.introduction.pathsAndCycles.title')}</Subtitle>
             <StyledCard>
                 <StyledText>
-                    {t('graphTheory.pathsAndCycles.description')}
+                    {t('graphTheory.introduction.pathsAndCycles.description')}
                 </StyledText>
                 <StyledGraphContainer ref={graph} style={{height: '300px'}}/>
                 <Grid container spacing={2} justifyContent="center" style={{marginTop: '20px'}}>
                     <Grid item>
                         <StyledButton onClick={highlightPath}>
-                            {t('graphTheory.pathsAndCycles.showPathButton')}
+                            {t('graphTheory.introduction.pathsAndCycles.showPathButton')}
                         </StyledButton>
                     </Grid>
                     <Grid item>
                         <StyledButton onClick={highlightCycle}>
-                            {t('graphTheory.pathsAndCycles.showCycleButton')}
+                            {t('graphTheory.introduction.pathsAndCycles.showCycleButton')}
                         </StyledButton>
                     </Grid>
                     <Grid item>
                         <StyledButton onClick={resetGraph}>
-                            {t('graphTheory.pathsAndCycles.resetButton')}
+                            {t('graphTheory.introduction.pathsAndCycles.resetButton')}
                         </StyledButton>
                     </Grid>
                 </Grid>
@@ -131,7 +131,7 @@ const GraphPathsAndCycles: React.FC = () => {
                     {explanation}
                 </StyledText>
                 <StyledInteractionPrompt>
-                    {t('graphTheory.pathsAndCycles.interactionPrompt')}
+                    {t('graphTheory.introduction.pathsAndCycles.interactionPrompt')}
                 </StyledInteractionPrompt>
             </StyledCard>
         </SubContent>

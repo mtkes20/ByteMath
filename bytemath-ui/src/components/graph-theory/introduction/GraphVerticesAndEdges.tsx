@@ -140,41 +140,41 @@ const GraphVerticesAndEdges: React.FC = () => {
 
     return (
         <SubContent>
-            <Subtitle>{t('graphTheory.verticesAndEdges.title')}</Subtitle>
+            <Subtitle>{t('graphTheory.introduction.verticesAndEdges.title')}</Subtitle>
             <StyledCard>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
                         <StyledText>
-                            {t('graphTheory.verticesAndEdges.description')}
+                            {t('graphTheory.introduction.verticesAndEdges.description')}
                         </StyledText>
                         <StyledTermItem
                             onClick={() => handleTermSelection('vertices')}
                             active={highlightedTerm === 'vertices'}
                         >
-                            <strong>{t('graphTheory.verticesAndEdges.vertices.label')}:</strong> {t('graphTheory.verticesAndEdges.vertices.description')}
+                            <strong>{t('graphTheory.introduction.verticesAndEdges.vertices.label')}:</strong> {t('graphTheory.introduction.verticesAndEdges.vertices.description')}
                         </StyledTermItem>
                         <StyledTermItem
                             onClick={() => handleTermSelection('edges')}
                             active={highlightedTerm === 'edges'}
                         >
-                            <strong>{t('graphTheory.verticesAndEdges.edges.label')}:</strong> {t('graphTheory.verticesAndEdges.edges.description')}
+                            <strong>{t('graphTheory.introduction.verticesAndEdges.edges.label')}:</strong> {t('graphTheory.introduction.verticesAndEdges.edges.description')}
                         </StyledTermItem>
                         <StyledExplanation>
-                            {t('graphTheory.verticesAndEdges.explanation')}
+                            {t('graphTheory.introduction.verticesAndEdges.explanation')}
                         </StyledExplanation>
                         <StyledInteractionPrompt>
-                            {t('graphTheory.verticesAndEdges.interactionPrompt')}
+                            {t('graphTheory.introduction.verticesAndEdges.interactionPrompt')}
                         </StyledInteractionPrompt>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <Grid container spacing={2}>
                             <Grid item xs={6}>
                                 <StyledGraphContainer ref={undirectedGraphRef}/>
-                                <StyledExplanation>{t('graphTheory.verticesAndEdges.undirectedGraph')}</StyledExplanation>
+                                <StyledExplanation>{t('graphTheory.introduction.verticesAndEdges.undirectedGraph')}</StyledExplanation>
                             </Grid>
                             <Grid item xs={6}>
                                 <StyledGraphContainer ref={directedGraphRef}/>
-                                <StyledExplanation>{t('graphTheory.verticesAndEdges.directedGraph')}</StyledExplanation>
+                                <StyledExplanation>{t('graphTheory.introduction.verticesAndEdges.directedGraph')}</StyledExplanation>
                             </Grid>
                         </Grid>
                     </Grid>

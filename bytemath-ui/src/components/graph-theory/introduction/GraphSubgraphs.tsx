@@ -91,17 +91,17 @@ const GraphSubgraphs: React.FC = () => {
         }
         highlightSubgraph(['A', 'B', 'C', 'D', 'E'], ['AB', 'BC', 'AC', 'CD', 'DE', 'DA', 'EA']);
 
-        setExplanation(t('graphTheory.subgraphs.fullGraphExplanation'));
+        setExplanation(t('graphTheory.introduction.subgraphs.fullGraphExplanation'));
     };
 
     const showTriangle = () => {
         highlightSubgraph(['A', 'B', 'C'], ['AB', 'BC', 'AC']);
-        setExplanation(t('graphTheory.subgraphs.triangleExplanation'));
+        setExplanation(t('graphTheory.introduction.subgraphs.triangleExplanation'));
     };
 
     const showPath = () => {
         highlightSubgraph(['B', 'C', 'D', 'E'], ['BC', 'CD', 'DE']);
-        setExplanation(t('graphTheory.subgraphs.pathExplanation'));
+        setExplanation(t('graphTheory.introduction.subgraphs.pathExplanation'));
     };
 
     const resetGraph = () => {
@@ -114,31 +114,31 @@ const GraphSubgraphs: React.FC = () => {
 
     return (
         <SubContent>
-            <Subtitle>{t('graphTheory.subgraphs.title')}</Subtitle>
+            <Subtitle>{t('graphTheory.introduction.subgraphs.title')}</Subtitle>
             <StyledCard>
                 <StyledText>
-                    {t('graphTheory.subgraphs.description')}
+                    {t('graphTheory.introduction.subgraphs.description')}
                 </StyledText>
                 <StyledGraphContainer ref={graph} style={{height: '300px'}}/>
                 <Grid container spacing={2} justifyContent="center" style={{marginTop: '20px'}}>
                     <Grid item>
                         <StyledButton onClick={showFullGraph}>
-                            {t('graphTheory.subgraphs.showFullGraph')}
+                            {t('graphTheory.introduction.subgraphs.showFullGraph')}
                         </StyledButton>
                     </Grid>
                     <Grid item>
                         <StyledButton onClick={showTriangle}>
-                            {t('graphTheory.subgraphs.showTriangle')}
+                            {t('graphTheory.introduction.subgraphs.showTriangle')}
                         </StyledButton>
                     </Grid>
                     <Grid item>
                         <StyledButton onClick={showPath}>
-                            {t('graphTheory.subgraphs.showPath')}
+                            {t('graphTheory.introduction.subgraphs.showPath')}
                         </StyledButton>
                     </Grid>
                     <Grid item>
                         <StyledButton onClick={resetGraph}>
-                            {t('graphTheory.subgraphs.resetButton')}
+                            {t('graphTheory.introduction.subgraphs.resetButton')}
                         </StyledButton>
                     </Grid>
                 </Grid>
