@@ -8,6 +8,7 @@ import {GradedQuiz} from "../../types/GradedQuiz";
 import QuizResults from "./QuizResults";
 import QuizApi from "../../api/quiz-api";
 import {QueryObserverResult, RefetchOptions} from "@tanstack/react-query";
+import {useTranslation} from "react-i18next";
 
 interface QuizProps {
     quizz: QuizType;
@@ -22,6 +23,7 @@ const Quiz: React.FC<QuizProps> = ({
                                    }) => {
     const [answers, setAnswers] = useState<SubmittedAnswer[]>([]);
     const [gradedQuiz, setGradedQuiz] = useState<GradedQuiz | null>(null);
+    const { i18n } = useTranslation();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -32,17 +34,13 @@ const Quiz: React.FC<QuizProps> = ({
         handleQuizSubmit(submittedQuiz);
     };
 
-    const fetchQuiz = async () => {
-        await QuizApi.getQuiz(identifier, 'ENG')
-    }
-
     const handleQuizSubmit = async (submittedQuiz: SubmittedQuiz) => {
-        await QuizApi.submitQuiz(identifier, submittedQuiz).then((gradedQuiz) => {
+        await QuizApi.submitQuiz(identifier, submittedQuiz, i18n.resolvedLanguage === 'en' ? "ENG" : "GEO")
+            .then((gradedQuiz) => {
             setGradedQuiz(gradedQuiz);
 
         }).catch((error) => {
             console.error('Error grading quiz:', error);
-            // Handle error (e.g., show error message to user)
         });
     };
 
@@ -100,7 +98,6 @@ const MainContainer = styled('div')(() => ({
     display: "flex",
     flexDirection: "column",
     gap: "20px",
-    // alignItems: "center"
 }))
 
 const QuizTitle = styled(Typography)(() => ({

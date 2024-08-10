@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useTransition} from 'react';
 import {GradedQuiz} from "../../types/GradedQuiz";
 import {QuizType} from "../../types/QuizType";
 import {styled, Typography} from "@mui/material";
+import {Title} from "../styles/StyledComponents";
+import {useTranslation} from "react-i18next";
 
 interface QuizResultsProps {
     gradedQuiz: GradedQuiz;
@@ -10,6 +12,8 @@ interface QuizResultsProps {
 }
 
 const QuizResults: React.FC<QuizResultsProps> = ({gradedQuiz, quiz, onTryAgain}) => {
+    const { t } = useTranslation()
+
     return (
         <div
             style={{
@@ -18,15 +22,14 @@ const QuizResults: React.FC<QuizResultsProps> = ({gradedQuiz, quiz, onTryAgain})
             }}
             className="quiz-results"
         >
-            <QuizResultsTitle>Quiz Results</QuizResultsTitle>
-            {gradedQuiz.results.map((result) => {
+            <QuizResultsTitle>{t("quizResults")}</QuizResultsTitle>
+            {gradedQuiz.results.map((result, index) => {
                 const question = quiz.questions.find(q => q.id === result.questionId);
                 return (
                     <QuestionResult key={result.questionId} className="question-result">
-                        <Typography variant={"h6"} color={"#FAFAFA"}
-                                    fontWeight={"bold"}>Question {result.questionId}</Typography>
+                        <Title>{`${t("question")} ${index + 1}`}</Title>
                         <QuestionText>{question?.questionText}</QuestionText>
-                        <QuestionText>Your answer:
+                        <QuestionText>{`${t("yourAnswer")}:`}
                             <QuestionAnswerText
                                 style={{color: result.correct ? '#2e7d32' : '#CD5C5C',}}
                             >
@@ -34,7 +37,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({gradedQuiz, quiz, onTryAgain})
                             </QuestionAnswerText>
                         </QuestionText>
                         {!result.correct &&
-                            <QuestionText>Correct answer:
+                            <QuestionText>{`${t("correctAnswer")}:`}
                                 <QuestionAnswerText
                                     style={{color: '#2e7d32'}}
                                 >
@@ -47,19 +50,19 @@ const QuizResults: React.FC<QuizResultsProps> = ({gradedQuiz, quiz, onTryAgain})
                                 color: result.correct ? '#2e7d32' : '#CD5C5C',
                                 fontWeight: 'bold'}}
                         >
-                            {result.correct ? 'Correct!' : 'Incorrect'}
+                            {result.correct ? `${t("correct")}!` : t("incorrect")}
                         </Typography>
                     </QuestionResult>
                 );
             })}
 
             <div style={{marginTop: '20px', textAlign: 'center'}}>
-                <TotalScoreText>Total Score</TotalScoreText>
+                <TotalScoreText>{t("totalScore")}</TotalScoreText>
                 <TotalScoreText>
                     {gradedQuiz.correctAnswers} / {gradedQuiz.totalQuestions}
                 </TotalScoreText>
                 <TryAgainButton onClick={onTryAgain}>
-                    Try Again
+                    {t("tryAgain")}
                 </TryAgainButton>
             </div>
         </div>

@@ -15,13 +15,12 @@ const getQuiz = async (quizId: string, language: string): Promise<QuizType> => {
     return response.data;
 }
 
-//TODO pass correct language
-const submitQuiz = async (quizId: string, answers: SubmittedQuiz): Promise<GradedQuiz> => {
+const submitQuiz = async (quizId: string, answers: SubmittedQuiz, language: string): Promise<GradedQuiz> => {
     const response = await axios.create({
         baseURL: `${process.env.REACT_APP_API_URL}/api/v1/quiz/`,
         headers: {
             'Content-Type': 'application/json',
-        }}).post(`${quizId}/submit?language=GEO`, answers);
+        }}).post(`${quizId}/submit?language=${language}`, answers);
 
     return response.data;
 }
