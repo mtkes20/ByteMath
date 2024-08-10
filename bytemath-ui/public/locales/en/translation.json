@@ -325,5 +325,9 @@
         },
         "explanation": "In the example graph, the weight of each edge is labeled. This helps in understanding the relative costs or distances between nodes."
       }
+    },
+    "graphProblems": {
+      "title": "Problems for Graph Theory"
     }
-  }}
+  }
+}
