@@ -1,6 +1,8 @@
 {
   "title": "Math for Computer Science",
   "courses": "Courses",
+  "signIn": "Sign In",
+  "signOut": "Sign Out",
   "introduction_to_logical_operators_title": "Introduction to Logical Operators",
   "calculate": "Calculate",
   "binarySystemTitle": "Binary System",
@@ -11,6 +13,70 @@
   "lcm-gcd": "LCM and GCD",
   "rsa-algorithm": "RSA Algorithm",
   "modular-arithmetic": "Modular Arithmetic",
+  "quizResults": "Quiz Results",
+  "question": "Question",
+  "yourAnswer": "Your Answer",
+  "correctAnswer": "Correct Answer",
+  "totalScore": "Total Score",
+  "tryAgain": "Try Again",
+  "correct": "Correct",
+  "incorrect": "Incorrect",
+  "decimalValue": "Decimal Value",
+  "binarySystem": {
+    "title": "Understanding the Binary System",
+    "introduction": "The binary system, also known as the base-2 numeral system, is fundamental to computer science and digital electronics. It forms the foundation of all digital data representation and processing.",
+    "fundamentals": {
+      "title": "Fundamentals of Binary",
+      "description": "The binary system is based on two digits: 0 and 1, known as bits (binary digits). Here are some key points:",
+      "points": [
+        "Binary uses only two digits compared to decimal's ten digits.",
+        "Each digit position represents a power of 2.",
+        "The rightmost digit represents 2^0 (1), the next 2^1 (2), then 2^2 (4), and so on.",
+        "Binary numbers can represent any quantity that decimal numbers can."
+      ]
+    },
+    "whyBinary": {
+      "title": "Why Binary is Used in Computing",
+      "description": "Binary is the language of computers for several reasons:",
+      "points": [
+        "Electronic circuits have two stable states, making binary a natural fit.",
+        "It's easier and more reliable to distinguish between two states than multiple states.",
+        "Binary operations can be implemented efficiently with digital logic gates.",
+        "Error detection and correction are simpler with a binary system."
+      ]
+    },
+    "binaryNumbers": {
+      "title": "Understanding Binary Numbers",
+      "description": "Binary numbers work similarly to decimal numbers, but with a base of 2 instead of 10:",
+      "points": [
+        "The binary number 1011 is equivalent to the decimal number 11 (1*2^3 + 0*2^2 + 1*2^1 + 1*2^0).",
+        "Each additional bit doubles the range of numbers that can be represented.",
+        "8 bits (a byte) can represent numbers from 0 to 255.",
+        "Leading zeros don't change the value of a binary number."
+      ]
+    },
+    "binaryOperations": {
+      "title": "Basic Binary Operations",
+      "description": "Arithmetic in binary follows similar rules to decimal, but with only two digits:",
+      "points": [
+        "Addition: 1 + 1 = 10 in binary (carry the 1)",
+        "Subtraction: Borrow from the next column when needed",
+        "Multiplication: Similar to decimal, but simpler as you only multiply by 0 or 1",
+        "Division: Can be performed through repeated subtraction and shifting"
+      ]
+    },
+    "applications": {
+      "title": "Applications of the Binary System",
+      "description": "The binary system is crucial in many areas of computing and technology:",
+      "points": [
+        "Data Storage: All data in computers is ultimately stored in binary.",
+        "Digital Logic: Computer processors use binary for all their operations.",
+        "Networking: Data transmission over networks uses binary encoding.",
+        "Image and Sound Processing: Digital media is represented and processed in binary.",
+        "Cryptography: Many encryption algorithms rely on binary operations."
+      ]
+    }
+  },
   "numberTheory": {
     "introduction": {
       "title": "Introduction to the Theory of Numbers",

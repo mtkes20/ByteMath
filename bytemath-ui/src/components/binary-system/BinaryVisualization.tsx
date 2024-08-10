@@ -1,9 +1,11 @@
 import {useState} from "react";
 import {styled, Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 
 const BinaryVisualization = () => {
     const [bits, setBits] = useState<boolean[]>(Array(16).fill(false));
+    const { t } = useTranslation()
 
     const toggleBit = (index: number) => {
         const newBits = [...bits];
@@ -32,7 +34,7 @@ const BinaryVisualization = () => {
                 ))}
             </Bits>
             <Decimal>
-                Decimal Value: {calculateDecimal()}
+                {`${t("decimalValue")}: ${calculateDecimal()}`}
             </Decimal>
         </BinaryVisualisationContainer>
     );
@@ -42,6 +44,7 @@ const BinaryVisualisationContainer = styled("div")(() => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    padding: "60px"
 }));
 
 const Bits = styled("div")(() => ({

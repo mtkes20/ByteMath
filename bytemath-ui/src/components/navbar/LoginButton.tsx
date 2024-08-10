@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Box, Button, Typography} from '@mui/material';
 import Keycloak from 'keycloak-js';
 import {useLocation, useNavigate} from 'react-router-dom';
+import {useTranslation} from "react-i18next";
 
 const keycloakConfig = {
     url: 'http://localhost:8080',
@@ -31,6 +32,8 @@ const LoginButton: React.FC = () => {
     const [username, setUsername] = useState<string | undefined>(undefined);
     const navigate = useNavigate();
     const location = useLocation();
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         const initialize = async () => {
@@ -84,7 +87,7 @@ const LoginButton: React.FC = () => {
                     fontFamily: 'Roboto',
                 }}
             >
-                {isAuthenticated ? 'Sign Out' : 'Sign In'}
+                {isAuthenticated ? t("signOut") : t("signIn")}
             </Button>
         </Box>
     );
