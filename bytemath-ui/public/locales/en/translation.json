@@ -387,7 +387,8 @@
         "planarDescription": "A planar graph is a type of graph that can be drawn on a flat surface such that no edges cross, except at their vertices. This means the edges only intersect at their endpoints.",
         "planarLabel": "Planar Graph",
         "nonPlanarLabel": "Non-Planar Graph",
-        "planarInteractionPrompt": "Explore the visual examples to understand the difference between planar and non-planar graphs."
+        "planarInteractionPrompt": "Adjust the slider to explore how the graph changes with different node counts. Observe the differences between planar and non-planar graphs.",
+        "numberOfNodes": "Number of Nodes"
       },
       "weightedGraphs": {
         "title": "Weighted Graphs",

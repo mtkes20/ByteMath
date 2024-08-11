@@ -1,4 +1,4 @@
-import {Button, Card, styled, TextField, Typography} from "@mui/material";
+import {Button, Card, Slider, styled, TextField, Typography} from "@mui/material";
 
 
 export const CoursePageMainContainer = styled('div')({
@@ -179,3 +179,26 @@ export const StyledGraphContainer = styled('div')({
     border: '1px solid #ccc',
     margin: '20px 0',
 });
+
+export const StyledSlider = styled(Slider)(({theme}) => ({
+    color: "#800080",
+    height: 8,
+
+    '& .MuiSlider-thumb': {
+        height: 28,
+        width: 28,
+        backgroundColor: '#fff',
+        border: '3px solid #800080',
+    },
+
+    '& .MuiSlider-valueLabel': {
+        backgroundColor: '#800080',
+        color: '#fff',
+    },
+
+    '& .MuiSlider-mark': {
+        height: 12,
+        width: 3,
+        borderRadius: 1,
+    },
+}));
