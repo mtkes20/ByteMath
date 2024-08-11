@@ -1,4 +1,10 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/bytemath
+          jwk-set-uri: http://localhost:8080/realms/bytemath/protocol/openid-connect/certs
   application:
     name: bytemath-service
   profiles:
@@ -43,4 +49,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/bytemath
+          jwk-set-uri: http://localhost:8080/realms/bytemath/protocol/openid-connect/certs
 ---
