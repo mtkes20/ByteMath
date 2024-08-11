@@ -382,6 +382,13 @@
     },
     "differentGraphs": {
       "title": "Different Kind of Graphs",
+      "planarGraphs": {
+        "planarTitle": "Planar Graphs",
+        "planarDescription": "A planar graph is a type of graph that can be drawn on a flat surface such that no edges cross, except at their vertices. This means the edges only intersect at their endpoints.",
+        "planarLabel": "Planar Graph",
+        "nonPlanarLabel": "Non-Planar Graph",
+        "planarInteractionPrompt": "Explore the visual examples to understand the difference between planar and non-planar graphs."
+      },
       "weightedGraphs": {
         "title": "Weighted Graphs",
         "introduction": "Weighted graphs are used to represent networks where edges have weights or costs associated with them.",

@@ -6,6 +6,7 @@ import QuizApi from "../../../api/quiz-api";
 import {QuizType} from "../../../types/QuizType";
 import Quiz from "../../quizz/Quiz";
 import WeightedGraphs from "./WeightedGraphs";
+import PlanarGraphs from "./PlanarGraphs";
 
 const DifferentGraphs = () => {
     const {i18n} = useTranslation();
@@ -20,20 +21,26 @@ const DifferentGraphs = () => {
         isLoading: isQuizLoading,
         refetch: refetchQuiz
     } = useQuery<QuizType | undefined>({
-        queryKey: ["quiz", "]"],
-        queryFn: () => fetchQuiz("")
+        queryKey: ["quiz", "DIFFERENT_GRAPHS"],
+        queryFn: () => fetchQuiz("DIFFERENT_GRAPHS")
     });
 
     return (
         <CoursePageMainContainer>
             <Title>{i18n.t('graphTheory.differentGraphs.title')}</Title>
-            <WeightedGraphs/>
+            {/*<WeightedGraphs/>*/}
+            <PlanarGraphs/>
+            {/*<BipartiteGraphs />*/}
+            {/*<RegularGraphs />*/}
+            {/*<CompleteGraphs />*/}
+            {/*<TreeGraphs />*/}
+
             <StyledCard>
                 {!!quizData && !isQuizLoading && !quizError && (
                     <Quiz
                         refetchQuiz={refetchQuiz}
                         quizz={quizData}
-                        identifier={"GRAPH_THEORY_INTRO"}
+                        identifier={"DIFFERENT_GRAPHS"}
                     />
                 )}
                 {isQuizLoading && <p>Loading quiz...</p>}
