@@ -1,80 +1,43 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Box, Button, Typography} from '@mui/material';
-import Keycloak from 'keycloak-js';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import {useTranslation} from "react-i18next";
+import {useKeycloak} from "../../context/KeycloakProvider";
 
-const keycloakConfig = {
-    url: 'http://localhost:8080',
-    realm: 'bytemath',
-    clientId: 'bytemath',
-};
-
-const keycloak = new Keycloak(keycloakConfig);
-
-const initKeycloak = async () => {
-    try {
-        const authenticated = await keycloak.init({
-            onLoad: 'check-sso',
-            silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
-            pkceMethod: 'S256',
-            responseMode: 'query'
-        });
-        return authenticated;
-    } catch (error) {
-        return false;
-    }
-};
 
 const LoginButton: React.FC = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isInitialized, setIsInitialized] = useState(false);
-    const [username, setUsername] = useState<string | undefined>(undefined);
+    const {keycloak, isAuthenticated, isInitialized, username} = useKeycloak();
     const navigate = useNavigate();
     const location = useLocation();
-
-    const { t } = useTranslation()
+    const {t} = useTranslation();
 
     useEffect(() => {
-        const initialize = async () => {
-            const authenticated = await initKeycloak();
-            setIsAuthenticated(authenticated);
-            setIsInitialized(true);
-
-            if (authenticated) {
-                if (location.hash) {
-                    const cleanPath = location.pathname || '/';
-                    navigate(cleanPath, { replace: true });
-                }
-                try {
-                    await keycloak.loadUserProfile();
-                    setUsername(keycloak.profile?.username);
-                } catch (error) {
-                }
-            }
-        };
-
-        initialize();
-    }, [location, navigate]);
+        if (isAuthenticated && location.hash) {
+            const cleanPath = location.pathname || '/';
+            navigate(cleanPath, {replace: true});
+        }
+    }, [isAuthenticated, location, navigate]);
 
     const handleLogin = () => {
         if (isAuthenticated) {
-            keycloak.logout()
+            keycloak?.logout()
                 .then(() => {
-                    setIsAuthenticated(false);
-                    setUsername(undefined);
+                    // The state will be updated automatically by the KeycloakProvider
                 })
                 .catch(console.error);
         } else {
-            keycloak.login()
-                .catch(console.error);
+            keycloak?.login().catch(console.error);
         }
     };
+
+    if (!isInitialized) {
+        return null; // or a loading indicator
+    }
 
     return (
         <Box display="flex" alignItems="center">
             {isAuthenticated && username && (
-                <Typography variant="body1" style={{ marginRight: '10px' }}>
+                <Typography variant="body1" style={{marginRight: '10px'}}>
                     Welcome, {username}!
                 </Typography>
             )}
@@ -83,7 +46,7 @@ const LoginButton: React.FC = () => {
                 style={{
                     backgroundColor: '#800080',
                     padding: '5px 10px',
-                    color: '#ffffff',
+                    color: '#FFFFFF',
                     fontFamily: 'Roboto',
                 }}
             >
@@ -92,5 +55,4 @@ const LoginButton: React.FC = () => {
         </Box>
     );
 };
-
 export default LoginButton;

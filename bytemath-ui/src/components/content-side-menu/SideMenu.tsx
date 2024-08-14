@@ -10,7 +10,7 @@ import JSX = jsx.JSX;
 interface SideMenuProps {
     icon: JSX.Element;
     title: string;
-    items: { title: string, value: string }[];
+    items: { title: string, value: string, icon?: JSX.Element | null }[];
     selectedItem: string;
     setSelectedItem: (item: any) => void
 }
@@ -58,6 +58,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ icon, title, items, selectedItem, s
                             button
                             key={item.value}
                             sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
                                 position: 'relative',
                                 '&:hover::after': {
                                     content: '""',
@@ -82,6 +84,16 @@ const SideMenu: React.FC<SideMenuProps> = ({ icon, title, items, selectedItem, s
                                 color: selectedItem === item.value ? "#800080" : "white",
                                 fontFamily: "Roboto",
                             }} primary={item.title} />
+                            {
+                                !!item.icon &&
+                                <div style={{
+                                    width: "20px",
+                                }}>
+                                    <ListItemIcon style={{
+                                        color: "#5C6BC0"
+                                    }}>{item.icon}</ListItemIcon>
+                                </div>
+                            }
                         </ListItem>
                     ))}
                 </List>
