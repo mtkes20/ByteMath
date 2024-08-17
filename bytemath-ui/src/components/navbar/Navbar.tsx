@@ -41,15 +41,23 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
             display: "flex",
             justifyContent: "space-between",
         }}>
-            <Button
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                style={{ textTransform: 'none' }}
-            >
-                <Typography variant={"inherit"} color={"#ffffff"} fontSize={18} fontFamily={"Roboto"}>{t("courses")}</Typography>
-                {open ? <ExpandLess style={{ color: "#ffffff" }} /> : <ExpandMore style={{ color: "#ffffff" }} />}
-            </Button>
+            <div style={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "flex-start"
+            }}>
+                <Button
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                    style={{
+                        textTransform: 'none',
+                    }}
+                >
+                    <Typography variant={"inherit"} color={"#ffffff"} fontSize={18} fontFamily={"Roboto"}>{t("courses")}</Typography>
+                    {open ? <ExpandLess style={{ color: "#ffffff" }} /> : <ExpandMore style={{ color: "#ffffff" }} />}
+                </Button>
+            </div>
             <Menu
                 id="categories-menu"
                 anchorEl={anchorEl}
@@ -82,16 +90,26 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                     <ListItemText>{t("numberTheoryTitle")}</ListItemText>
                 </MenuItem>
             </Menu>
-            <Typography style={{
+            <Typography
+                onClick={() => {
+                    navigate("/")
+                }}
+                style={{
                 color: "#ffffff",
                 fontSize: 24,
                 fontFamily: "Roboto",
+                flex: 2,
+                display: "flex",
+                justifyContent: "center",
+                cursor: "pointer",
             }}>{t("title")}</Typography>
             <div style={{
                 display: "flex",
                 gap: "10px",
                 flexDirection: "row",
                 alignItems: "center",
+                flex: 1,
+                justifyContent: "flex-end"
             }}>
                 <LanguageSwitcher language={language} onLanguageChange={onLanguageChange} />
                 <LoginButton />

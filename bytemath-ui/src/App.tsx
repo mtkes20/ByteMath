@@ -6,6 +6,8 @@ import LogicalOperatorsContent from "./components/logical-operators/LogicalOpera
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import TheoryOfGraphsContent from "./components/graph-theory/TheoryOfGraphsContent";
 import NumberTheoryContent from "./components/number-theory/NumberTheoryContent";
+import {KeycloakProvider} from "./context/KeycloakProvider";
+import MainPage from "./components/main/MainPage";
 
 const router = createHashRouter([
     {
@@ -13,6 +15,10 @@ const router = createHashRouter([
         element: <Root/>,
         errorElement: <></>,
         children: [
+            {
+                path: "/",
+                element: <MainPage/>
+            },
             {
                 path: "courses",
                 element: <Outlet/>,
@@ -57,7 +63,9 @@ const queryClient = new QueryClient({
 const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
-            <RouterProvider router={router}/>
+            <KeycloakProvider>
+                <RouterProvider router={router}/>
+            </KeycloakProvider>
         </QueryClientProvider>
     );
 };

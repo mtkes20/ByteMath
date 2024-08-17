@@ -1,6 +1,7 @@
 import Navbar from "./components/navbar/Navbar";
 import {useState} from "react";
 import {Outlet} from "react-router-dom";
+import MainPage from "./components/main/MainPage";
 
 
 const Root = () => {
@@ -18,6 +19,7 @@ const Root = () => {
             height: "100vh",
         }}>
             <Navbar language={language} onLanguageChange={handleLanguageChange} />
+            {/*<MainPage/>*/}
             <Outlet/>
         </div>
     );

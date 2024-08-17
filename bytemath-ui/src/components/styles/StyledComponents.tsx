@@ -1,5 +1,11 @@
-import {Button, Card, Slider, styled, TextField, Typography} from "@mui/material";
+import {Button, Card, Stack, Slider, styled, TextField, Typography} from "@mui/material";
 
+export const CoursePageSideMenuContainer = styled(Stack)({
+    display: 'flex',
+    flexDirection: 'row',
+    height: 'auto',
+    overflowY: 'auto',
+});
 
 export const CoursePageMainContainer = styled('div')({
     height: "100%",
@@ -8,7 +14,8 @@ export const CoursePageMainContainer = styled('div')({
     gap: "30px",
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "#1a1a1a"
+    backgroundColor: "#1a1a1a",
+    overflowY: "auto",
 });
 
 //TODO change name
@@ -22,6 +29,7 @@ export const StyledCard = styled(Card)({
     backgroundColor: "transparent",
     padding: "20px",
     border: "0.5px solid white",
+    height: "fit-content"
 });
 
 export const StyledList = styled('ol')({
@@ -43,7 +51,7 @@ export const StyledListItem = styled('li')({
 export const Title = styled(Typography)({
     fontSize: "1.5rem",
     fontWeight: "bold",
-    marginBottom: "20px",
+    // marginBottom: "20px",
     color: "white",
     fontFamily: "Roboto",
 });
@@ -67,6 +75,18 @@ export const ResultText = styled(Typography)({
     fontSize: "1rem",
     fontFamily: "Roboto",
 });
+
+export const Example = styled(Typography)(() => ({
+    color: "lightblue",
+    fontSize: "1rem",
+    fontFamily: "Roboto",
+    fontStyle: "italic",
+    margin: "10px 0",
+    padding: "10px",
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
+    borderLeft: "3px solid lightblue",
+}));
+
 
 export const StyledExplanation = styled(Typography)({
     fontSize: "1rem",
