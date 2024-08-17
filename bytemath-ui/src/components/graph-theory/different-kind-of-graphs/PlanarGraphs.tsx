@@ -171,7 +171,7 @@ const PlanarGraphs: React.FC = () => {
                     {t('graphTheory.differentGraphs.planarGraphs.planarInteractionPrompt')}
                 </StyledInteractionPrompt>
                 <Grid container spacing={2} alignItems="center">
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={12}>
                         <StyledSlider
                             value={nodeCount}
                             onChange={handleNodeCountChange}
@@ -180,7 +180,7 @@ const PlanarGraphs: React.FC = () => {
                             step={1}
                             marks
                             min={3}
-                            max={12}
+                            max={15}
                         />
                         <StyledText>{t('graphTheory.differentGraphs.planarGraphs.numberOfNodes')}: {nodeCount}</StyledText>
                     </Grid>
