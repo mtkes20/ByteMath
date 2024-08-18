@@ -605,7 +605,7 @@
         "description": "A complete graph is a graph in which every pair of distinct vertices is connected by a unique edge. In a complete graph with n vertices, each vertex has a degree of n-1, and the total number of edges is n(n-1)/2.",
         "interactionPrompt": "Use the controls below to adjust the number of vertices. Observe how the number of edges and the degree of each vertex change as you modify the graph.",
         "numberOfVertices": "Number of Vertices",
-        "edgeCount": "Number of Edges: {{count}}",
+        "edgeCount": "Number of Edges: {{num}}",
         "degreeProp": "Degree of each vertex: {{degree}}"
       },
       "trees": {
