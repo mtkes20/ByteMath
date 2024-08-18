@@ -28,7 +28,7 @@ const DifferentGraphs = () => {
     return (
         <CoursePageMainContainer>
             <Title>{i18n.t('graphTheory.differentGraphs.title')}</Title>
-            {/*<WeightedGraphs/>*/}
+            <WeightedGraphs/>
             <PlanarGraphs/>
             {/*<BipartiteGraphs />*/}
             {/*<RegularGraphs />*/}

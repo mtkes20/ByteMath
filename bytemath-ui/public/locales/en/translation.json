@@ -512,16 +512,19 @@
       },
       "weightedGraphs": {
         "title": "Weighted Graphs",
-        "introduction": "Weighted graphs are used to represent networks where edges have weights or costs associated with them.",
-        "definition": {
-          "title": "Definition",
-          "description": "In weighted graphs, each edge is assigned a weight, which represents the cost or distance between the nodes it connects."
-        },
-        "explanation": "In the example graph, the weight of each edge is labeled. This helps in understanding the relative costs or distances between nodes."
+        "description": "Weighted graphs are graphs in which each edge is assigned a numerical value, called a weight. These weights can represent various real-world quantities such as distance, cost, or capacity. There are two main types of weighted graphs:",
+        "undirectedDescription": "Undirected Weighted Graphs: The edges have no direction, and the weight applies in both directions between the connected nodes.",
+        "directedDescription": "Directed Weighted Graphs: The edges have a specific direction, and the weight applies only in that direction.",
+        "undirectedGraph": "Undirected Weighted Graph",
+        "directedGraph": "Directed Weighted Graph",
+        "edgeWeightExplanation": "The selected edge {{selectedElement}} has a weight of {{weight}}.",
+        "nodeExplanation": "You've selected node {{selectedElement}}. In a weighted graph, the weights are associated with edges, not nodes.",
+        "selectElementPrompt": "Click on a node or edge to see more information.",
+        "interactionPrompt": "Interact with the graphs above to explore the concept of weighted graphs. Click on edges to see their weights, or on nodes to understand their role in weighted graphs."
+      },
+      "graphProblems": {
+        "title": "Problems for Graph Theory"
       }
-    },
-    "graphProblems": {
-      "title": "Problems for Graph Theory"
     }
   }
 }
