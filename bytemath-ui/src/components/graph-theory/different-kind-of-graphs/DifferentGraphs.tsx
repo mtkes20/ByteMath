@@ -7,6 +7,10 @@ import {QuizType} from "../../../types/QuizType";
 import Quiz from "../../quizz/Quiz";
 import WeightedGraphs from "./WeightedGraphs";
 import PlanarGraphs from "./PlanarGraphs";
+import BipartiteGraphs from "./BipartiteGraphs";
+import RegularGraphs from "./RegularGraphs";
+import CompleteGraphs from "./CompleteGraphs";
+import TreeGraphs from "./TreeGraphs";
 
 const DifferentGraphs = () => {
     const {i18n} = useTranslation();
@@ -30,10 +34,10 @@ const DifferentGraphs = () => {
             <Title>{i18n.t('graphTheory.differentGraphs.title')}</Title>
             <WeightedGraphs/>
             <PlanarGraphs/>
-            {/*<BipartiteGraphs />*/}
-            {/*<RegularGraphs />*/}
-            {/*<CompleteGraphs />*/}
-            {/*<TreeGraphs />*/}
+            <BipartiteGraphs/>
+            <RegularGraphs/>
+            <CompleteGraphs/>
+            <TreeGraphs/>
 
             <StyledCard>
                 {!!quizData && !isQuizLoading && !quizError && (
