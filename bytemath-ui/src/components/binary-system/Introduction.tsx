@@ -1,7 +1,5 @@
-import {styled, Typography} from "@mui/material";
 import BinaryVisualization from "./BinaryVisualization";
 import {QuizType} from "../../types/QuizType";
-import {SubmittedQuiz} from "../../types/SubmittedQuiz";
 import Quiz from "../quizz/Quiz";
 import {useQuery} from "@tanstack/react-query";
 import QuizApi from "../../api/quiz-api";
@@ -36,45 +34,45 @@ const Introduction = () => {
 
     return (
         <CoursePageMainContainer>
-            <Title>{t('binarySystem.title')}</Title>
-            <StyledText>{t('binarySystem.introduction')}</StyledText>
+            <Title>{t('binarySystem.introduction.title')}</Title>
+            <StyledText>{t('binarySystem.introduction.introduction')}</StyledText>
 
-            <Subtitle>{t('binarySystem.fundamentals.title')}</Subtitle>
-            <StyledText>{t('binarySystem.fundamentals.description')}</StyledText>
+            <Subtitle>{t('binarySystem.introduction.fundamentals.title')}</Subtitle>
+            <StyledText>{t('binarySystem.introduction.fundamentals.description')}</StyledText>
             <StyledList sx={{listStyleType: 'disc'}}>
-                {(t('binarySystem.fundamentals.points', {returnObjects: true}) as string[]).map((point, index) => (
+                {(t('binarySystem.introduction.fundamentals.points', {returnObjects: true}) as string[]).map((point, index) => (
                     <StyledListItem key={index}>{point}</StyledListItem>
                 ))}
             </StyledList>
 
-            <Subtitle>{t('binarySystem.whyBinary.title')}</Subtitle>
-            <StyledText>{t('binarySystem.whyBinary.description')}</StyledText>
+            <Subtitle>{t('binarySystem.introduction.whyBinary.title')}</Subtitle>
+            <StyledText>{t('binarySystem.introduction.whyBinary.description')}</StyledText>
             <StyledList sx={{listStyleType: 'disc'}}>
-                {(t('binarySystem.whyBinary.points', {returnObjects: true}) as string[]).map((point, index) => (
+                {(t('binarySystem.introduction.whyBinary.points', {returnObjects: true}) as string[]).map((point, index) => (
                     <StyledListItem key={index}>{point}</StyledListItem>
                 ))}
             </StyledList>
 
-            <Subtitle>{t('binarySystem.binaryNumbers.title')}</Subtitle>
-            <StyledText>{t('binarySystem.binaryNumbers.description')}</StyledText>
+            <Subtitle>{t('binarySystem.introduction.binaryNumbers.title')}</Subtitle>
+            <StyledText>{t('binarySystem.introduction.binaryNumbers.description')}</StyledText>
             <StyledList sx={{listStyleType: 'disc'}}>
-                {(t('binarySystem.binaryNumbers.points', {returnObjects: true}) as string[]).map((point, index) => (
+                {(t('binarySystem.introduction.binaryNumbers.points', {returnObjects: true}) as string[]).map((point, index) => (
                     <StyledListItem key={index}>{point}</StyledListItem>
                 ))}
             </StyledList>
 
-            <Subtitle>{t('binarySystem.binaryOperations.title')}</Subtitle>
-            <StyledText>{t('binarySystem.binaryOperations.description')}</StyledText>
+            <Subtitle>{t('binarySystem.introduction.binaryOperations.title')}</Subtitle>
+            <StyledText>{t('binarySystem.introduction.binaryOperations.description')}</StyledText>
             <StyledList sx={{listStyleType: 'disc'}}>
-                {(t('binarySystem.binaryOperations.points', {returnObjects: true}) as string[]).map((point, index) => (
+                {(t('binarySystem.introduction.binaryOperations.points', {returnObjects: true}) as string[]).map((point, index) => (
                     <StyledListItem key={index}>{point}</StyledListItem>
                 ))}
             </StyledList>
 
-            <Subtitle>{t('binarySystem.applications.title')}</Subtitle>
-            <StyledText>{t('binarySystem.applications.description')}</StyledText>
+            <Subtitle>{t('binarySystem.introduction.applications.title')}</Subtitle>
+            <StyledText>{t('binarySystem.introduction.applications.description')}</StyledText>
             <StyledList sx={{listStyleType: 'disc'}}>
-                {(t('binarySystem.applications.points', {returnObjects: true}) as string[]).map((point, index) => (
+                {(t('binarySystem.introduction.applications.points', {returnObjects: true}) as string[]).map((point, index) => (
                     <StyledListItem key={index}>{point}</StyledListItem>
                 ))}
             </StyledList>

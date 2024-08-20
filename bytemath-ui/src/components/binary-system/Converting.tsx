@@ -1,60 +1,58 @@
-import {styled, Typography} from "@mui/material";
 import BinaryConverter from "./BinaryConverter";
+import {
+    CoursePageMainContainer, Example,
+    StyledList,
+    StyledListItem,
+    StyledText,
+    Subtitle,
+    Title
+} from "../styles/StyledComponents";
+import {useTranslation} from "react-i18next";
+import {styled, Typography} from "@mui/material";
 
 
 const Converting = () => {
-
+    const { t } = useTranslation()
 
     return (
-        <div style={{
-            height: "100%",
-            width: "100%",
-            padding: "50px",
-            gap: "15px",
-            display: "flex",
-            flexDirection: "column",
-            backgroundColor: "#1a1a1a",
-            overflowY: "auto"
-        }}>
-            <Title>Converting Binary to Decimal</Title>
-            <Text>To convert a binary number to decimal, you need to sum the products of each bit and its corresponding
-                power of 2.
-                For example, the binary number 1011 is converted to decimal as follows:</Text>
-            <Text>(1 * 2^3) + (0 * 2^2) + (1 * 2^1) + (1 * 2^0) = 8 + 0 + 2 + 1 = 11</Text>
-            <Title>Converting Decimal to Binary</Title>
-            <Text>To convert a decimal number to binary, repeatedly divide the number by 2 and record the remainders.
-                The binary representation is the sequence of remainders read from bottom to top. For example, to convert
-                the decimal number 11 to binary:</Text>
-            <Text>
-                11 / 2 = 5 remainder 1 <br/>
-                5 / 2 = 2 remainder 1 <br/>
-                2 / 2 = 1 remainder 0 <br/>
-                1 / 2 = 0 remainder 1 <br/>
-            </Text>
-            <Text>
-                Reading the remainders from bottom to top, we get 1011.
-            </Text>
-            <div style={{
-                padding: "60px 0"
-            }}>
-                <BinaryConverter/>
-            </div>
-        </div>
+        <CoursePageMainContainer>
+            <Title>{t('binarySystem.binaryConversion.title')}</Title>
+            <StyledText>{t('binarySystem.binaryConversion.introduction')}</StyledText>
+
+            <Subtitle>{t('binarySystem.binaryConversion.binaryToDecimal.title')}</Subtitle>
+            <StyledText>{t('binarySystem.binaryConversion.binaryToDecimal.description')}</StyledText>
+            <Example>{t('binarySystem.binaryConversion.binaryToDecimal.example')}</Example>
+
+            <Subtitle>{t('binarySystem.binaryConversion.decimalToBinary.title')}</Subtitle>
+            <StyledText>{t('binarySystem.binaryConversion.decimalToBinary.description')}</StyledText>
+            <Example>{t('binarySystem.binaryConversion.decimalToBinary.example')}</Example>
+
+            <Subtitle>{t('binarySystem.binaryConversion.fractions.title')}</Subtitle>
+            <StyledText>{t('binarySystem.binaryConversion.fractions.description')}</StyledText>
+            <Example>{t('binarySystem.binaryConversion.fractions.example')}</Example>
+
+            <Subtitle>{t('binarySystem.binaryConversion.negativeNumbers.title')}</Subtitle>
+            <StyledText>{t('binarySystem.binaryConversion.negativeNumbers.description')}</StyledText>
+            <Example>{t('binarySystem.binaryConversion.negativeNumbers.example')}</Example>
+
+            <Subtitle>{t('binarySystem.binaryConversion.applications.title')}</Subtitle>
+            <StyledText>{t('binarySystem.binaryConversion.applications.description')}</StyledText>
+            <StyledList sx={{ listStyleType: "disc"}}>
+                {(t('binarySystem.binaryConversion.applications.list', {returnObjects: true}) as string[]).map((item, index) => (
+                    <StyledListItem key={index}>{item}</StyledListItem>
+                ))}
+            </StyledList>
+
+            <Subtitle>{t('binarySystem.binaryConversion.advancedTopics.title')}</Subtitle>
+            <StyledText>{t('binarySystem.binaryConversion.advancedTopics.description')}</StyledText>
+            <StyledList sx={{ listStyleType: "disc"}}>
+                {(t('binarySystem.binaryConversion.advancedTopics.list', {returnObjects: true}) as string[]).map((item, index) => (
+                    <StyledListItem key={index}>{item}</StyledListItem>
+                ))}
+            </StyledList>
+            <BinaryConverter/>
+        </CoursePageMainContainer>
     )
 }
-
-const Title = styled(Typography)(() => ({
-    color: "white",
-    fontSize: "1.5rem",
-    fontWeight: "bold",
-    fontFamily: "Roboto",
-    variant: "h1"
-}))
-
-const Text = styled(Typography)(() => ({
-    color: "white",
-    fontSize: "1rem",
-    fontFamily: "Roboto",
-}))
 
 export default Converting;
