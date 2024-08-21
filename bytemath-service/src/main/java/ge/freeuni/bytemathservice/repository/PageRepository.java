@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface PageRepository extends JpaRepository<Page, Long> {
 
-    Optional<Page> findById(long id);
+    Optional<Page> findByIdentifier(String identifier);
 }

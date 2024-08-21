@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/pages")
+@RequestMapping("/api/v1/pages")
 public class PageController {
 
     private final PageService pageService;
@@ -14,9 +14,15 @@ public class PageController {
         this.pageService = pageService;
     }
 
-    @PostMapping("/{pageId}/read")
-    public ResponseEntity<Void> markPageAsRead(@PathVariable Long pageId) {
-        pageService.markPageAsRead(pageId);
+    @PostMapping("/read/{identifier}")
+    public ResponseEntity<Void> markPageAsRead(@PathVariable String identifier) {
+        pageService.markPageAsRead(identifier);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/read/{identifier}")
+    public ResponseEntity<Boolean> hasUserReadPage(@PathVariable String identifier) {
+        boolean hasRead = pageService.hasUserReadPage(identifier);
+        return ResponseEntity.ok(hasRead);
     }
 }

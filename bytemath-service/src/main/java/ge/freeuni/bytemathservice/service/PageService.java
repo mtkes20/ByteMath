@@ -18,12 +18,18 @@ public class PageService {
     }
 
     @Transactional
-    public void markPageAsRead(Long pageId) {
+    public void markPageAsRead(String identifier) {
         BytemathUser currentBytemathUser = bytemathUserService.getCurrentUser();
-        Page page = pageRepository.findById(pageId)
+        Page page = pageRepository.findByIdentifier(identifier)
                 .orElseThrow();
-
         page.markAsReadBy(currentBytemathUser);
         pageRepository.save(page);
+    }
+
+    public boolean hasUserReadPage(String identifier) {
+        BytemathUser currentBytemathUser = bytemathUserService.getCurrentUser();
+        Page page = pageRepository.findByIdentifier(identifier)
+                .orElseThrow();
+        return currentBytemathUser.getReadPages().contains(page);
     }
 }

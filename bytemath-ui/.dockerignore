@@ -1,0 +1,36 @@
+# Ignore node modules
+node_modules
+*.log
+
+# Ignore build output (you may want to include this depending on your build strategy)
+build
+dist
+
+# Ignore testing and coverage output
+coverage
+
+# Ignore local environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore MacOS files
+.DS_Store
+
+# Ignore editor and IDE specific files
+.idea
+.vscode
+*.swp
+
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore Dockerfile itself
+Dockerfile
+
+# Ignore Yarn and NPM lockfiles (optional, depending on your project setup)
+yarn.lock
+package-lock.json
