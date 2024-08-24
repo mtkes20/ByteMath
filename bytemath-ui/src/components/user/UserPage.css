@@ -1,0 +1,121 @@
+.user-page {
+    min-height: calc(100vh - 70px);
+    background-color: #1a1a1a;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+}
+
+.user-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-picture-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.profile-picture, .user-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #ffffff;
+    padding: 5px;
+}
+
+.user-icon {
+    padding: 30px;
+    background-color: #1a1a1a;
+    border: 1px solid white;
+}
+
+.picture-upload-label {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #5C6BC0;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.pencil-icon {
+    width: 20px;
+    height: 20px;
+    color: #ffffff;
+}
+
+.user-header h1 {
+    font-size: 2.5rem;
+    margin: 10px 0 0;
+}
+
+.user-header p {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 5px 0 0;
+}
+
+.course-progress-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    /*max-width: 1200px;*/
+    margin: 0 auto;
+}
+
+.course-progress-card {
+    border-radius: 20px;
+    padding: 30px 20px;
+    min-width: 300px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.course-progress-card:hover {
+    transform: translateY(-10px);
+}
+
+.course-icon {
+    width: 60px;
+    height: 60px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.course-progress-card h2 {
+    font-size: 1.5rem;
+    margin: 0 0 20px;
+    color: #ffffff;
+}
+
+.progress-bar {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress {
+    background-color: #ffffff;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.course-progress-card p {
+    margin: 10px 0 0;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .course-progress-grid {
+        grid-template-columns: 1fr;
+    }
+}
