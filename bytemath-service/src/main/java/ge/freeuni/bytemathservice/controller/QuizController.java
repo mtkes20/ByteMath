@@ -39,14 +39,15 @@ public class QuizController {
         BytemathUser currentUser = bytemathUserService.getCurrentUser();
         Optional<GradedQuiz> gradedQuiz = userQuizSubmissionService.getGradedQuizForUser(currentUser, identifier);
         if (gradedQuiz.isPresent()) {
-            return ResponseEntity.ok(new QuizResponseWrapper(gradedQuiz.get()));
+            QuizDTO quiz = quizService.getQuizByIdentifier(identifier, language);
+            return ResponseEntity.ok(new QuizResponseWrapper(true, quiz, gradedQuiz.get()));
         } else {
             QuizDTO quiz = quizService.getQuizByIdentifier(identifier, language);
             return ResponseEntity.ok(new QuizResponseWrapper(quiz));
         }
     }
 
-    @PostMapping("/{identifier}/submit")
+    @PostMapping("{identifier}/submit")
     public ResponseEntity<GradedQuiz> submitQuizAnswers(@PathVariable String identifier, @RequestParam(required = false, defaultValue = "ENG") String language, @RequestBody SubmittedQuiz request) {
         BytemathUser currentUser = bytemathUserService.getCurrentUser();
         GradedQuiz gradedQuiz = gradeQuizService.gradeQuiz(identifier, language, request);

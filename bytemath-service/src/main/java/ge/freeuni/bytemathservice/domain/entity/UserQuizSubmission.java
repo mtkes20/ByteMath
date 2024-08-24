@@ -28,6 +28,8 @@ public class UserQuizSubmission {
     @SequenceGenerator(name = "seq_generator", schema = "BYTEMATH", sequenceName = "BYTEMATH_GLOBAL_SEQUENCE", allocationSize = 1)
     private Long id;
 
+    private String quizIdentifier;
+
     @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)
     private BytemathUser user;

@@ -8,6 +8,6 @@ import java.util.List;
 @Data
 public class SubmittedQuiz {
 
-    private Long quizId;
+    private Long id;
     private List<SubmittedAnswer> answers;
 }

@@ -7,6 +7,7 @@ import ge.freeuni.bytemathservice.domain.api.SubmittedQuiz;
 import ge.freeuni.bytemathservice.domain.entity.BytemathUser;
 import ge.freeuni.bytemathservice.domain.entity.SubmittedAnswerEntity;
 import ge.freeuni.bytemathservice.domain.entity.UserQuizSubmission;
+import ge.freeuni.bytemathservice.repository.QuizRepository;
 import ge.freeuni.bytemathservice.repository.UserQuizSubmissionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,13 @@ public class UserQuizSubmissionService {
 
     private final QuizService quizService;
 
+    private final QuizRepository quizRepository;
     @Transactional
     public void saveUserQuizSubmission(BytemathUser user, SubmittedQuiz submittedQuiz, GradedQuiz gradedQuiz) {
         UserQuizSubmission submission = new UserQuizSubmission();
         submission.setUser(user);
-        submission.setQuizId(submittedQuiz.getQuizId());
+        submission.setQuizId(submittedQuiz.getId());
+        submission.setQuizIdentifier(quizRepository.findById(submittedQuiz.getId()).get().getIdentifier());
         submission.setSubmittedAnswers(
                 submittedQuiz.getAnswers().stream()
                         .map(this::convertToSubmittedAnswerEntity)
@@ -40,7 +43,7 @@ public class UserQuizSubmissionService {
     }
 
     public Optional<GradedQuiz> getGradedQuizForUser(BytemathUser user, String quizIdentifier) {
-        return userQuizSubmissionRepository.findByUserAndQuizId(user, Long.parseLong(quizIdentifier))
+        return userQuizSubmissionRepository.findByUserAndQuizIdentifier(user, quizIdentifier)
                 .map(submission -> new GradedQuiz(
                         submission.getScore(),
                         submission.getMaxScore(),

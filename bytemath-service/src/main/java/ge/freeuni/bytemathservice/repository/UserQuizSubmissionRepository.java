@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface UserQuizSubmissionRepository extends JpaRepository<UserQuizSubmission, Long> {
 
-    Optional<UserQuizSubmission> findByUserAndQuizId(BytemathUser user, Long quizId);
+    Optional<UserQuizSubmission> findByUserAndQuizIdentifier(BytemathUser user, String quizIdentifier);
 }
