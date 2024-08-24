@@ -5,13 +5,14 @@ import {AccountTree} from "@mui/icons-material";
 import Introduction from "./introduction/Introduction";
 import {useTranslation} from 'react-i18next';
 import DifferentGraphs from "./different-kind-of-graphs/DifferentGraphs";
+import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
 
 const TheoryOfGraphsContent: React.FC = () => {
     const {t} = useTranslation();
     const [selectedItem, setSelectedItem] = useState<string>("introduction");
 
     return (
-        <Stack display={"flex"} flexDirection={"row"} height={'calc(100vh - 70px)'} style={{height: "auto"}}>
+        <CoursePageSideMenuContainer>
             <SideMenu
                 icon={<AccountTree fontSize="small"/>}
                 title={t('graphTheoryTitle')}
@@ -23,7 +24,7 @@ const TheoryOfGraphsContent: React.FC = () => {
             {selectedItem === "introduction" && <Introduction/>}
             {selectedItem === "differentGraphs" && <DifferentGraphs/>}
             <div/>
-        </Stack>
+        </CoursePageSideMenuContainer>
     );
 }
 

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import {styled, TextField, Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 const BinaryConverter: React.FC = () => {
     const [binary, setBinary] = useState<string>('');
     const [decimal, setDecimal] = useState<string>('');
+    const { t } = useTranslation()
 
     const handleBinaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -29,11 +31,11 @@ const BinaryConverter: React.FC = () => {
             gap: "100px"
         }}>
             <Converter>
-                <Label>Binary:</Label>
+                <Label>{`${t("binarySystem.binaryConversion.calculator.binary")}:`}</Label>
                 <StyledTextField
                     value={binary}
                     onChange={handleBinaryChange}
-                    placeholder="Enter binary number"
+                    placeholder={t("binarySystem.binaryConversion.calculator.enterBinaryNumber")}
                     sx={{
                         color: "white",
                     }}
@@ -41,11 +43,11 @@ const BinaryConverter: React.FC = () => {
                 />
             </Converter>
             <Converter>
-                <Label>Decimal:</Label>
+                <Label>{`${t("binarySystem.binaryConversion.calculator.decimal")}:`}</Label>
                 <StyledTextField
                     value={decimal}
                     onChange={handleDecimalChange}
-                    placeholder="Enter decimal number"
+                    placeholder={t("binarySystem.binaryConversion.calculator.enterDecimalNumber")}
                 />
             </Converter>
         </BinaryConverterContainer>
@@ -60,7 +62,6 @@ const BinaryConverterContainer = styled("div")(() => ({
 }));
 
 const Converter = styled("div")(() => ({
-    // margin: "10px 0"
     display: "flex",
     flexDirection: "row",
     alignItems: "center"

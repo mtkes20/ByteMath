@@ -7,6 +7,7 @@ import LCMandGCD from "./LCMandGCD";
 import RSAAlgorithm from "./RSAAlgorithm";
 import ModularArithmetic from "./ModularArithmetic";
 import {useTranslation} from "react-i18next";
+import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
 
 
 const NumberTheoryContent = () => {
@@ -16,14 +17,7 @@ const NumberTheoryContent = () => {
     const { t } = useTranslation()
 
     return (
-        <Stack
-            display={"flex"}
-            flexDirection={"row"}
-            height={'calc(100vh - 70px)'}
-            style={{
-                height: "auto"
-            }}
-        >
+        <CoursePageSideMenuContainer>
             <SideMenu icon={<Functions fontSize="small" />}
                       title={t("numberTheoryTitle")}
                       items={[
@@ -48,7 +42,7 @@ const NumberTheoryContent = () => {
                 selectedItem === "modular-arithmetic" && <ModularArithmetic/>
             }
             <div/>
-        </Stack>
+        </CoursePageSideMenuContainer>
     )
 }
 

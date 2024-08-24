@@ -6,6 +6,7 @@ import Introduction from "./Introduction";
 import BasicOperators from "./BasicOperators";
 import AdvancedOperators from "./AdvancedOperators";
 import TruthTables from "./TruthTables";
+import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
 
 
 const LogicalOperatorsContent = () => {
@@ -14,9 +15,7 @@ const LogicalOperatorsContent = () => {
     );
 
     return (
-        <Stack display={"flex"} flexDirection={"row"} height={'calc(1 n00vh - 70px)'} style={{
-            height: "auto"
-        }}>
+        <CoursePageSideMenuContainer>
             <SideMenu icon={<SettingsInputComponent fontSize="small"/>} title={"Logical Operands"}
                       items={[{title: "Introduction to Logical Operators", value: "introduction"},
                           {title: "Basic Logical Operators", value: "basic-operators"},
@@ -39,7 +38,7 @@ const LogicalOperatorsContent = () => {
                 selectedItem === "truth-tables" && <TruthTables/>
             }
             <div/>
-        </Stack>
+        </CoursePageSideMenuContainer>
     )
 }
 

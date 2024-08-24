@@ -7,6 +7,7 @@ import Converting from "./Converting";
 import Arithmetic from "./Arithmetic";
 import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
 import {useKeycloak} from "../../context/KeycloakProvider";
+import {useTranslation} from "react-i18next";
 import axios from "axios";
 
 const BinarySystemContent: React.FC = () => {
@@ -14,6 +15,7 @@ const BinarySystemContent: React.FC = () => {
     const {keycloak, isAuthenticated} = useKeycloak();
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const [readPages, setReadPages] = useState<Set<string>>(new Set());
+    const { t } = useTranslation()
 
     useEffect(() => {
         if (isAuthenticated && keycloak?.token) {
@@ -81,16 +83,16 @@ const BinarySystemContent: React.FC = () => {
     };
 
     const menuItems = [
-        {title: "Introduction", value: "introduction"},
-        {title: "Converting", value: "converting"},
-        {title: "Binary Arithmetic", value: "arithmetic"},
+        {title: t("introduction"), value: "introduction"},
+        {title: t("converting"), value: "converting"},
+        {title: t("binaryArithmetic"), value: "arithmetic"},
     ];
 
     return (
         <CoursePageSideMenuContainer>
             <SideMenu
                 icon={<Code/>}
-                title={"Binary System"}
+                title={t("binarySystemTitle")}
                 items={menuItems.map(item => ({
                     ...item,
                     icon: readPages.has(item.value) ? (

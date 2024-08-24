@@ -26,6 +26,8 @@
   "binaryArithmetic": "Binary Arithmetic",
   "clickToExplore": "Click to explore this course",
   "welcome": "Welcome",
+  "complete": "Complete",
+  "result": "Result",
   "binarySystem": {
     "introduction": {
       "title": "Understanding the Binary System",
@@ -126,6 +128,12 @@
           "Hexadecimal as a compact representation of binary",
           "Error detection and correction codes (e.g., Hamming codes)"
         ]
+      },
+      "calculator": {
+        "binary": "Binary",
+        "decimal": "Decimal",
+        "enterBinaryNumber": "Enter binary number",
+        "enterDecimalNumber": "Enter decimal number"
       }
     },
     "binaryArithmetic": {
@@ -250,6 +258,10 @@
           "კომპიუტერული გრაფიკა (მაგ., მატრიცული ოპერაციები)",
           "მანქანური სწავლების აქსელერატორები"
         ]
+      },
+      "calculator": {
+        "enterFirstBinary": "შეიყვანეთ პირველი ორობითი რიცხვი",
+        "enterSecondBinary": "შეიყვანეთ მეორე ორობითი რიცხვი"
       }
     }
   },

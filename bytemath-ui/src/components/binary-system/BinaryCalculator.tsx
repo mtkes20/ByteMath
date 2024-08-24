@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
-import {Button, FormControl, MenuItem, Select, styled, TextField, Typography} from "@mui/material";
+import {FormControl, MenuItem, Select, styled, TextField, Typography} from "@mui/material";
 import {StyledButton} from "../styles/StyledComponents";
+import {useTranslation} from "react-i18next";
 
 const BinaryCalculator: React.FC = () => {
     const [binary1, setBinary1] = useState<string>('');
     const [binary2, setBinary2] = useState<string>('');
     const [result, setResult] = useState<string | null>(null);
     const [operation, setOperation] = useState<string>('add');
+    const { t } = useTranslation()
 
     const handleBinaryChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (/^[01]*$/.test(e.target.value)) {
@@ -57,7 +59,7 @@ const BinaryCalculator: React.FC = () => {
                     type="text"
                     value={binary1}
                     onChange={handleBinaryChange1}
-                    placeholder="Enter first binary number"
+                    placeholder={t("binarySystem.binaryArithmetic.calculator.enterFirstBinary")}
                 />
                 <FormControl>
                     <Select
@@ -90,18 +92,17 @@ const BinaryCalculator: React.FC = () => {
                     type="text"
                     value={binary2}
                     onChange={handleBinaryChange2}
-                    placeholder="Enter second binary number"
-                />
+                    placeholder={t("binarySystem.binaryArithmetic.calculator.enterSecondBinary")}                />
                 <StyledButton
                     onClick={calculate}
                     disabled={binary1.length < 1 || binary2.length < 1}
                 >
-                    Calculate
+                    {t("calculate")}
                 </StyledButton>
             </div>
             {!!result && (
                 <Result>
-                    Result: {result}
+                    {`${t("result")}: ${result}`}
                 </Result>
             )}
         </BinaryCalculatorContainer>
