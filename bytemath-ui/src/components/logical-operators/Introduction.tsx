@@ -10,7 +10,7 @@ import {
 import Quiz from "../quizz/Quiz";
 import QuizApi from "../../api/quiz-api";
 import {useQuery} from "@tanstack/react-query";
-import {QuizType} from "../../types/QuizType";
+import {QuizResponse} from "../../types/QuizType";
 import {SubmittedQuiz} from "../../types/SubmittedQuiz";
 
 const Introduction = () => {
@@ -26,7 +26,7 @@ const Introduction = () => {
         error: quizError,
         isLoading: isQuizLoading,
         refetch: refetchQuiz
-    } = useQuery<QuizType | undefined>({
+    } = useQuery<QuizResponse | undefined>({
         queryKey: ["quiz"],
         queryFn: fetchQuiz
     })
@@ -72,8 +72,7 @@ const Introduction = () => {
             {/*<Outlet/>*/}
             { !!quizData && <Quiz
                 refetchQuiz={refetchQuiz}
-                quizz={quizData}
-                //TODO change
+                quizResponse={quizData}
                 identifier={"LOGICAL_OPERANDS_INTRO"}
             /> }
         </CoursePageMainContainer>

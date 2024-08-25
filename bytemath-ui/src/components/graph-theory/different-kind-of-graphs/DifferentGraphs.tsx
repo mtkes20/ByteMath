@@ -3,7 +3,7 @@ import {CoursePageMainContainer, StyledCard, Title} from "../../styles/StyledCom
 import {useTranslation} from "react-i18next";
 import {useQuery} from "@tanstack/react-query";
 import QuizApi from "../../../api/quiz-api";
-import {QuizType} from "../../../types/QuizType";
+import {QuizResponse} from "../../../types/QuizType";
 import Quiz from "../../quizz/Quiz";
 import WeightedGraphs from "./WeightedGraphs";
 import PlanarGraphs from "./PlanarGraphs";
@@ -24,7 +24,7 @@ const DifferentGraphs = () => {
         error: quizError,
         isLoading: isQuizLoading,
         refetch: refetchQuiz
-    } = useQuery<QuizType | undefined>({
+    } = useQuery<QuizResponse | undefined>({
         queryKey: ["quiz", "DIFFERENT_GRAPHS"],
         queryFn: () => fetchQuiz("DIFFERENT_GRAPHS")
     });
@@ -43,7 +43,7 @@ const DifferentGraphs = () => {
                 {!!quizData && !isQuizLoading && !quizError && (
                     <Quiz
                         refetchQuiz={refetchQuiz}
-                        quizz={quizData}
+                        quizResponse={quizData}
                         identifier={"DIFFERENT_GRAPHS"}
                     />
                 )}

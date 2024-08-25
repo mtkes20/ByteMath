@@ -29,7 +29,7 @@ export const StyledCard = styled(Card)({
     backgroundColor: "transparent",
     padding: "20px",
     border: "0.5px solid white",
-    height: "fit-content"
+    overflow: "unset"
 });
 
 export const StyledList = styled('ol')({

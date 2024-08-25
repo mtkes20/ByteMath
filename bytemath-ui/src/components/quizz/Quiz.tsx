@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {QuestionType, QuizType} from "../../types/QuizType";
+import {QuestionType, QuizResponse} from "../../types/QuizType";
 import {SubmittedAnswer, SubmittedQuiz} from "../../types/SubmittedQuiz";
 import {Button, styled, Typography} from "@mui/material";
 import SingleChoice from "./SingleChoice";
@@ -9,39 +9,46 @@ import QuizResults from "./QuizResults";
 import QuizApi from "../../api/quiz-api";
 import {QueryObserverResult, RefetchOptions} from "@tanstack/react-query";
 import {useTranslation} from "react-i18next";
+import {useKeycloak} from "../../context/KeycloakProvider";
 
 interface QuizProps {
-    quizz: QuizType;
+    quizResponse: QuizResponse;
     identifier: string,
-    refetchQuiz: (options?: RefetchOptions | undefined) => Promise<QueryObserverResult<QuizType | undefined, Error>>
+    refetchQuiz: (options?: RefetchOptions | undefined) => Promise<QueryObserverResult<QuizResponse | undefined, Error>>
 }
 
 const Quiz: React.FC<QuizProps> = ({
-                                       quizz,
+                                       quizResponse,
                                        identifier,
                                        refetchQuiz
                                    }) => {
     const [answers, setAnswers] = useState<SubmittedAnswer[]>([]);
     const [gradedQuiz, setGradedQuiz] = useState<GradedQuiz | null>(null);
-    const { i18n } = useTranslation();
+    const {i18n} = useTranslation();
+    const { keycloak } = useKeycloak();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const submittedQuiz: SubmittedQuiz = {
-            id: quizz.id,
+            id: quizResponse.quiz.id,
             answers: answers
         };
         handleQuizSubmit(submittedQuiz);
     };
 
     const handleQuizSubmit = async (submittedQuiz: SubmittedQuiz) => {
-        await QuizApi.submitQuiz(identifier, submittedQuiz, i18n.resolvedLanguage === 'en' ? "ENG" : "GEO")
+        await QuizApi.submitQuiz(
+            identifier,
+            submittedQuiz,
+            i18n.resolvedLanguage === 'en' ? "ENG" : "GEO",
+            keycloak?.token
+        )
             .then((gradedQuiz) => {
-            setGradedQuiz(gradedQuiz);
+                setGradedQuiz(gradedQuiz);
 
-        }).catch((error) => {
-            console.error('Error grading quiz:', error);
-        });
+            }).catch((error) => {
+                console.error('Error grading quiz:', error);
+            });
     };
 
     const handleTryAgain = () => {
@@ -51,20 +58,28 @@ const Quiz: React.FC<QuizProps> = ({
 
     return (
         <>
-            {gradedQuiz && (<QuizResults
-                    gradedQuiz={gradedQuiz}
-                    quiz={quizz}
+            {quizResponse.graded && !!quizResponse.gradedQuiz &&
+                <QuizResults
+                    gradedQuiz={quizResponse.gradedQuiz}
+                    quiz={quizResponse.quiz}
                     onTryAgain={handleTryAgain}
                 />
-            )}
-            {!gradedQuiz && (
+            }
+            {gradedQuiz &&
+                <QuizResults
+                    gradedQuiz={gradedQuiz}
+                    quiz={quizResponse.quiz}
+                    onTryAgain={handleTryAgain}
+                />
+            }
+            {!gradedQuiz && !quizResponse.graded && !!quizResponse.quiz && (
                 <form onSubmit={handleSubmit}>
                     <MainContainer>
                         <QuizTitle>
-                            {quizz.title}
+                            {quizResponse.quiz.title}
                         </QuizTitle>
                         <Questions>
-                            {quizz.questions.map((question, index) => (
+                            {quizResponse.quiz.questions.map((question, index) => (
                                 <Question>
                                     <QuestionTitle>{`${index + 1}. ${question.questionText}`}</QuestionTitle>
                                     {question.questionType === QuestionType.SINGLE_CHOICE ? (

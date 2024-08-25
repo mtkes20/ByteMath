@@ -1,3 +1,11 @@
+import {GradedQuiz} from "./GradedQuiz";
+
+export type QuizResponse = {
+    graded: boolean;
+    quiz: QuizType;
+    gradedQuiz?: GradedQuiz;
+}
+
 export type QuizType = {
     id: number;
     title: string;

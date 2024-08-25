@@ -1,5 +1,5 @@
 import BinaryVisualization from "./BinaryVisualization";
-import {QuizType} from "../../types/QuizType";
+import {QuizResponse} from "../../types/QuizType";
 import Quiz from "../quizz/Quiz";
 import {useQuery} from "@tanstack/react-query";
 import QuizApi from "../../api/quiz-api";
@@ -12,13 +12,19 @@ import {
     Subtitle,
     Title
 } from "../styles/StyledComponents";
+import {useKeycloak} from "../../context/KeycloakProvider";
 
 
 const Introduction = () => {
     const {i18n, t} = useTranslation()
+    const {keycloak} = useKeycloak();
 
     const fetchQuiz = async () => {
-        return await QuizApi.getQuiz("BINARY_SYSTEM_INTRO", i18n.resolvedLanguage == 'en' ? "ENG" : "GEO")
+        return await QuizApi.getQuiz(
+            "BINARY_SYSTEM_INTRO",
+            i18n.resolvedLanguage == 'en' ? "ENG" : "GEO",
+            keycloak?.token
+        )
     }
 
     const {
@@ -26,7 +32,7 @@ const Introduction = () => {
         error: quizError,
         isLoading: isQuizLoading,
         refetch: refetchQuiz
-    } = useQuery<QuizType | undefined>({
+    } = useQuery<QuizResponse | undefined>({
         queryKey: ["quiz"],
         queryFn: fetchQuiz
     })
@@ -80,7 +86,7 @@ const Introduction = () => {
             {!!quizData &&
                 <Quiz
                     refetchQuiz={refetchQuiz}
-                    quizz={quizData}
+                    quizResponse={quizData}
                     identifier={"BINARY_SYSTEM_INTRO"}
                 />
             }

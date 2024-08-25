@@ -37,7 +37,12 @@ const LoginButton: React.FC = () => {
     return (
         <Box display="flex" alignItems="center">
             {isAuthenticated && username && (
-                <Typography variant="body1" style={{marginRight: '10px'}}>
+                <Typography
+                    onClick={() => navigate('/user')}
+                    variant="body1" style={{
+                        marginRight: '10px',
+                    cursor: "pointer"
+                }}>
                     Welcome, {username}!
                 </Typography>
             )}

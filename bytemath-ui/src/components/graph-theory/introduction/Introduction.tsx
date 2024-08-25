@@ -11,7 +11,7 @@ import GraphPathsAndCycles from "./GraphPathsAndCycles";
 import Connectivity from "./GraphConnectivity";
 import GraphSubgraphs from "./GraphSubgraphs";
 import QuizApi from "../../../api/quiz-api";
-import {QuizType} from "../../../types/QuizType";
+import {QuizResponse} from "../../../types/QuizType";
 import Quiz from "../../quizz/Quiz";
 
 const Introduction = () => {
@@ -26,7 +26,7 @@ const Introduction = () => {
         error: quizError,
         isLoading: isQuizLoading,
         refetch: refetchQuiz
-    } = useQuery<QuizType | undefined>({
+    } = useQuery<QuizResponse | undefined>({
         queryKey: ["quiz", "GRAPH_THEORY_INTRO"],
         queryFn: () => fetchQuiz("GRAPH_THEORY_INTRO")
     });
@@ -45,7 +45,7 @@ const Introduction = () => {
                 {!!quizData && !isQuizLoading && !quizError && (
                     <Quiz
                         refetchQuiz={refetchQuiz}
-                        quizz={quizData}
+                        quizResponse={quizData}
                         identifier={"GRAPH_THEORY_INTRO"}
                     />
                 )}
