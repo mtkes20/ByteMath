@@ -628,10 +628,39 @@
         "tree2": "General Tree",
         "tree2Explanation": "A tree where nodes can have any number of children. Useful for representing complex hierarchies like file systems or organizational charts.",
         "interactionPrompt": "Interact with the trees!"
-      },
-      "graphProblems": {
-        "title": "Problems for Graph Theory"
       }
+    },
+    "graphTraversals": {
+      "title": "Graph Traversals",
+      "bfs": {
+        "title": "Breadth-First Search (BFS)",
+        "explanation": "Breadth-First Search (BFS) is like exploring a city neighborhood by neighborhood. Imagine you're standing at your home (the starting node) and want to find a specific place. Instead of going down one long street at a time, you first visit all the places on your block. Then, you move to all the places one block away, then two blocks away, and so on. This way, you're sure to find the closest location first. In graph terms, BFS starts at a chosen node and explores all its neighbors before moving to the next level. It uses a queue (like a waiting line) to keep track of which nodes to visit next. This method ensures that nodes are visited in order of their distance from the start, making BFS ideal for finding the shortest path between two points in an unweighted graph.\n\nBFS is widely used in applications like social network friend suggestions, GPS navigation for finding nearby places, and even in puzzle-solving algorithms!",
+        "demoDescription": "Watch the animation below to see how BFS explores a graph level by level:",
+        "interactionDescription": "Now, try creating your own graph and run BFS to see how it works on different structures:",
+        "interactionPrompt": "Click empty space to add nodes. Click two nodes in succession to create an edge. Click a node to set it as the start node (highlighted in green). Press play to begin BFS.",
+        "unvisitedNode": "Unvisited Node",
+        "visitedNode": "Visited Node",
+        "currentNode": "Current Node",
+        "queuedNode": "Queued Node",
+        "traversedEdge": "Traversed Edge"
+      },
+      "dfs": {
+        "title": "Depth-First Search (DFS)",
+        "explanation": "Depth-First Search (DFS) is like exploring a maze by always choosing the deepest unexplored path. Imagine you're in a cave system: you keep going deeper into unexplored tunnels until you hit a dead end, then you backtrack to the last junction with an unexplored path. This method ensures you explore every possible path.",
+        "demoDescription": "Watch the animation below to see how DFS explores a graph, always choosing the leftmost unexplored path first:",
+        "interactionDescription": "Now, try creating your own graph and run DFS to see how it works on different structures:",
+        "interactionPrompt": "Click to add nodes. Click two nodes to create an edge. Click a node to set as start. Press play to begin DFS.",
+        "unvisitedNode": "Unvisited Node",
+        "visitedNode": "Visited Node",
+        "currentNode": "Current Node",
+        "stackNode": "Node in Stack",
+        "forwardEdge": "Explored Edge",
+        "runDFS": "Run DFS",
+        "resetGraph": "Reset Graph"
+      }
+    },
+    "graphProblems": {
+      "title": "Problems for Graph Theory"
     }
   }
 }

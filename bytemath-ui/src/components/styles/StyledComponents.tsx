@@ -65,7 +65,6 @@ export const Subtitle = styled(Typography)({
 
 export const StyledText = styled(Typography)({
     fontSize: "1rem",
-    marginBottom: "10px",
     color: "white",
     lineHeight: "1.5",
 });
@@ -90,7 +89,6 @@ export const Example = styled(Typography)(() => ({
 
 export const StyledExplanation = styled(Typography)({
     fontSize: "1rem",
-    marginBottom: "20px",
     fontStyle: "italic",
     color: "#b0bec5",
 });
