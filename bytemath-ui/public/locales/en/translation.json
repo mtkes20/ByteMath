@@ -544,8 +544,10 @@
         "cycleExplanation": "This is a cycle: a → b → c → f → g → a. It starts and ends at the same node.",
         "showPathButton": "Show Path",
         "showCycleButton": "Show Cycle",
-        "resetButton": "Reset",
-        "interactionPrompt": "Click the buttons to see examples of a path and a cycle in the graph."
+        "interactiveDescription": "Create your own graph by clicking to add nodes and connecting them. Then detect cycles in your graph.",
+        "resetButton": "Reset Graph",
+        "cyclesDetected": "Cycle(s) detected in the graph",
+        "interactivePrompt": "Click on the graph area to add nodes. Click on two nodes consecutively to create an edge between them. Use the 'Detect Cycles' button to find cycles in your graph."
       },
       "graphConnectivity": {
         "title": "Graph Connectivity",
