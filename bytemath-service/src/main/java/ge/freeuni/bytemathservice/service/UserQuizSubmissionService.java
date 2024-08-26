@@ -25,6 +25,7 @@ public class UserQuizSubmissionService {
     private final QuizService quizService;
 
     private final QuizRepository quizRepository;
+
     @Transactional
     public void saveUserQuizSubmission(BytemathUser user, SubmittedQuiz submittedQuiz, GradedQuiz gradedQuiz) {
         UserQuizSubmission submission = new UserQuizSubmission();

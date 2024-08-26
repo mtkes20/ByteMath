@@ -8,6 +8,7 @@ import TheoryOfGraphsContent from "./components/graph-theory/TheoryOfGraphsConte
 import NumberTheoryContent from "./components/number-theory/NumberTheoryContent";
 import {KeycloakProvider} from "./context/KeycloakProvider";
 import MainPage from "./components/main/MainPage";
+import UserPage from "./components/user/UserPage";
 
 const router = createHashRouter([
     {
@@ -15,6 +16,10 @@ const router = createHashRouter([
         element: <Root/>,
         errorElement: <></>,
         children: [
+            {
+                path: "user",
+                element: <UserPage/>
+            },
             {
                 path: "/",
                 element: <MainPage/>

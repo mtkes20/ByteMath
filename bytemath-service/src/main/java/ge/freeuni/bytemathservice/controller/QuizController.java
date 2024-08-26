@@ -51,7 +51,9 @@ public class QuizController {
     public ResponseEntity<GradedQuiz> submitQuizAnswers(@PathVariable String identifier, @RequestParam(required = false, defaultValue = "ENG") String language, @RequestBody SubmittedQuiz request) {
         BytemathUser currentUser = bytemathUserService.getCurrentUser();
         GradedQuiz gradedQuiz = gradeQuizService.gradeQuiz(identifier, language, request);
-        userQuizSubmissionService.saveUserQuizSubmission(currentUser, request, gradedQuiz);
+        if (currentUser != null) {
+            userQuizSubmissionService.saveUserQuizSubmission(currentUser, request, gradedQuiz);
+        }
         return ResponseEntity.ok(gradedQuiz);
     }
 }
