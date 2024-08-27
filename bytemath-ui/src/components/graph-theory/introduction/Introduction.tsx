@@ -44,7 +44,6 @@ const Introduction = () => {
             <StyledCard>
                 {!!quizData && !isQuizLoading && !quizError && (
                     <Quiz
-                        refetchQuiz={refetchQuiz}
                         quizResponse={quizData}
                         identifier={"GRAPH_THEORY_INTRO"}
                     />

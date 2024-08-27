@@ -28,10 +28,13 @@ public class UserQuizSubmissionService {
 
     @Transactional
     public void saveUserQuizSubmission(BytemathUser user, SubmittedQuiz submittedQuiz, GradedQuiz gradedQuiz) {
-        UserQuizSubmission submission = new UserQuizSubmission();
+        String identifier = quizRepository.findById(submittedQuiz.getId()).get().getIdentifier();
+        Optional<UserQuizSubmission> userQuizSubmission = userQuizSubmissionRepository.findByUserAndQuizIdentifier(user, identifier);
+        UserQuizSubmission submission;
+        submission = userQuizSubmission.orElseGet(UserQuizSubmission::new);
         submission.setUser(user);
         submission.setQuizId(submittedQuiz.getId());
-        submission.setQuizIdentifier(quizRepository.findById(submittedQuiz.getId()).get().getIdentifier());
+        submission.setQuizIdentifier(identifier);
         submission.setSubmittedAnswers(
                 submittedQuiz.getAnswers().stream()
                         .map(this::convertToSubmittedAnswerEntity)
@@ -52,6 +55,10 @@ public class UserQuizSubmissionService {
                                 .map(this::convertToGradedQuestion)
                                 .collect(Collectors.toList())
                 ));
+    }
+
+    public void deleteUserQuizSubmission(BytemathUser user, String quizIdentifier) {
+        userQuizSubmissionRepository.delete(userQuizSubmissionRepository.findByUserAndQuizIdentifier(user, quizIdentifier).orElseThrow(RuntimeException::new));
     }
 
     private SubmittedAnswerEntity convertToSubmittedAnswerEntity(SubmittedAnswer answer) {

@@ -69,9 +69,7 @@ const Introduction = () => {
                 As you progress through this module, you'll gain a solid foundation in logical operators,
                 preparing you for more advanced topics in computer science and discrete mathematics.
             </StyledText>
-            {/*<Outlet/>*/}
             { !!quizData && <Quiz
-                refetchQuiz={refetchQuiz}
                 quizResponse={quizData}
                 identifier={"LOGICAL_OPERANDS_INTRO"}
             /> }

@@ -11,6 +11,7 @@ import ge.freeuni.bytemathservice.service.QuizService;
 import ge.freeuni.bytemathservice.service.UserQuizSubmissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,5 +56,12 @@ public class QuizController {
             userQuizSubmissionService.saveUserQuizSubmission(currentUser, request, gradedQuiz);
         }
         return ResponseEntity.ok(gradedQuiz);
+    }
+
+    @DeleteMapping("{identifier}")
+    public ResponseEntity<Void> deleteQuizSubmission(@PathVariable String identifier) {
+        BytemathUser currentUser = bytemathUserService.getCurrentUser();
+        userQuizSubmissionService.deleteUserQuizSubmission(currentUser, identifier);
+        return ResponseEntity.ok().build();
     }
 }

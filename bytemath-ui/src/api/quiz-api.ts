@@ -4,7 +4,7 @@ import {SubmittedQuiz} from "../types/SubmittedQuiz";
 import {GradedQuiz} from "../types/GradedQuiz";
 
 
-const getQuiz = async (quizId: string, language: string, userToken?: string): Promise<QuizResponse> => {
+const getQuiz = async (identifier: string, language: string, userToken?: string): Promise<QuizResponse> => {
     const headers: Record<string, string> = {
         'Content-Type': 'application/json',
     };
@@ -16,12 +16,12 @@ const getQuiz = async (quizId: string, language: string, userToken?: string): Pr
     const response = await axios.create({
         baseURL: `${process.env.REACT_APP_API_URL}/api/v1/quiz/`,
         headers: headers,
-    }).get(`${quizId}?language=${language}`);
+    }).get(`${identifier}?language=${language}`);
 
     return response.data;
 }
 
-const submitQuiz = async (quizId: string, answers: SubmittedQuiz, language: string, userToken?: string): Promise<GradedQuiz> => {
+const submitQuiz = async (identifier: string, answers: SubmittedQuiz, language: string, userToken?: string): Promise<GradedQuiz> => {
     const headers: Record<string, string> = {
         'Content-Type': 'application/json',
     };
@@ -33,14 +33,27 @@ const submitQuiz = async (quizId: string, answers: SubmittedQuiz, language: stri
     const response = await axios.create({
         baseURL: `${process.env.REACT_APP_API_URL}/api/v1/quiz/`,
         headers: headers
-    }).post(`${quizId}/submit?language=${language}`, answers);
+    }).post(`${identifier}/submit?language=${language}`, answers);
 
     return response.data;
 }
 
+const deleteQuiz = async (identifier: string, userToken: string): Promise<void> => {
+    const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`
+    };
+
+    await axios.create({
+        baseURL: `${process.env.REACT_APP_API_URL}/api/v1/quiz/`,
+        headers: headers
+    }).delete(identifier);
+}
+
 const QuizApi = {
     getQuiz,
-    submitQuiz
+    submitQuiz,
+    deleteQuiz
 };
 
 

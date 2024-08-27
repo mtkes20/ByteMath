@@ -83,9 +83,8 @@ const Introduction = () => {
                 ))}
             </StyledList>
             <BinaryVisualization/>
-            {!!quizData &&
-                <Quiz
-                    refetchQuiz={refetchQuiz}
+            {
+                !!quizData && <Quiz
                     quizResponse={quizData}
                     identifier={"BINARY_SYSTEM_INTRO"}
                 />
