@@ -1618,8 +1618,12 @@
       }
     ]
   },
-  "internationalizationEnabled": false,
-  "supportedLocales": [],
+  "internationalizationEnabled": true,
+  "supportedLocales": [
+    "ka",
+    "en"
+  ],
+  "defaultLocale": "en",
   "authenticationFlows": [
     {
       "id": "12b02c56-7aaf-466c-991f-a9c594274467",

@@ -4,12 +4,11 @@ import {useNavigate, useLocation} from 'react-router-dom';
 import {useTranslation} from "react-i18next";
 import {useKeycloak} from "../../context/KeycloakProvider";
 
-
 const LoginButton: React.FC = () => {
     const {keycloak, isAuthenticated, isInitialized, username} = useKeycloak();
     const navigate = useNavigate();
     const location = useLocation();
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
 
     useEffect(() => {
         if (isAuthenticated && location.hash) {
@@ -22,16 +21,17 @@ const LoginButton: React.FC = () => {
         if (isAuthenticated) {
             keycloak?.logout()
                 .then(() => {
-                    // The state will be updated automatically by the KeycloakProvider
                 })
                 .catch(console.error);
         } else {
-            keycloak?.login().catch(console.error);
+            keycloak?.login({
+                locale: i18n.language === 'ka' ? 'ka' : 'en'
+            }).catch(console.error);
         }
     };
 
     if (!isInitialized) {
-        return null; // or a loading indicator
+        return null;
     }
 
     return (
@@ -40,10 +40,10 @@ const LoginButton: React.FC = () => {
                 <Typography
                     onClick={() => navigate('/user')}
                     variant="body1" style={{
-                        marginRight: '10px',
+                    marginRight: '10px',
                     cursor: "pointer"
                 }}>
-                    Welcome, {username}!
+                    {t("welcome")}, {username}!
                 </Typography>
             )}
             <Button
@@ -60,4 +60,5 @@ const LoginButton: React.FC = () => {
         </Box>
     );
 };
+
 export default LoginButton;
