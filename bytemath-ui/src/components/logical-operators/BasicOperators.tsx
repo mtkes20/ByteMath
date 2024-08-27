@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
     CoursePageMainContainer,
     StyledBit,
@@ -20,6 +21,8 @@ interface OperatorInfo {
 }
 
 const BasicOperators: React.FC = () => {
+    const { t } = useTranslation();
+
     const [andInputs, setAndInputs] = useState<boolean[]>([false, false]);
     const [orInputs, setOrInputs] = useState<boolean[]>([false, false]);
     const [notInput, setNotInput] = useState<boolean>(false);
@@ -36,9 +39,9 @@ const BasicOperators: React.FC = () => {
 
     const operators: OperatorInfo[] = [
         {
-            title: "AND (&&)",
-            description: "Returns true (1) if both operands are true, otherwise false (0).",
-            explanation: "The AND operator is used when you want to check if multiple conditions are all true. It's like checking if you have both your keys AND your wallet before leaving the house.",
+            title: t('logicalOperands.basicOperators.and.title'),
+            description: t('logicalOperands.basicOperators.and.description'),
+            explanation: t('logicalOperands.basicOperators.and.explanation'),
             calculator: (
                 <StyledOperatorCalculator>
                     <StyledOperatorCalculatorInput>
@@ -57,9 +60,9 @@ const BasicOperators: React.FC = () => {
             )
         },
         {
-            title: "OR (||)",
-            description: "Returns true (1) if at least one operand is true, otherwise false (0).",
-            explanation: "The OR operator is used when you want to check if at least one of multiple conditions is true. It's like deciding to go for a walk if it's either sunny OR you have an umbrella.",
+            title: t('logicalOperands.basicOperators.or.title'),
+            description: t('logicalOperands.basicOperators.or.description'),
+            explanation: t('logicalOperands.basicOperators.or.explanation'),
             calculator: (
                 <StyledOperatorCalculator>
                     <StyledOperatorCalculatorInput>
@@ -78,9 +81,9 @@ const BasicOperators: React.FC = () => {
             )
         },
         {
-            title: "NOT (!)",
-            description: "Inverts the truth value of the operand.",
-            explanation: "The NOT operator is used to reverse a boolean value. It's like a light switch: if the light is on, NOT will turn it off, and if it's off, NOT will turn it on.",
+            title: t('logicalOperands.basicOperators.not.title'),
+            description: t('logicalOperands.basicOperators.not.description'),
+            explanation: t('logicalOperands.basicOperators.not.explanation'),
             calculator: (
                 <StyledOperatorCalculator>
                     <StyledOperatorCalculatorInput>
@@ -99,10 +102,9 @@ const BasicOperators: React.FC = () => {
 
     return (
         <CoursePageMainContainer>
-            <Title variant="h1">Basic Logical Operators</Title>
+            <Title variant="h1">{t('logicalOperands.basicOperators.title')}</Title>
             <StyledText>
-                Logical operators are fundamental to programming and boolean logic. They allow us to make complex
-                decisions based on multiple conditions. Let's explore the three basic logical operators:
+                {t('logicalOperands.basicOperators.introduction')}
             </StyledText>
 
             {operators.map((op, index) => (
@@ -110,8 +112,7 @@ const BasicOperators: React.FC = () => {
                     <Title variant="h2">{op.title}</Title>
                     <StyledText>{op.description}</StyledText>
                     <StyledExplanation>{op.explanation}</StyledExplanation>
-                    <StyledInteractionPrompt>Try it out: Click the bits below to toggle between 0 (false) and 1
-                        (true)</StyledInteractionPrompt>
+                    <StyledInteractionPrompt>{t('logicalOperands.basicOperators.interactionPrompt')}</StyledInteractionPrompt>
                     {op.calculator}
                 </StyledCard>
             ))}

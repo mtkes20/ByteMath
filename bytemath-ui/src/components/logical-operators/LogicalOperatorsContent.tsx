@@ -6,21 +6,24 @@ import BasicOperators from "./BasicOperators";
 import AdvancedOperators from "./AdvancedOperators";
 import TruthTables from "./TruthTables";
 import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
+import {useTranslation} from "react-i18next";
 import {usePage} from "../../hooks/usePage";
 
 
 const LogicalOperatorsContent = () => {
+    const {t} = useTranslation();
+
     const [selectedItem, setSelectedItem] = useState<string>("LOGICAL_OPERANDS_INTRO");
     const { readPages } = usePage(selectedItem);
 
     const menuItems = useMemo(() =>{
         return [
-            {title: "Introduction to Logical Operators", value: "LOGICAL_OPERANDS_INTRO", read: readPages.has("LOGICAL_OPERANDS_INTRO")},
-            {title: "Basic Logical Operators", value: "LOGICAL_OPERANDS_BASIC_OPERATORS", read: readPages.has("LOGICAL_OPERANDS_BASIC_OPERATORS")},
-            {title: "Advanced Logical Operators", value: "LOGICAL_OPERANDS_ADVANCED_OPERATORS", read: readPages.has("LOGICAL_OPERANDS_ADVANCED_OPERATORS")},
-            {title: "Truth Tables", value: "LOGICAL_OPERANDS_TRUTH_TABLES", read: readPages.has("LOGICAL_OPERANDS_TRUTH_TABLES")}
+            {title: t("logicalOperands.introduction.title"), value: "LOGICAL_OPERANDS_INTRO", read: readPages.has("LOGICAL_OPERANDS_INTRO")},
+            {title: t("logicalOperands.basicOperators.title"), value: "LOGICAL_OPERANDS_BASIC_OPERATORS", read: readPages.has("LOGICAL_OPERANDS_BASIC_OPERATORS")},
+            {title: t("logicalOperands.advancedOperators.title"), value: "LOGICAL_OPERANDS_ADVANCED_OPERATORS", read: readPages.has("LOGICAL_OPERANDS_ADVANCED_OPERATORS")},
+            {title: t("logicalOperands.truthTables.title"), value: "LOGICAL_OPERANDS_TRUTH_TABLES", read: readPages.has("LOGICAL_OPERANDS_TRUTH_TABLES")}
         ];
-    }, [readPages])
+    }, [readPages, t])
 
     return (
         <CoursePageSideMenuContainer>

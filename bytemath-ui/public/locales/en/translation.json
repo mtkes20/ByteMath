@@ -265,6 +265,104 @@
       }
     }
   },
+  "logicalOperands": {
+    "title": "Logical Operands",
+    "introduction": {
+      "title": "Introduction",
+      "description": "Logical operators are fundamental concepts in discrete mathematics and computer science. They allow us to create complex conditions, make decisions in programming, and form the basis of boolean algebra.",
+      "moduleExploration": {
+        "header": "In this module, you'll explore:",
+        "items": [
+          "Basic Logical Operators",
+          "Advanced Logical Operators",
+          "Truth Tables"
+        ]
+      },
+      "understandingImportance": {
+        "header": "Understanding logical operators is crucial for several reasons:",
+        "items": [
+          "They are essential in programming for creating conditional statements and controlling program flow.",
+          "They form the basis of digital circuit design in computer hardware.",
+          "They are used extensively in database systems for constructing complex queries.",
+          "They play a key role in artificial intelligence, particularly in decision-making algorithms."
+        ]
+      },
+      "progressNote": "As you progress through this module, you'll gain a solid foundation in logical operators, preparing you for more advanced topics in computer science and discrete mathematics."
+    },
+    "basicOperators": {
+      "title": "Basic Logical Operators",
+      "introduction": "Logical operators are fundamental to programming and boolean logic. They allow us to make complex decisions based on multiple conditions. Let's explore the three basic logical operators:",
+      "and": {
+        "title": "AND (&&)",
+        "description": "Returns true (1) if both operands are true, otherwise false (0).",
+        "explanation": "The AND operator is used when you want to check if multiple conditions are all true. It's like checking if you have both your keys AND your wallet before leaving the house."
+      },
+      "or": {
+        "title": "OR (||)",
+        "description": "Returns true (1) if at least one operand is true, otherwise false (0).",
+        "explanation": "The OR operator is used when you want to check if at least one of multiple conditions is true. It's like deciding to go for a walk if it's either sunny OR you have an umbrella."
+      },
+      "not": {
+        "title": "NOT (!)",
+        "description": "Inverts the truth value of the operand.",
+        "explanation": "The NOT operator is used to reverse a boolean value. It's like a light switch: if the light is on, NOT will turn it off, and if it's off, NOT will turn it on."
+      },
+      "interactionPrompt": "Try it out: Click the bits below to toggle between 0 (false) and 1 (true)",
+      "result": "Result"
+    },
+    "advancedOperators": {
+      "title": "Advanced Logical Operators",
+      "description": "Advanced logical operators build upon the basic ones, offering more complex and powerful ways to manipulate logical conditions. These operators are invaluable in scenarios requiring complex condition checks, digital circuit design, and succinct conditional logic expressions.",
+      "xor": {
+        "title": "XOR (^)",
+        "description": "Returns true if the operands are different, false if they are the same.",
+        "explanation": "XOR (Exclusive OR) is useful when you want to check if exactly one of two conditions is true, but not both."
+      },
+      "nand": {
+        "title": "NAND",
+        "description": "Returns false only if both operands are true.",
+        "explanation": "NAND is the negation of AND. It's often used in digital circuit design as a universal gate."
+      },
+      "nor": {
+        "title": "NOR",
+        "description": "Returns true only if both operands are false.",
+        "explanation": "NOR is the negation of OR. Like NAND, it's also used as a universal gate in digital circuits."
+      },
+      "interactionPrompt": "Try it out: Click the bits below to toggle between 0 (false) and 1 (true)",
+      "result": "Result"
+    },
+    "truthTables": {
+      "title": "Truth Tables",
+      "description": "Logical operators are fundamental to programming and boolean logic. They allow us to evaluate expressions and make complex decisions. Below are the truth tables for the fundamental logic gates:",
+      "and": {
+        "name": "AND",
+        "symbol": "&&",
+        "description": "Returns true if both operands are true.",
+        "explanation": "The AND operator is used when you want to check if multiple conditions are all true. It's like checking if you have both your keys AND your wallet before leaving the house."
+      },
+      "or": {
+        "name": "OR",
+        "symbol": "||",
+        "description": "Returns true if at least one of the operands is true.",
+        "explanation": "The OR operator is used when you want to check if at least one of multiple conditions is true. It's like deciding to go for a walk if it's either sunny OR you have an umbrella."
+      },
+      "not": {
+        "name": "NOT",
+        "symbol": "!",
+        "description": "Inverts the truth value of the operand.",
+        "explanation": "The NOT operator is used to reverse a boolean value. It's like a light switch: if the light is on, NOT will turn it off, and if it's off, NOT will turn it on."
+      },
+      "xor": {
+        "name": "XOR",
+        "symbol": "⊕",
+        "description": "Returns true if exactly one of the operands is true.",
+        "explanation": "The XOR (exclusive OR) operator returns true only when exactly one of its inputs is true. It's like a 'one or the other, but not both' situation."
+      },
+      "tableHeaderA": "A",
+      "tableHeaderB": "B",
+      "tableHeaderResult": "Result"
+    }
+  },
   "numberTheory": {
     "introduction": {
       "title": "Introduction to the Theory of Numbers",

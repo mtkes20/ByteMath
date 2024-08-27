@@ -246,7 +246,7 @@ const GraphPathsAndCycles: React.FC = () => {
         });
 
         setUserGraphExplanation(`
-            ${cycles.length} ${t('graphTheory.introduction.pathsAndCycles.cyclesDetected')}<br>
+            ${t('graphTheory.introduction.pathsAndCycles.cyclesDetected')}: ${cycles.length} <br>
             ${cycleExplanations.join('<br>')}
         `);
     };
