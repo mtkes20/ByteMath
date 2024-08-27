@@ -1,6 +1,7 @@
 import React from 'react';
 import {styled} from "@mui/material";
 import {CoursePageMainContainer, StyledCard, StyledExplanation, StyledText, Title} from "../styles/StyledComponents";
+import {useTranslation} from "react-i18next";
 
 interface BinaryOperatorRow {
     A: boolean;
@@ -24,12 +25,14 @@ interface Operator {
 }
 
 const TruthTables: React.FC = () => {
+    const {t} = useTranslation();
+
     const operators: Operator[] = [
         {
-            name: 'AND',
-            symbol: '&&',
-            description: 'Returns true if both operands are true.',
-            explanation: 'The AND operator is used when you want to check if multiple conditions are all true. It\'s like checking if you have both your keys AND your wallet before leaving the house.',
+            name: t('logicalOperands.truthTables.and.name'),
+            symbol: t('logicalOperands.truthTables.and.symbol'),
+            description: t('logicalOperands.truthTables.and.description'),
+            explanation: t('logicalOperands.truthTables.and.explanation'),
             table: [
                 {A: false, B: false, result: false},
                 {A: false, B: true, result: false},
@@ -38,10 +41,10 @@ const TruthTables: React.FC = () => {
             ]
         },
         {
-            name: 'OR',
-            symbol: '||',
-            description: 'Returns true if at least one of the operands is true.',
-            explanation: 'The OR operator is used when you want to check if at least one of multiple conditions is true. It\'s like deciding to go for a walk if it\'s either sunny OR you have an umbrella.',
+            name: t('logicalOperands.truthTables.or.name'),
+            symbol: t('logicalOperands.truthTables.or.symbol'),
+            description: t('logicalOperands.truthTables.or.description'),
+            explanation: t('logicalOperands.truthTables.or.explanation'),
             table: [
                 {A: false, B: false, result: false},
                 {A: false, B: true, result: true},
@@ -50,20 +53,20 @@ const TruthTables: React.FC = () => {
             ]
         },
         {
-            name: 'NOT',
-            symbol: '!',
-            description: 'Inverts the truth value of the operand.',
-            explanation: 'The NOT operator is used to reverse a boolean value. It\'s like a light switch: if the light is on, NOT will turn it off, and if it\'s off, NOT will turn it on.',
+            name: t('logicalOperands.truthTables.not.name'),
+            symbol: t('logicalOperands.truthTables.not.symbol'),
+            description: t('logicalOperands.truthTables.not.description'),
+            explanation: t('logicalOperands.truthTables.not.explanation'),
             table: [
                 {A: false, result: true},
                 {A: true, result: false},
             ]
         },
         {
-            name: 'XOR',
-            symbol: '⊕',
-            description: 'Returns true if exactly one of the operands is true.',
-            explanation: 'The XOR (exclusive OR) operator returns true only when exactly one of its inputs is true. It\'s like a "one or the other, but not both" situation.',
+            name: t('logicalOperands.truthTables.xor.name'),
+            symbol: t('logicalOperands.truthTables.xor.symbol'),
+            description: t('logicalOperands.truthTables.xor.description'),
+            explanation: t('logicalOperands.truthTables.xor.explanation'),
             table: [
                 {A: false, B: false, result: false},
                 {A: false, B: true, result: true},
@@ -74,15 +77,14 @@ const TruthTables: React.FC = () => {
     ];
 
     const isBinaryOperator = (op: Operator): op is Operator & { table: BinaryOperatorRow[] } => {
-        return op.name !== 'NOT';
+        return op.name !== t('logicalOperands.truthTables.not.name');
     };
 
     return (
         <CoursePageMainContainer>
-            <Title variant="h1">Logical Operators and Truth Tables</Title>
+            <Title variant="h1">{t('logicalOperands.truthTables.title')}</Title>
             <StyledText>
-                Logical operators are fundamental to programming and boolean logic. They allow us to evaluate
-                expressions and make complex decisions. Below are the truth tables for the fundamental logic gates:
+                {t('logicalOperands.truthTables.description')}
             </StyledText>
 
             {operators.map((op) => (
@@ -93,9 +95,10 @@ const TruthTables: React.FC = () => {
                     <TruthTable>
                         <thead>
                         <TableHeader>
-                            <HeaderCell>A</HeaderCell>
-                            {isBinaryOperator(op) && <HeaderCell>B</HeaderCell>}
-                            <HeaderCell>Result</HeaderCell>
+                            <HeaderCell>{t('logicalOperands.truthTables.tableHeaderA')}</HeaderCell>
+                            {isBinaryOperator(op) &&
+                                <HeaderCell>{t('logicalOperands.truthTables.tableHeaderB')}</HeaderCell>}
+                            <HeaderCell>{t('logicalOperands.truthTables.tableHeaderResult')}</HeaderCell>
                         </TableHeader>
                         </thead>
                         <tbody>
