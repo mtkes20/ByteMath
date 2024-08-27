@@ -12,6 +12,7 @@ interface KeycloakContextType {
     isAuthenticated: boolean;
     isInitialized: boolean;
     username: string | undefined;
+    email: string | undefined;
 }
 
 const KeycloakContext = createContext<KeycloakContextType>({
@@ -19,6 +20,7 @@ const KeycloakContext = createContext<KeycloakContextType>({
     isAuthenticated: false,
     isInitialized: false,
     username: undefined,
+    email: undefined,
 });
 
 export const KeycloakProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -26,6 +28,7 @@ export const KeycloakProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isInitialized, setIsInitialized] = useState(false);
     const [username, setUsername] = useState<string | undefined>(undefined);
+    const [email, setEmail] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         const initKeycloak = async () => {
@@ -42,6 +45,7 @@ export const KeycloakProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                     try {
                         await keycloak.loadUserProfile();
                         setUsername(keycloak.profile?.username);
+                        setEmail(keycloak.profile?.email)
                     } catch (error) {
                         console.error('Failed to load user profile', error);
                     }
@@ -54,7 +58,7 @@ export const KeycloakProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         initKeycloak();
     }, [keycloak]);
     return (
-        <KeycloakContext.Provider value={{ keycloak, isAuthenticated, isInitialized, username }}>
+        <KeycloakContext.Provider value={{ keycloak, isAuthenticated, isInitialized, username, email}}>
             {children}
         </KeycloakContext.Provider>
     );

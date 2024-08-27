@@ -1,11 +1,13 @@
 package ge.freeuni.bytemathservice.domain.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -29,6 +31,13 @@ public class BytemathUser {
     private Long id;
 
     private String username;
+
+    @Lob
+    @Column(name = "PROFILE_PICTURE")
+    private byte[] profilePicture;
+
+    @Column(name = "PROFILE_PICTURE_CONTENT_TYPE")
+    private String profilePictureContentType;
 
     @ManyToMany
     @JoinTable(

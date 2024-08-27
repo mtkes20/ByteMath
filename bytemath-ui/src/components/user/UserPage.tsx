@@ -1,7 +1,9 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Binary, Cable, Pencil, Sigma, User, Waypoints} from 'lucide-react';
 import './UserPage.css';
 import {useTranslation} from "react-i18next";
+import {useKeycloak} from "../../context/KeycloakProvider";
+import ProfilePictureApi from "../../api/profile-picture-api";
 
 interface Course {
     title: string;
@@ -19,46 +21,37 @@ const courses : Course[] = [
 
 const UserPage = () => {
     const [profilePicture, setProfilePicture] = useState<string | null>(null);
-    const { t } = useTranslation()
+    const { t } = useTranslation();
+    const { keycloak, isAuthenticated, username, email} = useKeycloak();
+
+    useEffect(() => {
+        const fetchProfilePicture = async () => {
+            if (isAuthenticated && keycloak) {
+                try {
+                    console.log('Fetching profile picture...');
+                    const blob = await ProfilePictureApi.getProfilePicture(keycloak.token);
+                    const imageUrl = URL.createObjectURL(blob);
+                    setProfilePicture(imageUrl);
+                    console.log('Profile picture fetched successfully');
+                } catch (error) {
+                    console.error('Error fetching profile picture:', error);
+                }
+            }
+        };
+        fetchProfilePicture();
+    }, [isAuthenticated, keycloak]);
 
     const handlePictureUpload = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
-        if (file) {
-            const formData = new FormData();
-            formData.append('picture', file);
-
-            setProfilePicture(URL.createObjectURL(file));
-
-            // try {
-            //     const response = await fetch('/api/upload-profile-picture', {
-            //         method: 'POST',
-            //         headers: {
-            //             Authorization: `Bearer ${keycloak.token}`,
-            //         },
-            //         body: formData,
-            //     });
-            //
-            //     if (response.ok) {
-            //         const result = await response.json();
-            //         setProfilePicture(result.pictureUrl);
-            //         await keycloak.updateProfile({ picture: result.pictureUrl });
-            //     } else {
-            //         console.error('Failed to upload picture');
-            //     }
-            // } catch (error) {
-            //     console.error('Error uploading picture:', error);
-            // }
+        if (file && keycloak && isAuthenticated) {
+            try {
+                await ProfilePictureApi.uploadProfilePicture(file, keycloak.token);
+                const imageUrl = URL.createObjectURL(file);
+                setProfilePicture(imageUrl);
+            } catch (error) {
+                console.error('Error uploading profile picture:', error);
+            }
         }
-    };
-
-
-
-    const user = {
-        name: "Tekl Liko",
-        email: "tekladrakoni@gmail.com",
-        progress: 65,
-        completedCourses: 2,
-        totalCourses: 4
     };
 
     return (
@@ -81,8 +74,8 @@ const UserPage = () => {
                         style={{display: 'none'}}
                     />
                 </div>
-                <h1>{user.name}</h1>
-                <p>{user.email}</p>
+                <h1>{username}</h1>
+                <p>{email}</p>
             </div>
             <div className="course-progress-grid">
                 {courses.map((course, index) => (
