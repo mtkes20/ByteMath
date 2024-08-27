@@ -6,6 +6,9 @@ import ge.freeuni.bytemathservice.repository.PageRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PageService {
 
@@ -31,5 +34,12 @@ public class PageService {
         Page page = pageRepository.findByIdentifier(identifier)
                 .orElseThrow();
         return currentBytemathUser.getReadPages().contains(page);
+    }
+
+    public List<String> getReadPages() {
+        BytemathUser currentBytemathUser = bytemathUserService.getCurrentUser();
+        return currentBytemathUser.getReadPages().stream()
+                .map(Page::getIdentifier)
+                .collect(Collectors.toList());
     }
 }

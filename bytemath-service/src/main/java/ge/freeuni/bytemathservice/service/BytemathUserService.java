@@ -19,19 +19,12 @@ public class BytemathUserService {
     }
 
     public BytemathUser getCurrentUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication == null || !(authentication.getPrincipal() instanceof Jwt)) {
-            return null;
-        }
-
-        Jwt jwt = (Jwt) authentication.getPrincipal();
+        Jwt jwt = (Jwt) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = jwt.getClaimAsString("preferred_username");
 
         return bytemathUserRepository.findByUsername(username)
                 .orElseGet(() -> createUser(jwt));
     }
-
     private BytemathUser createUser(Jwt jwt) {
         BytemathUser newBytemathUser = new BytemathUser();
         newBytemathUser.setUsername(jwt.getClaimAsString("preferred_username"));

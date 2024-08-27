@@ -1,8 +1,11 @@
 package ge.freeuni.bytemathservice.controller;
 
+import ge.freeuni.bytemathservice.domain.entity.Page;
 import ge.freeuni.bytemathservice.service.PageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/pages")
@@ -24,5 +27,11 @@ public class PageController {
     public ResponseEntity<Boolean> hasUserReadPage(@PathVariable String identifier) {
         boolean hasRead = pageService.hasUserReadPage(identifier);
         return ResponseEntity.ok(hasRead);
+    }
+
+    @GetMapping("/read")
+    public ResponseEntity<List<String>> getReadPages() {
+        List<String> readPages = pageService.getReadPages();
+        return ResponseEntity.ok(readPages);
     }
 }

@@ -34,7 +34,7 @@ public class CourseService {
 
         int readPageCount = 0;
         for (Page page : pages) {
-            if (!readPages.contains(page)) {
+            if (readPages.contains(page)) {
                 readPageCount++;
             }
         }

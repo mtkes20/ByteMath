@@ -1,112 +1,42 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useMemo, useState} from "react";
 import SideMenu from "../content-side-menu/SideMenu";
-import {CheckCircle, Code} from '@mui/icons-material';
-import {Tooltip} from "@mui/material";
+import {Code} from '@mui/icons-material';
 import Introduction from "./Introduction";
 import Converting from "./Converting";
 import Arithmetic from "./Arithmetic";
 import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
-import {useKeycloak} from "../../context/KeycloakProvider";
 import {useTranslation} from "react-i18next";
-import axios from "axios";
+import {usePage} from "../../hooks/usePage";
 
 const BinarySystemContent: React.FC = () => {
-    const [selectedItem, setSelectedItem] = useState<string>("introduction");
-    const {keycloak, isAuthenticated} = useKeycloak();
-    const timerRef = useRef<NodeJS.Timeout | null>(null);
-    const [readPages, setReadPages] = useState<Set<string>>(new Set());
+    const [currentPage, setCurrentPage] = useState<string>("BINARY_SYSTEM_INTRO");
     const { t } = useTranslation()
-
-    useEffect(() => {
-        if (isAuthenticated && keycloak?.token) {
-            fetchUserProgress();
-        }
-        return () => {
-            if (timerRef.current) {
-                clearTimeout(timerRef.current);
-            }
-        };
-    }, [isAuthenticated, keycloak?.token]);
-
-    useEffect(() => {
-        if (timerRef.current) {
-            clearTimeout(timerRef.current);
-        }
-        timerRef.current = setTimeout(() => {
-            if (isAuthenticated && keycloak?.token) {
-                markPageAsRead(selectedItem);
-            }
-        }, 5000);
-
-        return () => {
-            if (timerRef.current) {
-                clearTimeout(timerRef.current);
-            }
-        };
-    }, [selectedItem, isAuthenticated, keycloak?.token]);
-
-    const fetchUserProgress = async () => {
-        if (!keycloak?.token) return;
-
-        try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user-progress`, {
-                headers: {
-                    'Authorization': `Bearer ${keycloak.token}`
-                }
-            });
-            setReadPages(new Set(response.data.readSections || []));
-            setSelectedItem(response.data.lastReadSection || 'introduction');
-        } catch (error) {
-            console.error('Error fetching user progress:', error);
-        }
-    };
-
-    const markPageAsRead = async (pageId: string) => {
-        if (!keycloak?.token) return;
-
-        try {
-            await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/pages/read/BINARY_SYSTEM_INTRO`, {}, {
-                headers: {
-                    'Authorization': `Bearer ${keycloak.token}`,
-                    'Content-Type': 'application/json',
-                }
-            });
-            console.log('Page marked as read');
-            setReadPages(prev => new Set(prev).add(pageId));
-        } catch (error) {
-            console.error('Error marking page as read:', error);
-        }
-    };
+    const { readPages } = usePage(currentPage);
 
     const handleItemChange = (newItem: string) => {
-        setSelectedItem(newItem);
+        setCurrentPage(newItem);
     };
 
-    const menuItems = [
-        {title: t("introduction"), value: "introduction"},
-        {title: t("converting"), value: "converting"},
-        {title: t("binaryArithmetic"), value: "arithmetic"},
-    ];
+    const menuItems = useMemo(() =>{
+        return [
+            {title: t("introduction"), value: "BINARY_SYSTEM_INTRO", read: readPages.has("BINARY_SYSTEM_INTRO")},
+            {title: t("converting"), value: "BINARY_SYSTEM_CONVERTING", read: readPages.has("BINARY_SYSTEM_CONVERTING")},
+            {title: t("binaryArithmetic"), value: "BINARY_SYSTEM_ARITHMETIC", read: readPages.has("BINARY_SYSTEM_ARITHMETIC")},
+        ];
+    }, [readPages, t])
 
     return (
         <CoursePageSideMenuContainer>
             <SideMenu
                 icon={<Code/>}
                 title={t("binarySystemTitle")}
-                items={menuItems.map(item => ({
-                    ...item,
-                    icon: readPages.has(item.value) ? (
-                        <Tooltip title="Page read">
-                            <CheckCircle fontSize="small"/>
-                        </Tooltip>
-                    ) : null
-                }))}
-                selectedItem={selectedItem}
+                items={menuItems}
+                selectedItem={currentPage}
                 setSelectedItem={handleItemChange}
             />
-            {selectedItem === "introduction" && <Introduction/>}
-            {selectedItem === "converting" && <Converting/>}
-            {selectedItem === "arithmetic" && <Arithmetic/>}
+            {currentPage === "BINARY_SYSTEM_INTRO" && <Introduction/>}
+            {currentPage === "BINARY_SYSTEM_CONVERTING" && <Converting/>}
+            {currentPage === "BINARY_SYSTEM_ARITHMETIC" && <Arithmetic/>}
         </CoursePageSideMenuContainer>
     );
 };

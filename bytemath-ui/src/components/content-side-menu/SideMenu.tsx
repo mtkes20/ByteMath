@@ -6,26 +6,28 @@ import ListItemText from '@mui/material/ListItemText';
 import {Box, Paper} from "@mui/material";
 import {jsx} from "@emotion/react";
 import JSX = jsx.JSX;
+import {CheckCircle} from "@mui/icons-material";
 
 interface SideMenuProps {
     icon: JSX.Element;
     title: string;
-    items: { title: string, value: string, icon?: JSX.Element | null }[];
+    items: { title: string, value: string, read: boolean }[];
     selectedItem: string;
     setSelectedItem: (item: any) => void
 }
 
-const SideMenu: React.FC<SideMenuProps> = ({ icon, title, items, selectedItem, setSelectedItem }) => {
+const SideMenu: React.FC<SideMenuProps> = ({icon, title, items, selectedItem, setSelectedItem}) => {
 
     const handleItemClick = (value: string) => {
         setSelectedItem(value);
     };
 
     return (
-        <Box sx={{ width: 300, backgroundColor: "#1a1a1a", color: "white", height: "100%" }}>
+        <Box sx={{width: 300, backgroundColor: "#1a1a1a", color: "white", height: "100%"}}>
             <Paper sx={{
                 backgroundColor: "#1a1a1a",
-                height: "100%" }}>
+                height: "100%"
+            }}>
                 <List>
                     <ListItem style={{
                         display: "flex",
@@ -50,7 +52,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ icon, title, items, selectedItem, s
                                           fontWeight: 'bold',
                                           color: 'white',
                                           fontFamily: "Roboto",
-                            }}
+                                      }}
                         />
                     </ListItem>
                     {items.map((item) => (
@@ -80,19 +82,22 @@ const SideMenu: React.FC<SideMenuProps> = ({ icon, title, items, selectedItem, s
                             }}
                             onClick={() => handleItemClick(item.value)}
                         >
-                            <ListItemText style={{
-                                color: selectedItem === item.value ? "#800080" : "white",
-                                fontFamily: "Roboto",
-                            }} primary={item.title} />
+                            <ListItemText
+                                style={{
+                                    color: selectedItem === item.value ? "#800080" : "white",
+                                    fontFamily: "Roboto",
+                                }}
+                                primary={item.title}
+                            />
                             {
-                                !!item.icon &&
-                                <div style={{
+                                item.read &&
+                                <ListItemIcon style={{
                                     width: "20px",
+                                    color: "#5C6BC0",
+                                    justifyContent: "flex-end",
                                 }}>
-                                    <ListItemIcon style={{
-                                        color: "#5C6BC0"
-                                    }}>{item.icon}</ListItemIcon>
-                                </div>
+                                    <CheckCircle fontSize="small"/>
+                                </ListItemIcon>
                             }
                         </ListItem>
                     ))}
