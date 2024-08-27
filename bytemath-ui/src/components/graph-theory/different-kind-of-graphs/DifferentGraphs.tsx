@@ -42,7 +42,6 @@ const DifferentGraphs = () => {
             <StyledCard>
                 {!!quizData && !isQuizLoading && !quizError && (
                     <Quiz
-                        refetchQuiz={refetchQuiz}
                         quizResponse={quizData}
                         identifier={"DIFFERENT_GRAPHS"}
                     />

@@ -36,7 +36,6 @@ const GraphTraversals = () => {
             <StyledCard>
                 {!!quizData && !isQuizLoading && !quizError && (
                     <Quiz
-                        refetchQuiz={refetchQuiz}
                         quizResponse={quizData}
                         identifier={"GRAPH_TRAVERSALS"}
                     />
