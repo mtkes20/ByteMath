@@ -6,6 +6,7 @@ import {useTranslation} from 'react-i18next';
 import DifferentGraphs from "./different-kind-of-graphs/DifferentGraphs";
 import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
 import GraphTraversals from "./graph-traversals/GraphTraversals";
+import GraphAlgorithms from "./graph-algorithms/GraphAlgorithms";
 import {usePage} from "../../hooks/usePage";
 
 const TheoryOfGraphsContent: React.FC = () => {
@@ -17,7 +18,8 @@ const TheoryOfGraphsContent: React.FC = () => {
         return [
             {title: t('introduction'), value: "GRAPH_THEORY_INTRO", read: readPages.has("GRAPH_THEORY_INTRO")},
             {title: t('graphTheory.differentGraphs.title'), value: "GRAPH_THEORY_DIFFERENT_GRAPHS", read: readPages.has("GRAPH_THEORY_DIFFERENT_GRAPHS")},
-            {title: t('graphTheory.graphTraversals.title'), value: "GRAPH_THEORY_GRAPH_TRAVERSALS", read: readPages.has("GRAPH_THEORY_GRAPH_TRAVERSALS")}
+            {title: t('graphTheory.graphTraversals.title'), value: "GRAPH_THEORY_GRAPH_TRAVERSALS", read: readPages.has("GRAPH_THEORY_GRAPH_TRAVERSALS")},
+            {title: t('graphTheory.graphAlgorithms.title'), value: "GRAPH_THEORY_ALGORITHMS", read: readPages.has("GRAPH_THEORY_ALGORITHMS")}
         ];
     }, [readPages, t])
 
@@ -33,6 +35,7 @@ const TheoryOfGraphsContent: React.FC = () => {
             {selectedItem === "GRAPH_THEORY_INTRO" && <Introduction/>}
             {selectedItem === "GRAPH_THEORY_DIFFERENT_GRAPHS" && <DifferentGraphs/>}
             {selectedItem === "GRAPH_THEORY_GRAPH_TRAVERSALS" && <GraphTraversals/>}
+            {selectedItem === "GRAPH_THEORY_ALGORITHMS" && <GraphAlgorithms/>}
         </CoursePageSideMenuContainer>
     );
 }

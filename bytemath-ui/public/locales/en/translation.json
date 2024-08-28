@@ -761,6 +761,21 @@
         "resetGraph": "Reset Graph"
       }
     },
+    "graphAlgorithms": {
+      "title": "Graph Algorithms",
+      "graphIsomorphism": {
+        "title": "Graph Isomorphism",
+        "introduction": "Graph isomorphism is a fundamental concept in graph theory that helps us understand when two graphs have the same structure, regardless of how they're drawn or labeled.",
+        "definitionTitle": "What is Graph Isomorphism?",
+        "definition": "Two graphs G and H are considered isomorphic if there exists a bijective function f from the vertices of G to the vertices of H such that any two vertices u and v are adjacent in G if and only if f(u) and f(v) are adjacent in H. In simpler terms, isomorphic graphs have the same structure and can be transformed into each other by relabeling the vertices.",
+        "determinationTitle": "How to Determine Isomorphism",
+        "determination": "Determining whether two graphs are isomorphic can be challenging. Here are some key steps:\n\n1. Check if the graphs have the same number of vertices and edges.\n2. Compare the degree sequences of both graphs.\n3. Look for cycles of the same length in both graphs.\n4. Check for the presence of similar subgraphs.\n\nHowever, these are necessary but not sufficient conditions. The only way to prove isomorphism is to find a bijective mapping between the vertices that preserves adjacency.",
+        "exampleDescription": "Below are two isomorphic graphs. Although they look different, they have the same structure.",
+        "isomorphicResult": "The graphs are isomorphic! They have the same structure despite potentially different layouts or labels.",
+        "nonIsomorphicResult": "The graphs are not isomorphic. They have different structures.",
+        "interactiveDescription": "Click on the graph area to add nodes. Click on two nodes consecutively to create an edge between them. Use the buttons below to check for isomorphism or reset the graphs."
+      }
+    },
     "graphProblems": {
       "title": "Problems for Graph Theory"
     }
