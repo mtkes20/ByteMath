@@ -30,6 +30,26 @@
   "result": "შედეგი",
   "wantToTakeQuiz": "გსურთ, რომ შეავსოთ ქვიზი?",
   "viewResults": "შედეგების ნახვა",
+  "problems": {
+    "selectProblem": "აირჩიეთ ამოცანა",
+    "description": "აღწერა:",
+    "difficulty": "სირთულე:",
+    "task": "დავალება:",
+    "inputFormat": "შემომავალი მონაცემების ფორმატი:",
+    "outputFormat": "დასაბრუნებელი მონაცემების ფორმატი:",
+    "example": "მაგალითი:",
+    "note": "შენიშვნა:",
+    "language": "ენა",
+    "runCode": "გაუშვი კოდი",
+    "running": "მიმდინარეობს...",
+    "output": "შედეგი:",
+    "testCase": "ტესტი",
+    "testCaseSuccessful": "წარმატებულია",
+    "testCaseFailed": "არაწარმატებულია",
+    "expectedResult": "სასურველი შედეგი",
+    "gotResult": "ამოხსნის შედეგი",
+    "codeAndTestsRunning": "მიმდინარეობს კოდისა და ტესტების გაშვება..."
+  },
   "binarySystem": {
     "introduction": {
       "title": "ორობითი სისტემის გაგება",

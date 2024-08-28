@@ -2,33 +2,36 @@ import {Grid} from "@mui/material";
 import {StyledExplanation, StyledText, SubContent, Subtitle} from "../styles/StyledComponents";
 import React from "react";
 import {ProblemType} from "../../types/ProblemType";
+import {useTranslation} from "react-i18next";
 
 
 const ProblemDescription = ({problem}: {
     problem: ProblemType
 }) => {
+    const {t} = useTranslation();
+
 
     return (
         <Grid item xs={12} md={6}>
             <SubContent>
-                <Subtitle>Description</Subtitle>
+                <Subtitle>{t('problems.description')}</Subtitle>
                 <StyledText>{problem.description}</StyledText>
 
-                <Subtitle>Task</Subtitle>
+                <Subtitle>{t('problems.task')}</Subtitle>
                 <StyledText>{problem.task}</StyledText>
 
-                <Subtitle>Input Format</Subtitle>
+                <Subtitle>{t('problems.inputFormat')}</Subtitle>
                 <StyledText>{problem.inputFormat}</StyledText>
 
-                <Subtitle>Output Format</Subtitle>
+                <Subtitle>{t('problems.outputFormat')}</Subtitle>
                 <StyledText>{problem.outputFormat}</StyledText>
 
-                <Subtitle>Example</Subtitle>
+                <Subtitle>{t('problems.example')}</Subtitle>
                 <StyledText>{problem.example}</StyledText>
 
                 {problem.note && (
                     <>
-                        <Subtitle>Note</Subtitle>
+                        <Subtitle>{t('problems.note')}</Subtitle>
                         <StyledExplanation>{problem.note}</StyledExplanation>
                     </>
                 )}

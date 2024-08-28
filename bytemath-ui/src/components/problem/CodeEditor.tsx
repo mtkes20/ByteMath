@@ -4,11 +4,14 @@ import Editor, {Monaco, OnMount} from "@monaco-editor/react";
 import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {ProblemType} from "../../types/ProblemType";
+import {useTranslation} from "react-i18next";
 
 type ProgrammingLanguage = 'python' | 'java';
 
 
 const CodeEditor = ({problem}: { problem: ProblemType }) => {
+    const {t} = useTranslation();
+
     const [language, setLanguage] = useState<ProgrammingLanguage>('python');
     const [code, setCode] = useState<string>(problem.pythonTemplate);
     const [output, setOutput] = useState<string>('');
@@ -78,7 +81,8 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
 
     const handleRunCode = async () => {
         setIsRunning(true);
-        setOutput('Running code and tests...\n');
+        setOutput(`${t('problems.codeAndTestsRunning')}
+`);
 
         try {
             for (let i = 0; i < problem.testCases.length; i++) {
@@ -94,9 +98,9 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
                 const testOutput = response.data.run.output.trim().split('\n').pop() || '';
                 const passed = testOutput === testCase.expectedOutput.toString();
 
-                setOutput(prevOutput => prevOutput + `Test case ${i + 1}: ${passed ? 'Passed' : 'Failed'}\n`);
+                setOutput(prevOutput => `${prevOutput + t('problems.testCase')} ${i + 1}: ${passed ? t('problems.testCaseSuccessful') : t('problems.testCaseFailed')}\n`);
                 if (!passed) {
-                    setOutput(prevOutput => prevOutput + `Expected: ${testCase.expectedOutput}, Got: ${testOutput}\n`);
+                    setOutput(prevOutput => `${prevOutput + t('problems.expectedResult')}: ${testCase.expectedOutput}, ${t('problems.gotResult')}: ${testOutput}\n`);
                 }
             }
         } catch (error) {
@@ -130,7 +134,7 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
                     gap: "20px",
                     alignItems: "center"
                 }}>
-                    <Subtitle>Language</Subtitle>
+                    <Subtitle>{t('problems.language')}</Subtitle>
                     <StyledTextField
                         style={{
                             width: "300px"
@@ -176,10 +180,10 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
                     onClick={handleRunCode}
                     disabled={isRunning}
                 >
-                    {isRunning ? 'Running...' : 'Run Code'}
+                    {isRunning ? t('problems.running') : t('problems.runCode')}
                 </StyledButton>
 
-                <Subtitle>Output</Subtitle>
+                <Subtitle>{t('problems.output')}</Subtitle>
                 <StyledText style={{whiteSpace: 'pre-wrap', wordBreak: 'break-word'}}>
                     {output}
                 </StyledText>

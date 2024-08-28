@@ -30,6 +30,26 @@
   "result": "Result",
   "wantToTakeQuiz": "Want to take a quiz?",
   "viewResults": "View Results",
+  "problems": {
+    "selectProblem": "Select a Problem",
+    "description": "Description:",
+    "difficulty": "Difficulty:",
+    "task": "Task:",
+    "inputFormat": "Input Format:",
+    "outputFormat": "Output Format:",
+    "example": "Example:",
+    "note": "Note:",
+    "language": "Language",
+    "runCode": "Run Code",
+    "running": "Running...",
+    "output": "Output:",
+    "testCase": "Test Case",
+    "testCaseSuccessful": "Successful",
+    "testCaseFailed": "Failed",
+    "expectedResult": "Expected",
+    "gotResult": "Got",
+    "codeAndTestsRunning": "Running code and tests..."
+  },
   "binarySystem": {
     "introduction": {
       "title": "Understanding the Binary System",
