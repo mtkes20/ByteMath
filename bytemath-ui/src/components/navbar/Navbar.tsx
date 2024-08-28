@@ -1,10 +1,20 @@
-import React, { useState, MouseEventHandler } from 'react';
-import { Button, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from "@mui/material";
-import { AccountTree, Code, ExpandLess, ExpandMore, Functions, SettingsInputComponent } from '@mui/icons-material';
+import React, {useState, MouseEventHandler, useEffect} from 'react';
+import {Avatar, Button, ListItemIcon, ListItemText, Menu, MenuItem, Typography} from "@mui/material";
+import {
+    AccountTree,
+    Code, ExitToApp,
+    ExpandLess,
+    ExpandMore,
+    Functions,
+    Person,
+    SettingsInputComponent
+} from '@mui/icons-material';
 import LoginButton from "./LoginButton";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import ProfilePictureApi from "../../api/profile-picture-api";
+import {useKeycloak} from "../../context/KeycloakProvider";
 
 interface NavbarProps {
     language: 'en' | 'ka';
@@ -13,21 +23,56 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+    const [profileAnchorEl, setProfileAnchorEl] = useState<HTMLElement | null>(null);
+    const [profilePicture, setProfilePicture] = useState<string | null>(null);
     const open = Boolean(anchorEl);
+    const profileMenuOpen = Boolean(profileAnchorEl);
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const { isAuthenticated, keycloak } = useKeycloak();
+
+    useEffect(() => {
+        const fetchProfilePicture = async () => {
+            if (isAuthenticated && keycloak) {
+                try {
+                    console.log('Fetching profile picture...');
+                    const blob = await ProfilePictureApi.getProfilePicture(keycloak.token);
+                    const imageUrl = URL.createObjectURL(blob);
+                    setProfilePicture(imageUrl);
+                    console.log('Profile picture fetched successfully');
+                } catch (error) {
+                    console.error('Error fetching profile picture:', error);
+                }
+            }
+        };
+        fetchProfilePicture();
+    }, [isAuthenticated, keycloak]);
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-        const target = e.currentTarget as HTMLElement;
-        setAnchorEl(target);
+        setAnchorEl(e.currentTarget);
     };
 
     const handleClose = () => {
         setAnchorEl(null);
     };
 
+    const handleProfileClick: MouseEventHandler<HTMLDivElement> = (e) => {
+        setProfileAnchorEl(e.currentTarget);
+    };
+
+    const handleProfileClose = () => {
+        setProfileAnchorEl(null);
+    };
+
     const onSelect = (course: string) => {
         navigate("courses/" + course);
+    };
+
+    const handleLogout = () => {
+        keycloak?.logout()
+            .then(() => {
+            })
+            .catch(console.error);
     };
 
     return (
@@ -111,8 +156,32 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                 flex: 1,
                 justifyContent: "flex-end"
             }}>
-                <LanguageSwitcher language={language} onLanguageChange={onLanguageChange} />
-                <LoginButton />
+                <LanguageSwitcher language={language} onLanguageChange={onLanguageChange}/>
+                {isAuthenticated ? (
+                    <div onClick={handleProfileClick} style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+                        <Avatar src={profilePicture || undefined} alt={keycloak?.tokenParsed?.name || "User"} />
+                    </div>
+                ) : (
+                    <LoginButton />
+                )}
+                <Menu
+                    anchorEl={profileAnchorEl}
+                    open={profileMenuOpen}
+                    onClose={handleProfileClose}
+                >
+                    <MenuItem onClick={() => { navigate('/user'); handleProfileClose(); }}>
+                        <ListItemIcon>
+                            <Person fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText>{keycloak?.tokenParsed?.name || ""}</ListItemText>
+                    </MenuItem>
+                    <MenuItem onClick={() => { handleLogout(); handleProfileClose(); }}>
+                        <ListItemIcon>
+                            <ExitToApp fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText>Logout</ListItemText>
+                    </MenuItem>
+                </Menu>
             </div>
         </div>
     );

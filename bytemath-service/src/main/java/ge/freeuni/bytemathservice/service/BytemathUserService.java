@@ -1,5 +1,4 @@
 package ge.freeuni.bytemathservice.service;
-
 import ge.freeuni.bytemathservice.domain.entity.BytemathUser;
 import ge.freeuni.bytemathservice.repository.BytemathUserRepository;
 import org.springframework.security.core.Authentication;
@@ -13,15 +12,16 @@ import java.io.IOException;
 @Service
 public class BytemathUserService {
     private final BytemathUserRepository bytemathUserRepository;
-
     public BytemathUserService(BytemathUserRepository bytemathUserRepository) {
         this.bytemathUserRepository = bytemathUserRepository;
     }
-
     public BytemathUser getCurrentUser() {
-        Jwt jwt = (Jwt) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !(authentication.getPrincipal() instanceof Jwt)) {
+            return null;
+        }
+        Jwt jwt = (Jwt) authentication.getPrincipal();
         String username = jwt.getClaimAsString("preferred_username");
-
         return bytemathUserRepository.findByUsername(username)
                 .orElseGet(() -> createUser(jwt));
     }
