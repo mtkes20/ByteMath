@@ -21,7 +21,7 @@ const DifferentGraphs = () => {
             <RegularGraphs/>
             <CompleteGraphs/>
             <TreeGraphs/>
-            <Quiz identifier={"DIFFERENT_GRAPHS"}/>
+            <Quiz identifier={"GRAPH_THEORY_DIFFERENT_GRAPHS"}/>
         </CoursePageMainContainer>
     );
 };

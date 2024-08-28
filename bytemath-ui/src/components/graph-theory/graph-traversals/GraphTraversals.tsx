@@ -1,5 +1,5 @@
 import React from 'react';
-import {CoursePageMainContainer, StyledCard, Title} from "../../styles/StyledComponents";
+import {CoursePageMainContainer, Title} from "../../styles/StyledComponents";
 import {useTranslation} from "react-i18next";
 
 import BreadthFirstSearch from "./BreadthFirstSearch";
@@ -16,9 +16,7 @@ const GraphTraversals = () => {
             <DepthFirstSearch/>
             {/*<DijkstrasAlgorithm />*/}
 
-            <StyledCard>
-                <Quiz identifier={"GRAPH_TRAVERSALS"}/>
-            </StyledCard>
+            <Quiz identifier={"GRAPH_THEORY_GRAPH_TRAVERSALS"}/>
         </CoursePageMainContainer>
     );
 };
