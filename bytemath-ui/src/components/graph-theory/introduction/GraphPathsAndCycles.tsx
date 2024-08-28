@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import cytoscape, {Core, NodeCollection, NodeSingular, Stylesheet} from 'cytoscape';
 import {Grid} from "@mui/material";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import DeleteIcon from '@mui/icons-material/Delete';
 import {
     StyledButton,
     StyledCard,
@@ -20,8 +20,8 @@ const colors = {
     highlightColor: '#d36f30',
     selectedNode: '#47c522',
     cycleColors: [
-        '#dc6d49', '#cd6aaa', '#ef42ef', '#eded1d', '#00B3E6',
-        '#b7d145', '#1c53dd', '#ae17d8', '#95ed95', '#B34D4D',
+        '#dc6d49', '#cd6aaa', '#ef42ef', '#f6f632', '#00B3E6',
+        '#5e710a', '#1c53dd', '#ae17d8', '#73ed73', '#B34D4D',
     ]
 };
 
@@ -203,10 +203,13 @@ const GraphPathsAndCycles: React.FC = () => {
         };
 
         const normalizeCycle = (cycle: string[]): string => {
-            const variances = cycle.map((_, i) =>
-                [...cycle.slice(i), ...cycle.slice(0, i)].join(',')
-            );
-            return variances.sort()[0];
+            const sorted = [...cycle].sort((a, b) => Number(a) - Number(b));
+            const min = sorted[0];
+            const indMin = cycle.indexOf(min);
+            const rot = [...cycle.slice(indMin), ...cycle.slice(0, indMin)];
+            const rev = [...rot].reverse();
+            rev.unshift(rev.pop()!);
+            return rot < rev ? rot.join(',') : rev.join(',');
         };
 
         all.forEach((node: NodeSingular) => {
@@ -251,7 +254,7 @@ const GraphPathsAndCycles: React.FC = () => {
         `);
     };
 
-    const resetUserGraph = () => {
+    const deleteUserGraph = () => {
         if (userCy) {
             userCy.elements().remove();
             setUserGraphExplanation('');
@@ -298,8 +301,8 @@ const GraphPathsAndCycles: React.FC = () => {
                         </StyledButton>
                     </Grid>
                     <Grid item>
-                        <StyledButton onClick={resetUserGraph}>
-                            <RestartAltIcon/>
+                        <StyledButton onClick={deleteUserGraph}>
+                            <DeleteIcon/>
                         </StyledButton>
                     </Grid>
                 </Grid>
