@@ -177,7 +177,7 @@ export const StyledTermItem = styled('li')<{ active?: boolean }>(({active}) => (
     cursor: 'pointer',
     padding: '15px',
     marginBottom: '15px',
-    backgroundColor: active ? 'orange' : '#dfe8d3',
+    backgroundColor: active ? 'orange' : '#bee6ed',
     borderRadius: '5px',
     transition: 'all 0.3s ease',
     '&:hover': {
@@ -196,6 +196,7 @@ export const StyledGraphContainer = styled('div')({
     height: '400px',
     border: '1px solid #ccc',
     margin: '20px 0',
+    backgroundColor: 'rgba(57,52,52,0.5)',
 });
 
 export const StyledSlider = styled(Slider)(({theme}) => ({

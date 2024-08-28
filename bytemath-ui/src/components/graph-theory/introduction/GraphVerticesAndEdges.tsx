@@ -147,9 +147,9 @@ const GraphVerticesAndEdges: React.FC = () => {
                         <StyledText>
                             {t('graphTheory.introduction.verticesAndEdges.description')}
                         </StyledText>
-                        <StyledTermItem
-                            onClick={() => handleTermSelection('vertices')}
-                            active={highlightedTerm === 'vertices'}
+                        <StyledTermItem style={{marginTop: '15px', marginBottom: '15px'}}
+                                        onClick={() => handleTermSelection('vertices')}
+                                        active={highlightedTerm === 'vertices'}
                         >
                             <strong>{t('graphTheory.introduction.verticesAndEdges.vertices.label')}:</strong> {t('graphTheory.introduction.verticesAndEdges.vertices.description')}
                         </StyledTermItem>
@@ -159,7 +159,7 @@ const GraphVerticesAndEdges: React.FC = () => {
                         >
                             <strong>{t('graphTheory.introduction.verticesAndEdges.edges.label')}:</strong> {t('graphTheory.introduction.verticesAndEdges.edges.description')}
                         </StyledTermItem>
-                        <StyledExplanation>
+                        <StyledExplanation style={{marginBottom: '15px'}}>
                             {t('graphTheory.introduction.verticesAndEdges.explanation')}
                         </StyledExplanation>
                         <StyledInteractionPrompt>
