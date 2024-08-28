@@ -28,6 +28,8 @@
   "welcome": "მოგესალმებით",
   "complete": "შესრულებული",
   "result": "შედეგი",
+  "wantToTakeQuiz": "გსურთ, რომ შეავსოთ ქვიზი?",
+  "viewResults": "შედეგების ნახვა",
   "binarySystem": {
     "introduction": {
       "title": "ორობითი სისტემის გაგება",

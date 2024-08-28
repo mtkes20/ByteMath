@@ -7,6 +7,7 @@ import ProfilePictureApi from "../../api/profile-picture-api";
 import CourseApi from "../../api/course-api";
 import {useQuery} from "@tanstack/react-query";
 import {Skeleton} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 interface Course {
     title: string;
@@ -26,6 +27,11 @@ const UserPage = () => {
     const [profilePicture, setProfilePicture] = useState<string | null>(null);
     const {t} = useTranslation();
     const {keycloak, isAuthenticated, username, email} = useKeycloak();
+    const navigate = useNavigate();
+
+    if (!isAuthenticated) {
+        navigate('/');
+    }
 
     const fetchProgress = async (name: string) => {
         return await CourseApi.getCourseProgress(name, keycloak?.token)
@@ -144,13 +150,20 @@ const UserPage = () => {
                                     transition: "transform 0.3s ease",
                                     transformOrigin: "top",
                                 }}
-                            /> : <div key={index} className="course-progress-card"
-                                 style={{
-                                     backgroundColor: course.color,
-                                     cursor: "pointer"
-                                 }}>
+                            /> :
+                            <div
+                                key={index}
+                                className="course-progress-card"
+                                onClick={() => navigate(`/courses/${course.value}`)}
+                                style={{
+                                    backgroundColor: course.color,
+                                    cursor: "pointer"
+                                }}>
                                 <course.icon className="course-icon"/>
-                                <h2>{t(course.title)}</h2>
+                                <h2 style={{
+                                    alignContent: "center",
+                                    minHeight: "75px",
+                                }}>{t(course.title)}</h2>
                                 <div className="progress-bar">
                                     <div className="progress"
                                          style={{

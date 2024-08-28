@@ -14,6 +14,10 @@ export const useQuiz = (initialQuizResponse: QuizResponse, identifier: string) =
     const { i18n } = useTranslation();
 
     useEffect(() => {
+        setQuizResponse(initialQuizResponse)
+    }, [initialQuizResponse]);
+
+    useEffect(() => {
         const savedAnswers = sessionStorage.getItem(`quiz_${identifier}_answers`);
         if (savedAnswers) {
             setAnswers(JSON.parse(savedAnswers));

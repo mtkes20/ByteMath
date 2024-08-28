@@ -1,8 +1,4 @@
 import BinaryVisualization from "./BinaryVisualization";
-import {QuizResponse} from "../../types/QuizType";
-import Quiz from "../quizz/Quiz";
-import {useQuery} from "@tanstack/react-query";
-import QuizApi from "../../api/quiz-api";
 import {useTranslation} from "react-i18next";
 import {
     CoursePageMainContainer,
@@ -13,30 +9,11 @@ import {
     Title
 } from "../styles/StyledComponents";
 import {useKeycloak} from "../../context/KeycloakProvider";
+import Quiz from "../quiz/Quiz";
 
 
 const Introduction = () => {
-    const {i18n, t} = useTranslation()
-    const {keycloak} = useKeycloak();
-
-    const fetchQuiz = async () => {
-        return await QuizApi.getQuiz(
-            "BINARY_SYSTEM_INTRO",
-            i18n.resolvedLanguage == 'en' ? "ENG" : "GEO",
-            keycloak?.token
-        )
-    }
-
-    const {
-        data: quizData,
-        error: quizError,
-        isLoading: isQuizLoading,
-        refetch: refetchQuiz
-    } = useQuery<QuizResponse | undefined>({
-        queryKey: ["quiz"],
-        queryFn: fetchQuiz
-    })
-
+    const { t} = useTranslation()
 
     return (
         <CoursePageMainContainer>
@@ -83,12 +60,7 @@ const Introduction = () => {
                 ))}
             </StyledList>
             <BinaryVisualization/>
-            {
-                !!quizData && <Quiz
-                    quizResponse={quizData}
-                    identifier={"BINARY_SYSTEM_INTRO"}
-                />
-            }
+            <Quiz identifier={"BINARY_SYSTEM_INTRO"}/>
         </CoursePageMainContainer>
     )
 }

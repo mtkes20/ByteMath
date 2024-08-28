@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import {
     CoursePageMainContainer,
     StyledList,
@@ -7,34 +7,14 @@ import {
     Subtitle,
     Title
 } from "../styles/StyledComponents";
-import Quiz from "../quizz/Quiz";
 import QuizApi from "../../api/quiz-api";
-import { useQuery } from "@tanstack/react-query";
-import { QuizResponse } from "../../types/QuizType";
-import { SubmittedQuiz } from "../../types/SubmittedQuiz";
+import {useQuery} from "@tanstack/react-query";
+import {QuizResponse} from "../../types/QuizType";
+import {SubmittedQuiz} from "../../types/SubmittedQuiz";
+import Quiz from "../quiz/Quiz";
 
 const Introduction = () => {
     const { t, i18n } = useTranslation();
-
-    const fetchQuiz = async () => {
-        return await QuizApi.getQuiz("LOGICAL_OPERANDS_INTRO", i18n.resolvedLanguage === 'en' ? "ENG" : "GEO");
-    };
-
-    const {
-        data: quizData,
-        error: quizError,
-        isLoading: isQuizLoading,
-        refetch: refetchQuiz
-    } = useQuery<QuizResponse | undefined>({
-        queryKey: ["quiz"],
-        queryFn: fetchQuiz
-    });
-
-    // TODO: add submit handler
-    const handleQuizSubmit = (answers: SubmittedQuiz) => {
-        // Send answers to the backend
-        console.log(answers);
-    };
 
     return (
         <CoursePageMainContainer>
@@ -60,10 +40,7 @@ const Introduction = () => {
             <StyledText>
                 {t('logicalOperands.introduction.progressNote')}
             </StyledText>
-            { !!quizData && <Quiz
-                quizResponse={quizData}
-                identifier={"LOGICAL_OPERANDS_INTRO"}
-            /> }
+            <Quiz  identifier={"LOGICAL_OPERANDS_INTRO"}/>
         </CoursePageMainContainer>
     );
 }

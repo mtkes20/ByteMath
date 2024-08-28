@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button, styled, Typography} from "@mui/material";
 import SingleChoice from "./SingleChoice";
 import TextChoice from "./TextChoice";
@@ -7,17 +7,20 @@ import {Question, QuestionType, QuizResponse} from "../../types/QuizType";
 import {useQuiz} from "../../hooks/useQuiz";
 import QuizApi from "../../api/quiz-api";
 import {useKeycloak} from "../../context/KeycloakProvider";
+import {StyledCard} from "../styles/StyledComponents";
+import {useTranslation} from "react-i18next";
 
 interface QuizProps {
     quizResponse: QuizResponse;
     identifier: string;
 }
 
-const Quiz: React.FC<QuizProps> = ({
+const QuizQuestions: React.FC<QuizProps> = ({
                                        quizResponse: initialQuizResponse,
                                        identifier,
                                    }) => {
     const { keycloak, isAuthenticated } = useKeycloak();
+    const { t } = useTranslation();
     const {
         quizResponse,
         answers,
@@ -54,36 +57,38 @@ const Quiz: React.FC<QuizProps> = ({
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <MainContainer>
-                <QuizTitle>
-                    {quizResponse.quiz.title}
-                </QuizTitle>
-                <Questions>
-                    {quizResponse.quiz.questions.map((question : Question, index : number) => (
-                        <StyledQuestion key={question.id}>
-                            <QuestionTitle>{`${index + 1}. ${question.questionText}`}</QuestionTitle>
-                            {question.questionType === QuestionType.SINGLE_CHOICE ? (
-                                <SingleChoice
-                                    question={question}
-                                    answers={answers}
-                                    setAnswers={setAnswers}
-                                />
-                            ) : (
-                                <TextChoice
-                                    question={question}
-                                    answers={answers}
-                                    setAnswers={setAnswers}
-                                />
-                            )}
-                        </StyledQuestion>
-                    ))}
-                </Questions>
-                <div style={{display: "flex"}}>
-                    <SubmitButton type="submit">Submit Quiz</SubmitButton>
-                </div>
-            </MainContainer>
-        </form>
+        <StyledCard>
+            <form onSubmit={handleSubmit}>
+                <MainContainer>
+                    <QuizTitle >
+                        {quizResponse.quiz.title}
+                    </QuizTitle>
+                    <Questions>
+                        {quizResponse.quiz.questions.map((question: Question, index: number) => (
+                            <StyledQuestion key={question.id}>
+                                <QuestionTitle>{`${index + 1}. ${question.questionText}`}</QuestionTitle>
+                                {question.questionType === QuestionType.SINGLE_CHOICE ? (
+                                    <SingleChoice
+                                        question={question}
+                                        answers={answers}
+                                        setAnswers={setAnswers}
+                                    />
+                                ) : (
+                                    <TextChoice
+                                        question={question}
+                                        answers={answers}
+                                        setAnswers={setAnswers}
+                                    />
+                                )}
+                            </StyledQuestion>
+                        ))}
+                    </Questions>
+                    <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "center"}}>
+                        <SubmitButton type="submit">{t("viewResults")}</SubmitButton>
+                    </div>
+                </MainContainer>
+            </form>
+        </StyledCard>
     );
 };
 
@@ -98,7 +103,9 @@ const QuizTitle = styled(Typography)(() => ({
     fontSize: "24px",
     fontFamily: "Roboto",
     fontWeight: "bold",
-    variant: "h4"
+    variant: "h4",
+    alignSelf: "center",
+    padding: "20px"
 }))
 
 const QuestionTitle = styled(Typography)(() => ({
@@ -112,7 +119,7 @@ const QuestionTitle = styled(Typography)(() => ({
 const Questions = styled('div')(() => ({
     display: "flex",
     flexDirection: "column",
-    gap: "20px",
+    gap: "30px",
 }))
 
 
@@ -131,4 +138,4 @@ const SubmitButton = styled(Button)(() => ({
 }))
 
 
-export default Quiz;
+export default QuizQuestions;

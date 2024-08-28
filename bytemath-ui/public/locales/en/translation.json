@@ -28,6 +28,8 @@
   "welcome": "Welcome",
   "complete": "Complete",
   "result": "Result",
+  "wantToTakeQuiz": "Want to take a quiz?",
+  "viewResults": "View Results",
   "binarySystem": {
     "introduction": {
       "title": "Understanding the Binary System",
