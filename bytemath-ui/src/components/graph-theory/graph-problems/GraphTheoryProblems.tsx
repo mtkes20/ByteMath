@@ -1,22 +1,17 @@
-import React, {ReactNode, useState} from 'react';
-import {useTranslation} from 'react-i18next';
-import {CoursePageMainContainer, Title} from "../../styles/StyledComponents";
-import {countEdgesProblem} from "./problems/CountEdges";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { CoursePageMainContainer, Title } from "../../styles/StyledComponents";
 import Problem from "../../problem/Problem";
-import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, styled} from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, styled, CircularProgress } from '@mui/material';
+import { useProblems } from "../../../hooks/useProblem";
 
 const GraphTheoryProblems: React.FC = () => {
-    const {i18n} = useTranslation();
+    const { i18n, t } = useTranslation();
+    const { problems, selectedProblem, loading, selectProblem } = useProblems("GRAPH_THEORY", i18n.language);
 
-    const problems = [countEdgesProblem];
-    const [selectedProblem, setSelectedProblem] = useState(problems[0]);
-
-    const handleProblemChange = (event: SelectChangeEvent<unknown>, child: ReactNode) => {
-        const selectedProblemId = event.target.value as string;
-        const problem = problems.find(p => p.id === selectedProblemId);
-        if (problem) {
-            setSelectedProblem(problem);
-        }
+    const handleProblemChange = (event: SelectChangeEvent<unknown>) => {
+        const selectedProblemId = event.target.value as number;
+        selectProblem(selectedProblemId);
     };
 
     return (
@@ -38,8 +33,8 @@ const GraphTheoryProblems: React.FC = () => {
                 <StyledSelect
                     labelId="problem-select-label"
                     id="problem-select"
-                    value={selectedProblem.id}
-                    label="Select a Problem"
+                    value={selectedProblem?.id || ''}
+                    label={t('selectProblem')}
                     onChange={handleProblemChange}
                     // disabled={problems.length < 2}
                     sx={{
@@ -61,7 +56,11 @@ const GraphTheoryProblems: React.FC = () => {
                 </StyledSelect>
             </StyledFormControl>
 
-            <Problem problem={selectedProblem}/>
+            {loading ? (
+                <CircularProgress />
+            ) : (
+                selectedProblem && <Problem problem={selectedProblem} />
+            )}
         </CoursePageMainContainer>
     );
 };
