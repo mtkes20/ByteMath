@@ -29,3 +29,9 @@ export type ProblemSummaryType = {
     id: number;
     title: string;
 }
+
+export type ProblemCompletionStatsType = {
+    easyCompleted: number;
+    mediumCompleted: number;
+    hardCompleted: number;
+};

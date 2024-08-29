@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ProblemSummaryType, ProblemType} from "../types/ProblemType";
+import {ProblemCompletionStatsType, ProblemSummaryType, ProblemType} from "../types/ProblemType";
 
 const getProblemsByCourse = async (courseIdentifier: string, language: string = "ENG", token: string): Promise<ProblemSummaryType[]> => {
     const response = await axios.get(
@@ -30,9 +30,38 @@ const getProblemById = async (id: number, token: string): Promise<ProblemType> =
     return response.data;
 };
 
+const markProblemAsCompleted = async (id: number, token: string): Promise<void> => {
+    await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/v1/problems/${id}/complete`,
+        {},
+        {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        }
+    );
+};
+
+const getProblemCompletionStats = async (token: string): Promise<ProblemCompletionStatsType> => {
+    const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/v1/problems/completion-stats`,
+        {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        }
+    );
+
+    return response.data;
+};
+
 const ProblemApi = {
     getProblemsByCourse,
-    getProblemById
+    getProblemById,
+    markProblemAsCompleted,
+    getProblemCompletionStats
 };
 
 export default ProblemApi;
