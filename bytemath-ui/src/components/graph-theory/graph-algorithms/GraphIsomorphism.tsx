@@ -307,6 +307,9 @@ const GraphIsomorphism: React.FC = () => {
                     </Grid>
                 </Grid>
 
+                <StyledInteractionPrompt>
+                    {t('graphTheory.graphAlgorithms.graphIsomorphism.interactiveDescription')}
+                </StyledInteractionPrompt>
 
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={6}>
@@ -316,10 +319,6 @@ const GraphIsomorphism: React.FC = () => {
                         <StyledGraphContainer ref={userGraph2}/>
                     </Grid>
                 </Grid>
-
-                <StyledInteractionPrompt>
-                    {t('graphTheory.graphAlgorithms.graphIsomorphism.interactiveDescription')}
-                </StyledInteractionPrompt>
 
                 <Grid container spacing={3} justifyContent="center" style={{marginTop: '30px', marginBottom: '30px'}}>
                     <Grid item>

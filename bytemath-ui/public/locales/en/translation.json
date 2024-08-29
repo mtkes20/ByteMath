@@ -794,6 +794,19 @@
         "isomorphicResult": "The graphs are isomorphic! They have the same structure despite potentially different layouts or labels.",
         "nonIsomorphicResult": "The graphs are not isomorphic. They have different structures.",
         "interactiveDescription": "Click on the graph area to add nodes. Click on two nodes consecutively to create an edge between them. Use the buttons below to check for isomorphism or reset the graphs."
+      },
+      "spanningTree": {
+        "spanningTree": {
+          "title": "Graph Spanning Trees",
+          "introduction": "A spanning tree is a fundamental concept in graph theory, with important applications in network design, circuit analysis, and algorithms. This interactive demonstration will help you understand how spanning trees work and how they're constructed.",
+          "definitionTitle": "What is a Spanning Tree?",
+          "definition": "A spanning tree of an undirected graph is a subgraph that includes all the vertices of the original graph, with the minimum possible number of edges to form a tree (a connected graph without cycles). In other words, a spanning tree reaches all nodes while avoiding any loops.",
+          "algorithmTitle": "How to Find a Spanning Tree",
+          "algorithm": "There are several algorithms to find a spanning tree. A common approach is to use Breadth-First Search (BFS):\n1. Start from any node in the graph.\n2. Explore all unvisited neighboring nodes.\n3. For each unvisited neighbor, add the edge connecting it to the current node to the spanning tree.\n4. Repeat steps 2-3 until all nodes are visited.\nThis process ensures we reach all nodes with the minimum number of edges, creating a valid spanning tree.",
+          "exampleDescription": "Here's an example graph with a highlighted spanning tree. The teal nodes and orange edges represent the spanning tree.",
+          "exampleExplanation": "In this example, we have a graph with 8 nodes (A through H) and 12 edges. The highlighted spanning tree contains 7 edges, which is the minimum number needed to connect all 8 nodes without forming any cycles. Notice how the spanning tree reaches every node in the graph, but some edges from the original graph are not included. This demonstrates how a spanning tree maintains connectivity while minimizing the number of edges used.",
+          "interactiveDescription": "Now it's your turn! Click on the graph area to add nodes. Click on two nodes consecutively to create an edge between them. Use the 'Play' button to find a spanning tree, and the 'Delete' button to reset the graph."
+        }
       }
     },
     "graphProblems": {

@@ -2,6 +2,7 @@ import React from 'react';
 import {CoursePageMainContainer, Title} from "../../styles/StyledComponents";
 import {useTranslation} from "react-i18next";
 import GraphIsomorphism from "./GraphIsomorphism";
+import GraphSpanningTree from "./GraphSpanningTree";
 import Quiz from "../../quiz/Quiz";
 
 const GraphTraversals = () => {
@@ -12,6 +13,7 @@ const GraphTraversals = () => {
             <Title>{i18n.t('graphTheory.graphAlgorithms.title')}</Title>
 
             <GraphIsomorphism/>
+            <GraphSpanningTree/>
 
             <Quiz identifier={"GRAPH_THEORY_ALGORITHMS"}/>
         </CoursePageMainContainer>
