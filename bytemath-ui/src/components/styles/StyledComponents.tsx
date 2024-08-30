@@ -129,10 +129,11 @@ export const StyledOperatorCalculator = styled('div')({
 });
 
 export const StyledOperatorCalculatorInput = styled('div')({
-    display: "flex",
-    justifyContent: "center",
-    gap: "15px",
-    marginBottom: "15px",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '15px',
+    marginBottom: '15px',
 });
 
 export const StyledTextField = styled(TextField)(() => ({

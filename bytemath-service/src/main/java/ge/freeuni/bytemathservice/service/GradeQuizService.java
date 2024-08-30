@@ -40,7 +40,7 @@ public class GradeQuizService {
                     if (submittedAnswer != null) {
                         return gradeQuestion(submittedAnswer, question);
                     } else {
-                        return createUnansweredGradedQuestion(question);
+                        return createUnansweredGradedQuestion(question, language);
                     }
                 })
                 .collect(Collectors.toList());
@@ -54,12 +54,12 @@ public class GradeQuizService {
                 .build();
     }
 
-    private GradedQuestion createUnansweredGradedQuestion(Question question) {
+    private GradedQuestion createUnansweredGradedQuestion(Question question, String language) {
         return GradedQuestion.builder()
                 .questionId(question.getId())
                 .correct(false)
                 .correctAnswer(getCorrectAnswerText(question))
-                .userAnswer("Not answered")
+                .userAnswer(language.equals("ENG") ? "Not answered" : "არ დაფიქსირებულა")
                 .build();
     }
 

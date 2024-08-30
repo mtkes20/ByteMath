@@ -9,7 +9,7 @@ const QuizPrompt = () => {
     const {keycloak, isAuthenticated, isInitialized, username} = useKeycloak();
     const navigate = useNavigate();
     const location = useLocation();
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
 
     useEffect(() => {
         if (isAuthenticated && location.hash) {
@@ -21,10 +21,13 @@ const QuizPrompt = () => {
     const handleLogin = () => {
         if (isAuthenticated) {
             keycloak?.logout()
-                .then(() => {})
+                .then(() => {
+                })
                 .catch(console.error);
         } else {
-            keycloak?.login().catch(console.error);
+            keycloak?.login({
+                locale: i18n.language === 'ka' ? 'ka' : 'en'
+            }).catch(console.error);
         }
     };
 

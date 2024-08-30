@@ -3,95 +3,97 @@ INSERT INTO BYTEMATH.QUIZ (ID, IDENTIFIER, LANGUAGE, TITLE)
 VALUES (3, 'LOGICAL_OPERANDS_INTRO', 'ENG', 'Logical Operators Introduction Quiz');
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (13, 'What is the result of the logical AND operation between true and false?', 'SINGLE_CHOICE', 3);
+VALUES (13, 'Which of the following best describes the importance of logical operators in programming?',
+        'SINGLE_CHOICE', 3);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (43, 'true', 13, FALSE),
-       (44, 'false', 13, TRUE),
-       (45, 'true and false', 13, FALSE),
-       (46, 'undefined', 13, FALSE);
+VALUES (43, 'They are used only for arithmetic calculations', 13, FALSE),
+       (44, 'They are essential for defining conditions and controlling program flow', 13, TRUE),
+       (45, 'They are used exclusively in database management', 13, FALSE),
+       (46, 'They have no practical applications in computer science', 13, FALSE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (14, 'Which operator is used to perform a logical OR operation?', 'SINGLE_CHOICE', 3);
+VALUES (14, 'In the light switch example, what does the AND operator represent?', 'SINGLE_CHOICE', 3);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (47, '&&', 14, FALSE),
-       (48, '||', 14, TRUE),
-       (49, '!', 14, FALSE),
-       (50, '^', 14, FALSE);
+VALUES (47, 'The light is on when at least one switch is on', 14, FALSE),
+       (48, 'The light is on only when both switches are on', 14, TRUE),
+       (49, 'The light is always off regardless of the switches', 14, FALSE),
+       (50, 'The light alternates between on and off states', 14, FALSE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (15, 'What is the result of the logical NOT operation on true?', 'SINGLE_CHOICE', 3);
+VALUES (15, 'Which of the following is NOT mentioned as a topic explored in this course?', 'SINGLE_CHOICE', 3);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (51, 'true', 15, FALSE),
-       (52, 'false', 15, TRUE),
-       (53, 'undefined', 15, FALSE),
-       (54, 'null', 15, FALSE);
+VALUES (51, 'Basic logical operators', 15, FALSE),
+       (52, 'Advanced logical operators', 15, FALSE),
+       (53, 'Truth tables', 15, FALSE),
+       (54, 'Boolean algebra', 15, TRUE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (16, 'What does the logical XOR operator do?', 'SINGLE_CHOICE', 3);
+VALUES (16, 'How are logical operators used in artificial intelligence systems?', 'SINGLE_CHOICE', 3);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (55, 'Returns true if both operands are true', 16, FALSE),
-       (56, 'Returns false if both operands are false', 16, FALSE),
-       (57, 'Returns true if only one operand is true', 16, TRUE),
-       (58, 'Returns true if both operands are false', 16, FALSE);
+VALUES (55, 'They are not used in AI systems', 16, FALSE),
+       (56, 'They are used only for data storage', 16, FALSE),
+       (57, 'They play a significant role in decision-making algorithms', 16, TRUE),
+       (58, 'They are used exclusively for image processing', 16, FALSE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (17, 'In which scenarios would you use a logical operator in programming?', 'SINGLE_CHOICE', 3);
+VALUES (17, 'In the light switch example, what does the OR operator represent?', 'SINGLE_CHOICE', 3);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (59, 'To control the flow of the program based on conditions', 17, TRUE),
-       (60, 'To perform arithmetic calculations', 17, FALSE),
-       (61, 'To manipulate strings and arrays', 17, FALSE),
-       (62, 'To make decisions and execute specific code blocks', 17, FALSE);  -- Adjusted to single choice
+VALUES (59, 'The light is on if at least one of the switches is on', 17, TRUE),
+       (60, 'The light is on only when both switches are off', 17, FALSE),
+       (61, 'The light is always on regardless of the switches', 17, FALSE),
+       (62, 'The light is on when exactly one switch is on', 17, FALSE);
 
--- Updated Georgian Quiz
+-- Georgian Quiz
+-- Georgian Quiz
 INSERT INTO BYTEMATH.QUIZ (ID, IDENTIFIER, LANGUAGE, TITLE)
 VALUES (4, 'LOGICAL_OPERANDS_INTRO', 'GEO', 'ლოგიკური ოპერატორების შესავალი - ქვიზი');
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (18, 'რა არის ლოგიკური და ოპერაციის შედეგი true-სა და false-ს შორის?', 'SINGLE_CHOICE', 4);
+VALUES (18, 'რომელი აღწერს საუკეთესოდ ლოგიკური ოპერატორების მნიშვნელობას პროგრამირებაში?', 'SINGLE_CHOICE', 4);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (63, 'true', 18, FALSE),
-       (64, 'false', 18, TRUE),
-       (65, 'true და false', 18, FALSE),
-       (66, 'განუსაზღვრელი', 18, FALSE);
+VALUES (63, 'ისინი გამოიყენება მხოლოდ არითმეტიკული გამოთვლებისთვის', 18, FALSE),
+       (64, 'ისინი აუცილებელია პირობების განსაზღვრისა და პროგრამის მიმდინარეობის კონტროლისათვის', 18, TRUE),
+       (65, 'ისინი გამოიყენება მხოლოდ მონაცემთა ბაზების მართვაში', 18, FALSE),
+       (66, 'მათ არ აქვთ პრაქტიკული გამოყენება კომპიუტერულ მეცნიერებაში', 18, FALSE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (19, 'რომელი ოპერატორი გამოიყენება ლოგიკური ან ოპერაციის შესასრულებლად?', 'SINGLE_CHOICE', 4);
+VALUES (19, 'ნათურის ჩამრთველების მაგალითში რას წარმოადგენს "და" ოპერატორი?', 'SINGLE_CHOICE', 4);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (67, '&&', 19, FALSE),
-       (68, '||', 19, TRUE),
-       (69, '!', 19, FALSE),
-       (70, '^', 19, FALSE);
+VALUES (67, 'ნათურა ინთება, როცა ერთი ჩამრთველი მაინც ჩართულია', 19, FALSE),
+       (68, 'ნათურა ინთება მხოლოდ მაშინ, როცა ორივე ჩამრთველი ჩართულია', 19, TRUE),
+       (69, 'ნათურა ყოველთვის გამორთულია, მიუხედავად ჩამრთველების მდგომარეობისა', 19, FALSE),
+       (70, 'ნათურა მონაცვლეობს ჩართულ და გამორთულ მდგომარეობებს შორის', 19, FALSE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (20, 'რა არის ლოგიკური არა ოპერაციის შედეგი true-ზე?', 'SINGLE_CHOICE', 4);
+VALUES (20, 'რომელი არ არის ნახსენები, როგორც ამ კურსში შესასწავლი თემა?', 'SINGLE_CHOICE', 4);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (71, 'true', 20, FALSE),
-       (72, 'false', 20, TRUE),
-       (73, 'განუსაზღვრელი', 20, FALSE),
-       (74, 'null', 20, FALSE);
+VALUES (71, 'მარტივი ლოგიკური ოპერატორები', 20, FALSE),
+       (72, 'რთული ლოგიკური ოპერატორები', 20, FALSE),
+       (73, 'ჭეშმარიტების ცხრილები', 20, FALSE),
+       (74, 'ბულის ალგებრა', 20, TRUE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (21, 'რას აკეთებს ლოგიკური XOR ოპერატორი?', 'SINGLE_CHOICE', 4);
+VALUES (21, 'როგორ გამოიყენება ლოგიკური ოპერატორები ხელოვნური ინტელექტში?', 'SINGLE_CHOICE', 4);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (75, 'აბრუნებს true-ს, თუ ორივე ოპერანდი true-ა', 21, FALSE),
-       (76, 'აბრუნებს false-ს, თუ ორივე ოპერანდი false-ა', 21, FALSE),
-       (77, 'აბრუნებს true-ს, თუ მხოლოდ ერთი ოპერანდია true', 21, TRUE),
-       (78, 'აბრუნებს true-ს, თუ ორივე ოპერანდი false-ა', 21, FALSE);
+VALUES (75, 'ისინი არ გამოიყენება ხელოვნური ინტელექტში', 21, FALSE),
+       (76, 'ისინი გამოიყენება მხოლოდ მონაცემთა შენახვისთვის', 21, FALSE),
+       (77, 'ისინი მნიშვნელოვან როლს ასრულებენ გადაწყვეტილების მიღების ალგორითმებში', 21, TRUE),
+       (78, 'ისინი გამოიყენება მხოლოდ გამოსახულებების დამუშავებისთვის', 21, FALSE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT, QUESTION_TYPE, QUIZ_ID)
-VALUES (22, 'რა შემთხვევებში გამოიყენებთ ლოგიკურ ოპერატორებს პროგრამირებაში?', 'SINGLE_CHOICE', 4);
+VALUES (22, 'ნათურის ჩამრთველების მაგალითში რას წარმოადგენს "ან" ოპერატორი?', 'SINGLE_CHOICE', 4);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT, QUESTION_ID, IS_CORRECT)
-VALUES (79, 'პროგრამის მიმდინარეობის სამართავად პირობების საფუძველზე', 22, TRUE),
-       (80, 'არითმეტიკული გამოთვლების შესასრულებლად', 22, FALSE),
-       (81, 'სტრიქონებისა და მასივების დასამუშავებლად', 22, FALSE),
-       (82, 'გადაწყვეტილებების მისაღებად და კონკრეტული კოდის ბლოკების შესასრულებლად', 22, FALSE);
+VALUES (79, 'ნათურა ინთება, თუ ერთ-ერთი ჩამრთველი მაინც ჩართულია', 22, TRUE),
+       (80, 'ნათურა ინთება მხოლოდ მაშინ, როცა ორივე ჩამრთველი გამორთულია', 22, FALSE),
+       (81, 'ნათურა ყოველთვის ანთია, მიუხედავად ჩამრთველების მდგომარეობისა', 22, FALSE),
+       (82, 'ნათურა ინთება, როცა ზუსტად ერთი ჩამრთველია ჩართული', 22, FALSE);

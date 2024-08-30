@@ -28,7 +28,7 @@ const LogicalOperatorsContent = () => {
     return (
         <CoursePageSideMenuContainer>
             <SideMenu icon={<SettingsInputComponent fontSize="small"/>}
-                      title={"Logical Operands"}
+                      title={t("logicalOperands.title")}
                       items={menuItems}
                       selectedItem={selectedItem}
                       setSelectedItem={setSelectedItem}

@@ -291,25 +291,37 @@
     "title": "Logical Operands",
     "introduction": {
       "title": "Introduction",
-      "description": "Logical operators are fundamental concepts in discrete mathematics and computer science. They allow us to create complex conditions, make decisions in programming, and form the basis of boolean algebra.",
+      "description": "Logical operators are a fundamental topic in discrete mathematics and computer science. Their use allows us to build complex conditions and determine decisions in ongoing processes within a program.",
       "moduleExploration": {
-        "header": "In this module, you'll explore:",
+        "header": "In this course, you will explore the following topics:",
         "items": [
-          "Basic Logical Operators",
-          "Advanced Logical Operators",
-          "Truth Tables"
+          "Basic logical operators",
+          "Advanced logical operators",
+          "Truth tables"
         ]
       },
       "understandingImportance": {
-        "header": "Understanding logical operators is crucial for several reasons:",
+        "header": "The Importance of Logical Operators",
         "items": [
-          "They are essential in programming for creating conditional statements and controlling program flow.",
-          "They form the basis of digital circuit design in computer hardware.",
-          "They are used extensively in database systems for constructing complex queries.",
-          "They play a key role in artificial intelligence, particularly in decision-making algorithms."
+          "They are essential for defining conditions and controlling the flow of a program.",
+          "They form the basis for designing computer systems.",
+          "They are widely used for complex queries in databases.",
+          "They play a significant role in artificial intelligence systems, especially in decision-making algorithms."
         ]
       },
-      "progressNote": "As you progress through this module, you'll gain a solid foundation in logical operators, preparing you for more advanced topics in computer science and discrete mathematics."
+      "realLifeExamples": {
+        "header": "Logical Operators in Everyday Life",
+        "description": "The concept of logical operators is not just a computer science notion. It also appears in our everyday decisions. Let’s consider a simple example with light switches:",
+        "lightSwitchExample": {
+          "title": "Light Switch Example",
+          "description": "Imagine you have a room with two switches. Each switch can be either on or off. Let’s introduce two logical operators: AND and OR. We’ll examine them with examples.",
+          "andOperatorName": "AND",
+          "andOperator": " - The light will be on only when both switches are on.",
+          "orOperatorName": "OR",
+          "orOperator": " - The light will be on if at least one of the switches is on."
+        }
+      },
+      "progressNote": "As you progress through this course, you will gain a solid understanding of logical operators, preparing you for more advanced topics in computer science and discrete mathematics."
     },
     "basicOperators": {
       "title": "Basic Logical Operators",
