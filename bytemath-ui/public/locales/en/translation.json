@@ -796,21 +796,37 @@
         "interactiveDescription": "Click on the graph area to add nodes. Click on two nodes consecutively to create an edge between them. Use the buttons below to check for isomorphism or reset the graphs."
       },
       "spanningTree": {
-        "spanningTree": {
-          "title": "Graph Spanning Trees",
-          "introduction": "A spanning tree is a fundamental concept in graph theory, with important applications in network design, circuit analysis, and algorithms. This interactive demonstration will help you understand how spanning trees work and how they're constructed.",
-          "definitionTitle": "What is a Spanning Tree?",
-          "definition": "A spanning tree of an undirected graph is a subgraph that includes all the vertices of the original graph, with the minimum possible number of edges to form a tree (a connected graph without cycles). In other words, a spanning tree reaches all nodes while avoiding any loops.",
-          "algorithmTitle": "How to Find a Spanning Tree",
-          "algorithm": "There are several algorithms to find a spanning tree. A common approach is to use Breadth-First Search (BFS):\n1. Start from any node in the graph.\n2. Explore all unvisited neighboring nodes.\n3. For each unvisited neighbor, add the edge connecting it to the current node to the spanning tree.\n4. Repeat steps 2-3 until all nodes are visited.\nThis process ensures we reach all nodes with the minimum number of edges, creating a valid spanning tree.",
-          "exampleDescription": "Here's an example graph with a highlighted spanning tree. The teal nodes and orange edges represent the spanning tree.",
-          "exampleExplanation": "In this example, we have a graph with 8 nodes (A through H) and 12 edges. The highlighted spanning tree contains 7 edges, which is the minimum number needed to connect all 8 nodes without forming any cycles. Notice how the spanning tree reaches every node in the graph, but some edges from the original graph are not included. This demonstrates how a spanning tree maintains connectivity while minimizing the number of edges used.",
-          "interactiveDescription": "Now it's your turn! Click on the graph area to add nodes. Click on two nodes consecutively to create an edge between them. Use the 'Play' button to find a spanning tree, and the 'Delete' button to reset the graph."
-        }
+        "title": "Graph Spanning Trees",
+        "introduction": "A spanning tree is a fundamental concept in graph theory, with important applications in network design, circuit analysis, and algorithms. This interactive demonstration will help you understand how spanning trees work and how they're constructed.",
+        "definitionTitle": "What is a Spanning Tree?",
+        "definition": "A spanning tree of an undirected graph is a subgraph that includes all the vertices of the original graph, with the minimum possible number of edges to form a tree (a connected graph without cycles). In other words, a spanning tree reaches all nodes while avoiding any loops.",
+        "algorithmTitle": "How to Find a Spanning Tree",
+        "algorithm": "There are several algorithms to find a spanning tree. A common approach is to use Breadth-First Search (BFS):\n1. Start from any node in the graph.\n2. Explore all unvisited neighboring nodes.\n3. For each unvisited neighbor, add the edge connecting it to the current node to the spanning tree.\n4. Repeat steps 2-3 until all nodes are visited.\nThis process ensures we reach all nodes with the minimum number of edges, creating a valid spanning tree.",
+        "exampleDescription": "Here's an example graph with a highlighted spanning tree. The teal nodes and orange edges represent the spanning tree.",
+        "exampleExplanation": "In this example, we have a graph with 8 nodes (A through H) and 12 edges. The highlighted spanning tree contains 7 edges, which is the minimum number needed to connect all 8 nodes without forming any cycles. Notice how the spanning tree reaches every node in the graph, but some edges from the original graph are not included. This demonstrates how a spanning tree maintains connectivity while minimizing the number of edges used.",
+        "interactiveDescription": "Now it's your turn! Click on the graph area to add nodes. Click on two nodes consecutively to create an edge between them. Use the 'Play' button to find a spanning tree, and the 'Delete' button to reset the graph.",
+        "spanningTreeFound": "Spanning Tree Found!",
+        "spanningTreeFoundDescription": "A spanning tree has been successfully found and highlighted in the graph.",
+        "spanningTreeNotFound": "Spanning Tree Not Found",
+        "spanningTreeNotFoundDescription": "A spanning tree could not be found. This happens when the graph is not connected (i.e., there are isolated nodes or subgraphs)."
+      },
+      "graphColoring": {
+        "title": "Graph Coloring",
+        "introduction": "Graph coloring is a fundamental concept in graph theory with various practical applications.",
+        "definitionTitle": "Definition",
+        "definition": "Graph coloring is the assignment of colors to the vertices of a graph such that no two adjacent vertices share the same color.",
+        "algorithmTitle": "Algorithm",
+        "algorithm": "A simple greedy algorithm for graph coloring works by iterating through the vertices and assigning the first available color that hasn't been used by any adjacent vertices.",
+        "exampleDescription": "Here's a simple graph demonstrating the coloring algorithm:",
+        "exampleExplanation": "Notice how no two connected nodes share the same color.",
+        "interactiveDescription": "Create your own graph by clicking on the canvas to add nodes. Click on two nodes to connect them with an edge. Then use the buttons below to color the graph or reset it.",
+        "resultTitle": "Coloring Result",
+        "resultDescription": "The graph has been colored successfully. Observe how the algorithm minimized the number of colors used while ensuring no adjacent nodes share the same color.",
+        "usedColors": "Number of colors used: {{count}}"
       }
-    },
-    "graphProblems": {
-      "title": "Problems for Graph Theory"
     }
+  },
+  "graphProblems": {
+    "title": "Problems for Graph Theory"
   }
 }

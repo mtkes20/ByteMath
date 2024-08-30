@@ -1,8 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import cytoscape, {Stylesheet} from 'cytoscape';
-import {Grid} from "@mui/material";
+import {Grid, Paper, Typography} from "@mui/material";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import DeleteIcon from '@mui/icons-material/Delete';
+import InfoIcon from '@mui/icons-material/Info';
+import ErrorIcon from '@mui/icons-material/Error';
 import {
     Example,
     StyledButton,
@@ -94,6 +96,7 @@ const GraphSpanningTree: React.FC = () => {
     const [exampleCy, setExampleCy] = useState<cytoscape.Core | null>(null);
     const [userCy, setUserCy] = useState<cytoscape.Core | null>(null);
     const [selectedNodes, setSelectedNodes] = useState<string[]>([]);
+    const [spanningTreeFound, setSpanningTreeFound] = useState<boolean | null>(null);
 
     useEffect(() => {
         if (exampleGraph.current && !exampleCy) {
@@ -157,6 +160,7 @@ const GraphSpanningTree: React.FC = () => {
                     }
                 });
             }
+            setSpanningTreeFound(null);
         });
     };
 
@@ -167,6 +171,7 @@ const GraphSpanningTree: React.FC = () => {
         cy.elements().removeClass('spanning-tree');
         const nodes = cy.nodes();
         if (nodes.length === 0) {
+            setSpanningTreeFound(false);
             return;
         }
 
@@ -192,6 +197,8 @@ const GraphSpanningTree: React.FC = () => {
             });
         }
         spanningEdges.forEach(edge => edge.addClass('spanning-tree'));
+
+        setSpanningTreeFound(visited.size === nodes.length);
     };
 
     const resetGraph = (cy: cytoscape.Core | null) => {
@@ -199,6 +206,7 @@ const GraphSpanningTree: React.FC = () => {
             cy.elements().remove();
             cy.elements().removeClass('spanning-tree selected');
             setSelectedNodes([]);
+            setSpanningTreeFound(null);
         }
     };
 
@@ -235,6 +243,32 @@ const GraphSpanningTree: React.FC = () => {
                         </StyledButton>
                     </Grid>
                 </Grid>
+
+                {spanningTreeFound !== null && (
+                    <Paper elevation={3} style={{
+                        padding: '15px',
+                        marginTop: '20px',
+                        backgroundColor: spanningTreeFound ? '#e8f5e9' : '#ffebee'
+                    }}>
+                        <Typography variant="h6" gutterBottom>
+                            {spanningTreeFound ? (
+                                <InfoIcon style={{verticalAlign: 'middle', marginRight: '10px', color: '#4caf50'}}/>
+                            ) : (
+                                <ErrorIcon style={{verticalAlign: 'middle', marginRight: '10px', color: '#f44336'}}/>
+                            )}
+                            {spanningTreeFound
+                                ? t('graphTheory.graphAlgorithms.spanningTree.spanningTreeFound')
+                                : t('graphTheory.graphAlgorithms.spanningTree.spanningTreeNotFound')
+                            }
+                        </Typography>
+                        <Typography>
+                            {spanningTreeFound
+                                ? t('graphTheory.graphAlgorithms.spanningTree.spanningTreeFoundDescription')
+                                : t('graphTheory.graphAlgorithms.spanningTree.spanningTreeNotFoundDescription')
+                            }
+                        </Typography>
+                    </Paper>
+                )}
             </StyledCard>
         </SubContent>
     );
