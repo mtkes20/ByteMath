@@ -5,6 +5,7 @@ import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {ProblemType} from "../../types/ProblemType";
 import {useTranslation} from "react-i18next";
+import {Moon, Sun} from "lucide-react";
 
 type ProgrammingLanguage = 'python' | 'java';
 
@@ -16,6 +17,7 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
     const [code, setCode] = useState<string>(problem.pythonTemplate);
     const [output, setOutput] = useState<string>('');
     const [isRunning, setIsRunning] = useState<boolean>(false);
+    const [isDarkTheme, setIsDarkTheme] = useState<boolean>(true);
     const editorRef = useRef<any>(null);
     const monacoRef = useRef<Monaco | null>(null);
 
@@ -124,6 +126,23 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
         };
     }, []);
 
+    useEffect(() => {
+        const style = document.createElement('style');
+        style.textContent = `
+            .readOnlyLine {
+                opacity: 0.7;
+                background: ${isDarkTheme ? '#2D2D2D' : '#F0F0F0'};
+            }
+        `;
+        document.head.appendChild(style);
+        return () => {
+            document.head.removeChild(style);
+        };
+    }, [isDarkTheme]);
+
+    const toggleTheme = () => {
+        setIsDarkTheme(prev => !prev);
+    };
 
     return (
         <Grid item xs={12} md={6}>
@@ -132,35 +151,58 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
                     display: "flex",
                     flexDirection: "row",
                     gap: "20px",
-                    alignItems: "center"
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginBottom: "20px"
                 }}>
-                    <Subtitle>{t('problems.language')}</Subtitle>
-                    <StyledTextField
+                    <div style={{display: "flex", alignItems: "center", gap: "20px"}}>
+                        <Subtitle>{t('problems.language')}</Subtitle>
+                        <StyledTextField
+                            style={{
+                                width: "300px"
+                            }}
+                            select
+                            value={language}
+                            onChange={handleLanguageChange}
+                            variant="outlined"
+                        >
+                            <MenuItem value="python">Python</MenuItem>
+                            <MenuItem value="java">Java</MenuItem>
+                        </StyledTextField>
+                    </div>
+                    <button
+                        onClick={toggleTheme}
                         style={{
-                            width: "300px"
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '8px',
+                            borderRadius: '50%',
+                            transition: 'background-color 0.5s',
                         }}
-                        select
-                        value={language}
-                        onChange={handleLanguageChange}
-                        // fullWidth
-                        variant="outlined"
                     >
-                        <MenuItem value="python">Python</MenuItem>
-                        <MenuItem value="java">Java</MenuItem>
-                    </StyledTextField>
+                        {isDarkTheme ? (
+                            <Sun size={40} color="#FFD700"/>
+                        ) : (
+                            <Moon size={40} color="#6495ED"/>
+                        )}
+                    </button>
                 </div>
 
                 <Editor
-                    key={language}
+                    key={`${language}-${isDarkTheme}`}
                     height="400px"
                     language={language}
                     value={code}
                     onChange={handleEditorChange}
                     onMount={handleEditorDidMount}
+                    theme={isDarkTheme ? 'vs-dark' : 'light'}
                     options={{
                         minimap: {enabled: false},
                         scrollBeyondLastLine: false,
-                        theme: 'light',
                         readOnly: false,
                         lineNumbers: (lineNumber: number) => {
                             const model = editorRef.current?.getModel();
