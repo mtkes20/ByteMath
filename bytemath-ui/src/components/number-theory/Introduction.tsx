@@ -1,5 +1,5 @@
 import {
-    CoursePageMainContainer,
+    CoursePageMainContainer, StyledCard,
     StyledList,
     StyledListItem,
     StyledText,
@@ -14,10 +14,12 @@ const Introduction = () => {
 
     return (
         <CoursePageMainContainer>
-            <SubContent>
-                <Title>{t('numberTheory.introduction.title')}</Title>
-                <StyledText>{t('numberTheory.introduction.description')}</StyledText>
-            </SubContent>
+            <StyledCard>
+                <SubContent>
+                    <Title>{t('numberTheory.introduction.title')}</Title>
+                    <StyledText>{t('numberTheory.introduction.description')}</StyledText>
+                </SubContent>
+            </StyledCard>
             <SubContent>
                 <Title>{t('numberTheory.introduction.keyConcepts.title')}</Title>
                 <StyledList sx={{listStyleType: 'disc'}}>
@@ -34,7 +36,6 @@ const Introduction = () => {
                     ))}
                 </StyledList>
             </SubContent>
-            <StyledText>{t('numberTheory.introduction.conclusion')}</StyledText>
         </CoursePageMainContainer>
     )
 }

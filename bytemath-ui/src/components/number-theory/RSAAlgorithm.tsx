@@ -2,7 +2,7 @@ import RSACalculator from "./RSACalculator";
 import {useTranslation} from "react-i18next";
 import React from "react";
 import {
-    CoursePageMainContainer,
+    CoursePageMainContainer, Example,
     StyledCard,
     StyledList,
     StyledListItem,
@@ -11,6 +11,7 @@ import {
     Subtitle,
     Title
 } from "../styles/StyledComponents";
+import {Typography} from "@mui/material";
 
 
 const RSAAlgorithm = () => {
@@ -18,7 +19,6 @@ const RSAAlgorithm = () => {
 
     return (
         <CoursePageMainContainer>
-            <Title>{t('numberTheory.rsaAlgorithm.title')}</Title>
             <StyledCard>
                 <SubContent>
                     <Subtitle>{t('numberTheory.rsaAlgorithm.whatIsRSA.title')}</Subtitle>
@@ -78,17 +78,19 @@ const RSAAlgorithm = () => {
                     ))}
                 </StyledList>
             </SubContent>
-            <StyledCard>
+            <Example>
                 <SubContent>
-                    <Subtitle>{t('numberTheory.rsaAlgorithm.practicalExample.title')}</Subtitle>
-                    <StyledText>{t('numberTheory.rsaAlgorithm.practicalExample.description')}</StyledText>
-                    <StyledList>
+                    <Typography>{t('numberTheory.rsaAlgorithm.practicalExample.title')}</Typography>
+                    <Typography>{t('numberTheory.rsaAlgorithm.practicalExample.description')}</Typography>
+                    <StyledList style={{
+                        color: "lightblue",
+                    }}>
                         {(t('numberTheory.rsaAlgorithm.practicalExample.steps', {returnObjects: true}) as string[]).map((item, index) => (
-                            <StyledListItem key={index}>{item}</StyledListItem>
+                            <Typography  key={index}>{item}</Typography>
                         ))}
                     </StyledList>
                 </SubContent>
-            </StyledCard>
+            </Example>
             <RSACalculator/>
         </CoursePageMainContainer>
     )

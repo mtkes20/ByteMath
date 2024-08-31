@@ -393,11 +393,9 @@
         "list": [
           "Cryptography: Many encryption methods, including RSA, are based on number theory principles.",
           "Computer Science: Algorithms, data structures, and error-correcting codes often rely on number theory concepts.",
-          "Physics: Number theory is used in various areas of theoretical physics, including string theory.",
           "Engineering: Applications in signal processing, control theory, and other engineering fields."
         ]
-      },
-      "conclusion": "Number theory continues to be an active area of research, with many unsolved problems and conjectures that have puzzled mathematicians for centuries."
+      }
     },
     "lcmAndGcd": {
       "title": "Least Common Multiple (LCM) and Greatest Common Divisor (GCD)",
@@ -415,7 +413,7 @@
       "importance": {
         "title": "Why are LCM and GCD important?",
         "list": [
-          "LCM is used in many areas of mathematics, including fractions, algebra, and number theory.",
+          "LCM is used in many areas of mathematics, including algebra, and number theory.",
           "GCD is fundamental in simplifying fractions, solving Diophantine equations, and in various algorithms in computer science.",
           "Both LCM and GCD are crucial in cryptography, particularly in the RSA algorithm.",
           "In computer programming, LCM and GCD are used in various algorithms and data structures."
@@ -467,32 +465,54 @@
     },
     "modularArithmetic": {
       "title": "Modular Arithmetic",
-      "introduction": {
-        "title": "What is Modular Arithmetic?",
-        "description": "Modular arithmetic is a system of arithmetic for integers, where numbers \"wrap around\" after reaching a certain value — the modulus. It's often described as \"clock arithmetic\" because it's similar to how hours on a clock wrap around from 12 back to 1."
+      "description": "Modular arithmetic is a system of arithmetic for integers, where numbers 'wrap around' upon reaching a certain value—the modulus. It has important applications in computer science, cryptography, and everyday life.",
+      "basics": {
+        "title": "Basics of Modular Arithmetic",
+        "description": "In modular arithmetic, we consider two numbers to be equivalent if they leave the same remainder when divided by the modulus. We write a ≡ b (mod m) to denote that a and b are congruent modulo m.",
+        "example": "For example, 38 ≡ 14 (mod 12) because both 38 and 14 leave a remainder of 2 when divided by 12."
       },
-      "keyConcepts": {
-        "title": "Key Concepts",
+      "operations": {
+        "title": "Operations in Modular Arithmetic",
+        "description": "Modular arithmetic includes operations similar to standard arithmetic, but with results 'wrapped' to the modulus:",
         "list": [
-          "Congruence: We say a is congruent to b modulo m if m divides (a-b). We write this as a ≡ b (mod m).",
-          "Modular Addition: (a + b) mod m = ((a mod m) + (b mod m)) mod m",
-          "Modular Subtraction: (a - b) mod m = ((a mod m) - (b mod m) + m) mod m",
-          "Modular Multiplication: (a * b) mod m = ((a mod m) * (b mod m)) mod m",
-          "Modular Exponentiation: a^b mod m = ((a mod m)^b) mod m"
+          "Addition: (a + b) mod m",
+          "Subtraction: (a - b) mod m",
+          "Multiplication: (a * b) mod m",
+          "Exponentiation: (a^b) mod m"
+        ],
+        "example": "For example, in mod 7: 5 + 4 ≡ 2 (mod 7), because 9 ≡ 2 (mod 7)"
+      },
+      "properties": {
+        "title": "Properties of Modular Arithmetic",
+        "description": "Modular arithmetic has several important properties:",
+        "list": [
+          "Closure: The result of any operation is always within the set of residues modulo m",
+          "Associativity: (a + b) + c ≡ a + (b + c) (mod m)",
+          "Commutativity: a + b ≡ b + a (mod m)",
+          "Distributivity: a * (b + c) ≡ (a * b + a * c) (mod m)"
         ]
       },
       "applications": {
-        "title": "Applications",
-        "description": "Modular arithmetic has many applications in computer science and cryptography:",
+        "title": "Applications of Modular Arithmetic",
+        "description": "Modular arithmetic has numerous practical applications:",
         "list": [
-          "Hash functions",
-          "Random number generation",
-          "Error detection and correction codes",
-          "Cryptographic algorithms (like RSA)"
+          "Cryptography: RSA encryption uses modular exponentiation",
+          "Hash functions: Used in digital signatures and blockchain technology",
+          "Computer science: Handling cyclic data structures and preventing integer overflow",
+          "Clock arithmetic: Representing time in a 12-hour or 24-hour format"
+        ]
+      },
+      "realLifeExamples": {
+        "title": "Real-Life Examples of Modular Arithmetic",
+        "examples": [
+          "Clock arithmetic: When it's 10 o'clock and 5 hours pass, it becomes 3 o'clock (10 + 5 ≡ 3 mod 12).",
+          "Day of the week: If today is Tuesday (day 2) and 10 days pass, it will be Friday (2 + 10 ≡ 5 mod 7).",
+          "Rotating shifts: In a factory with 3 shifts, after 100 days, the shift will be the same as on day 1 (100 ≡ 1 mod 3)."
         ]
       },
       "calculator": {
         "title": "Modular Arithmetic Calculator",
+        "description": "Use this calculator to perform modular arithmetic operations. Enter two numbers, choose an operation, and specify the modulus to see the result.",
         "result": "Result: {{a}} {{operation}} {{b}} ≡ {{result}} (mod {{m}})"
       }
     },

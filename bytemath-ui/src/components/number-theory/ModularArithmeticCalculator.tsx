@@ -77,10 +77,10 @@ const ModularArithmeticCalculator = () => {
                             native: true,
                         }}
                     >
-                        <option value="+">+</option>
-                        <option value="-">-</option>
-                        <option value="*">*</option>
-                        <option value="^">^</option>
+                        <option style={{color: "#1a1a1a"}} value="+">+</option>
+                        <option style={{color: "#1a1a1a"}} value="-">-</option>
+                        <option style={{color: "#1a1a1a"}} value="*">*</option>
+                        <option style={{color: "#1a1a1a"}} value="^">^</option>
                     </StyledTextField>
                     <StyledTextField
                         size="small"
