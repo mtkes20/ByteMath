@@ -45,50 +45,53 @@ const QuizQuestions: React.FC<QuizProps> = ({
         }
     };
 
-
-    if (quizResponse.graded && quizResponse.gradedQuiz) {
-        return (
-            <QuizResults
-                gradedQuiz={quizResponse.gradedQuiz}
-                quiz={quizResponse.quiz}
-                onTryAgain={handleTryAgain}
-            />
-        );
-    }
-
     return (
-        <StyledCard>
-            <form onSubmit={handleSubmit}>
-                <MainContainer>
-                    <QuizTitle >
-                        {quizResponse.quiz.title}
-                    </QuizTitle>
-                    <Questions>
-                        {quizResponse.quiz.questions.map((question: Question, index: number) => (
-                            <StyledQuestion key={question.id}>
-                                <QuestionTitle>{`${index + 1}. ${question.questionText}`}</QuestionTitle>
-                                {question.questionType === QuestionType.SINGLE_CHOICE ? (
-                                    <SingleChoice
-                                        question={question}
-                                        answers={answers}
-                                        setAnswers={setAnswers}
-                                    />
-                                ) : (
-                                    <TextChoice
-                                        question={question}
-                                        answers={answers}
-                                        setAnswers={setAnswers}
-                                    />
-                                )}
-                            </StyledQuestion>
-                        ))}
-                    </Questions>
-                    <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "center"}}>
-                        <SubmitButton type="submit">{t("viewResults")}</SubmitButton>
-                    </div>
-                </MainContainer>
-            </form>
-        </StyledCard>
+        <>
+            {(quizResponse.gradedQuiz && quizResponse.graded) ?
+                <QuizResults
+                    gradedQuiz={quizResponse.gradedQuiz}
+                    quiz={quizResponse.quiz}
+                    onTryAgain={handleTryAgain}
+                /> : <StyledCard>
+                    <form onSubmit={handleSubmit}>
+                        <MainContainer>
+                            <QuizTitle>
+                                {quizResponse.quiz.title}
+                            </QuizTitle>
+                            <Questions>
+                                {quizResponse.quiz.questions.map((question: Question, index: number) => (
+                                    <StyledQuestion key={question.id}>
+                                        <QuestionTitle>{`${index + 1}. ${question.questionText}`}</QuestionTitle>
+                                        {question.questionType === QuestionType.SINGLE_CHOICE ? (
+                                            <SingleChoice
+                                                question={question}
+                                                answers={answers}
+                                                setAnswers={setAnswers}
+                                            />
+                                        ) : (
+                                            <TextChoice
+                                                question={question}
+                                                answers={answers}
+                                                setAnswers={setAnswers}
+                                            />
+                                        )}
+                                    </StyledQuestion>
+                                ))}
+                            </Questions>
+                            <div style={{
+                                width: "100%",
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "center"
+                            }}>
+                                <SubmitButton type="submit">{t("viewResults")}</SubmitButton>
+                            </div>
+                        </MainContainer>
+                    </form>
+                </StyledCard>
+            }
+
+        </>
     );
 };
 

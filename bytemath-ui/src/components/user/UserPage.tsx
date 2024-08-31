@@ -29,9 +29,11 @@ const UserPage = () => {
     const {keycloak, isAuthenticated, username, email} = useKeycloak();
     const navigate = useNavigate();
 
-    if (!isAuthenticated) {
-        navigate('/');
-    }
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate('/');
+        }
+    }, [isAuthenticated]);
 
     const fetchProgress = async (name: string) => {
         return await CourseApi.getCourseProgress(name, keycloak?.token)

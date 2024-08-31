@@ -24,7 +24,7 @@ const Quiz = ({identifier}: { identifier: string }) => {
         error: quizError,
         isLoading: isQuizLoading,
     } = useQuery<QuizResponse | undefined>({
-        queryKey: ["quiz", identifier, i18n.resolvedLanguage],
+        queryKey: ["quiz", identifier, i18n.resolvedLanguage, keycloak?.token],
         queryFn: async () => await fetchQuiz(identifier)
     })
 
