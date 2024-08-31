@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createHashRouter, Outlet, RouterProvider} from 'react-router-dom';
 import Root from "./Root";
 import BinarySystemContent from "./components/binary-system/BinarySystemContent";
@@ -9,6 +9,7 @@ import NumberTheoryContent from "./components/number-theory/NumberTheoryContent"
 import {KeycloakProvider} from "./context/KeycloakProvider";
 import MainPage from "./components/main/MainPage";
 import UserPage from "./components/user/UserPage";
+import {useTranslation} from "react-i18next";
 
 const router = createHashRouter([
     {
@@ -66,6 +67,13 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+    const {i18n} = useTranslation()
+    useEffect(() => {
+        const language = localStorage.getItem("language")
+        if (!!language) {
+            i18n.changeLanguage(language)
+        }
+    }, []);
     return (
         <QueryClientProvider client={queryClient}>
             <KeycloakProvider>
