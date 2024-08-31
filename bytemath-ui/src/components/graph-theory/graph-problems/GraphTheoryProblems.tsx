@@ -7,8 +7,9 @@ const GraphTheoryProblems: React.FC = () => {
     const {t} = useTranslation();
 
     return (
-        <CoursePageMainContainer>
-            <Title>{t('graphTheory.graphProblems.title')}</Title>
+        <CoursePageMainContainer style={{
+            padding: "15px 50px"
+        }}>
             <ProblemsPage/>
         </CoursePageMainContainer>
     );

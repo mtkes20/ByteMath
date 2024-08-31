@@ -1,5 +1,5 @@
 import {Grid} from "@mui/material";
-import {StyledExplanation, StyledText, SubContent, Subtitle} from "../styles/StyledComponents";
+import {StyledExplanation, StyledText, SubContent, Subtitle, Title} from "../styles/StyledComponents";
 import React from "react";
 import {ProblemType} from "../../types/ProblemType";
 import {useTranslation} from "react-i18next";
@@ -12,7 +12,14 @@ const ProblemDescription = ({problem}: {
 
 
     return (
-        <Grid item xs={12} md={6}>
+        <Grid
+            style={{
+                padding: "20px",
+                height: "100%",
+                overflowY: "auto"
+            }}
+            item xs={12} md={6}>
+            <Title>{problem.title}</Title>
             <SubContent>
                 <Subtitle>{t('problems.description')}</Subtitle>
                 <StyledText>{problem.description}</StyledText>

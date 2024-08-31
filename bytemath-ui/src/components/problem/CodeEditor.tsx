@@ -145,7 +145,13 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
     };
 
     return (
-        <Grid item xs={12} md={6}>
+        <Grid
+            style={{
+                padding: "20px",
+                height: "100%",
+                overflowY: "auto"
+            }}
+            item xs={12} md={6}>
             <SubContent>
                 <div style={{
                     display: "flex",
@@ -156,8 +162,9 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
                     marginBottom: "20px"
                 }}>
                     <div style={{display: "flex", alignItems: "center", gap: "20px"}}>
-                        <Subtitle>{t('problems.language')}</Subtitle>
+                        <Subtitle>{`${t('problems.chooseLanguage')}:`}</Subtitle>
                         <StyledTextField
+                        size="small"
                             style={{
                                 width: "300px"
                             }}
@@ -194,7 +201,7 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
 
                 <Editor
                     key={`${language}-${isDarkTheme}`}
-                    height="400px"
+                    height="370px"
                     language={language}
                     value={code}
                     onChange={handleEditorChange}

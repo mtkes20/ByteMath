@@ -29,6 +29,7 @@ const ProblemsPage = () => {
                 }}
             >{t('problems.selectProblem')}</StyledInputLabel>
             <StyledSelect
+                size="small"
                 labelId="problem-select-label"
                 id="problem-select"
                 value={selectedProblem?.id || ''}
