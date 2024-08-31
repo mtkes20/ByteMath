@@ -1,7 +1,9 @@
 body {
+    font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
     background-color: #1a1a1a;
     color: #ffffff;
-    font-family: 'Roboto', sans-serif;
 }
 
 #kc-container {
@@ -72,4 +74,73 @@ input[type="submit"]:hover {
 
 .kc-forgot-password:hover, .kc-register:hover, .kc-login:hover {
     text-decoration: underline;
+}
+
+.navbar {
+    height: 70px;
+    padding: 0 20px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #3a3939;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: 'Roboto';
+}
+
+.navbar-right {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.mui-button {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    min-width: 64px;
+    padding: 6px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.mui-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.mui-button.purple {
+    background-color: #800080;
+}
+
+.mui-button.purple:hover {
+    background-color: #9c27b0;
+}
+
+#kc-form-fields input[type="submit"] {
+    background-color: #800080;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#kc-form-fields input[type="submit"]:hover {
+    background-color: #9c27b0;
 }

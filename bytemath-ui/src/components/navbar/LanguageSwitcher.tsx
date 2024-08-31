@@ -12,6 +12,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ language, onLanguag
 
     const handleLanguageSwitch = () => {
         i18n.resolvedLanguage === 'ka' ? i18n.changeLanguage('en') : i18n.changeLanguage('ka');
+        localStorage.setItem("language", i18n.resolvedLanguage === "ka" ? "ka" : "en")
     }
 
     return (

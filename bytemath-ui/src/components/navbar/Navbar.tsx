@@ -15,6 +15,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useKeycloak} from "../../context/KeycloakProvider";
+import RegisterButton from "./RegisterButton";
 
 interface NavbarProps {
     language: 'en' | 'ka';
@@ -141,13 +142,16 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
             }}>
                 <LanguageSwitcher language={language} onLanguageChange={onLanguageChange}/>
                 {isAuthenticated ? (
-                    <div onClick={handleProfileClick} style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+                    <div onClick={handleProfileClick} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "8px" }}>
                         <Avatar src={
                             profilePicture ? URL.createObjectURL(profilePicture) : undefined
                         } alt={keycloak?.tokenParsed?.name || "User"} />
                     </div>
                 ) : (
-                    <LoginButton />
+                    <div style={{ display: "flex", gap: "8px" }}>
+                        <LoginButton />
+                        <RegisterButton />
+                    </div>
                 )}
                 <Menu
                     anchorEl={profileAnchorEl}
