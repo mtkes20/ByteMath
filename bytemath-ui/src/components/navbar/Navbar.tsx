@@ -1,8 +1,9 @@
-import React, {useState, MouseEventHandler, useEffect} from 'react';
+import React, {MouseEventHandler, useState} from 'react';
 import {Avatar, Button, ListItemIcon, ListItemText, Menu, MenuItem, Typography} from "@mui/material";
 import {
     AccountTree,
-    Code, ExitToApp,
+    Code,
+    ExitToApp,
     ExpandLess,
     ExpandMore,
     Functions,
@@ -11,9 +12,8 @@ import {
 } from '@mui/icons-material';
 import LoginButton from "./LoginButton";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import ProfilePictureApi from "../../api/profile-picture-api";
+import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import {useKeycloak} from "../../context/KeycloakProvider";
 
 interface NavbarProps {
@@ -24,29 +24,12 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const [profileAnchorEl, setProfileAnchorEl] = useState<HTMLElement | null>(null);
-    const [profilePicture, setProfilePicture] = useState<string | null>(null);
+    // const [profilePicture, setProfilePicture] = useState<string | null>(null);
     const open = Boolean(anchorEl);
     const profileMenuOpen = Boolean(profileAnchorEl);
     const navigate = useNavigate();
     const { t } = useTranslation();
-    const { isAuthenticated, keycloak } = useKeycloak();
-
-    useEffect(() => {
-        const fetchProfilePicture = async () => {
-            if (isAuthenticated && keycloak) {
-                try {
-                    console.log('Fetching profile picture...');
-                    const blob = await ProfilePictureApi.getProfilePicture(keycloak.token);
-                    const imageUrl = URL.createObjectURL(blob);
-                    setProfilePicture(imageUrl);
-                    console.log('Profile picture fetched successfully');
-                } catch (error) {
-                    console.error('Error fetching profile picture:', error);
-                }
-            }
-        };
-        fetchProfilePicture();
-    }, [isAuthenticated, keycloak]);
+    const { isAuthenticated, keycloak, profilePicture } = useKeycloak();
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
         setAnchorEl(e.currentTarget);
@@ -159,7 +142,9 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                 <LanguageSwitcher language={language} onLanguageChange={onLanguageChange}/>
                 {isAuthenticated ? (
                     <div onClick={handleProfileClick} style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
-                        <Avatar src={profilePicture || undefined} alt={keycloak?.tokenParsed?.name || "User"} />
+                        <Avatar src={
+                            profilePicture ? URL.createObjectURL(profilePicture) : undefined
+                        } alt={keycloak?.tokenParsed?.name || "User"} />
                     </div>
                 ) : (
                     <LoginButton />

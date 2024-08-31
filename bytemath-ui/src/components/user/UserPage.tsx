@@ -24,9 +24,8 @@ const courses: Course[] = [
 ];
 
 const UserPage = () => {
-    const [profilePicture, setProfilePicture] = useState<string | null>(null);
     const {t} = useTranslation();
-    const {keycloak, isAuthenticated, username, email} = useKeycloak();
+    const {keycloak, isAuthenticated, username, email, profilePicture, refetchProfilePicture} = useKeycloak();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -71,30 +70,13 @@ const UserPage = () => {
         queryFn: async () => await fetchProgress("NUMBER_THEORY")
     });
 
-    useEffect(() => {
-        const fetchProfilePicture = async () => {
-            if (isAuthenticated && keycloak) {
-                try {
-                    console.log('Fetching profile picture...');
-                    const blob = await ProfilePictureApi.getProfilePicture(keycloak.token);
-                    const imageUrl = URL.createObjectURL(blob);
-                    setProfilePicture(imageUrl);
-                    console.log('Profile picture fetched successfully');
-                } catch (error) {
-                    console.error('Error fetching profile picture:', error);
-                }
-            }
-        };
-        fetchProfilePicture();
-    }, [isAuthenticated, keycloak]);
-
     const handlePictureUpload = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file && keycloak && isAuthenticated) {
             try {
-                await ProfilePictureApi.uploadProfilePicture(file, keycloak.token);
-                const imageUrl = URL.createObjectURL(file);
-                setProfilePicture(imageUrl);
+                await ProfilePictureApi.uploadProfilePicture(file, keycloak.token).then(() => {
+                    refetchProfilePicture();
+                });
             } catch (error) {
                 console.error('Error uploading profile picture:', error);
             }
@@ -106,7 +88,7 @@ const UserPage = () => {
             <div className="user-header">
                 <div className="profile-picture-container">
                     {profilePicture ? (
-                        <img src={profilePicture} alt="Profile" className="profile-picture"/>
+                        <img src={URL.createObjectURL(profilePicture)} alt="Profile" className="profile-picture"/>
                     ) : (
                         <User className="user-icon"/>
                     )}
