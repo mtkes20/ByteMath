@@ -21,7 +21,6 @@ import GraphTheoryProblems from "./components/graph-theory/graph-problems/GraphT
 import LogicalOperatorsIntroduction from "./components/logical-operators/Introduction";
 import BasicOperators from "./components/logical-operators/BasicOperators";
 import AdvancedOperators from "./components/logical-operators/AdvancedOperators";
-import TruthTables from "./components/logical-operators/TruthTables";
 import NumberTheoryIntroduction from "./components/number-theory/Introduction";
 import LCMandGCD from "./components/number-theory/LCMandGCD";
 import RSAAlgorithm from "./components/number-theory/RSAAlgorithm";
@@ -83,10 +82,6 @@ const router = createHashRouter([
                             {
                                 path: "LOGICAL_OPERANDS_ADVANCED_OPERATORS",
                                 element: <AdvancedOperators/>
-                            },
-                            {
-                                path: "LOGICAL_OPERANDS_TRUTH_TABLES",
-                                element: <TruthTables/>
                             }
                         ]
                     },

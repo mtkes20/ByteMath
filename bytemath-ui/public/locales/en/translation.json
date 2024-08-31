@@ -286,76 +286,91 @@
     },
     "basicOperators": {
       "title": "Basic Logical Operators",
-      "introduction": "Logical operators are fundamental to programming and boolean logic. They allow us to make complex decisions based on multiple conditions. Let's explore the three basic logical operators:",
+      "introduction": "Welcome to the world of logical operators! These powerful tools are the building blocks of decision-making in programming and everyday life. Just like traffic lights guide cars on the road, logical operators guide the flow of our programs. They help us make choices based on multiple conditions, allowing our code to think and react. Let's see how they shape the digital world around us!",
+      "interactionPrompt": "Let's get hands-on! Click the bits below to flip between 0 (false) and 1 (true). Watch how each operator responds to your choices!",
       "and": {
-        "title": "AND (&&)",
-        "description": "Returns true (1) if both operands are true, otherwise false (0).",
-        "explanation": "The AND operator is used when you want to check if multiple conditions are all true. It's like checking if you have both your keys AND your wallet before leaving the house."
+        "title": "AND: The Perfectionist",
+        "description": "The AND operator is like a strict teacher – it only gives a passing grade (returns true or 1) when all conditions are met. If any condition fails, the result is a fail (false or 0).",
+        "explanation": "Imagine you're planning the perfect picnic. You'll only go if it's sunny AND you have free time AND you've packed your basket. The AND operator works the same way in programming. It checks if all conditions are true, just like you checking off all items on your picnic checklist. It's perfect for situations where you need everything to align just right!",
+        "symbol": "&&"
       },
       "or": {
-        "title": "OR (||)",
-        "description": "Returns true (1) if at least one operand is true, otherwise false (0).",
-        "explanation": "The OR operator is used when you want to check if at least one of multiple conditions is true. It's like deciding to go for a walk if it's either sunny OR you have an umbrella."
+        "title": "OR: The Flexible Friend",
+        "description": "The OR operator is like a lenient parent – if any of the conditions are met (true or 1), it gives a thumbs up. It only returns false (0) when all conditions fail.",
+        "explanation": "Think of OR as your weekend plans. You'll be happy if you get to watch a movie OR hang out with friends OR read a good book. Any of these make for a good time! In programming, OR helps us create flexible conditions. It's great when you have multiple acceptable options and any one of them is enough to proceed.",
+        "symbol": "||"
       },
       "not": {
-        "title": "NOT (!)",
-        "description": "Inverts the truth value of the operand.",
-        "explanation": "The NOT operator is used to reverse a boolean value. It's like a light switch: if the light is on, NOT will turn it off, and if it's off, NOT will turn it on."
+        "title": "NOT: The Rebel",
+        "description": "The NOT operator is the rebel of the bunch – it always does the opposite. It turns true into false, and false into true.",
+        "explanation": "Imagine a mischievous sibling who always does the opposite of what you say. If you say 'don't touch that,' they'll touch it. That's exactly how NOT works! It's incredibly useful when you want to check if something is NOT true. For example, checking if a user is NOT logged in to show them a login prompt. NOT helps us flip our logic on its head when we need to!",
+        "symbol": "!"
       },
-      "interactionPrompt": "Try it out: Click the bits below to toggle between 0 (false) and 1 (true)",
-      "result": "Result"
+      "xor": {
+        "title": "XOR: The Exclusive Decider",
+        "description": "XOR is like a picky eater – it's only happy (returns true) when exactly one option is available, not both and not neither.",
+        "explanation": "Imagine you're deciding on a vacation: beach or mountains. XOR is like saying 'I want to go to either the beach or the mountains, but not both and not neither!' It's true when one option is true and the other is false. In programming, XOR is fantastic for when you need to ensure that exactly one of two conditions is met, but never both.",
+        "symbol": "⊕"
+      },
+      "truthTables": {
+        "title": "Truth Tables: The Logic Roadmap",
+        "tableHeaderA": "Condition A",
+        "tableHeaderB": "Condition B",
+        "tableHeaderResult": "Final Outcome"
+      },
+      "logicalOperatorGame": {
+        "title": "Logical Operator Game",
+        "introduction": "Test your skills with AND, OR, and NOT operators. How many can you solve in 30 seconds?",
+        "time": "Time",
+        "score": "Score",
+        "gameOver": "Game Over!",
+        "finalScore": "Final Score",
+        "startGame": "Start Game",
+        "playAgain": "Play Again",
+        "true": "True",
+        "false": "False"
+      }
     },
     "advancedOperators": {
       "title": "Advanced Logical Operators",
-      "description": "Advanced logical operators build upon the basic ones, offering more complex and powerful ways to manipulate logical conditions. These operators are invaluable in scenarios requiring complex condition checks, digital circuit design, and succinct conditional logic expressions.",
-      "xor": {
-        "title": "XOR (^)",
-        "description": "Returns true if the operands are different, false if they are the same.",
-        "explanation": "XOR (Exclusive OR) is useful when you want to check if exactly one of two conditions is true, but not both."
-      },
+      "introduction": "Welcome to the world of advanced logical operators! These powerful tools build upon the basic operators to create more complex decision-making structures in programming. Like master chefs combining ingredients, these operators mix basic logic to create sophisticated outcomes. Let's explore how they add depth to our logical toolbox!",
+      "interactionPrompt": "Let's dive in! Click the bits below to toggle between 0 (false) and 1 (true). Observe how each advanced operator processes your inputs!",
       "nand": {
-        "title": "NAND",
-        "description": "Returns false only if both operands are true.",
-        "explanation": "NAND is the negation of AND. It's often used in digital circuit design as a universal gate."
+        "title": "NAND: The Universal Negator",
+        "description": "The NAND operator is like a contrarian committee – it only returns false when all inputs are true. In all other cases, it returns true.",
+        "explanation": "Imagine a group of friends deciding on a movie. With NAND, you'll only stay home if everyone agrees on the same movie. Any disagreement, and you're going out! In circuits, NAND is special because it can be used to create all other logical operations, making it a versatile building block.",
+        "symbol": "⊼"
       },
       "nor": {
-        "title": "NOR",
-        "description": "Returns true only if both operands are false.",
-        "explanation": "NOR is the negation of OR. Like NAND, it's also used as a universal gate in digital circuits."
-      },
-      "interactionPrompt": "Try it out: Click the bits below to toggle between 0 (false) and 1 (true)",
-      "result": "Result"
-    },
-    "truthTables": {
-      "title": "Truth Tables",
-      "description": "Logical operators are fundamental to programming and boolean logic. They allow us to evaluate expressions and make complex decisions. Below are the truth tables for the fundamental logic gates:",
-      "and": {
-        "name": "AND",
-        "symbol": "&&",
-        "description": "Returns true if both operands are true.",
-        "explanation": "The AND operator is used when you want to check if multiple conditions are all true. It's like checking if you have both your keys AND your wallet before leaving the house."
-      },
-      "or": {
-        "name": "OR",
-        "symbol": "||",
-        "description": "Returns true if at least one of the operands is true.",
-        "explanation": "The OR operator is used when you want to check if at least one of multiple conditions is true. It's like deciding to go for a walk if it's either sunny OR you have an umbrella."
-      },
-      "not": {
-        "name": "NOT",
-        "symbol": "!",
-        "description": "Inverts the truth value of the operand.",
-        "explanation": "The NOT operator is used to reverse a boolean value. It's like a light switch: if the light is on, NOT will turn it off, and if it's off, NOT will turn it on."
+        "title": "NOR: The Universal Pessimist",
+        "description": "The NOR operator is like an extreme critic – it only returns true when all inputs are false. If any input is true, it returns false.",
+        "explanation": "Think of NOR as a picky eater at a buffet. They'll only be satisfied (return true) if none of the dishes appeal to them. If even one dish looks good, they're unsatisfied. In digital logic, NOR is powerful because, like NAND, it can be used to construct all other logical operations.",
+        "symbol": "⊽"
       },
       "xor": {
-        "name": "XOR",
-        "symbol": "⊕",
-        "description": "Returns true if exactly one of the operands is true.",
-        "explanation": "The XOR (exclusive OR) operator returns true only when exactly one of its inputs is true. It's like a 'one or the other, but not both' situation."
+        "title": "XOR: The Exclusive Decider",
+        "description": "XOR is like a picky choice-maker – it returns true only when inputs differ, and false when they're the same.",
+        "explanation": "Imagine you're packing for a trip and can only bring one type of shoes: casual OR formal, but not both and not neither. XOR ensures you make exactly one choice. In programming, XOR is great for toggle situations or checking for differences between two conditions.",
+        "symbol": "⊕"
       },
-      "tableHeaderA": "A",
-      "tableHeaderB": "B",
-      "tableHeaderResult": "Result"
+      "truthTables": {
+        "title": "Truth Tables: The Advanced Logic Map",
+        "tableHeaderA": "Input A",
+        "tableHeaderB": "Input B",
+        "tableHeaderResult": "Result"
+      },
+      "advancedLogicalOperatorGame": {
+        "title": "Advanced Logical Operator Challenge",
+        "introduction": "Test your mastery of NAND, NOR, and XOR operators. How many puzzles can you solve in 30 seconds?",
+        "time": "Time",
+        "score": "Score",
+        "gameOver": "Challenge Complete!",
+        "finalScore": "Final Score",
+        "startGame": "Begin Challenge",
+        "playAgain": "Try Again",
+        "true": "True",
+        "false": "False"
+      }
     }
   },
   "numberTheory": {

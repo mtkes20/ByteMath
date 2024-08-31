@@ -1,10 +1,6 @@
 import SideMenu, {PageItem} from "../content-side-menu/SideMenu";
 import {SettingsInputComponent} from '@mui/icons-material';
 import React, {useEffect, useMemo, useState} from "react";
-import Introduction from "./Introduction";
-import BasicOperators from "./BasicOperators";
-import AdvancedOperators from "./AdvancedOperators";
-import TruthTables from "./TruthTables";
 import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
 import {useTranslation} from "react-i18next";
 import {usePage} from "../../hooks/usePage";
@@ -37,7 +33,6 @@ const LogicalOperatorsContent = () => {
             {title: t("logicalOperands.introduction.title"), value: "LOGICAL_OPERANDS_INTRO", read: readPages.has("LOGICAL_OPERANDS_INTRO"), path: "LOGICAL_OPERANDS_INTRO"},
             {title: t("logicalOperands.basicOperators.title"), value: "LOGICAL_OPERANDS_BASIC_OPERATORS", read: readPages.has("LOGICAL_OPERANDS_BASIC_OPERATORS"), path: "LOGICAL_OPERANDS_BASIC_OPERATORS"},
             {title: t("logicalOperands.advancedOperators.title"), value: "LOGICAL_OPERANDS_ADVANCED_OPERATORS", read: readPages.has("LOGICAL_OPERANDS_ADVANCED_OPERATORS"), path: "LOGICAL_OPERANDS_ADVANCED_OPERATORS"},
-            {title: t("logicalOperands.truthTables.title"), value: "LOGICAL_OPERANDS_TRUTH_TABLES", read: readPages.has("LOGICAL_OPERANDS_TRUTH_TABLES"), path: "LOGICAL_OPERANDS_TRUTH_TABLES"}
         ];
     }, [readPages, t])
 

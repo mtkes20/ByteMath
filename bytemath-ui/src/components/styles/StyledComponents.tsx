@@ -1,4 +1,4 @@
-import {Button, Card, Stack, Slider, styled, TextField, Typography} from "@mui/material";
+import {Button, Card, Slider, Stack, styled, TextField, Typography} from "@mui/material";
 
 export const CoursePageSideMenuContainer = styled(Stack)({
     display: 'flex',
@@ -115,25 +115,43 @@ interface StyledBitProps {
     isOn: boolean;
 }
 
-export const StyledCalculatorResult = styled(Typography)({
-    fontWeight: "bold",
-    fontSize: "1.1rem",
-    textAlign: "center",
-    color: "#ffffff",
+export const StyledCalculatorResult = styled('div')({
+    fontSize: '26px',
+    fontWeight: '700',
+    color: '#f0f0f0',
+    marginTop: '20px',
+    textShadow: '1px 1px 3px rgba(0, 0, 0, 0.4)',
 });
 
 export const StyledOperatorCalculator = styled('div')({
-    backgroundColor: "#2c2c2c",
-    padding: "15px",
-    borderRadius: "5px",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginBottom: '20px',
+    padding: '20px',
+    backgroundColor: '#292929',
+    borderRadius: '12px',
+    boxShadow: '0 6px 12px rgba(0, 0, 0, 0.25)',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    '&:hover': {
+        transform: 'scale(1.02)',
+        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.35)',
+    },
 });
 
 export const StyledOperatorCalculatorInput = styled('div')({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '15px',
-    marginBottom: '15px',
+    gap: '12px',
+    padding: '12px',
+    backgroundColor: '#333333',
+    borderRadius: '10px',
+    boxShadow: 'inset 0 4px 8px rgba(0, 0, 0, 0.2)',
+    transition: 'background-color 0.3s ease',
+    '&:hover': {
+        backgroundColor: '#444444',
+    },
 });
 
 export const StyledTextField = styled(TextField)(() => ({
@@ -221,4 +239,49 @@ export const StyledSlider = styled(Slider)(({theme}) => ({
         width: 3,
         borderRadius: 1,
     },
+}));
+
+export const TruthTable = styled('table')({
+    width: "100%",
+    borderCollapse: "collapse",
+    borderSpacing: 0,
+    backgroundColor: "#1e1e1e",
+    border: "1px solid #444",
+    marginTop: "20px",
+    borderRadius: "8px",
+});
+
+export const TableHeader = styled('tr')({
+    backgroundColor: "#2c2c2c",
+});
+
+export const HeaderCell = styled('th')({
+    padding: "12px",
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#e0e0e0",
+    border: "1px solid #444",
+    borderTopLeftRadius: "8px",
+    borderTopRightRadius: "8px",
+});
+
+export const TableRow = styled('tr')({
+    '&:hover': {
+        backgroundColor: "#333",
+    },
+});
+
+export const TableCell = styled('td')({
+    padding: "12px",
+    textAlign: "center",
+    border: "1px solid #444",
+    color: "#e0e0e0",
+});
+
+export const ResultCell = styled('td')<{ isTrue: boolean }>(({ isTrue }) => ({
+    padding: "12px",
+    textAlign: "center",
+    fontWeight: "bold",
+    color: isTrue ? "#4caf50" : "#f44336",
+    border: "1px solid #444",
 }));
