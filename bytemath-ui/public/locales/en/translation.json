@@ -40,6 +40,7 @@
     "example": "Example:",
     "note": "Note:",
     "language": "Language",
+    "chooseLanguage": "Choose Language",
     "runCode": "Run Code",
     "running": "Running...",
     "output": "Output:",

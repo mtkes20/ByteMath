@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -11,16 +11,28 @@ import {CheckCircle} from "@mui/icons-material";
 interface SideMenuProps {
     icon: JSX.Element;
     title: string;
-    items: { title: string, value: string, read: boolean }[];
+    items: PageItem[];
     selectedItem: string;
-    setSelectedItem: (item: any) => void
+    setSelectedItem: (item: PageItem) => void
+}
+
+export interface PageItem {
+    title: string;
+    value: string;
+    read: boolean;
+    path?: string;
 }
 
 const SideMenu: React.FC<SideMenuProps> = ({icon, title, items, selectedItem, setSelectedItem}) => {
 
-    const handleItemClick = (value: string) => {
-        setSelectedItem(value);
+    const handleItemClick = (item: PageItem) => {
+        setSelectedItem(item);
     };
+
+    useEffect(() => {
+        console.log("selected item in sidemenu")
+        console.log(selectedItem)
+    }, [selectedItem]);
 
     return (
         <Box sx={{width: 300, backgroundColor: "#1a1a1a", color: "white", height: "100%"}}>
@@ -80,7 +92,7 @@ const SideMenu: React.FC<SideMenuProps> = ({icon, title, items, selectedItem, se
                                     right: 0
                                 }
                             }}
-                            onClick={() => handleItemClick(item.value)}
+                            onClick={() => handleItemClick(item)}
                         >
                             <ListItemText
                                 style={{

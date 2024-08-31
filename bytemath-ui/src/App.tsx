@@ -9,6 +9,22 @@ import NumberTheoryContent from "./components/number-theory/NumberTheoryContent"
 import {KeycloakProvider} from "./context/KeycloakProvider";
 import MainPage from "./components/main/MainPage";
 import UserPage from "./components/user/UserPage";
+import BinarySystemIntroduction from './components/binary-system/Introduction';
+import Converting from "./components/binary-system/Converting";
+import Arithmetic from "./components/binary-system/Arithmetic";
+import GraphTheoryIntroduction from "./components/graph-theory/introduction/Introduction";
+import DifferentGraphs from "./components/graph-theory/different-kind-of-graphs/DifferentGraphs";
+import GraphTraversals from "./components/graph-theory/graph-traversals/GraphTraversals";
+import GraphAlgorithms from "./components/graph-theory/graph-algorithms/GraphAlgorithms";
+import GraphTheoryProblems from "./components/graph-theory/graph-problems/GraphTheoryProblems";
+import LogicalOperatorsIntroduction from "./components/logical-operators/Introduction";
+import BasicOperators from "./components/logical-operators/BasicOperators";
+import AdvancedOperators from "./components/logical-operators/AdvancedOperators";
+import TruthTables from "./components/logical-operators/TruthTables";
+import NumberTheoryIntroduction from "./components/number-theory/Introduction";
+import LCMandGCD from "./components/number-theory/LCMandGCD";
+import RSAAlgorithm from "./components/number-theory/RSAAlgorithm";
+import ModularArithmetic from "./components/number-theory/ModularArithmetic";
 
 const router = createHashRouter([
     {
@@ -30,19 +46,91 @@ const router = createHashRouter([
                 children: [
                     {
                         path: "binary-system",
-                        element: <BinarySystemContent/>
+                        element: <BinarySystemContent/>,
+                        children: [
+                            {
+                                path: "BINARY_SYSTEM_INTRO",
+                                element: <BinarySystemIntroduction/>
+                            },
+                            {
+                                path: "BINARY_SYSTEM_CONVERTING",
+                                element: <Converting/>
+                            },
+                            {
+                                path: "BINARY_SYSTEM_ARITHMETIC",
+                                element: <Arithmetic/>
+                            }
+                        ]
                     },
                     {
                         path: "logic-operands",
-                        element: <LogicalOperatorsContent/>
+                        element: <LogicalOperatorsContent/>,
+                        children: [
+                            {
+                                path: "LOGICAL_OPERANDS_INTRO",
+                                element: <LogicalOperatorsIntroduction/>
+                            },
+                            {
+                                path: "LOGICAL_OPERANDS_BASIC_OPERATORS",
+                                element: <BasicOperators/>
+                            },
+                            {
+                                path: "LOGICAL_OPERANDS_ADVANCED_OPERATORS",
+                                element: <AdvancedOperators/>
+                            },
+                            {
+                                path: "LOGICAL_OPERANDS_TRUTH_TABLES",
+                                element: <TruthTables/>
+                            }
+                        ]
                     },
                     {
                         path: "graphs",
-                        element: <TheoryOfGraphsContent/>
+                        element: <TheoryOfGraphsContent/>,
+                        children: [
+                            {
+                                path: "GRAPH_THEORY_INTRO",
+                                element: <GraphTheoryIntroduction/>
+                            },
+                            {
+                                path: "GRAPH_THEORY_DIFFERENT_GRAPHS",
+                                element: <DifferentGraphs/>
+                            },
+                            {
+                                path: "GRAPH_THEORY_GRAPH_TRAVERSALS",
+                                element: <GraphTraversals/>
+                            },
+                            {
+                                path: "GRAPH_THEORY_ALGORITHMS",
+                                element: <GraphAlgorithms/>
+                            },
+                            {
+                                path: "GRAPH_THEORY_PROBLEMS",
+                                element: <GraphTheoryProblems/>
+                            }
+                        ]
                     },
                     {
                         path: "numbers-theory",
-                        element: <NumberTheoryContent/>
+                        element: <NumberTheoryContent/>,
+                        children: [
+                            {
+                                path: "NUMBER_THEORY_INTRO",
+                                element: <NumberTheoryIntroduction/>
+                            },
+                            {
+                                path: "NUMBER_THEORY_LCM_GCD",
+                                element: <LCMandGCD/>
+                            },
+                            {
+                                path: "NUMBER_THEORY_RSA",
+                                element: <RSAAlgorithm/>
+                            },
+                            {
+                                path: "NUMBER_THEORY_MODULAR_ARITHMETIC",
+                                element: <ModularArithmetic/>
+                            }
+                        ]
                     }
                 ]
             },

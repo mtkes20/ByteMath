@@ -6,7 +6,7 @@ import GraphSpanningTree from "./GraphSpanningTree";
 import GraphColoring from "./GraphColoring";
 import Quiz from "../../quiz/Quiz";
 
-const GraphTraversals = () => {
+const GraphAlgorithms = () => {
     const {i18n} = useTranslation();
 
     return (
@@ -22,4 +22,4 @@ const GraphTraversals = () => {
     );
 };
 
-export default GraphTraversals;
+export default GraphAlgorithms;
