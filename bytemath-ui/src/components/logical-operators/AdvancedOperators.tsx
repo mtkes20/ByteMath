@@ -1,127 +1,165 @@
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {
     CoursePageMainContainer,
+    Example,
+    HeaderCell,
+    ResultCell,
     StyledBit,
     StyledCalculatorResult,
     StyledCard,
-    StyledExplanation,
     StyledInteractionPrompt,
     StyledOperatorCalculator,
     StyledOperatorCalculatorInput,
     StyledText,
-    Title
+    Subtitle,
+    TableCell,
+    TableHeader,
+    TableRow,
+    Title,
+    TruthTable,
 } from "../styles/StyledComponents";
+import Quiz from "../quiz/Quiz";
+import {AdvancedLogicalOperatorGame} from "./GameComponent";
+
 
 interface OperatorInfo {
     title: string;
+    symbol: string;
     description: string;
     explanation: string;
-    calculator: React.ReactNode;
+    calculator: (inputs: boolean[], setInputs: React.Dispatch<React.SetStateAction<boolean[]>>, calculate: () => boolean) => React.ReactNode;
+    truthTable: OperatorRow[];
 }
 
-const AdvancedOperators: React.FC = () => {
-    const [xorInputs, setXorInputs] = useState<boolean[]>([false, false]);
-    const [nandInputs, setNandInputs] = useState<boolean[]>([false, false]);
-    const [norInputs, setNorInputs] = useState<boolean[]>([false, false]);
+interface BinaryOperatorRow {
+    A: boolean;
+    B: boolean;
+    result: boolean;
+}
 
-    const toggleBit = (inputs: boolean[], setInputs: React.Dispatch<React.SetStateAction<boolean[]>>, index: number) => {
-        const newInputs = [...inputs];
-        newInputs[index] = !newInputs[index];
-        setInputs(newInputs);
+type OperatorRow = BinaryOperatorRow;
+
+const AdvancedOperators: React.FC = () => {
+    const {t} = useTranslation();
+    const [inputs, setInputs] = useState<{ [key: string]: boolean[] }>({
+        nand: [false, false],
+        nor: [false, false],
+        xor: [false, false],
+    });
+
+    const toggleBit = (operatorKey: string, index: number) => {
+        setInputs(prev => ({
+            ...prev,
+            [operatorKey]: prev[operatorKey].map((bit, i) => i === index ? !bit : bit)
+        }));
     };
 
-    const calculateXor = (): boolean => xorInputs[0] !== xorInputs[1];
-    const calculateNand = (): boolean => !(nandInputs[0] && nandInputs[1]);
-    const calculateNor = (): boolean => !(norInputs[0] || norInputs[1]);
+    const createCalculator = (operatorKey: string, symbol: string, calculate: (inputs: boolean[]) => boolean) => {
+        const operatorInputs = inputs[operatorKey];
+        return (
+            <StyledOperatorCalculator>
+                <StyledOperatorCalculatorInput>
+                    {operatorInputs.map((input, index) => (
+                        <StyledBit
+                            key={index}
+                            onClick={() => toggleBit(operatorKey, index)}
+                            isOn={input}
+                        >
+                            {input ? 1 : 0}
+                        </StyledBit>
+                    ))}
+                </StyledOperatorCalculatorInput>
+                <StyledCalculatorResult>
+                    {`${operatorInputs.map(input => input ? '1' : '0').join(` ${symbol} `)} = ${calculate(operatorInputs) ? '1' : '0'}`}
+                </StyledCalculatorResult>
+            </StyledOperatorCalculator>
+        );
+    };
 
     const operators: OperatorInfo[] = [
         {
-            title: "XOR (^)",
-            description: "Returns true if the operands are different, false if they are the same.",
-            explanation: "XOR (Exclusive OR) is useful when you want to check if exactly one of two conditions is true, but not both.",
-            calculator: (
-                <StyledOperatorCalculator>
-                    <StyledOperatorCalculatorInput>
-                        {xorInputs.map((input, index) => (
-                            <StyledBit
-                                key={index}
-                                onClick={() => toggleBit(xorInputs, setXorInputs, index)}
-                                isOn={input}
-                            >
-                                {input ? 1 : 0}
-                            </StyledBit>
-                        ))}
-                    </StyledOperatorCalculatorInput>
-                    <StyledCalculatorResult>Result: {calculateXor() ? 1 : 0}</StyledCalculatorResult>
-                </StyledOperatorCalculator>
-            )
+            title: t('logicalOperands.advancedOperators.nand.title'),
+            symbol: t('logicalOperands.advancedOperators.nand.symbol'),
+            description: t('logicalOperands.advancedOperators.nand.description'),
+            explanation: t('logicalOperands.advancedOperators.nand.explanation'),
+            calculator: () => createCalculator('nand', 'NAND', (inputs) => !(inputs[0] && inputs[1])),
+            truthTable: [
+                {A: false, B: false, result: true},
+                {A: false, B: true, result: true},
+                {A: true, B: false, result: true},
+                {A: true, B: true, result: false},
+            ]
         },
         {
-            title: "NAND",
-            description: "Returns false only if both operands are true.",
-            explanation: "NAND is the negation of AND. It's often used in digital circuit design as a universal gate.",
-            calculator: (
-                <StyledOperatorCalculator>
-                    <StyledOperatorCalculatorInput>
-                        {nandInputs.map((input, index) => (
-                            <StyledBit
-                                key={index}
-                                onClick={() => toggleBit(nandInputs, setNandInputs, index)}
-                                isOn={input}
-                            >
-                                {input ? 1 : 0}
-                            </StyledBit>
-                        ))}
-                    </StyledOperatorCalculatorInput>
-                    <StyledCalculatorResult>Result: {calculateNand() ? 1 : 0}</StyledCalculatorResult>
-                </StyledOperatorCalculator>
-            )
+            title: t('logicalOperands.advancedOperators.nor.title'),
+            symbol: t('logicalOperands.advancedOperators.nor.symbol'),
+            description: t('logicalOperands.advancedOperators.nor.description'),
+            explanation: t('logicalOperands.advancedOperators.nor.explanation'),
+            calculator: () => createCalculator('nor', 'NOR', (inputs) => !(inputs[0] || inputs[1])),
+            truthTable: [
+                {A: false, B: false, result: true},
+                {A: false, B: true, result: false},
+                {A: true, B: false, result: false},
+                {A: true, B: true, result: false},
+            ]
         },
         {
-            title: "NOR",
-            description: "Returns true only if both operands are false.",
-            explanation: "NOR is the negation of OR. Like NAND, it's also used as a universal gate in digital circuits.",
-            calculator: (
-                <StyledOperatorCalculator>
-                    <StyledOperatorCalculatorInput>
-                        {norInputs.map((input, index) => (
-                            <StyledBit
-                                key={index}
-                                onClick={() => toggleBit(norInputs, setNorInputs, index)}
-                                isOn={input}
-                            >
-                                {input ? 1 : 0}
-                            </StyledBit>
-                        ))}
-                    </StyledOperatorCalculatorInput>
-                    <StyledCalculatorResult>Result: {calculateNor() ? 1 : 0}</StyledCalculatorResult>
-                </StyledOperatorCalculator>
-            )
+            title: t('logicalOperands.advancedOperators.xor.title'),
+            symbol: t('logicalOperands.advancedOperators.xor.symbol'),
+            description: t('logicalOperands.advancedOperators.xor.description'),
+            explanation: t('logicalOperands.advancedOperators.xor.explanation'),
+            calculator: () => createCalculator('xor', 'XOR', (inputs) => inputs[0] !== inputs[1]),
+            truthTable: [
+                {A: false, B: false, result: false},
+                {A: false, B: true, result: true},
+                {A: true, B: false, result: true},
+                {A: true, B: true, result: false},
+            ]
         }
     ];
 
     return (
         <CoursePageMainContainer>
-            <Title variant="h1">Advanced Logical Operators</Title>
+            <Title>{t('logicalOperands.advancedOperators.title')}</Title>
             <StyledText>
-                Advanced logical operators build upon the basic ones, offering more complex and powerful ways to
-                manipulate logical conditions. These operators are invaluable in scenarios requiring complex condition
-                checks,
-                digital circuit design, and succinct conditional logic expressions.
+                {t('logicalOperands.advancedOperators.introduction')}
             </StyledText>
 
             {operators.map((op, index) => (
                 <StyledCard key={index} elevation={2}>
-                    <Title variant="h2">{op.title}</Title>
+                    <Subtitle style={{marginBottom: "10px"}}>{op.title} ({op.symbol})</Subtitle>
                     <StyledText>{op.description}</StyledText>
-                    <StyledExplanation>{op.explanation}</StyledExplanation>
-                    <StyledInteractionPrompt>Try it out: Click the bits below to toggle between 0 (false) and 1
-                        (true)</StyledInteractionPrompt>
-                    {op.calculator}
+                    <Example>{op.explanation}</Example>
+                    <StyledInteractionPrompt>{t('logicalOperands.advancedOperators.interactionPrompt')}</StyledInteractionPrompt>
+                    {op.calculator([], () => {
+                    }, () => false)}
+                    <Subtitle
+                        style={{marginTop: "20px"}}>{t('logicalOperands.advancedOperators.truthTables.title')}</Subtitle>
+                    <TruthTable>
+                        <thead>
+                        <TableHeader>
+                            <HeaderCell>{t('logicalOperands.advancedOperators.truthTables.tableHeaderA')}</HeaderCell>
+                            <HeaderCell>{t('logicalOperands.advancedOperators.truthTables.tableHeaderB')}</HeaderCell>
+                            <HeaderCell>{t('logicalOperands.advancedOperators.truthTables.tableHeaderResult')}</HeaderCell>
+                        </TableHeader>
+                        </thead>
+                        <tbody>
+                        {op.truthTable.map((row, index) => (
+                            <TableRow key={index}>
+                                <TableCell>{row.A ? 1 : 0}</TableCell>
+                                <TableCell>{row.B ? 1 : 0}</TableCell>
+                                <ResultCell isTrue={row.result}>{row.result ? 1 : 0}</ResultCell>
+                            </TableRow>
+                        ))}
+                        </tbody>
+                    </TruthTable>
                 </StyledCard>
             ))}
+            <AdvancedLogicalOperatorGame/>
+            <Quiz identifier="LOGICAL_OPERANDS_ADVANCED_OPERATORS"/>
         </CoursePageMainContainer>
     );
-}
+};
 
 export default AdvancedOperators;
