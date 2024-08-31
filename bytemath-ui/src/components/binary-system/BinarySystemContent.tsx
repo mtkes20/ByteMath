@@ -31,6 +31,7 @@ const BinarySystemContent: React.FC = () => {
     const menuItems = useMemo<PageItem[]>(() => {
         return [
             {title: t("introduction"), value: "BINARY_SYSTEM_INTRO", read: readPages.has("BINARY_SYSTEM_INTRO"), path: "BINARY_SYSTEM_INTRO"},
+            {title: t("binaryRepresentation"), value: "BINARY_SYSTEM_REPRESENTATION", read: readPages.has("BINARY_SYSTEM_REPRESENTATION"), path: "BINARY_SYSTEM_REPRESENTATION"},
             {title: t("converting"), value: "BINARY_SYSTEM_CONVERTING", read: readPages.has("BINARY_SYSTEM_CONVERTING"), path: "BINARY_SYSTEM_CONVERTING"},
             {title: t("binaryArithmetic"), value: "BINARY_SYSTEM_ARITHMETIC", read: readPages.has("BINARY_SYSTEM_ARITHMETIC"), path: "BINARY_SYSTEM_ARITHMETIC"},
         ];

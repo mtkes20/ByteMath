@@ -24,6 +24,7 @@
   "incorrect": "Incorrect",
   "decimalValue": "Decimal Value",
   "converting": "Converting",
+  "binaryRepresentation": "Binary Representation",
   "binaryArithmetic": "Binary Arithmetic",
   "clickToExplore": "Click to explore this course",
   "welcome": "Welcome",
@@ -31,6 +32,25 @@
   "result": "Result",
   "wantToTakeQuiz": "Want to take a quiz?",
   "viewResults": "View Results",
+  "red": "Red",
+  "green": "Green",
+  "blue": "Blue",
+  "binaryColorMixer": "Binary Color Mixer",
+  "hours": "Hours",
+  "minutes": "Minutes",
+  "seconds": "Seconds",
+  "currentTime": "Current Time",
+  "example": "Example",
+  "binaryConversionGame": "Binary Conversion Game",
+  "startGame": "Start Game",
+  "convertToDecimal": "Convert to Decimal",
+  "convertToBinary": "Convert to Binary",
+  "score": "Score",
+  "timeLeft": "Time Left",
+  "secondsShort": "s",
+  "submit": "Submit",
+  "binaryNumber": "Binary Number",
+  "enterOnesAndZeros": "Enter 0s and 1s",
   "problems": {
     "selectProblem": "Select a Problem",
     "description": "Description:",
@@ -54,238 +74,177 @@
   },
   "binarySystem": {
     "introduction": {
-      "title": "Understanding the Binary System",
-      "introduction": "The binary system, also known as the base-2 numeral system, is fundamental to computer science and digital electronics. It forms the foundation of all digital data representation and processing.",
-      "fundamentals": {
-        "title": "Fundamentals of Binary",
-        "description": "The binary system is based on two digits: 0 and 1, known as bits (binary digits). Here are some key points:",
+      "title": "Introduction to the Binary System",
+      "welcome": "Welcome to the world of the Binary System! In our daily lives, we're used to working with the decimal system, which uses ten digits (0-9). But did you know that at the heart of every computer lies a much simpler system using only two digits: 0 and 1? This is the Binary System, and it's the foundation of all digital computing.",
+      "whatIs": {
+        "title": "What is the Binary System?",
+        "description": "The Binary System, also known as base-2 number system, is a method of mathematical expression which uses only two symbols: 0 and 1. Each of these digits is called a 'bit' (short for 'binary digit')."
+      },
+      "whyImportant": {
+        "title": "Why is it important?",
+        "description": "The Binary System is crucial in computing for several reasons:",
         "points": [
-          "Binary uses only two digits compared to decimal's ten digits.",
-          "Each digit position represents a power of 2.",
-          "The rightmost digit represents 2^0 (1), the next 2^1 (2), then 2^2 (4), and so on.",
-          "Binary numbers can represent any quantity that decimal numbers can."
+          "Simplicity: With only two states, binary is perfect for representing on/off, true/false, or yes/no situations.",
+          "Electronic Implementation: It's easy to represent binary digits using electrical signals - on for 1, off for 0.",
+          "Error Detection: Binary makes it easier to detect and correct errors in data transmission.",
+          "Foundation of Computing: All data in computers - text, images, videos, and even the instructions that tell the computer what to do - are ultimately stored and processed as binary."
         ]
       },
-      "whyBinary": {
-        "title": "Why Binary is Used in Computing",
-        "description": "Binary is the language of computers for several reasons:",
+      "realLifeExamples": {
+        "title": "Real-Life Examples of Binary System",
+        "description": "The binary system isn't just a theoretical concept - it's all around us in our daily lives! Here are some examples:",
         "points": [
-          "Electronic circuits have two stable states, making binary a natural fit.",
-          "It's easier and more reliable to distinguish between two states than multiple states.",
-          "Binary operations can be implemented efficiently with digital logic gates.",
-          "Error detection and correction are simpler with a binary system."
+          "Digital Photography: When you take a photo with a digital camera or smartphone, the image is stored as a series of binary numbers.",
+          "Music Streaming: When you listen to music on Spotify or Apple Music, you're actually hearing binary data converted into sound waves.",
+          "Morse Code: While not strictly binary, Morse code is a close analog, using dots and dashes to encode letters and numbers.",
+          "Computer Screens: Each pixel on your computer or phone screen is controlled by binary data, creating the full spectrum of colors you see."
         ]
       },
-      "binaryNumbers": {
-        "title": "Understanding Binary Numbers",
-        "description": "Binary numbers work similarly to decimal numbers, but with a base of 2 instead of 10:",
-        "points": [
-          "The binary number 1011 is equivalent to the decimal number 11 (1*2^3 + 0*2^2 + 1*2^1 + 1*2^0).",
-          "Each additional bit doubles the range of numbers that can be represented.",
-          "8 bits (a byte) can represent numbers from 0 to 255.",
-          "Leading zeros don't change the value of a binary number."
+      "conclusion": "As you delve deeper into computer science, you'll find that understanding binary is crucial for topics like digital logic, computer architecture, and data representation. These real-world applications show how this simple system of 1s and 0s underpins much of our modern, digital world. So, let's embark on this binary adventure together!"
+    },
+    "representation": {
+      "title": "Binary Number Representation",
+      "description": "Binary is the language of computers, using only two digits: 0 and 1. Let's explore how this simple system can represent complex information.",
+      "placeValue": {
+        "title": "Place Value in Binary",
+        "description": "In binary, each position represents a power of 2, similar to how decimal uses powers of 10.",
+        "table": {
+          "position": "Position",
+          "value": "Value"
+        }
+      },
+      "patterns": {
+        "title": "Binary Patterns and Properties",
+        "description": "Recognizing patterns in binary can help in understanding and working with them:",
+        "examples": [
+          "All 1s: Represents 2^n - 1 (e.g., 1111 = 15)",
+          "Leading 1 followed by 0s: Powers of 2 (e.g., 1000 = 8)"
         ]
       },
-      "binaryOperations": {
-        "title": "Basic Binary Operations",
-        "description": "Arithmetic in binary follows similar rules to decimal, but with only two digits:",
-        "points": [
-          "Addition: 1 + 1 = 10 in binary (carry the 1)",
-          "Subtraction: Borrow from the next column when needed",
-          "Multiplication: Similar to decimal, but simpler as you only multiply by 0 or 1",
-          "Division: Can be performed through repeated subtraction and shifting"
-        ]
+      "binaryInColors": {
+        "title": "Binary in Colors",
+        "description": "RGB colors use binary to represent millions of colors. Experiment with the sliders to see how binary creates colors:"
       },
-      "applications": {
-        "title": "Applications of the Binary System",
-        "description": "The binary system is crucial in many areas of computing and technology:",
-        "points": [
-          "Data Storage: All data in computers is ultimately stored in binary.",
-          "Digital Logic: Computer processors use binary for all their operations.",
-          "Networking: Data transmission over networks uses binary encoding.",
-          "Image and Sound Processing: Digital media is represented and processed in binary.",
-          "Cryptography: Many encryption algorithms rely on binary operations."
-        ]
+      "binaryClock": {
+        "title": "Binary Clock",
+        "description": "A binary clock uses the binary number system to display the time. Can you read the time below?"
       }
     },
-    "binaryConversion": {
-      "title": "Advanced Binary Conversion",
-      "introduction": "Binary conversion is a fundamental skill in computer science and digital systems. Understanding the process of converting between binary and decimal systems is crucial for working with computers at a low level.",
-      "binaryToDecimal": {
-        "title": "Converting Binary to Decimal",
-        "description": "To convert a binary number to decimal, sum the products of each bit and its corresponding power of 2. The rightmost bit corresponds to 2^0, the next to 2^1, and so on.",
-        "example": "Example: 1011 (binary) = (1 * 2^3) + (0 * 2^2) + (1 * 2^1) + (1 * 2^0) = 8 + 0 + 2 + 1 = 11 (decimal)"
-      },
+    "conversion": {
+      "title": "Binary-Decimal Conversion",
+      "description": "Converting between binary and decimal is fundamental in computer science. Let's explore different methods and practice conversion skills.",
       "decimalToBinary": {
-        "title": "Converting Decimal to Binary",
-        "description": "To convert a decimal number to binary, repeatedly divide the number by 2 and record the remainders. The binary representation is the sequence of remainders read from bottom to top.",
-        "example": "Example: 11 (decimal) to binary:\n11 / 2 = 5 remainder 1\n5 / 2 = 2 remainder 1\n2 / 2 = 1 remainder 0\n1 / 2 = 0 remainder 1\nReading from bottom to top: 1011 (binary)"
+        "title": "Decimal to Binary Conversion",
+        "description": "To convert decimal to binary, we can use the division by 2 method:",
+        "example": "Convert 25 to binary\n25 ÷ 2 = 12 remainder 1\n12 ÷ 2 = 6 remainder 0\n6 ÷ 2 = 3 remainder 0\n3 ÷ 2 = 1 remainder 1\n1 ÷ 2 = 0 remainder 1\nReading remainders from bottom to top: 25 = 11001"
       },
-      "fractions": {
-        "title": "Binary Fractions and Floating-Point Numbers",
-        "description": "Binary can also represent fractional numbers. For the fractional part, multiply by 2 repeatedly, taking the integer part each time as the next binary digit.",
-        "example": "Example: 0.625 (decimal) to binary:\n0.625 * 2 = 1.25 (1)\n0.25 * 2 = 0.5 (0)\n0.5 * 2 = 1.0 (1)\nResult: 0.101 (binary)"
+      "binaryToDecimal": {
+        "title": "Binary to Decimal Conversion",
+        "description": "To convert binary to decimal, we multiply each digit by its place value and sum the results:",
+        "example": "Convert 11001 to decimal\n1 × 2^4 + 1 × 2^3 + 0 × 2^2 + 0 × 2^1 + 1 × 2^0\n= 16 + 8 + 0 + 0 + 1\n= 25"
       },
-      "negativeNumbers": {
-        "title": "Representing Negative Numbers",
-        "description": "Computers typically use two's complement to represent negative numbers. To find the two's complement of a number, invert all bits and add 1.",
-        "example": "Example: -5 in 8-bit two's complement:\n5 in binary: 00000101\nInvert all bits: 11111010\nAdd 1: 11111011\nSo -5 is represented as 11111011 in two's complement"
-      },
-      "applications": {
-        "title": "Practical Applications",
-        "description": "Understanding binary conversion is crucial in many areas of computing:",
-        "list": [
-          "Digital circuit design and analysis",
-          "Low-level programming and embedded systems",
-          "Network protocols and data transmission",
-          "Cryptography and data security",
-          "Computer graphics and image processing"
+      "shortcutMethods": {
+        "title": "Shortcut Methods",
+        "description": "Some quick tricks for binary-decimal conversion:",
+        "methods": [
+          "For powers of 2, the binary form is 1 followed by that many zeros",
+          "To double a binary number, add a 0 to the right",
+          "To halve an even binary number, remove the rightmost 0"
         ]
       },
-      "advancedTopics": {
-        "title": "Advanced Binary Topics",
-        "description": "Beyond basic conversion, there are several advanced topics related to binary representation:",
-        "list": [
-          "IEEE 754 floating-point representation",
-          "Binary Coded Decimal (BCD)",
-          "Gray code and its applications",
-          "Hexadecimal as a compact representation of binary",
-          "Error detection and correction codes (e.g., Hamming codes)"
-        ]
+      "conversionTable": {
+        "title": "Binary-Decimal Conversion Table",
+        "description": "This table shows binary equivalents for decimal numbers 0-15:",
+        "decimal": "Decimal",
+        "binary": "Binary"
+      },
+      "converter": {
+        "title": "Interactive Binary Converter",
+        "description": "Use this tool to convert between binary and decimal."
+      },
+      "game": {
+        "title": "Binary Conversion Game",
+        "description": "Test your conversion skills with this fun game! Convert as many numbers as you can in 60 seconds:"
       },
       "calculator": {
         "binary": "Binary",
         "decimal": "Decimal",
         "enterBinaryNumber": "Enter binary number",
         "enterDecimalNumber": "Enter decimal number"
+      },
+      "flowchart": {
+        "decimalToBinaryTitle": "Decimal to Binary Conversion",
+        "binaryToDecimalTitle": "Binary to Decimal Conversion",
+        "decimalToBinary": [
+          "Start with decimal number",
+          "↓",
+          "Divide by 2",
+          "↓",
+          "Note remainder (0 or 1)",
+          "↓",
+          "Continue dividing quotient by 2",
+          "↓",
+          "Stop when quotient becomes 0",
+          "↓",
+          "Read remainders from bottom to top"
+        ],
+        "binaryToDecimal": [
+          "Start with binary number",
+          "↓",
+          "Multiply each digit by power of 2",
+          "↓",
+          "Sum all products",
+          "↓",
+          "Result is decimal number"
+        ]
       }
     },
-    "binaryArithmetic": {
-      "title": "გაღრმავებული ორობითი არითმეტიკა",
-      "introduction": "ორობითი არითმეტიკა მუშაობს ათობითი არითმეტიკის მსგავსად, მაგრამ მიჰყვება ორობითი რიცხვითი სისტემის წესებს. ამ ოპერაციების გაგება მნიშვნელოვანია დაბალი დონის პროგრამირებისა და კომპიუტერის არქიტექტურისთვის.",
+    "arithmetic": {
+      "title": "Binary Arithmetic",
+      "description": "Binary arithmetic involves performing mathematical operations using only two digits: 0 and 1.",
       "addition": {
-        "title": "ორობითი შეკრება",
-        "description": "ორობითი შეკრება ათობითი შეკრების მსგავსია, მაგრამ მხოლოდ ორი ციფრით. მთავარია გვახსოვდეს, რომ 1 + 1 ორობითში უდრის 10-ს (2-ს ათობითში).",
-        "table": [
-          {
-            "A": "0",
-            "B": "0",
-            "ჯამი": "0",
-            "გადატანა": "0"
-          },
-          {
-            "A": "0",
-            "B": "1",
-            "ჯამი": "1",
-            "გადატანა": "0"
-          },
-          {
-            "A": "1",
-            "B": "0",
-            "ჯამი": "1",
-            "გადატანა": "0"
-          },
-          {
-            "A": "1",
-            "B": "1",
-            "ჯამი": "0",
-            "გადატანა": "1"
-          }
-        ],
-        "example": "მაგალითი: 1011-ისა და 1101-ის შეკრება\n  1011\n+ 1101\n------\n 10100"
+        "title": "Binary Addition",
+        "description": "Binary addition is similar to decimal addition, but with only two digits. We start from the rightmost column and carry over when the sum exceeds 1.",
+        "example": "  1 1 0 1\n+ 1 0 1 1\n  -------\n1 1 0 0 0"
       },
       "subtraction": {
-        "title": "ორობითი გამოკლება",
-        "description": "ორობითი გამოკლება მიჰყვება ათობითი გამოკლების მსგავს პრინციპებს, საჭიროების შემთხვევაში სესხებით.",
-        "table": [
-          {
-            "A": "0",
-            "B": "0",
-            "სხვაობა": "0",
-            "სესხი": "0"
-          },
-          {
-            "A": "0",
-            "B": "1",
-            "სხვაობა": "1",
-            "სესხი": "1"
-          },
-          {
-            "A": "1",
-            "B": "0",
-            "სხვაობა": "1",
-            "სესხი": "0"
-          },
-          {
-            "A": "1",
-            "B": "1",
-            "სხვაობა": "0",
-            "სესხი": "0"
-          }
-        ],
-        "example": "მაგალითი: 1011-ის გამოკლება 1101-დან\n  1101\n- 1011\n------\n  0010"
+        "title": "Binary Subtraction",
+        "description": "Binary subtraction follows similar rules to decimal subtraction. When we need to borrow, we borrow from the next column to the left.",
+        "example": "  1 1 0 1\n- 1 0 1 1\n  -------\n  0 0 1 0"
       },
       "multiplication": {
-        "title": "ორობითი გამრავლება",
-        "description": "ორობითი გამრავლება უფრო მარტივია ვიდრე ათობითი გამრავლება, რადგან მხოლოდ 0-ებსა და 1-ებს მოიცავს.",
-        "table": [
-          {
-            "A": "0",
-            "B": "0",
-            "ნამრავლი": "0"
-          },
-          {
-            "A": "0",
-            "B": "1",
-            "ნამრავლი": "0"
-          },
-          {
-            "A": "1",
-            "B": "0",
-            "ნამრავლი": "0"
-          },
-          {
-            "A": "1",
-            "B": "1",
-            "ნამრავლი": "1"
-          }
-        ],
-        "example": "მაგალითი: 101-ის გამრავლება 11-ზე\n  101\n×  11\n-----\n  101\n 101\n-----\n 1111"
+        "title": "Binary Multiplication",
+        "description": "Binary multiplication is a series of additions. We multiply each digit of one number by the other number, shifting left each time.",
+        "example": "        1 1 0 1\n      ×   1 0 1\n        -------\n        1 1 0 1\n      0 0 0 0\n    1 1 0 1\n        -------\n  1 0 0 0 0 0 1"
       },
       "division": {
-        "title": "ორობითი გაყოფა",
-        "description": "ორობითი გაყოფა მიჰყვება ათობითი გაყოფის იმავე პრინციპებს, მაგრამ იყენებს ორობით რიცხვებს.",
-        "example": "მაგალითი: 1010-ის გაყოფა 10-ზე\n  101\n-------\n10 | 1010\n    - 10\n    ----\n      10\n     -10\n    ----\n       0"
+        "title": "Binary Division",
+        "description": "Binary division is similar to long division in decimal. We perform repeated subtraction and bring down digits as needed.",
+        "example": "1 1 0 1 | 1 0\n1 0     -------\n---     1 1 0  (r 1)\n  1 0\n  1 0\n  ---\n    0 1\n      0\n    ---\n      1"
       },
-      "advancedTopics": {
-        "title": "გაღრმავებული ორობითი არითმეტიკის კონცეფციები",
-        "description": "ძირითადი ოპერაციების გარდა, არსებობს რამდენიმე გაღრმავებული თემა ორობით არითმეტიკაში:",
-        "list": [
-          "ორის შევსების წარმოდგენა ნიშნიანი მთელი რიცხვებისთვის",
-          "მცურავი წერტილის არითმეტიკა (IEEE 754 სტანდარტი)",
-          "ბიტური ოპერაციები (AND, OR, XOR, NOT)",
-          "არითმეტიკული და ლოგიკური წანაცვლებები",
-          "მიმდევრობითი გადატანის შემკრები და სხვა სწრაფი შეკრების ტექნიკები",
-          "ბუთის გამრავლების ალგორითმი",
-          "არააღდგენითი გაყოფის ალგორითმი"
-        ]
+      "twoComplement": {
+        "title": "Two's Complement",
+        "description": "Two's complement is a way to represent signed integers in binary. It's widely used in computer systems for subtraction and representing negative numbers.",
+        "steps": [
+          "Invert all the bits (change 0 to 1 and 1 to 0)",
+          "Add 1 to the result"
+        ],
+        "example": "-5 in 8-bit two's complement\n1. Positive 5:  0000 0101\n2. Invert bits: 1111 1010\n3. Add 1:      1111 1011\nSo, -5 in two's complement is 1111 1011"
       },
       "applications": {
-        "title": "ორობითი არითმეტიკის გამოყენებები",
-        "description": "ორობითი არითმეტიკა ფუნდამენტურია კომპიუტინგის მრავალ სფეროში:",
-        "list": [
-          "ALU-ს (არითმეტიკულ-ლოგიკური მოწყობილობა) დიზაინი პროცესორებში",
-          "მცურავი წერტილის თანაპროცესორები",
-          "ციფრული სიგნალების დამუშავება",
-          "კრიპტოგრაფიული ალგორითმები",
-          "შეცდომების აღმოჩენისა და გასწორების კოდები",
-          "კომპიუტერული გრაფიკა (მაგ., მატრიცული ოპერაციები)",
-          "მანქანური სწავლების აქსელერატორები"
+        "title": "Applications of Binary Arithmetic",
+        "description": "Binary arithmetic is fundamental to how computers process information. Here are some real-world applications:",
+        "examples": [
+          "Digital Signal Processing: Used in audio and video compression",
+          "Cryptography: For encoding and decoding secure messages",
+          "Error Correction: In data transmission and storage",
+          "Computer Graphics: For rendering images and animations",
+          "Artificial Intelligence: In neural network computations"
         ]
       },
       "calculator": {
-        "enterFirstBinary": "შეიყვანეთ პირველი ორობითი რიცხვი",
-        "enterSecondBinary": "შეიყვანეთ მეორე ორობითი რიცხვი"
+        "title": "Binary Calculator",
+        "description": "Practice binary arithmetic operations with this interactive calculator:"
       }
     }
   },

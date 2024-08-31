@@ -11,7 +11,7 @@ export const CoursePageMainContainer = styled('div')({
     height: "100%",
     width: "100%",
     padding: "50px",
-    gap: "30px",
+    gap: "50px",
     display: "flex",
     flexDirection: "column",
     backgroundColor: "#1a1a1a",

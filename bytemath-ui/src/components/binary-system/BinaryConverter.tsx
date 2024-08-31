@@ -31,23 +31,28 @@ const BinaryConverter: React.FC = () => {
             gap: "100px"
         }}>
             <Converter>
-                <Label>{`${t("binarySystem.binaryConversion.calculator.binary")}:`}</Label>
+                <Label>{`${t("binarySystem.conversion.calculator.binary")}:`}</Label>
                 <StyledTextField
+                    size="small"
                     value={binary}
                     onChange={handleBinaryChange}
-                    placeholder={t("binarySystem.binaryConversion.calculator.enterBinaryNumber")}
+                    placeholder={t("binarySystem.conversion.calculator.enterBinaryNumber")}
                     sx={{
-                        color: "white",
+                        width: "250px"
                     }}
 
                 />
             </Converter>
             <Converter>
-                <Label>{`${t("binarySystem.binaryConversion.calculator.decimal")}:`}</Label>
+                <Label>{`${t("binarySystem.conversion.calculator.decimal")}:`}</Label>
                 <StyledTextField
+                    size="small"
                     value={decimal}
                     onChange={handleDecimalChange}
-                    placeholder={t("binarySystem.binaryConversion.calculator.enterDecimalNumber")}
+                    placeholder={t("binarySystem.conversion.calculator.enterDecimalNumber")}
+                    sx={{
+                        width: "250px"
+                    }}
                 />
             </Converter>
         </BinaryConverterContainer>

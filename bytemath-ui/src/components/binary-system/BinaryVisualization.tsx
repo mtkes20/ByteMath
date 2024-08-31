@@ -65,8 +65,7 @@ const Bit = styled("button")(() => ({
 }));
 
 const Decimal = styled(Typography)(() => ({
-    fontSize: "24px",
-    fontWeight: "bold",
+    fontSize: "20px",
     color: "white"
 }));
 

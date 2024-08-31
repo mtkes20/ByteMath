@@ -11,7 +11,7 @@ import MainPage from "./components/main/MainPage";
 import UserPage from "./components/user/UserPage";
 import {useTranslation} from "react-i18next";
 import BinarySystemIntroduction from './components/binary-system/Introduction';
-import Converting from "./components/binary-system/Converting";
+import BinaryConversion from "./components/binary-system/BinaryConversion";
 import Arithmetic from "./components/binary-system/Arithmetic";
 import GraphTheoryIntroduction from "./components/graph-theory/introduction/Introduction";
 import DifferentGraphs from "./components/graph-theory/different-kind-of-graphs/DifferentGraphs";
@@ -26,6 +26,7 @@ import NumberTheoryIntroduction from "./components/number-theory/Introduction";
 import LCMandGCD from "./components/number-theory/LCMandGCD";
 import RSAAlgorithm from "./components/number-theory/RSAAlgorithm";
 import ModularArithmetic from "./components/number-theory/ModularArithmetic";
+import BinaryRepresentation from "./components/binary-system/BinaryRepresentation";
 
 const router = createHashRouter([
     {
@@ -54,8 +55,12 @@ const router = createHashRouter([
                                 element: <BinarySystemIntroduction/>
                             },
                             {
+                                path: "BINARY_SYSTEM_REPRESENTATION",
+                                element: <BinaryRepresentation/>
+                            },
+                            {
                                 path: "BINARY_SYSTEM_CONVERTING",
-                                element: <Converting/>
+                                element: <BinaryConversion/>
                             },
                             {
                                 path: "BINARY_SYSTEM_ARITHMETIC",

@@ -1,63 +1,80 @@
-import BinaryCalculator from "./BinaryCalculator";
+import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {
-        CoursePageMainContainer,
-        Example,
-        StyledList,
-        StyledListItem,
-        StyledText,
-        Subtitle,
-        Title
+    CoursePageMainContainer,
+    StyledCard,
+    StyledList,
+    StyledListItem,
+    StyledText,
+    SubContent,
+    Subtitle,
+    Title,
 } from "../styles/StyledComponents";
-import {useTranslation} from "react-i18next";
-import BinaryTable from "./quizz/BinaryTable";
-
+import ArithmeticVisualizer from "./ArithmeticVisualizer";
+import BinaryExampleDisplay from "./BinaryExampleDisplay";
 
 const Arithmetic = () => {
-    const { t } = useTranslation()
+    const {t} = useTranslation();
 
-    //TODO examples require alignment or another component
     return (
         <CoursePageMainContainer>
-            <Title>{t('binarySystem.binaryArithmetic.title')}</Title>
-            <StyledText>{t('binarySystem.binaryArithmetic.introduction')}</StyledText>
+            <StyledCard>
+                <SubContent>
+                    <Title>{t('binarySystem.arithmetic.title')}</Title>
+                    <StyledText>{t('binarySystem.arithmetic.description')}</StyledText>
+                </SubContent>
+            </StyledCard>
 
-            <Subtitle>{t('binarySystem.binaryArithmetic.addition.title')}</Subtitle>
-            <StyledText>{t('binarySystem.binaryArithmetic.addition.description')}</StyledText>
-            <BinaryTable operation="addition"/>
-            <Example>{t('binarySystem.binaryArithmetic.addition.example')}</Example>
+            <SubContent>
+                <Subtitle>{t('binarySystem.arithmetic.addition.title')}</Subtitle>
+                <StyledText>{t('binarySystem.arithmetic.addition.description')}</StyledText>
+                <BinaryExampleDisplay example={t('binarySystem.arithmetic.addition.example')}/>
+                <ArithmeticVisualizer operation="addition"/>
+            </SubContent>
 
-            <Subtitle>{t('binarySystem.binaryArithmetic.subtraction.title')}</Subtitle>
-            <StyledText>{t('binarySystem.binaryArithmetic.subtraction.description')}</StyledText>
-            <BinaryTable operation="subtraction"/>
-            <Example>{t('binarySystem.binaryArithmetic.subtraction.example')}</Example>
+            <SubContent>
+                <Subtitle>{t('binarySystem.arithmetic.subtraction.title')}</Subtitle>
+                <StyledText>{t('binarySystem.arithmetic.subtraction.description')}</StyledText>
+                <BinaryExampleDisplay example={t('binarySystem.arithmetic.subtraction.example')}/>
+                <ArithmeticVisualizer operation="subtraction"/>
+            </SubContent>
 
-            <Subtitle>{t('binarySystem.binaryArithmetic.multiplication.title')}</Subtitle>
-            <StyledText>{t('binarySystem.binaryArithmetic.multiplication.description')}</StyledText>
-            <BinaryTable operation="multiplication"/>
-            <Example>{t('binarySystem.binaryArithmetic.multiplication.example')}</Example>
+            <SubContent>
+                <Subtitle>{t('binarySystem.arithmetic.multiplication.title')}</Subtitle>
+                <StyledText>{t('binarySystem.arithmetic.multiplication.description')}</StyledText>
+                <BinaryExampleDisplay example={t('binarySystem.arithmetic.multiplication.example')}/>
+                <ArithmeticVisualizer operation="multiplication"/>
+            </SubContent>
 
-            <Subtitle>{t('binarySystem.binaryArithmetic.division.title')}</Subtitle>
-            <StyledText>{t('binarySystem.binaryArithmetic.division.description')}</StyledText>
-            <Example>{t('binarySystem.binaryArithmetic.division.example')}</Example>
+            <SubContent>
+                <Subtitle>{t('binarySystem.arithmetic.division.title')}</Subtitle>
+                <StyledText>{t('binarySystem.arithmetic.division.description')}</StyledText>
+                <BinaryExampleDisplay example={t('binarySystem.arithmetic.division.example')}/>
+                <ArithmeticVisualizer operation="division"/>
+            </SubContent>
 
-            <Subtitle>{t('binarySystem.binaryArithmetic.advancedTopics.title')}</Subtitle>
-            <StyledText>{t('binarySystem.binaryArithmetic.advancedTopics.description')}</StyledText>
-            <StyledList sx={{ listStyleType: "disc" }}>
-                {(t('binarySystem.binaryArithmetic.advancedTopics.list', {returnObjects: true}) as string[]).map((item, index) => (
-                    <StyledListItem key={index}>{item}</StyledListItem>
-                ))}
-            </StyledList>
+            <SubContent>
+                <Subtitle>{t('binarySystem.arithmetic.twoComplement.title')}</Subtitle>
+                <StyledText>{t('binarySystem.arithmetic.twoComplement.description')}</StyledText>
+                <StyledList>
+                    {(t('binarySystem.arithmetic.twoComplement.steps', {returnObjects: true}) as string[]).map((step, index) => (
+                        <StyledListItem key={index}>{step}</StyledListItem>
+                    ))}
+                </StyledList>
+                <BinaryExampleDisplay example={t('binarySystem.arithmetic.twoComplement.example')}></BinaryExampleDisplay>
+            </SubContent>
 
-            <Subtitle>{t('binarySystem.binaryArithmetic.applications.title')}</Subtitle>
-            <StyledText>{t('binarySystem.binaryArithmetic.applications.description')}</StyledText>
-            <StyledList sx={{ listStyleType: "disc"}}>
-                {(t('binarySystem.binaryArithmetic.applications.list', {returnObjects: true}) as string[]).map((item, index) => (
-                    <StyledListItem key={index}>{item}</StyledListItem>
-                ))}
-            </StyledList>
-            <BinaryCalculator/>
+            <SubContent>
+                <Subtitle>{t('binarySystem.arithmetic.applications.title')}</Subtitle>
+                <StyledText>{t('binarySystem.arithmetic.applications.description')}</StyledText>
+                <StyledList>
+                    {(t('binarySystem.arithmetic.applications.examples', {returnObjects: true}) as string[]).map((example, index) => (
+                        <StyledListItem key={index}>{example}</StyledListItem>
+                    ))}
+                </StyledList>
+            </SubContent>
         </CoursePageMainContainer>
-    )
-}
+    );
+};
 
 export default Arithmetic;
