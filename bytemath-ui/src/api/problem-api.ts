@@ -58,11 +58,26 @@ const getProblemCompletionStats = async (token: string): Promise<ProblemCompleti
     return response.data;
 };
 
+const isProblemCompleted = async (id: number, token: string): Promise<boolean> => {
+    const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/v1/problems/${id}/is-completed`,
+        {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        }
+    );
+
+    return response.data;
+};
+
 const ProblemApi = {
     getProblemsByCourse,
     getProblemById,
     markProblemAsCompleted,
-    getProblemCompletionStats
+    getProblemCompletionStats,
+    isProblemCompleted
 };
 
 export default ProblemApi;

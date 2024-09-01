@@ -10,7 +10,7 @@ const GraphTheoryProblems: React.FC = () => {
         <CoursePageMainContainer style={{
             padding: "15px 50px"
         }}>
-            <ProblemsPage/>
+            <ProblemsPage course="GRAPH_THEORY"/>
         </CoursePageMainContainer>
     );
 };

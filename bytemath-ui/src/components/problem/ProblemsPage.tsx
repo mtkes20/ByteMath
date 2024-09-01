@@ -5,10 +5,10 @@ import {useProblems} from "../../hooks/useProblem";
 import {useTranslation} from "react-i18next";
 
 
-const ProblemsPage = () => {
+const ProblemsPage = ({course}: { course: string }) => {
     const {i18n, t} = useTranslation();
 
-    const {problems, selectedProblem, loading, selectProblem} = useProblems("GRAPH_THEORY", i18n.language);
+    const {problems, selectedProblem, loading, selectProblem} = useProblems(course, i18n.language);
 
     const handleProblemChange = (event: SelectChangeEvent<unknown>) => {
         const selectedProblemId = event.target.value as number;

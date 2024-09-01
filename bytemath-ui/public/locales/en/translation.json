@@ -372,6 +372,9 @@
         "true": "True",
         "false": "False"
       }
+    },
+    "problems": {
+      "title": "Problems for Logical Operators"
     }
   },
   "numberTheory": {

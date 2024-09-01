@@ -59,4 +59,10 @@ public class UserProblemCompletionService {
         }
         return stats;
     }
+
+    public boolean isProblemCompleted(BytemathUser user, Long problemId) {
+        Problem problem = problemRepository.findById(problemId).orElseThrow(() -> new RuntimeException("Problem not found"));
+        Optional<UserProblemCompletion> completion = userProblemCompletionRepository.findByUserAndProblem(user, problem);
+        return completion.isPresent();
+    }
 }

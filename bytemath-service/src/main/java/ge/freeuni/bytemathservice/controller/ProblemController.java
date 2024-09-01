@@ -47,6 +47,13 @@ public class ProblemController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/{id}/is-completed")
+    public ResponseEntity<Boolean> isProblemCompleted(@PathVariable Long id) {
+        BytemathUser currentUser = bytemathUserService.getCurrentUser();
+        boolean isCompleted = userProblemCompletionService.isProblemCompleted(currentUser, id);
+        return ResponseEntity.ok(isCompleted);
+    }
+
     @GetMapping("/completion-stats")
     public ResponseEntity<ProblemCompletionStatsDTO> getProblemCompletionStats() {
         var currentUser = bytemathUserService.getCurrentUser();

@@ -26,6 +26,7 @@ import LCMandGCD from "./components/number-theory/LCMandGCD";
 import RSAAlgorithm from "./components/number-theory/RSAAlgorithm";
 import ModularArithmetic from "./components/number-theory/ModularArithmetic";
 import BinaryRepresentation from "./components/binary-system/BinaryRepresentation";
+import LogicalOperandsProblems from "./components/logical-operators/LogicalOperandsProblems";
 
 const router = createHashRouter([
     {
@@ -82,6 +83,10 @@ const router = createHashRouter([
                             {
                                 path: "LOGICAL_OPERANDS_ADVANCED_OPERATORS",
                                 element: <AdvancedOperators/>
+                            },
+                            {
+                                path: "LOGICAL_OPERANDS_PROBLEMS",
+                                element: <LogicalOperandsProblems/>
                             }
                         ]
                     },
