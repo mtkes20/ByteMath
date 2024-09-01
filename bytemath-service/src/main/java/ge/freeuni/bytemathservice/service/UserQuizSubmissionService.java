@@ -7,6 +7,7 @@ import ge.freeuni.bytemathservice.domain.api.SubmittedQuiz;
 import ge.freeuni.bytemathservice.domain.entity.BytemathUser;
 import ge.freeuni.bytemathservice.domain.entity.SubmittedAnswerEntity;
 import ge.freeuni.bytemathservice.domain.entity.UserQuizSubmission;
+import ge.freeuni.bytemathservice.repository.AnswerRepository;
 import ge.freeuni.bytemathservice.repository.QuizRepository;
 import ge.freeuni.bytemathservice.repository.UserQuizSubmissionRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,8 @@ public class UserQuizSubmissionService {
     private final QuizService quizService;
 
     private final QuizRepository quizRepository;
+
+    private final AnswerRepository answerRepository;
 
     @Transactional
     public void saveUserQuizSubmission(BytemathUser user, SubmittedQuiz submittedQuiz, GradedQuiz gradedQuiz) {
@@ -72,7 +75,7 @@ public class UserQuizSubmissionService {
     private GradedQuestion convertToGradedQuestion(SubmittedAnswerEntity submittedAnswer) {
         String correctAnswer = quizService.getCorrectAnswer(submittedAnswer.getQuestionId());
         String userAnswer = submittedAnswer.getSelectedAnswerId() != null
-                ? submittedAnswer.getSelectedAnswerId().toString()
+                ? answerRepository.findAnswerTextById(submittedAnswer.getSelectedAnswerId())
                 : submittedAnswer.getTextAnswer();
         boolean isCorrect = correctAnswer.equals(userAnswer);
         return GradedQuestion.builder()
