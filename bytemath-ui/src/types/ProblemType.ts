@@ -34,6 +34,11 @@ export type ProblemSummaryType = {
 
 export type ProblemCompletionStatsType = {
     easyCompleted: number;
+    easyTotal: number;
     mediumCompleted: number;
+    mediumTotal: number;
     hardCompleted: number;
+    hardTotal: number;
+    completed: number;
+    total: number;
 };

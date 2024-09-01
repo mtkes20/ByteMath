@@ -50,7 +50,10 @@ const markProblemAsCompleted = async (id: number, token?: string): Promise<void>
     );
 };
 
-const getProblemCompletionStats = async (token: string): Promise<ProblemCompletionStatsType> => {
+const getProblemCompletionStats = async (token?: string): Promise<ProblemCompletionStatsType> => {
+    if (!token) {
+        return {} as ProblemCompletionStatsType;
+    }
     const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/v1/problems/completion-stats`,
         {

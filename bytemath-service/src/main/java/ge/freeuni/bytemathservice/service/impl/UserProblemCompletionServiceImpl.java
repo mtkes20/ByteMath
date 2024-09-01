@@ -4,6 +4,7 @@ import ge.freeuni.bytemathservice.domain.api.ProblemCompletionStatsDTO;
 import ge.freeuni.bytemathservice.domain.entity.BytemathUser;
 import ge.freeuni.bytemathservice.domain.entity.Problem;
 import ge.freeuni.bytemathservice.domain.entity.UserProblemCompletion;
+import ge.freeuni.bytemathservice.domain.enums.ProblemDifficulty;
 import ge.freeuni.bytemathservice.repository.ProblemRepository;
 import ge.freeuni.bytemathservice.repository.UserProblemCompletionRepository;
 import ge.freeuni.bytemathservice.service.UserProblemCompletionService;
@@ -60,6 +61,14 @@ public class UserProblemCompletionServiceImpl implements UserProblemCompletionSe
                     break;
             }
         }
+
+        stats.setEasyTotal(problemRepository.countByDifficulty(ProblemDifficulty.EASY));
+        stats.setMediumTotal(problemRepository.countByDifficulty(ProblemDifficulty.MEDIUM));
+        stats.setHardTotal(problemRepository.countByDifficulty(ProblemDifficulty.HARD));
+
+        stats.setCompleted(completions.size());
+        stats.setTotal(stats.getEasyTotal() + stats.getMediumTotal() + stats.getHardTotal());
+
         return stats;
     }
 

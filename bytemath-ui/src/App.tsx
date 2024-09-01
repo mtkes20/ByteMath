@@ -27,6 +27,7 @@ import RSAAlgorithm from "./components/number-theory/RSAAlgorithm";
 import ModularArithmetic from "./components/number-theory/ModularArithmetic";
 import BinaryRepresentation from "./components/binary-system/BinaryRepresentation";
 import LogicalOperandsProblems from "./components/logical-operators/LogicalOperandsProblems";
+import Dashboard from "./components/user/NewUserPage";
 
 const router = createHashRouter([
     {

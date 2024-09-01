@@ -54,6 +54,10 @@
   "enterOnesAndZeros": "შეიყვანეთ 1-ები და 0-ები",
   "chooseCourse": "აირჩიეთ თქვენთვის სასურველი კურსი",
   "completed": "შესრულებული",
+  "easy": "მარტივი",
+  "medium": "საშუალო",
+  "hard": "რთული",
+  "problemCompletion": "შესრულებული ამოცანები",
   "problems": {
     "selectProblem": "აირჩიეთ ამოცანა",
     "description": "აღწერა:",
