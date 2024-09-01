@@ -1,6 +1,7 @@
 package ge.freeuni.bytemathservice.controller;
 
 import ge.freeuni.bytemathservice.service.PageService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,13 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/pages")
+@RequiredArgsConstructor
 public class PageController {
 
     private final PageService pageService;
-
-    public PageController(PageService pageService) {
-        this.pageService = pageService;
-    }
 
     @PostMapping("/read/{identifier}")
     public ResponseEntity<Void> markPageAsRead(@PathVariable String identifier) {
