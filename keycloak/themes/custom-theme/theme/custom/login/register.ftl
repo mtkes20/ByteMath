@@ -36,6 +36,11 @@
         <div id="kc-header">
             <h1>${msg("loginWelcome")}</h1>
         </div>
+        <#if message?has_content && (message.type != 'success')>
+            <div class="alert alert-${message.type}">
+                <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
+            </div>
+        </#if>
         <form id="kc-form" action="${url.registrationAction}" method="post">
             <div id="kc-form-fields">
                 <input type="text" id="firstName" name="firstName" placeholder="${msg('firstName')}"
