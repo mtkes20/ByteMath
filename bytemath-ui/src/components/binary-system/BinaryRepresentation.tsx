@@ -13,6 +13,7 @@ import {
 } from "../styles/StyledComponents";
 import ColorMixer from "./ColorMixer";
 import ClockWidget from "./ClockWidget";
+import Quiz from "../quiz/Quiz";
 
 const BinaryRepresentation = () => {
     const { t } = useTranslation();
@@ -72,6 +73,7 @@ const BinaryRepresentation = () => {
                 <StyledText>{t('binarySystem.representation.binaryClock.description')}</StyledText>
                 <ClockWidget />
             </SubContent>
+            <Quiz identifier={"BINARY_SYSTEM_REPRESENTATION"}/>
         </CoursePageMainContainer>
     );
 };

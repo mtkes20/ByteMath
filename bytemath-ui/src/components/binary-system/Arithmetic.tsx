@@ -12,6 +12,7 @@ import {
 } from "../styles/StyledComponents";
 import ArithmeticVisualizer from "./ArithmeticVisualizer";
 import BinaryExampleDisplay from "./BinaryExampleDisplay";
+import Quiz from "../quiz/Quiz";
 
 const Arithmetic = () => {
     const {t} = useTranslation();
@@ -73,6 +74,7 @@ const Arithmetic = () => {
                     ))}
                 </StyledList>
             </SubContent>
+            <Quiz identifier={"BINARY_SYSTEM_ARITHMETIC"}/>
         </CoursePageMainContainer>
     );
 };

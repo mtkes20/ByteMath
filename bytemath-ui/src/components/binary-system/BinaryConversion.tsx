@@ -16,6 +16,7 @@ import ConversionFlowchart from "./ConversionFlowChart";
 import {styled, Table, TableCell, TableRow} from "@mui/material";
 import BinaryGameWidget from "./BinaryGameWidget";
 import BinaryExampleDisplay from "./BinaryExampleDisplay";
+import Quiz from "../quiz/Quiz";
 
 const BinaryConversion = () => {
     const { t } = useTranslation();
@@ -87,6 +88,7 @@ const BinaryConversion = () => {
                 <StyledText>{t('binarySystem.conversion.game.description')}</StyledText>
                 <BinaryGameWidget/>
             </SubContent>
+            <Quiz identifier={"BINARY_SYSTEM_CONVERTING"}/>
         </CoursePageMainContainer>
     );
 };

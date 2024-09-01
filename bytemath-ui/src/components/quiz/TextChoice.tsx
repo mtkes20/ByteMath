@@ -37,7 +37,7 @@ const TextChoice = ({question, answers, setAnswers} : {
                 border: "1px solid #ccc",
                 width: "500px"
             }}
-            type="text"
+            type="number"
             onChange={(e) => handleTextChoiceAnswerChange(question.id, e.target.value)}
             value={answers.find(a => a.questionId === question.id)?.textAnswer || ""}
         />
