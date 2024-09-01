@@ -12,7 +12,7 @@ import {useKeycloak} from "../../context/KeycloakProvider";
 type ProgrammingLanguage = 'python' | 'java';
 
 
-const CodeEditor = ({problem}: { problem: ProblemType }) => {
+const CodeEditor = ({problem, refetchProblem}: { problem: ProblemType, refetchProblem: () => Promise<void> }) => {
     const {t} = useTranslation();
 
     const [language, setLanguage] = useState<ProgrammingLanguage>('python');
@@ -111,7 +111,9 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
                 }
             }
             if (allPassed) {
-                ProblemApi.markProblemAsCompleted(parseInt(problem.id), keycloak?.token);
+                ProblemApi.markProblemAsCompleted(parseInt(problem.id), keycloak?.token).then(() => {
+                    refetchProblem();
+                });
             }
         } catch (error) {
             setOutput(`Error: ${error}`);

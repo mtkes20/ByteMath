@@ -9,6 +9,13 @@ export const useProblems = (courseIdentifier: string, language: string) => {
     const [selectedProblem, setSelectedProblem] = useState<ProblemType | null>(null);
     const [loading, setLoading] = useState(true);
 
+    const refetchSelectedProblem = async () => {
+        if (selectedProblem) {
+            const problem = await ProblemApi.getProblemById(Number(selectedProblem.id), keycloak?.token, language === 'en' ? "ENG" : "GEO");
+            setSelectedProblem(problem);
+        }
+    }
+
     useEffect(() => {
         const fetchProblems = async () => {
             if (isInitialized && keycloak?.token) {
@@ -45,5 +52,5 @@ export const useProblems = (courseIdentifier: string, language: string) => {
         }
     };
 
-    return {problems, selectedProblem, loading, selectProblem};
+    return {problems, selectedProblem, loading, selectProblem, refetchSelectedProblem};
 };

@@ -9,7 +9,7 @@ import Prompt from "../utils/Prompt";
 
 const ProblemsPage = ({course}: { course: string }) => {
     const {i18n, t} = useTranslation();
-    const {problems, selectedProblem, loading, selectProblem} = useProblems(course, i18n.language);
+    const {problems, selectedProblem, loading, selectProblem, refetchSelectedProblem} = useProblems(course, i18n.language);
     const {isAuthenticated} = useKeycloak();
 
     const handleProblemChange = (event: SelectChangeEvent<unknown>) => {
@@ -71,7 +71,7 @@ const ProblemsPage = ({course}: { course: string }) => {
                 {loading ? (
                     <CircularProgress/>
                 ) : (
-                    selectedProblem && <Problem problem={selectedProblem}/>
+                    selectedProblem && <Problem problem={selectedProblem} refetchProblem={refetchSelectedProblem}/>
                 )}
             </div>
     );

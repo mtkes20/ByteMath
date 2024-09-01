@@ -6,7 +6,7 @@ import CodeEditor from "./CodeEditor";
 import {ProblemType} from "../../types/ProblemType";
 
 
-const Problem = ({problem}: { problem: ProblemType }) => {
+const Problem = ({problem, refetchProblem}: { problem: ProblemType, refetchProblem: () => Promise<void> }) => {
 
     return (
         <StyledCard
@@ -15,14 +15,14 @@ const Problem = ({problem}: { problem: ProblemType }) => {
             }}
         >
             <Grid
-            style={{
-                height: "calc(100vh - 180px)",
-                marginLeft: 0,
-                marginTop: 0
-            }}
+                style={{
+                    height: "calc(100vh - 180px)",
+                    marginLeft: 0,
+                    marginTop: 0
+                }}
                 container>
                 <ProblemDescription problem={problem}/>
-                <CodeEditor problem={problem}/>
+                <CodeEditor problem={problem} refetchProblem={refetchProblem}/>
             </Grid>
         </StyledCard>
     )
