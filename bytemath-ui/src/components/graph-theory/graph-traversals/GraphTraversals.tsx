@@ -14,8 +14,6 @@ const GraphTraversals = () => {
             <Title>{i18n.t('graphTheory.graphTraversals.title')}</Title>
             <BreadthFirstSearch/>
             <DepthFirstSearch/>
-            {/*<DijkstrasAlgorithm />*/}
-
             <Quiz identifier={"GRAPH_THEORY_GRAPH_TRAVERSALS"}/>
         </CoursePageMainContainer>
     );
