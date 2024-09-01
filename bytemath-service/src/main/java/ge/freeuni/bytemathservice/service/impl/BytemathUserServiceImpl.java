@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Base64;
 
 @Service
 public class BytemathUserServiceImpl implements ge.freeuni.bytemathservice.service.BytemathUserService {
@@ -33,6 +34,7 @@ public class BytemathUserServiceImpl implements ge.freeuni.bytemathservice.servi
     @Override
     public BytemathUser createUser(Jwt jwt) {
         BytemathUser newBytemathUser = new BytemathUser();
+        newBytemathUser.setProfilePicture("");
         newBytemathUser.setUsername(jwt.getClaimAsString("preferred_username"));
         return bytemathUserRepository.save(newBytemathUser);
     }
@@ -41,7 +43,8 @@ public class BytemathUserServiceImpl implements ge.freeuni.bytemathservice.servi
     public void saveProfilePicture(MultipartFile file) throws IOException {
         BytemathUser currentUser = getCurrentUser();
         if (currentUser != null) {
-            currentUser.setProfilePicture(file.getBytes());
+            String base64Picture = Base64.getEncoder().encodeToString(file.getBytes());
+            currentUser.setProfilePicture(base64Picture);
             currentUser.setProfilePictureContentType(file.getContentType());
             bytemathUserRepository.save(currentUser);
         }
@@ -50,7 +53,10 @@ public class BytemathUserServiceImpl implements ge.freeuni.bytemathservice.servi
     @Override
     public byte[] getProfilePicture() {
         BytemathUser currentUser = getCurrentUser();
-        return currentUser != null ? currentUser.getProfilePicture() : null;
+        if (currentUser != null && !currentUser.getProfilePicture().isEmpty()) {
+            return Base64.getDecoder().decode(currentUser.getProfilePicture());
+        }
+        return null;
     }
 
     @Override
