@@ -15,7 +15,7 @@ const TheoryOfGraphsContent: React.FC = () => {
     const { t } = useTranslation()
     const navigate = useNavigate();
     const location = useLocation();
-    const [currentPage, setCurrentPage] = useState<string>(location.pathname.split('/').pop() || '');
+    const [currentPage, setCurrentPage] = useState<string | undefined>(location.pathname.split('/').pop() || '');
     const { readPages } = usePage(currentPage);
 
     useEffect(() => {
@@ -38,7 +38,7 @@ const TheoryOfGraphsContent: React.FC = () => {
             {title: t('graphTheory.differentGraphs.title'), value: "GRAPH_THEORY_DIFFERENT_GRAPHS", read: readPages.has("GRAPH_THEORY_DIFFERENT_GRAPHS"), path: "GRAPH_THEORY_DIFFERENT_GRAPHS"},
             {title: t('graphTheory.graphTraversals.title'), value: "GRAPH_THEORY_GRAPH_TRAVERSALS", read: readPages.has("GRAPH_THEORY_GRAPH_TRAVERSALS"), path: "GRAPH_THEORY_GRAPH_TRAVERSALS"},
             {title: t('graphTheory.graphAlgorithms.title'), value: "GRAPH_THEORY_ALGORITHMS", read: readPages.has("GRAPH_THEORY_ALGORITHMS"), path: "GRAPH_THEORY_ALGORITHMS"},
-            {title: t('graphTheory.graphProblems.title'), value: "GRAPH_THEORY_PROBLEMS", read: readPages.has("GRAPH_THEORY_PROBLEMS"), path: "GRAPH_THEORY_PROBLEMS"}
+            {title: t('graphTheory.graphProblems.title'), path: "GRAPH_THEORY_PROBLEMS"}
         ];
     }, [readPages, t])
 

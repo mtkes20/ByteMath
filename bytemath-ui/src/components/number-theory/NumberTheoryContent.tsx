@@ -13,11 +13,11 @@ import {Outlet, useLocation, useNavigate} from "react-router-dom";
 
 
 const NumberTheoryContent = () => {
-    const { t } = useTranslation()
+    const {t} = useTranslation()
     const navigate = useNavigate();
     const location = useLocation();
-    const [currentPage, setCurrentPage] = useState<string>(location.pathname.split('/').pop() || '');
-    const { readPages } = usePage(currentPage);
+    const [currentPage, setCurrentPage] = useState<string | undefined>(location.pathname.split('/').pop() || '');
+    const {readPages} = usePage(currentPage);
 
     useEffect(() => {
         if (location.pathname === "/courses/numbers-theory") {
@@ -35,9 +35,24 @@ const NumberTheoryContent = () => {
 
     const menuItems = useMemo(() => {
         return [
-            {title: t("introduction"), value: "NUMBER_THEORY_INTRO", read: readPages.has("NUMBER_THEORY_INTRO"), path: "NUMBER_THEORY_INTRO"},
-            {title: t("lcm-gcd"), value: "NUMBER_THEORY_LCM_GCD", read: readPages.has("NUMBER_THEORY_LCM_GCD"), path: "NUMBER_THEORY_LCM_GCD"},
-            {title: t("rsa-algorithm"), value: "NUMBER_THEORY_RSA", read: readPages.has("NUMBER_THEORY_RSA"), path: "NUMBER_THEORY_RSA"},
+            {
+                title: t("introduction"),
+                value: "NUMBER_THEORY_INTRO",
+                read: readPages.has("NUMBER_THEORY_INTRO"),
+                path: "NUMBER_THEORY_INTRO"
+            },
+            {
+                title: t("lcm-gcd"),
+                value: "NUMBER_THEORY_LCM_GCD",
+                read: readPages.has("NUMBER_THEORY_LCM_GCD"),
+                path: "NUMBER_THEORY_LCM_GCD"
+            },
+            {
+                title: t("rsa-algorithm"),
+                value: "NUMBER_THEORY_RSA",
+                read: readPages.has("NUMBER_THEORY_RSA"),
+                path: "NUMBER_THEORY_RSA"
+            },
             {
                 title: t("modular-arithmetic"),
                 value: "NUMBER_THEORY_MODULAR_ARITHMETIC",

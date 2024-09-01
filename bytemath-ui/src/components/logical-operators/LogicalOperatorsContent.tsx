@@ -11,7 +11,7 @@ const LogicalOperatorsContent = () => {
     const { t } = useTranslation()
     const navigate = useNavigate();
     const location = useLocation();
-    const [currentPage, setCurrentPage] = useState<string>(location.pathname.split('/').pop() || '');
+    const [currentPage, setCurrentPage] = useState<string | undefined>(location.pathname.split('/').pop() || '');
     const { readPages } = usePage(currentPage);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const LogicalOperatorsContent = () => {
             {title: t("logicalOperands.introduction.title"), value: "LOGICAL_OPERANDS_INTRO", read: readPages.has("LOGICAL_OPERANDS_INTRO"), path: "LOGICAL_OPERANDS_INTRO"},
             {title: t("logicalOperands.basicOperators.title"), value: "LOGICAL_OPERANDS_BASIC_OPERATORS", read: readPages.has("LOGICAL_OPERANDS_BASIC_OPERATORS"), path: "LOGICAL_OPERANDS_BASIC_OPERATORS"},
             {title: t("logicalOperands.advancedOperators.title"), value: "LOGICAL_OPERANDS_ADVANCED_OPERATORS", read: readPages.has("LOGICAL_OPERANDS_ADVANCED_OPERATORS"), path: "LOGICAL_OPERANDS_ADVANCED_OPERATORS"},
-            {title: t("logicalOperands.problems.title"), value: "LOGICAL_OPERANDS_PROBLEMS", read: readPages.has("LOGICAL_OPERANDS_PROBLEMS"), path: "LOGICAL_OPERANDS_PROBLEMS"},
+            {title: t("logicalOperands.problems.title"), path: "LOGICAL_OPERANDS_PROBLEMS"},
         ];
     }, [readPages, t])
 

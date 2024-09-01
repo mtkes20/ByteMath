@@ -11,7 +11,7 @@ const BinarySystemContent: React.FC = () => {
     const { t } = useTranslation()
     const navigate = useNavigate();
     const location = useLocation();
-    const [currentPage, setCurrentPage] = useState<string>(location.pathname.split('/').pop() || '');
+    const [currentPage, setCurrentPage] = useState<string | undefined>(location.pathname.split('/').pop() || '');
     const { readPages } = usePage(currentPage);
 
     useEffect(() => {

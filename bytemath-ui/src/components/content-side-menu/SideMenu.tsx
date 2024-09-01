@@ -12,14 +12,14 @@ interface SideMenuProps {
     icon: JSX.Element;
     title: string;
     items: PageItem[];
-    selectedItem: string;
+    selectedItem?: string;
     setSelectedItem: (item: PageItem) => void
 }
 
 export interface PageItem {
     title: string;
-    value: string;
-    read: boolean;
+    value?: string;
+    read?: boolean;
     path?: string;
 }
 

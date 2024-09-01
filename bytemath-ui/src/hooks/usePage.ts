@@ -2,10 +2,10 @@ import {useEffect, useRef, useState} from 'react';
 import {useKeycloak} from "../context/KeycloakProvider";
 import PageApi from "../api/page-api";
 
-export const usePage = (pageId: string, delay: number = 5000) => {
+export const usePage = (pageId?: string, delay: number = 5000) => {
     const {keycloak, isAuthenticated} = useKeycloak();
     const timerRef = useRef<NodeJS.Timeout | null>(null);
-    const [readPages, setReadPages] = useState<Set<string>>(new Set());
+    const [readPages, setReadPages] = useState<Set<string | undefined>>(new Set());
 
     useEffect(() => {
         if (isAuthenticated && keycloak?.token) {
@@ -46,7 +46,10 @@ export const usePage = (pageId: string, delay: number = 5000) => {
         });
     };
 
-    const markPageAsRead = async (pageId: string) => {
+    const markPageAsRead = async (pageId?: string) => {
+        if(!pageId){
+            return
+        }
         if (!keycloak?.token) return;
         PageApi.markPageAsRead(pageId, keycloak.token).then(() => {
             setReadPages(prev => new Set(prev).add(pageId));
