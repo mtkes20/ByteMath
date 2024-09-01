@@ -161,7 +161,8 @@ const App = () => {
         if (!!language) {
             i18n.changeLanguage(language)
         }
-    }, []);
+    }, [i18n]);
+
     return (
         <QueryClientProvider client={queryClient}>
             <KeycloakProvider>
