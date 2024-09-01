@@ -832,9 +832,9 @@
         "resultDescription": "The graph has been colored successfully. Observe how the algorithm minimized the number of colors used while ensuring no adjacent nodes share the same color.",
         "usedColors": "Number of colors used: {{count}}"
       }
+    },
+    "graphProblems": {
+      "title": "Problems for Graph Theory"
     }
-  },
-  "graphProblems": {
-    "title": "Problems for Graph Theory"
   }
 }

@@ -1,4 +1,4 @@
--- Logical Operators Introduction Quiz
+-- LOGICAL_OPERANDS_INTRO
 INSERT INTO BYTEMATH.QUIZ (ID, IDENTIFIER, TITLE_ENG, TITLE_GEO)
 VALUES (3, 'LOGICAL_OPERANDS_INTRO', 'Logical Operators Introduction Quiz', 'ლოგიკური ოპერატორების შესავალი - ქვიზი');
 
@@ -7,20 +7,28 @@ VALUES (13, 'Which of the following best describes the importance of logical ope
         'რომელი აღწერს საუკეთესოდ ლოგიკური ოპერატორების მნიშვნელობას პროგრამირებაში?', 'SINGLE_CHOICE', 3);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT_ENG, ANSWER_TEXT_GEO, QUESTION_ID, IS_CORRECT)
-VALUES (43, 'They are used only for arithmetic calculations', 'ისინი გამოიყენება მხოლოდ არითმეტიკული გამოთვლებისთვის', 13, FALSE),
-       (44, 'They are essential for defining conditions and controlling program flow', 'ისინი აუცილებელია პირობების განსაზღვრისა და პროგრამის მიმდინარეობის კონტროლისათვის', 13, TRUE),
-       (45, 'They are used exclusively in database management', 'ისინი გამოიყენება მხოლოდ მონაცემთა ბაზების მართვაში', 13, FALSE),
-       (46, 'They have no practical applications in computer science', 'მათ არ აქვთ პრაქტიკული გამოყენება კომპიუტერულ მეცნიერებაში', 13, FALSE);
+VALUES (43, 'They are used only for arithmetic calculations', 'ისინი გამოიყენება მხოლოდ არითმეტიკული გამოთვლებისთვის',
+        13, FALSE),
+       (44, 'They are essential for defining conditions and controlling program flow',
+        'ისინი აუცილებელია პირობების განსაზღვრისა და პროგრამის მიმდინარეობის კონტროლისათვის', 13, TRUE),
+       (45, 'They are used exclusively in database management', 'ისინი გამოიყენება მხოლოდ მონაცემთა ბაზების მართვაში',
+        13, FALSE),
+       (46, 'They have no practical applications in computer science',
+        'მათ არ აქვთ პრაქტიკული გამოყენება კომპიუტერულ მეცნიერებაში', 13, FALSE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT_ENG, QUESTION_TEXT_GEO, QUESTION_TYPE, QUIZ_ID)
 VALUES (14, 'In the light switch example, what does the AND operator represent?',
         'ნათურის ჩამრთველების მაგალითში რას წარმოადგენს "და" ოპერატორი?', 'SINGLE_CHOICE', 3);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT_ENG, ANSWER_TEXT_GEO, QUESTION_ID, IS_CORRECT)
-VALUES (47, 'The light is on when at least one switch is on', 'ნათურა ინთება, როცა ერთი ჩამრთველი მაინც ჩართულია', 14, FALSE),
-       (48, 'The light is on only when both switches are on', 'ნათურა ინთება მხოლოდ მაშინ, როცა ორივე ჩამრთველი ჩართულია', 14, TRUE),
-       (49, 'The light is always off regardless of the switches', 'ნათურა ყოველთვის გამორთულია, მიუხედავად ჩამრთველების მდგომარეობისა', 14, FALSE),
-       (50, 'The light alternates between on and off states', 'ნათურა მონაცვლეობს ჩართულ და გამორთულ მდგომარეობებს შორის', 14, FALSE);
+VALUES (47, 'The light is on when at least one switch is on', 'ნათურა ინთება, როცა ერთი ჩამრთველი მაინც ჩართულია', 14,
+        FALSE),
+       (48, 'The light is on only when both switches are on',
+        'ნათურა ინთება მხოლოდ მაშინ, როცა ორივე ჩამრთველი ჩართულია', 14, TRUE),
+       (49, 'The light is always off regardless of the switches',
+        'ნათურა ყოველთვის გამორთულია, მიუხედავად ჩამრთველების მდგომარეობისა', 14, FALSE),
+       (50, 'The light alternates between on and off states',
+        'ნათურა მონაცვლეობს ჩართულ და გამორთულ მდგომარეობებს შორის', 14, FALSE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT_ENG, QUESTION_TEXT_GEO, QUESTION_TYPE, QUIZ_ID)
 VALUES (15, 'Which of the following is NOT mentioned as a topic explored in this course?',
@@ -39,26 +47,38 @@ VALUES (16, 'How are logical operators used in artificial intelligence systems?'
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT_ENG, ANSWER_TEXT_GEO, QUESTION_ID, IS_CORRECT)
 VALUES (55, 'They are not used in AI systems', 'ისინი არ გამოიყენება ხელოვნური ინტელექტში', 16, FALSE),
        (56, 'They are used only for data storage', 'ისინი გამოიყენება მხოლოდ მონაცემთა შენახვისთვის', 16, FALSE),
-       (57, 'They play a significant role in decision-making algorithms', 'ისინი მნიშვნელოვან როლს ასრულებენ გადაწყვეტილების მიღების ალგორითმებში', 16, TRUE),
-       (58, 'They are used exclusively for image processing', 'ისინი გამოიყენება მხოლოდ გამოსახულებების დამუშავებისთვის', 16, FALSE);
+       (57, 'They play a significant role in decision-making algorithms',
+        'ისინი მნიშვნელოვან როლს ასრულებენ გადაწყვეტილების მიღების ალგორითმებში', 16, TRUE),
+       (58, 'They are used exclusively for image processing',
+        'ისინი გამოიყენება მხოლოდ გამოსახულებების დამუშავებისთვის', 16, FALSE);
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT_ENG, QUESTION_TEXT_GEO, QUESTION_TYPE, QUIZ_ID)
 VALUES (17, 'In the light switch example, what does the OR operator represent?',
         'ნათურის ჩამრთველების მაგალითში რას წარმოადგენს "ან" ოპერატორი?', 'SINGLE_CHOICE', 3);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT_ENG, ANSWER_TEXT_GEO, QUESTION_ID, IS_CORRECT)
-VALUES (59, 'The light is on if at least one of the switches is on', 'ნათურა ინთება, თუ ერთ-ერთი ჩამრთველი მაინც ჩართულია', 17, TRUE),
-       (60, 'The light is on only when both switches are off', 'ნათურა ინთება მხოლოდ მაშინ, როცა ორივე ჩამრთველი გამორთულია', 17, FALSE),
-       (61, 'The light is always on regardless of the switches', 'ნათურა ყოველთვის ანთია, მიუხედავად ჩამრთველების მდგომარეობისა', 17, FALSE),
-       (62, 'The light is on when exactly one switch is on', 'ნათურა ინთება, როცა ზუსტად ერთი ჩამრთველია ჩართული', 17, FALSE);
+VALUES (59, 'The light is on if at least one of the switches is on',
+        'ნათურა ინთება, თუ ერთ-ერთი ჩამრთველი მაინც ჩართულია', 17, TRUE),
+       (60, 'The light is on only when both switches are off',
+        'ნათურა ინთება მხოლოდ მაშინ, როცა ორივე ჩამრთველი გამორთულია', 17, FALSE),
+       (61, 'The light is always on regardless of the switches',
+        'ნათურა ყოველთვის ანთია, მიუხედავად ჩამრთველების მდგომარეობისა', 17, FALSE),
+       (62, 'The light is on when exactly one switch is on', 'ნათურა ინთება, როცა ზუსტად ერთი ჩამრთველია ჩართული', 17,
+        FALSE);
 
--- Basic Logical Operators Quiz
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+-- LOGICAL_OPERANDS_BASIC_OPERATORS
 INSERT INTO BYTEMATH.QUIZ (ID, IDENTIFIER, TITLE_ENG, TITLE_GEO)
-VALUES (1001, 'LOGICAL_OPERANDS_BASIC_OPERATORS', 'Basic Logical Operators Quiz', 'მარტივი ლოგიკური ოპერატორების ქვიზი');
+VALUES (1001, 'LOGICAL_OPERANDS_BASIC_OPERATORS', 'Basic Logical Operators Quiz',
+        'მარტივი ლოგიკური ოპერატორების ქვიზი');
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT_ENG, QUESTION_TEXT_GEO, QUESTION_TYPE, QUIZ_ID)
 VALUES (10001, 'Which logical operator returns true only when all conditions are met?',
-        'რომელი ლოგიკური ოპერატორი აბრუნებს ჭეშმარიტს მხოლოდ მაშინ, როცა ყველა პირობა სრულდება?', 'SINGLE_CHOICE', 1001);
+        'რომელი ლოგიკური ოპერატორი აბრუნებს ჭეშმარიტს მხოლოდ მაშინ, როცა ყველა პირობა სრულდება?', 'SINGLE_CHOICE',
+        1001);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT_ENG, ANSWER_TEXT_GEO, QUESTION_ID, IS_CORRECT)
 VALUES (100001, 'AND', 'და (AND)', 10001, TRUE),
@@ -76,7 +96,8 @@ VALUES (100004, '&&', '&&', 10002, FALSE),
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT_ENG, QUESTION_TEXT_GEO, QUESTION_TYPE, QUIZ_ID)
 VALUES (10003, 'Which operator always does the opposite, turning true into false and false into true?',
-        'რომელი ოპერატორი აკეთებს ყოველთვის საპირისპიროს, აქცევს ჭეშმარიტს მცდარად და მცდარს ჭეშმარიტად?', 'SINGLE_CHOICE', 1001);
+        'რომელი ოპერატორი აკეთებს ყოველთვის საპირისპიროს, აქცევს ჭეშმარიტს მცდარად და მცდარს ჭეშმარიტად?',
+        'SINGLE_CHOICE', 1001);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT_ENG, ANSWER_TEXT_GEO, QUESTION_ID, IS_CORRECT)
 VALUES (100007, 'AND', 'და (AND)', 10003, FALSE),
@@ -101,13 +122,20 @@ VALUES (100013, 'True', 'ჭეშმარიტი', 10005, TRUE),
        (100014, 'False', 'მცდარი', 10005, FALSE),
        (100015, 'It depends on the context', 'დამოკიდებულია კონტექსტზე', 10005, FALSE);
 
--- Advanced Logical Operators Quiz
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+-- LOGICAL_OPERANDS_ADVANCED_OPERATORS
+
 INSERT INTO BYTEMATH.QUIZ (ID, IDENTIFIER, TITLE_ENG, TITLE_GEO)
-VALUES (2001, 'LOGICAL_OPERANDS_ADVANCED_OPERATORS', 'Advanced Logical Operators Quiz', 'რთული ლოგიკური ოპერატორების ქვიზი');
+VALUES (2001, 'LOGICAL_OPERANDS_ADVANCED_OPERATORS', 'Advanced Logical Operators Quiz',
+        'რთული ლოგიკური ოპერატორების ქვიზი');
 
 INSERT INTO BYTEMATH.QUESTION (ID, QUESTION_TEXT_ENG, QUESTION_TEXT_GEO, QUESTION_TYPE, QUIZ_ID)
 VALUES (20001, 'Which advanced logical operator returns false only when all inputs are true?',
-        'რომელი რთული ლოგიკური ოპერატორი აბრუნებს მცდარს მხოლოდ მაშინ, როცა ყველა პირობა ჭეშმარიტია?', 'SINGLE_CHOICE', 2001);
+        'რომელი რთული ლოგიკური ოპერატორი აბრუნებს მცდარს მხოლოდ მაშინ, როცა ყველა პირობა ჭეშმარიტია?', 'SINGLE_CHOICE',
+        2001);
 
 INSERT INTO BYTEMATH.ANSWER (ID, ANSWER_TEXT_ENG, ANSWER_TEXT_GEO, QUESTION_ID, IS_CORRECT)
 VALUES (200001, 'NAND', 'NAND', 20001, TRUE),

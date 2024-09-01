@@ -12,6 +12,7 @@ import {
     StyledListItem
 } from "../styles/StyledComponents";
 import ModularArithmeticCalculator from "./ModularArithmeticCalculator";
+import Quiz from "../quiz/Quiz";
 
 const ModularArithmetic = () => {
     const { t } = useTranslation();
@@ -73,6 +74,7 @@ const ModularArithmetic = () => {
                 <StyledText>{t('numberTheory.modularArithmetic.calculator.description')}</StyledText>
                 <ModularArithmeticCalculator/>
             </SubContent>
+            <Quiz identifier="NUMBER_THEORY_MODULAR_ARITHMETIC"/>
         </CoursePageMainContainer>
     );
 };

@@ -12,6 +12,7 @@ import {
 import LCMandGCDCalculator from "./LCMandGCDCalculator";
 import {useTranslation} from "react-i18next";
 import {Typography} from "@mui/material";
+import Quiz from "../quiz/Quiz";
 
 const LCMandGCD = () => {
     const {t} = useTranslation()
@@ -74,6 +75,7 @@ const LCMandGCD = () => {
                 </SubContent>
             </SubContent>
             <LCMandGCDCalculator/>
+            <Quiz identifier="NUMBER_THEORY_LCM_GCD"/>
         </CoursePageMainContainer>
     );
 };

@@ -12,6 +12,7 @@ import {
     Title
 } from "../styles/StyledComponents";
 import {Typography} from "@mui/material";
+import Quiz from "../quiz/Quiz";
 
 
 const RSAAlgorithm = () => {
@@ -92,6 +93,7 @@ const RSAAlgorithm = () => {
                 </SubContent>
             </Example>
             <RSACalculator/>
+            <Quiz identifier="NUMBER_THEORY_RSA"/>
         </CoursePageMainContainer>
     )
 }

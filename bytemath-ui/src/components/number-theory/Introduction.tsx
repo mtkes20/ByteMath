@@ -7,6 +7,8 @@ import {
     Title
 } from "../styles/StyledComponents";
 import {useTranslation} from "react-i18next";
+import Quiz from "../quiz/Quiz";
+import React from "react";
 
 
 const Introduction = () => {
@@ -36,6 +38,7 @@ const Introduction = () => {
                     ))}
                 </StyledList>
             </SubContent>
+            <Quiz identifier="NUMBER_THEORY_INTRO"/>
         </CoursePageMainContainer>
     )
 }
