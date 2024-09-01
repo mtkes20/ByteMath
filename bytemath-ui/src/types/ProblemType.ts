@@ -10,8 +10,9 @@ export type ProblemType = {
     pythonTemplate: string;
     javaTemplate: string;
     testCases: TestCaseType[];
-    lockedLines: { python: number, java: number }
+    lockedLines: { python: number, java: number };
     difficulty: ProblemDifficulty;
+    isCompleted: boolean;
 };
 
 export type TestCaseType = {

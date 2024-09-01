@@ -36,7 +36,8 @@ public class ProblemController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProblemDTO> getProblemById(@PathVariable Long id, @RequestParam(required = false, defaultValue = "ENG") String language) {
-        ProblemDTO problem = problemService.getProblemById(id, language);
+        BytemathUser currentUser = bytemathUserService.getCurrentUser();
+        ProblemDTO problem = problemService.getProblemById(currentUser, id, language);
         return ResponseEntity.ok(problem);
     }
 
@@ -45,13 +46,6 @@ public class ProblemController {
         BytemathUser currentUser = bytemathUserService.getCurrentUser();
         userProblemCompletionService.markProblemAsCompleted(currentUser, id);
         return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/{id}/is-completed")
-    public ResponseEntity<Boolean> isProblemCompleted(@PathVariable Long id) {
-        BytemathUser currentUser = bytemathUserService.getCurrentUser();
-        boolean isCompleted = userProblemCompletionService.isProblemCompleted(currentUser, id);
-        return ResponseEntity.ok(isCompleted);
     }
 
     @GetMapping("/completion-stats")

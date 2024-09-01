@@ -26,4 +26,5 @@ public class ProblemDTO {
     private List<TestCaseDTO> testCases;
     private LockedLinesDTO lockedLines;
     private ProblemDifficulty difficulty;
+    private Boolean isCompleted;
 }
