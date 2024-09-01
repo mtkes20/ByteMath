@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="${url.resourcesPath}/img/favicon.ico">
     <title>${msg("registerTitle", realm.name)}</title>
     <link rel="stylesheet" type="text/css" href="${url.resourcesPath}/css/styles.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -9,7 +10,22 @@
 
 <body>
 <div class="navbar">
-    <div class="navbar-center" onclick="goToHomepage()">${msg("title")}</div>
+    <img
+            src="${url.resourcesPath}/img/bytemath-logo.png"
+            alt="Image"
+            width="295"
+            height="70"
+            onclick="goToHomepage()"
+            style="
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #ffffff;
+        font-size: 24px;
+        font-family: 'Roboto';
+        cursor: pointer;
+    "
+    />
     <div class="navbar-right">
         <button class="mui-button purple" onclick="goToLogin()">${msg("login")}</button>
     </div>

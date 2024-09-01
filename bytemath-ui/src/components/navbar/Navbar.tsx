@@ -16,21 +16,22 @@ import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useKeycloak} from "../../context/KeycloakProvider";
 import RegisterButton from "./RegisterButton";
+import BytemathLogo from "./bytemath-logo.png";
 
 interface NavbarProps {
     language: 'en' | 'ka';
     onLanguageChange: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
+const Navbar: React.FC<NavbarProps> = ({language, onLanguageChange}) => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const [profileAnchorEl, setProfileAnchorEl] = useState<HTMLElement | null>(null);
     // const [profilePicture, setProfilePicture] = useState<string | null>(null);
     const open = Boolean(anchorEl);
     const profileMenuOpen = Boolean(profileAnchorEl);
     const navigate = useNavigate();
-    const { t } = useTranslation();
-    const { isAuthenticated, keycloak, profilePicture } = useKeycloak();
+    const {t} = useTranslation();
+    const {isAuthenticated, keycloak, profilePicture} = useKeycloak();
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
         setAnchorEl(e.currentTarget);
@@ -83,8 +84,9 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                         textTransform: 'none',
                     }}
                 >
-                    <Typography variant={"inherit"} color={"#ffffff"} fontSize={18} fontFamily={"Roboto"}>{t("courses")}</Typography>
-                    {open ? <ExpandLess style={{ color: "#ffffff" }} /> : <ExpandMore style={{ color: "#ffffff" }} />}
+                    <Typography variant={"inherit"} color={"#ffffff"} fontSize={18}
+                                fontFamily={"Roboto"}>{t("courses")}</Typography>
+                    {open ? <ExpandLess style={{color: "#ffffff"}}/> : <ExpandMore style={{color: "#ffffff"}}/>}
                 </Button>
             </div>
             <Menu
@@ -92,46 +94,48 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-                MenuListProps={{ 'aria-labelledby': 'categories-btn' }}
+                MenuListProps={{'aria-labelledby': 'categories-btn'}}
             >
                 <MenuItem onClick={() => onSelect('binary-system')}>
                     <ListItemIcon>
-                        <Code />
+                        <Code/>
                     </ListItemIcon>
                     <ListItemText>{t("binarySystemTitle")}</ListItemText>
                 </MenuItem>
                 <MenuItem onClick={() => onSelect('logic-operands')}>
                     <ListItemIcon>
-                        <SettingsInputComponent fontSize="small" />
+                        <SettingsInputComponent fontSize="small"/>
                     </ListItemIcon>
                     <ListItemText>{t("logicalOperandsTitle")}</ListItemText>
                 </MenuItem>
                 <MenuItem onClick={() => onSelect('graphs')}>
                     <ListItemIcon>
-                        <AccountTree fontSize="small" />
+                        <AccountTree fontSize="small"/>
                     </ListItemIcon>
                     <ListItemText>{t("graphTheoryTitle")}</ListItemText>
                 </MenuItem>
                 <MenuItem onClick={() => onSelect('numbers-theory')}>
                     <ListItemIcon>
-                        <Functions fontSize="small" />
+                        <Functions fontSize="small"/>
                     </ListItemIcon>
                     <ListItemText>{t("numberTheoryTitle")}</ListItemText>
                 </MenuItem>
             </Menu>
-            <Typography
-                onClick={() => {
-                    navigate("/")
-                }}
+            <img
+                src={BytemathLogo}
+                alt="Image"
+                width="295"
+                height="70"
+                onClick={() => navigate("/")}
                 style={{
-                color: "#ffffff",
-                fontSize: 24,
-                fontFamily: "Roboto",
-                flex: 2,
-                display: "flex",
-                justifyContent: "center",
-                cursor: "pointer",
-            }}>{t("title")}</Typography>
+                    color: "#ffffff",
+                    fontSize: 24,
+                    fontFamily: "Roboto",
+                    display: "flex",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                }}
+            />
             <div style={{
                 display: "flex",
                 gap: "10px",
@@ -140,17 +144,19 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                 flex: 1,
                 justifyContent: "flex-end"
             }}>
+
                 <LanguageSwitcher language={language} onLanguageChange={onLanguageChange}/>
                 {isAuthenticated ? (
-                    <div onClick={handleProfileClick} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "8px" }}>
+                    <div onClick={handleProfileClick}
+                         style={{cursor: "pointer", display: "flex", alignItems: "center", gap: "8px"}}>
                         <Avatar src={
                             profilePicture ? URL.createObjectURL(profilePicture) : undefined
-                        } alt={keycloak?.tokenParsed?.name || "User"} />
+                        } alt={keycloak?.tokenParsed?.name || "User"}/>
                     </div>
                 ) : (
-                    <div style={{ display: "flex", gap: "8px" }}>
-                        <LoginButton />
-                        <RegisterButton />
+                    <div style={{display: "flex", gap: "8px"}}>
+                        <LoginButton/>
+                        <RegisterButton/>
                     </div>
                 )}
                 <Menu
@@ -158,15 +164,21 @@ const Navbar: React.FC<NavbarProps> = ({ language, onLanguageChange }) => {
                     open={profileMenuOpen}
                     onClose={handleProfileClose}
                 >
-                    <MenuItem onClick={() => { navigate('/user'); handleProfileClose(); }}>
+                    <MenuItem onClick={() => {
+                        navigate('/user');
+                        handleProfileClose();
+                    }}>
                         <ListItemIcon>
-                            <Person fontSize="small" />
+                            <Person fontSize="small"/>
                         </ListItemIcon>
                         <ListItemText>{keycloak?.tokenParsed?.name || ""}</ListItemText>
                     </MenuItem>
-                    <MenuItem onClick={() => { handleLogout(); handleProfileClose(); }}>
+                    <MenuItem onClick={() => {
+                        handleLogout();
+                        handleProfileClose();
+                    }}>
                         <ListItemIcon>
-                            <ExitToApp fontSize="small" />
+                            <ExitToApp fontSize="small"/>
                         </ListItemIcon>
                         <ListItemText>Logout</ListItemText>
                     </MenuItem>

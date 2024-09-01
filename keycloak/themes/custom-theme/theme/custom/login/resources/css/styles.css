@@ -88,16 +88,6 @@ input[type="submit"]:hover {
     top: 0;
 }
 
-.navbar-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 24px;
-    color: #ffffff;
-    cursor: pointer;
-    font-family: 'Roboto';
-}
-
 .navbar-right {
     margin-left: auto;
     display: flex;
