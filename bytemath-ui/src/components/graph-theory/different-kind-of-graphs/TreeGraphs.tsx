@@ -9,7 +9,7 @@ import {
     StyledText,
     SubContent,
     Title
-} from "../../styles/StyledComponents";
+} from "../../utils/StyledComponents";
 import {useTranslation} from 'react-i18next';
 
 const TreeGraphs: React.FC = () => {

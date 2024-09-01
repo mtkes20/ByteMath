@@ -31,6 +31,7 @@
   "complete": "Complete",
   "result": "Result",
   "wantToTakeQuiz": "Want to take a quiz?",
+  "wantToSolveProblems": "Want to solve problems?",
   "viewResults": "View Results",
   "red": "Red",
   "green": "Green",
@@ -52,6 +53,7 @@
   "binaryNumber": "Binary Number",
   "enterOnesAndZeros": "Enter 0s and 1s",
   "chooseCourse": "Select the course you wish to enroll in",
+  "completed": "COMPLETED",
   "problems": {
     "selectProblem": "Select a Problem",
     "description": "Description:",

@@ -1,7 +1,7 @@
 import {Typography} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {ResultText, StyledButton, StyledCard, StyledTextField, SubContent, Subtitle} from "../styles/StyledComponents";
+import {ResultText, StyledButton, StyledCard, StyledTextField, SubContent, Subtitle} from "../utils/StyledComponents";
 
 
 const ModularArithmeticCalculator = () => {

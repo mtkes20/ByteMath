@@ -10,7 +10,7 @@ import {
     SubContent,
     Subtitle,
     Title,
-} from "../styles/StyledComponents";
+} from "../utils/StyledComponents";
 import ColorMixer from "./ColorMixer";
 import ClockWidget from "./ClockWidget";
 import Quiz from "../quiz/Quiz";

@@ -10,7 +10,7 @@ import {
     Example,
     StyledList,
     StyledListItem
-} from "../styles/StyledComponents";
+} from "../utils/StyledComponents";
 import ModularArithmeticCalculator from "./ModularArithmeticCalculator";
 import Quiz from "../quiz/Quiz";
 

@@ -10,7 +10,7 @@ import {
     SubContent,
     Subtitle,
     Title
-} from "../styles/StyledComponents";
+} from "../utils/StyledComponents";
 import {Typography} from "@mui/material";
 import Quiz from "../quiz/Quiz";
 

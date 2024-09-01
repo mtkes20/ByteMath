@@ -10,7 +10,7 @@ import {
     Subtitle,
     Title,
     Example,
-} from "../styles/StyledComponents";
+} from "../utils/StyledComponents";
 import BinaryConverter from "./BinaryConverter";
 import ConversionFlowchart from "./ConversionFlowChart";
 import {styled, Table, TableCell, TableRow} from "@mui/material";

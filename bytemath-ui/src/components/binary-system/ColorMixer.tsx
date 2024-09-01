@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyledCard, StyledText, Subtitle, StyledSlider } from "../styles/StyledComponents";
+import { StyledCard, StyledText, Subtitle, StyledSlider } from "../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 
 const ColorMixer = () => {

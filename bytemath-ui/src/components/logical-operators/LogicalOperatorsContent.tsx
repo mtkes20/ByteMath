@@ -1,7 +1,7 @@
 import SideMenu, {PageItem} from "../content-side-menu/SideMenu";
 import {SettingsInputComponent} from '@mui/icons-material';
 import React, {useEffect, useMemo, useState} from "react";
-import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
+import {CoursePageSideMenuContainer} from "../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 import {usePage} from "../../hooks/usePage";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";

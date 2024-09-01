@@ -8,7 +8,7 @@ import {
     SubContent,
     Subtitle,
     Title
-} from "../styles/StyledComponents";
+} from "../utils/StyledComponents";
 import LCMandGCDCalculator from "./LCMandGCDCalculator";
 import {useTranslation} from "react-i18next";
 import {Typography} from "@mui/material";

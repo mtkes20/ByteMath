@@ -1,4 +1,4 @@
-import {ResultText, StyledButton, StyledCard, StyledTextField, SubContent} from "../styles/StyledComponents";
+import {ResultText, StyledButton, StyledCard, StyledTextField, SubContent} from "../utils/StyledComponents";
 import {Stack} from "@mui/material";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";

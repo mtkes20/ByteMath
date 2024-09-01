@@ -31,6 +31,7 @@
   "complete": "შესრულებული",
   "result": "შედეგი",
   "wantToTakeQuiz": "გსურთ, რომ შეავსოთ ქვიზი?",
+  "wantToSolveProblems": "გსურთ, რომ ამოხსნათ ამოცანები?",
   "viewResults": "შედეგების ნახვა",
   "red": "წითელი",
   "green": "მწვანე",
@@ -52,6 +53,7 @@
   "binaryNumber": "ორობითი რიცხვი",
   "enterOnesAndZeros": "შეიყვანეთ 1-ები და 0-ები",
   "chooseCourse": "აირჩიეთ თქვენთვის სასურველი კურსი",
+  "completed": "შესრულებული",
   "problems": {
     "selectProblem": "აირჩიეთ ამოცანა",
     "description": "აღწერა:",

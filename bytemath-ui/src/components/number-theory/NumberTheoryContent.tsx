@@ -6,7 +6,7 @@ import LCMandGCD from "./LCMandGCD";
 import RSAAlgorithm from "./RSAAlgorithm";
 import ModularArithmetic from "./ModularArithmetic";
 import {useTranslation} from "react-i18next";
-import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
+import {CoursePageSideMenuContainer} from "../utils/StyledComponents";
 import {Tooltip} from "@mui/material";
 import {usePage} from "../../hooks/usePage";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";

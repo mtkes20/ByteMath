@@ -8,7 +8,7 @@ import {
     StyledTextField,
     SubContent,
     Subtitle
-} from "../styles/StyledComponents";
+} from "../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 
 interface PublicKey {

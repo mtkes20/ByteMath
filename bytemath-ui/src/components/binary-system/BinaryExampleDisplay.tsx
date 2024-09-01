@@ -1,5 +1,5 @@
 import React from 'react';
-import {Example, StyledCard, StyledText} from "../styles/StyledComponents";
+import {Example, StyledCard, StyledText} from "../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 
 const BinaryExampleDisplay = ({example}: {

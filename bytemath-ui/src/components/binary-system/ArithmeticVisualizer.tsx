@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyledCard, StyledText, StyledTextField, StyledButton} from "../styles/StyledComponents";
+import {StyledCard, StyledText, StyledTextField, StyledButton} from "../utils/StyledComponents";
 import {Stack} from "@mui/material";
 import {useTranslation} from "react-i18next";
 

@@ -9,7 +9,7 @@ import {
     SubContent,
     Subtitle,
     Title,
-} from "../styles/StyledComponents";
+} from "../utils/StyledComponents";
 import ArithmeticVisualizer from "./ArithmeticVisualizer";
 import BinaryExampleDisplay from "./BinaryExampleDisplay";
 import Quiz from "../quiz/Quiz";

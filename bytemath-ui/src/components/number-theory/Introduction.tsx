@@ -5,7 +5,7 @@ import {
     StyledText,
     SubContent,
     Title
-} from "../styles/StyledComponents";
+} from "../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 import Quiz from "../quiz/Quiz";
 import React from "react";

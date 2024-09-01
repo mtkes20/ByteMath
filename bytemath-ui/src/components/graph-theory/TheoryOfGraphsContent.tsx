@@ -4,7 +4,7 @@ import {AccountTree} from "@mui/icons-material";
 import Introduction from "./introduction/Introduction";
 import {useTranslation} from 'react-i18next';
 import DifferentGraphs from "./different-kind-of-graphs/DifferentGraphs";
-import {CoursePageSideMenuContainer} from "../styles/StyledComponents";
+import {CoursePageSideMenuContainer} from "../utils/StyledComponents";
 import GraphTraversals from "./graph-traversals/GraphTraversals";
 import GraphAlgorithms from "./graph-algorithms/GraphAlgorithms";
 import {usePage} from "../../hooks/usePage";

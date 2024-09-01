@@ -3,7 +3,7 @@ import {Box, Button, Typography} from '@mui/material';
 import {useNavigate, useLocation} from 'react-router-dom';
 import {useTranslation} from "react-i18next";
 import {useKeycloak} from "../../context/KeycloakProvider";
-import {StyledButton} from "../styles/StyledComponents";
+import {StyledButton} from "../utils/StyledComponents";
 
 const RegisterButton: React.FC = () => {
     const {keycloak, isInitialized, username} = useKeycloak();

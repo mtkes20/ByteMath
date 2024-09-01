@@ -1,15 +1,19 @@
-import {Grid} from "@mui/material";
-import {StyledExplanation, StyledText, SubContent, Subtitle, Title} from "../styles/StyledComponents";
 import React from "react";
+import {Grid} from "@mui/material";
+import {
+    StyledCard,
+    StyledExplanation,
+    StyledText,
+    SubContent,
+    Subtitle,
+    Title,
+    Example
+} from "../utils/StyledComponents";
 import {ProblemType} from "../../types/ProblemType";
 import {useTranslation} from "react-i18next";
 
-
-const ProblemDescription = ({problem}: {
-    problem: ProblemType
-}) => {
+const ProblemDescription = ({problem}: { problem: ProblemType }) => {
     const {t} = useTranslation();
-
 
     return (
         <Grid
@@ -19,32 +23,63 @@ const ProblemDescription = ({problem}: {
                 overflowY: "auto"
             }}
             item xs={12} md={6}>
-            <Title>{problem.title}</Title>
             <SubContent>
-                <Subtitle>{t('problems.description')}</Subtitle>
-                <StyledText>{problem.description}</StyledText>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "20px"
+                }}>
+                    <Title>{problem.title}</Title>
+                    {problem.isCompleted && (
+                        <Subtitle style={{color: "green"}}>{t("completed")}</Subtitle>
+                    )}
+                </div>
 
-                <Subtitle>{t('problems.task')}</Subtitle>
-                <StyledText>{problem.task}</StyledText>
-
-                <Subtitle>{t('problems.inputFormat')}</Subtitle>
-                <StyledText>{problem.inputFormat}</StyledText>
-
-                <Subtitle>{t('problems.outputFormat')}</Subtitle>
-                <StyledText>{problem.outputFormat}</StyledText>
+                <Section title={t('problems.description')} content={problem.description}/>
+                <Section title={t('problems.task')} content={problem.task}/>
+                <Section title={t('problems.inputFormat')} content={problem.inputFormat}/>
+                <Section title={t('problems.outputFormat')} content={problem.outputFormat}/>
 
                 <Subtitle>{t('problems.example')}</Subtitle>
-                <StyledText>{problem.example}</StyledText>
+                <Example>
+                    <div style={{
+                        fontFamily: 'monospace',
+                        whiteSpace: 'pre',
+                        padding: '10px',
+                        borderRadius: '5px',
+                        textWrap: 'wrap',
+                    }}>
+                        {problem.example}
+                    </div>
+                </Example>
 
                 {problem.note && (
-                    <>
-                        <Subtitle>{t('problems.note')}</Subtitle>
-                        <StyledExplanation>{problem.note}</StyledExplanation>
-                    </>
+                    <Section
+                        title={t('problems.note')}
+                        content={problem.note}
+                        ContentComponent={StyledExplanation}
+                    />
                 )}
             </SubContent>
         </Grid>
-    )
-}
+    );
+};
 
-export default ProblemDescription
+const Section = ({
+                     title,
+                     content,
+                     ContentComponent = StyledText
+                 }: {
+    title: string;
+    content: string;
+    ContentComponent?: React.ElementType;
+}) => (
+    <>
+        <Subtitle>{title}</Subtitle>
+        <ContentComponent>{content}</ContentComponent>
+    </>
+);
+
+export default ProblemDescription;

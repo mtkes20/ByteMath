@@ -1,4 +1,4 @@
-import {StyledCard, Title} from "../styles/StyledComponents";
+import {StyledCard, Title} from "../utils/StyledComponents";
 import {Grid} from "@mui/material";
 import React from "react";
 import ProblemDescription from "./ProblemDescription";

@@ -31,7 +31,10 @@ const getProblemById = async (id: number, token: string, language: string = "ENG
     return response.data;
 };
 
-const markProblemAsCompleted = async (id: number, token: string): Promise<void> => {
+const markProblemAsCompleted = async (id: number, token?: string): Promise<void> => {
+    if (!token) {
+        return;
+    }
     await axios.post(
         `${process.env.REACT_APP_API_URL}/api/v1/problems/${id}/complete`,
         {},

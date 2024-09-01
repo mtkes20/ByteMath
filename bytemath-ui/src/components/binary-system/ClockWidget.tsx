@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {StyledCard, StyledText, SubContent, Subtitle} from "../styles/StyledComponents";
+import {StyledCard, StyledText, SubContent, Subtitle} from "../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 
 const ClockWidget = () => {

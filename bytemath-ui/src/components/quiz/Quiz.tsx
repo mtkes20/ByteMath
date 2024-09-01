@@ -3,12 +3,12 @@ import {useTranslation} from "react-i18next";
 import {useKeycloak} from "../../context/KeycloakProvider";
 import {useQuery} from "@tanstack/react-query";
 import {QuizResponse} from "../../types/QuizType";
-import QuizPrompt from "./QuizPrompt";
 import QuizQuestions from "./QuizQuestions";
+import Prompt from "../utils/Prompt";
 
 
 const Quiz = ({identifier}: { identifier: string }) => {
-    const {i18n} = useTranslation()
+    const {i18n, t} = useTranslation()
     const {keycloak, isAuthenticated} = useKeycloak();
 
     const fetchQuiz = async (identifier: string) => {
@@ -31,7 +31,7 @@ const Quiz = ({identifier}: { identifier: string }) => {
     return (
         <>
             {
-                !isAuthenticated ? <QuizPrompt/> :
+                !isAuthenticated ? <Prompt title={t("wantToTakeQuiz")}/> :
                     <>
                         {isQuizLoading && <div>Loading...</div>}
                         {!isQuizLoading && !quizData && !!quizError && <div>Error fetching quiz</div>}

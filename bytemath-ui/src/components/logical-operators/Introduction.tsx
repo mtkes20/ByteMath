@@ -11,7 +11,7 @@ import {
     StyledText,
     Subtitle,
     Title
-} from '../styles/StyledComponents';
+} from '../utils/StyledComponents';
 import Quiz from '../quiz/Quiz';
 import styled from 'styled-components';
 import LightBulb from '@mui/icons-material/Lightbulb';

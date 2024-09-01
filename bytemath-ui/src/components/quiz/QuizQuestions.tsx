@@ -7,7 +7,7 @@ import {Question, QuestionType, QuizResponse} from "../../types/QuizType";
 import {useQuiz} from "../../hooks/useQuiz";
 import QuizApi from "../../api/quiz-api";
 import {useKeycloak} from "../../context/KeycloakProvider";
-import {StyledCard} from "../styles/StyledComponents";
+import {StyledCard} from "../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 
 interface QuizProps {

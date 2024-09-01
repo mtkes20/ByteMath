@@ -2,10 +2,12 @@ import React, {useEffect} from 'react';
 import {useKeycloak} from "../../context/KeycloakProvider";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {StyledButton, Title} from "../styles/StyledComponents";
 import {styled} from "@mui/material";
+import {StyledButton, Title} from "./StyledComponents";
 
-const QuizPrompt = () => {
+const Prompt = ({title} : {
+    title: string
+}) => {
     const {keycloak, isAuthenticated, isInitialized, username} = useKeycloak();
     const navigate = useNavigate();
     const location = useLocation();
@@ -32,9 +34,9 @@ const QuizPrompt = () => {
     };
 
     return (
-        <QuizPromptContainer>
+        <PromptContainer>
             <Title>
-                {t("wantToTakeQuiz")}
+                {title}
             </Title>
             <StyledButton
                 variant="contained"
@@ -42,11 +44,11 @@ const QuizPrompt = () => {
             >
                 {t("signIn")}
             </StyledButton>
-        </QuizPromptContainer>
+        </PromptContainer>
     );
 };
 
-const QuizPromptContainer = styled('div')({
+const PromptContainer = styled('div')({
     width: "80%",
     alignSelf: "center",
     padding: "50px",
@@ -59,4 +61,4 @@ const QuizPromptContainer = styled('div')({
     gap: "30px"
 })
 
-export default QuizPrompt;
+export default Prompt;

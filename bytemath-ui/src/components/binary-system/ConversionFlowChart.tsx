@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyledCard, StyledText, Subtitle } from "../styles/StyledComponents";
+import { StyledCard, StyledText, Subtitle } from "../utils/StyledComponents";
 
 const ConversionFlowchart = ({ type }: { type: string }) => {
     const { t } = useTranslation();

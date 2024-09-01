@@ -1,5 +1,5 @@
 import React from 'react';
-import {CoursePageMainContainer, Title} from "../../styles/StyledComponents";
+import {CoursePageMainContainer, Title} from "../../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 import WeightedGraphs from "./WeightedGraphs";
 import PlanarGraphs from "./PlanarGraphs";

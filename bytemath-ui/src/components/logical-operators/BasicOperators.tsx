@@ -18,7 +18,7 @@ import {
     TableRow,
     Title,
     TruthTable,
-} from "../styles/StyledComponents";
+} from "../utils/StyledComponents";
 import Quiz from "../quiz/Quiz";
 import {BasicLogicalOperatorGame} from "./GameComponent";
 

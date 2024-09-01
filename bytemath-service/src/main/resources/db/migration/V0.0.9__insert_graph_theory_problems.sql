@@ -21,56 +21,56 @@ VALUES (1, 'count_edges_simple',
     - შემდეგი N ხაზი თითოეული შეიცავს ორ სივრცით გამოყოფილ სტრიქონს u და v, რომლებიც წარმოადგენენ წიბოს წვეროებს u და v შორის.',
         'An integer representing the total number of edges in the graph.',
         'მთელი რიცხვი, რომელიც წარმოადგენს გრაფში წიბოების საერთო რაოდენობას.',
-        '**Input:**
-    3
-    A B
-    B C
-    C A
+    '**Input:**
+3
+A B
+B C
+C A
 
-    **Output:** 3
+**Output:** 3
 
-    Explanation: The graph has 3 edges: (A, B), (B, C), and (C, A).',
-        '**შესატანი:**
-    3
-    A B
-    B C
-    C A
+Explanation: The graph has 3 edges: (A, B), (B, C), and (C, A).',
+    '**შესატანი:**
+3
+A B
+B C
+C A
 
-    **გამოსატანი:** 3
+**გამოსატანი:** 3
 
-    ახსნა: გრაფს აქვს 3 წიბო: (A, B), (B, C) და (C, A).',
+ახსნა: გრაფს აქვს 3 წიბო: (A, B), (B, C) და (C, A).',
         'Self-loops and multiple edges between the same pair of nodes should be counted separately.',
         'თვითმარყუჟები და მრავალჯერადი წიბოები ერთსა და იმავე წყვილ წვეროებს შორის უნდა დაითვალოს ცალ-ცალკე.',
         'def count_edges(edges):
-        # Your code here
-        return 0
+    # Your code here
+    return 0
 
-    # DO NOT MODIFY BELOW THIS LINE
+# DO NOT MODIFY BELOW THIS LINE
 
-    if __name__ == "__main__":
-        n = int(input().strip())
-        edges = []
-        for _ in range(n):
-            u, v = input().strip().split()
-            edges.append((u, v))
+if __name__ == "__main__":
+    n = int(input().strip())
+    edges = []
+    for _ in range(n):
+        u, v = input().strip().split()
+        edges.append((u, v))
 
-        result = count_edges(edges)
-        print(result)',
+    result = count_edges(edges)
+    print(result)',
         'def count_edges(edges):
-        # თქვენი კოდი აქ
-        return 0
+    # თქვენი კოდი აქ
+    return 0
 
-    # არ შეცვალოთ კოდი ამ ხაზის ქვემოთ
+# არ შეცვალოთ კოდი ამ ხაზის ქვემოთ
 
-    if __name__ == "__main__":
-        n = int(input().strip())
-        edges = []
-        for _ in range(n):
-            u, v = input().strip().split()
-            edges.append((u, v))
+if __name__ == "__main__":
+    n = int(input().strip())
+    edges = []
+    for _ in range(n):
+        u, v = input().strip().split()
+        edges.append((u, v))
 
-        result = count_edges(edges)
-        print(result)',
+    result = count_edges(edges)
+    print(result)',
         'import java.io.*;
     import java.util.*;
 

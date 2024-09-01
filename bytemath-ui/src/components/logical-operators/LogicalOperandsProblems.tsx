@@ -1,5 +1,5 @@
 import React from 'react';
-import {CoursePageMainContainer} from "../styles/StyledComponents";
+import {CoursePageMainContainer} from "../utils/StyledComponents";
 import ProblemsPage from "../problem/ProblemsPage";
 
 
@@ -7,7 +7,7 @@ const LogicalOperandsProblems: React.FC = () => {
 
     return (
         <CoursePageMainContainer style={{
-            padding: "15px 50px"
+            padding: "15px 50px",
         }}>
             <ProblemsPage course="LOGICAL_OPERANDS"/>
         </CoursePageMainContainer>

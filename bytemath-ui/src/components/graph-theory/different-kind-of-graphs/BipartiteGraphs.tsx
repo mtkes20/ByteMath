@@ -12,7 +12,7 @@ import {
     StyledText,
     SubContent,
     Subtitle
-} from "../../styles/StyledComponents";
+} from "../../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 
 const BipartiteGraphs: React.FC = () => {

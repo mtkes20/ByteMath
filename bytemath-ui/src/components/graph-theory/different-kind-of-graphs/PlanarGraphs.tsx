@@ -9,7 +9,7 @@ import {
     StyledText,
     SubContent,
     Subtitle
-} from "../../styles/StyledComponents";
+} from "../../utils/StyledComponents";
 import {Grid} from "@mui/material";
 import {useTranslation} from "react-i18next";
 

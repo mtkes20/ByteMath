@@ -1,11 +1,13 @@
 import {Grid, MenuItem} from "@mui/material";
-import {StyledButton, StyledText, StyledTextField, SubContent, Subtitle} from "../styles/StyledComponents";
+import {StyledButton, StyledText, StyledTextField, SubContent, Subtitle} from "../utils/StyledComponents";
 import Editor, {Monaco, OnMount} from "@monaco-editor/react";
 import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {ProblemType} from "../../types/ProblemType";
 import {useTranslation} from "react-i18next";
 import {Moon, Sun} from "lucide-react";
+import ProblemApi from "../../api/problem-api";
+import {useKeycloak} from "../../context/KeycloakProvider";
 
 type ProgrammingLanguage = 'python' | 'java';
 
@@ -20,6 +22,7 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
     const [isDarkTheme, setIsDarkTheme] = useState<boolean>(true);
     const editorRef = useRef<any>(null);
     const monacoRef = useRef<Monaco | null>(null);
+    const { keycloak } = useKeycloak();
 
     const handleLanguageChange = (event: ChangeEvent<HTMLInputElement>) => {
         const newLanguage = event.target.value as ProgrammingLanguage;
@@ -87,6 +90,7 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
 `);
 
         try {
+            let allPassed = true;
             for (let i = 0; i < problem.testCases.length; i++) {
                 const testCase = problem.testCases[i];
 
@@ -102,8 +106,12 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
 
                 setOutput(prevOutput => `${prevOutput + t('problems.testCase')} ${i + 1}: ${passed ? t('problems.testCaseSuccessful') : t('problems.testCaseFailed')}\n`);
                 if (!passed) {
+                    allPassed = false;
                     setOutput(prevOutput => `${prevOutput + t('problems.expectedResult')}: ${testCase.expectedOutput}, ${t('problems.gotResult')}: ${testOutput}\n`);
                 }
+            }
+            if (allPassed) {
+                ProblemApi.markProblemAsCompleted(parseInt(problem.id), keycloak?.token);
             }
         } catch (error) {
             setOutput(`Error: ${error}`);
@@ -152,7 +160,9 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
                 overflowY: "auto"
             }}
             item xs={12} md={6}>
-            <SubContent>
+            <SubContent style={{
+                gap: "5px"
+            }}>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
@@ -166,7 +176,7 @@ const CodeEditor = ({problem}: { problem: ProblemType }) => {
                         <StyledTextField
                         size="small"
                             style={{
-                                width: "300px"
+                                width: "200px"
                             }}
                             select
                             value={language}

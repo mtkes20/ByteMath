@@ -2,7 +2,7 @@ import React, {useTransition} from 'react';
 import {GradedQuiz} from "../../types/GradedQuiz";
 import {QuizType} from "../../types/QuizType";
 import {styled, Typography} from "@mui/material";
-import {Title} from "../styles/StyledComponents";
+import {Title} from "../utils/StyledComponents";
 import {useTranslation} from "react-i18next";
 
 interface QuizResultsProps {
