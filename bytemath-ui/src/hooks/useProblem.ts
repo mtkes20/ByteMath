@@ -17,7 +17,7 @@ export const useProblems = (courseIdentifier: string, language: string) => {
                     const fetchedProblems = await ProblemApi.getProblemsByCourse(courseIdentifier, language === 'en' ? "ENG" : "GEO", keycloak.token);
                     setProblems(fetchedProblems);
                     if (fetchedProblems.length > 0) {
-                        const firstProblem = await ProblemApi.getProblemById(fetchedProblems[0].id, keycloak.token);
+                        const firstProblem = await ProblemApi.getProblemById(fetchedProblems[0].id, keycloak.token, language === 'en' ? "ENG" : "GEO");
                         setSelectedProblem(firstProblem);
                     }
                 } catch (error) {
@@ -35,7 +35,7 @@ export const useProblems = (courseIdentifier: string, language: string) => {
         if (keycloak?.token) {
             try {
                 setLoading(true);
-                const problem = await ProblemApi.getProblemById(problemId, keycloak.token);
+                const problem = await ProblemApi.getProblemById(problemId, keycloak.token, language === 'en' ? "ENG" : "GEO");
                 setSelectedProblem(problem);
             } catch (error) {
                 console.error("Error fetching problem details:", error);

@@ -16,10 +16,11 @@ const getProblemsByCourse = async (courseIdentifier: string, language: string = 
     return response.data;
 };
 
-const getProblemById = async (id: number, token: string): Promise<ProblemType> => {
+const getProblemById = async (id: number, token: string, language: string = "ENG"): Promise<ProblemType> => {
     const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/v1/problems/${id}`,
         {
+            params: {language},
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',

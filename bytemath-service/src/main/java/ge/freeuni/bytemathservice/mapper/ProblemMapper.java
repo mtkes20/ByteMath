@@ -13,25 +13,30 @@ import java.util.stream.Collectors;
 @Service
 public class ProblemMapper {
 
-    public ProblemDTO toDTO(Problem entity) {
+    public ProblemDTO toDTO(Problem entity, String language) {
         if (entity == null) {
             return null;
         }
+
         return ProblemDTO.builder()
                 .id(entity.getId().toString())
-                .title(entity.getTitle())
-                .description(entity.getDescription())
-                .task(entity.getTask())
-                .inputFormat(entity.getInputFormat())
-                .outputFormat(entity.getOutputFormat())
-                .example(entity.getExample())
-                .note(entity.getNote())
-                .pythonTemplate(entity.getPythonTemplate())
-                .javaTemplate(entity.getJavaTemplate())
+                .title(getFieldBasedOnLanguage(language, entity.getTitleGeo(), entity.getTitleEng()))
+                .description(getFieldBasedOnLanguage(language, entity.getDescriptionGeo(), entity.getDescriptionEng()))
+                .task(getFieldBasedOnLanguage(language, entity.getTaskGeo(), entity.getTaskEng()))
+                .inputFormat(getFieldBasedOnLanguage(language, entity.getInputFormatGeo(), entity.getInputFormatEng()))
+                .outputFormat(getFieldBasedOnLanguage(language, entity.getOutputFormatGeo(), entity.getOutputFormatEng()))
+                .example(getFieldBasedOnLanguage(language, entity.getExampleGeo(), entity.getExampleEng()))
+                .note(getFieldBasedOnLanguage(language, entity.getNoteGeo(), entity.getNoteEng()))
+                .pythonTemplate(getFieldBasedOnLanguage(language, entity.getPythonTemplateGeo(), entity.getPythonTemplateEng()))
+                .javaTemplate(getFieldBasedOnLanguage(language, entity.getJavaTemplateGeo(), entity.getJavaTemplateEng()))
                 .testCases(testCasesToDTOs(entity.getTestCases()))
                 .lockedLines(lockedLinesToDTO(entity.getLockedLines()))
                 .difficulty(entity.getDifficulty())
                 .build();
+    }
+
+    private String getFieldBasedOnLanguage(String language, String geoField, String engField) {
+        return language.equalsIgnoreCase("geo") ? geoField : engField;
     }
 
 

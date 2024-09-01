@@ -35,8 +35,8 @@ public class ProblemController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProblemDTO> getProblemById(@PathVariable Long id) {
-        ProblemDTO problem = problemService.getProblemById(id);
+    public ResponseEntity<ProblemDTO> getProblemById(@PathVariable Long id, @RequestParam(required = false, defaultValue = "ENG") String language) {
+        ProblemDTO problem = problemService.getProblemById(id, language);
         return ResponseEntity.ok(problem);
     }
 

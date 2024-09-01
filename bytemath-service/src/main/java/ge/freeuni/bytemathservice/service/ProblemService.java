@@ -22,8 +22,8 @@ public class ProblemService {
         return problemRepository.findProblemSummariesByCourseId(identifier, language);
     }
 
-    public ProblemDTO getProblemById(Long id) {
+    public ProblemDTO getProblemById(Long id, String language) {
         Problem entity = problemRepository.findById(id).orElseThrow(RuntimeException::new);
-        return problemMapper.toDTO(entity);
+        return problemMapper.toDTO(entity, language);
     }
 }

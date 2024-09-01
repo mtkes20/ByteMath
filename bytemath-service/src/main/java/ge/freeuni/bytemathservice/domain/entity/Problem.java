@@ -34,27 +34,49 @@ public class Problem {
 
     private String identifier;
 
-    private String title;
+    private String titleEng;
+
+    private String titleGeo;
 
     @Column(length = 1000)
-    private String description;
+    private String descriptionEng;
 
     @Column(length = 1000)
-    private String task;
-
-    private String inputFormat;
-
-    private String outputFormat;
-
-    private String example;
-
-    private String note;
+    private String descriptionGeo;
 
     @Column(length = 1000)
-    private String pythonTemplate;
+    private String taskEng;
 
     @Column(length = 1000)
-    private String javaTemplate;
+    private String taskGeo;
+
+    private String inputFormatEng;
+
+    private String inputFormatGeo;
+
+    private String outputFormatEng;
+
+    private String outputFormatGeo;
+
+    private String exampleEng;
+
+    private String exampleGeo;
+
+    private String noteEng;
+
+    private String noteGeo;
+
+    @Column(length = 1000)
+    private String pythonTemplateEng;
+
+    @Column(length = 1000)
+    private String pythonTemplateGeo;
+
+    @Column(length = 1000)
+    private String javaTemplateEng;
+
+    @Column(length = 1000)
+    private String javaTemplateGeo;
 
     @OneToMany(mappedBy = "problem")
     @Cascade(CascadeType.ALL)
@@ -72,8 +94,6 @@ public class Problem {
 
     @Enumerated(EnumType.STRING)
     private ProblemDifficulty difficulty;
-
-    private String language;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COURSE_ID")
