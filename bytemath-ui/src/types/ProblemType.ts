@@ -20,14 +20,15 @@ export type TestCaseType = {
 };
 
 export enum ProblemDifficulty {
-    EASY = "Easy",
-    MEDIUM = "Medium",
-    HARD = "Hard"
+    EASY = "EASY",
+    MEDIUM = "MEDIUM",
+    HARD = "HARD"
 }
 
 export type ProblemSummaryType = {
     id: number;
     title: string;
+    difficulty: ProblemDifficulty;
 }
 
 export type ProblemCompletionStatsType = {

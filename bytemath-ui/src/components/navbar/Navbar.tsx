@@ -145,7 +145,7 @@ const Navbar: React.FC<NavbarProps> = ({language, onLanguageChange}) => {
                 justifyContent: "flex-end"
             }}>
 
-                <LanguageSwitcher language={language} onLanguageChange={onLanguageChange}/>
+                <LanguageSwitcher/>
                 {isAuthenticated ? (
                     <div onClick={handleProfileClick}
                          style={{cursor: "pointer", display: "flex", alignItems: "center", gap: "8px"}}>
