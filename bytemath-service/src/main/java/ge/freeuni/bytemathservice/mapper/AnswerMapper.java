@@ -10,16 +10,16 @@ import java.util.stream.Collectors;
 @Service
 public class AnswerMapper {
 
-    public List<AnswerDTO> entitiesToDtos(List<Answer> answers) {
+    public List<AnswerDTO> entitiesToDtos(List<Answer> answers, String language) {
         return answers.stream()
-                .map(this::entityToDto)
+                .map((Answer answer) -> entityToDto(answer, language))
                 .collect(Collectors.toList());
     }
 
-    private AnswerDTO entityToDto(Answer answer) {
+    private AnswerDTO entityToDto(Answer answer, String language) {
         return AnswerDTO.builder()
                 .id(answer.getId())
-                .answerText(answer.getAnswerText())
+                .answerText(language.equals("ENG") ? answer.getAnswerTextEng() : answer.getAnswerTextGeo())
                 .build();
     }
 }

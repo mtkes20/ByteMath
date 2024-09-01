@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface QuizRepository extends JpaRepository<Quiz, Long> {
 
-    Optional<Quiz> findByIdentifierAndLanguage(String identifier, String language);
+    Optional<Quiz> findByIdentifier(String identifier);
 
     @Query("SELECT q FROM Quiz q " +
             "JOIN q.questions qs " +

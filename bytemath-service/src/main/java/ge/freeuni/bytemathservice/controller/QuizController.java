@@ -38,7 +38,7 @@ public class QuizController {
     @GetMapping("{identifier}")
     public ResponseEntity<QuizResponseWrapper> getQuizByIdentifier(@PathVariable String identifier, @RequestParam(required = false, defaultValue = "ENG") String language) {
         BytemathUser currentUser = bytemathUserService.getCurrentUser();
-        Optional<GradedQuiz> gradedQuiz = userQuizSubmissionService.getGradedQuizForUser(currentUser, identifier);
+        Optional<GradedQuiz> gradedQuiz = userQuizSubmissionService.getGradedQuizForUser(currentUser, identifier, language);
         if (gradedQuiz.isPresent()) {
             QuizDTO quiz = quizService.getQuizByIdentifier(identifier, language);
             return ResponseEntity.ok(new QuizResponseWrapper(true, quiz, gradedQuiz.get()));

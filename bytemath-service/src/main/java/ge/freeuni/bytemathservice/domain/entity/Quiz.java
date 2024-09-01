@@ -25,9 +25,9 @@ public class Quiz {
 
     private String identifier;
 
-    private String title;
+    private String titleEng;
 
-    private String language;
+    private String titleGeo;
 
     @OneToMany(mappedBy = "quiz")
     @Cascade(CascadeType.ALL)

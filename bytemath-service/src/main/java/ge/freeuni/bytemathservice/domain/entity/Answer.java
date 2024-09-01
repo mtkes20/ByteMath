@@ -20,7 +20,10 @@ public class Answer {
     @SequenceGenerator(name = "seq_generator", schema = "BYTEMATH", sequenceName = "BYTEMATH_GLOBAL_SEQUENCE", allocationSize = 1)
     private Long id;
 
-    private String answerText;
+    private String answerTextEng;
+
+    private String answerTextGeo;
+
 
     private Boolean isCorrect;
 

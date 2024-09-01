@@ -11,11 +11,11 @@ public class QuizMapper {
 
     private final QuestionMapper questionMapper;
 
-    public QuizDTO entityToDto(Quiz quiz) {
+    public QuizDTO entityToDto(Quiz quiz, String language) {
         return QuizDTO.builder()
                 .id(quiz.getId())
-                .title(quiz.getTitle())
-                .questions(questionMapper.entitiesToDtos(quiz.getQuestions()))
+                .title(language.equals("ENG") ? quiz.getTitleEng() : quiz.getTitleGeo())
+                .questions(questionMapper.entitiesToDtos(quiz.getQuestions(), language))
                 .build();
     }
 }

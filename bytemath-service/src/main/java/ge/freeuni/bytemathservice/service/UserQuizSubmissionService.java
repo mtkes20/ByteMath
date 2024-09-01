@@ -4,7 +4,10 @@ import ge.freeuni.bytemathservice.domain.api.GradedQuestion;
 import ge.freeuni.bytemathservice.domain.api.GradedQuiz;
 import ge.freeuni.bytemathservice.domain.api.SubmittedAnswer;
 import ge.freeuni.bytemathservice.domain.api.SubmittedQuiz;
+import ge.freeuni.bytemathservice.domain.entity.Answer;
 import ge.freeuni.bytemathservice.domain.entity.BytemathUser;
+import ge.freeuni.bytemathservice.domain.entity.Question;
+import ge.freeuni.bytemathservice.domain.entity.Quiz;
 import ge.freeuni.bytemathservice.domain.entity.SubmittedAnswerEntity;
 import ge.freeuni.bytemathservice.domain.entity.UserQuizSubmission;
 import ge.freeuni.bytemathservice.repository.AnswerRepository;
@@ -14,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -22,8 +26,6 @@ import java.util.stream.Collectors;
 public class UserQuizSubmissionService {
 
     private final UserQuizSubmissionRepository userQuizSubmissionRepository;
-
-    private final QuizService quizService;
 
     private final QuizRepository quizRepository;
 
@@ -49,16 +51,58 @@ public class UserQuizSubmissionService {
         userQuizSubmissionRepository.save(submission);
     }
 
-    public Optional<GradedQuiz> getGradedQuizForUser(BytemathUser user, String quizIdentifier) {
+    public Optional<GradedQuiz> getGradedQuizForUser(BytemathUser user, String quizIdentifier, String language) {
+        Optional<Quiz> quiz = quizRepository.findByIdentifier(quizIdentifier);
         return userQuizSubmissionRepository.findByUserAndQuizIdentifier(user, quizIdentifier)
-                .map(submission -> new GradedQuiz(
+                .flatMap(submission -> quiz.map(q -> new GradedQuiz(
                         submission.getScore(),
                         submission.getMaxScore(),
-                        submission.getSubmittedAnswers().stream()
-                                .map(this::convertToGradedQuestion)
+                        q.getQuestions().stream()
+                                .sorted(Comparator.comparing(Question::getId))
+                                .map(question -> convertToGradedQuestion(question, submission, language))
                                 .collect(Collectors.toList())
-                ));
+                )));
     }
+
+    private GradedQuestion convertToGradedQuestion(Question question, UserQuizSubmission submission, String language) {
+        String correctAnswer = language.equals("ENG")
+                ? question.getAnswers().stream()
+                .filter(Answer::getIsCorrect)
+                .map(Answer::getAnswerTextEng)
+                .findFirst()
+                .orElse("Not Answered")
+                : question.getAnswers().stream()
+                .filter(Answer::getIsCorrect)
+                .map(Answer::getAnswerTextGeo)
+                .findFirst()
+                .orElse("არ დაფიქსირებულა");
+
+        SubmittedAnswerEntity submittedAnswer = submission.getSubmittedAnswers().stream()
+                .filter(answer -> answer.getQuestionId().equals(question.getId()))
+                .findFirst()
+                .orElse(null);
+
+        String userAnswer = language.equals("ENG") ? "Not answered" : "არ დაფიქსირებულა";
+        if (submittedAnswer != null) {
+            userAnswer = language.equals("ENG")
+                    ? submittedAnswer.getSelectedAnswerId() != null
+                    ? answerRepository.findAnswerTextEngById(submittedAnswer.getSelectedAnswerId())
+                    : submittedAnswer.getTextAnswer()
+                    : submittedAnswer.getSelectedAnswerId() != null
+                    ? answerRepository.findAnswerTextGeoById(submittedAnswer.getSelectedAnswerId())
+                    : submittedAnswer.getTextAnswer();
+        }
+
+        boolean isCorrect = correctAnswer.equals(userAnswer);
+
+        return GradedQuestion.builder()
+                .questionId(question.getId())
+                .correct(isCorrect)
+                .correctAnswer(correctAnswer)
+                .userAnswer(userAnswer)
+                .build();
+    }
+
 
     public void deleteUserQuizSubmission(BytemathUser user, String quizIdentifier) {
         userQuizSubmissionRepository.delete(userQuizSubmissionRepository.findByUserAndQuizIdentifier(user, quizIdentifier).orElseThrow(RuntimeException::new));
@@ -72,17 +116,4 @@ public class UserQuizSubmissionService {
         return entity;
     }
 
-    private GradedQuestion convertToGradedQuestion(SubmittedAnswerEntity submittedAnswer) {
-        String correctAnswer = quizService.getCorrectAnswer(submittedAnswer.getQuestionId());
-        String userAnswer = submittedAnswer.getSelectedAnswerId() != null
-                ? answerRepository.findAnswerTextById(submittedAnswer.getSelectedAnswerId())
-                : submittedAnswer.getTextAnswer();
-        boolean isCorrect = correctAnswer.equals(userAnswer);
-        return GradedQuestion.builder()
-                .questionId(submittedAnswer.getQuestionId())
-                .correct(isCorrect)
-                .correctAnswer(correctAnswer)
-                .userAnswer(userAnswer)
-                .build();
-    }
 }

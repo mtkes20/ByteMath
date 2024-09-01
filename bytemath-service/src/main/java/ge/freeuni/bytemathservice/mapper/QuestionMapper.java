@@ -15,18 +15,18 @@ public class QuestionMapper {
 
     private final AnswerMapper answerMapper;
 
-    public List<QuestionDTO> entitiesToDtos(List<Question> questions) {
+    public List<QuestionDTO> entitiesToDtos(List<Question> questions, String language) {
         return questions.stream()
-                .map(this::entityToDto)
+                .map((Question question) -> entityToDto(question, language))
                 .collect(Collectors.toList());
     }
 
-    private QuestionDTO entityToDto(Question question) {
+    private QuestionDTO entityToDto(Question question, String language) {
         return QuestionDTO.builder()
                 .id(question.getId())
                 .questionType(question.getQuestionType())
-                .questionText(question.getQuestionText())
-                .answers(question.getQuestionType() == QuestionType.SINGLE_CHOICE ? answerMapper.entitiesToDtos(question.getAnswers()) : null)
+                .questionText(language.equals("ENG") ? question.getQuestionTextEng() : question.getQuestionTextGeo())
+                .answers(question.getQuestionType() == QuestionType.SINGLE_CHOICE ? answerMapper.entitiesToDtos(question.getAnswers(), language) : null)
                 .build();
     }
 }

@@ -7,6 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
-    @Query("SELECT a.answerText FROM Answer a WHERE a.id = :id")
-    String findAnswerTextById(@Param("id") Long id);
+    @Query("SELECT a.answerTextEng FROM Answer a WHERE a.id = :id")
+    String findAnswerTextEngById(@Param("id") Long id);
+
+    @Query("SELECT a.answerTextGeo FROM Answer a WHERE a.id = :id")
+    String findAnswerTextGeoById(@Param("id") Long id);
 }

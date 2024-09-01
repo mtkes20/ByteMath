@@ -23,7 +23,7 @@ public class GradeQuizService {
     private final QuizRepository quizRepository;
 
     public GradedQuiz gradeQuiz(String quizIdentifier, String language, SubmittedQuiz request) {
-        Quiz quiz = quizRepository.findByIdentifierAndLanguage(quizIdentifier, language).orElseThrow(RuntimeException::new);
+        Quiz quiz = quizRepository.findByIdentifier(quizIdentifier).orElseThrow(RuntimeException::new);
 
         Map<Long, Question> questionsMap = quiz.getQuestions()
                 .stream()
@@ -38,7 +38,7 @@ public class GradeQuizService {
                 .map(question -> {
                     SubmittedAnswer submittedAnswer = submittedAnswersMap.get(question.getId());
                     if (submittedAnswer != null) {
-                        return gradeQuestion(submittedAnswer, question);
+                        return gradeQuestion(submittedAnswer, question, language);
                     } else {
                         return createUnansweredGradedQuestion(question, language);
                     }
@@ -58,23 +58,25 @@ public class GradeQuizService {
         return GradedQuestion.builder()
                 .questionId(question.getId())
                 .correct(false)
-                .correctAnswer(getCorrectAnswerText(question))
+                .correctAnswer(getCorrectAnswerText(question, language))
                 .userAnswer(language.equals("ENG") ? "Not answered" : "არ დაფიქსირებულა")
                 .build();
     }
 
-    private String getCorrectAnswerText(Question question) {
+    private String getCorrectAnswerText(Question question, String language) {
         return question.getAnswers().stream()
                 .filter(Answer::getIsCorrect)
                 .findFirst()
-                .map(Answer::getAnswerText)
-                .orElse("No correct answer found");
+                .map(language.equals("ENG") ? Answer::getAnswerTextEng : Answer::getAnswerTextGeo)
+                .orElse(language.equals("ENG") ? "No correct answer found" : "სწორი პასუხი ვერ მოიძებნა");
     }
 
-    private GradedQuestion gradeQuestion(SubmittedAnswer submittedAnswer, Question question) {
+    private GradedQuestion gradeQuestion(SubmittedAnswer submittedAnswer, Question question, String language) {
         boolean isCorrect = false;
-        String correctAnswer = "";
-        String userAnswer = "";
+        String correctAnswerEng = "";
+        String correctAnswerGeo = "";
+        String userAnswerEng = "";
+        String userAnswerGeo = "";
 
         if (question.getQuestionType() == QuestionType.SINGLE_CHOICE) {
             Answer correctAnswerDTO = question.getAnswers().stream()
@@ -82,26 +84,36 @@ public class GradeQuizService {
                     .findFirst()
                     .orElseThrow(() -> new IllegalStateException("No correct answer found for question: " + question.getId()));
 
-            correctAnswer = correctAnswerDTO.getAnswerText();
-            userAnswer = question.getAnswers()
-                    .stream()
+            correctAnswerEng = correctAnswerDTO.getAnswerTextEng();
+            correctAnswerGeo = correctAnswerDTO.getAnswerTextGeo();
+
+            Answer userAnswerDTO = question.getAnswers().stream()
                     .filter(a -> a.getId().equals(submittedAnswer.getSelectedAnswerId()))
                     .findFirst()
-                    .map(Answer::getAnswerText)
-                    .orElse("");
+                    .orElse(null);
+
+            if (userAnswerDTO != null) {
+                userAnswerEng = userAnswerDTO.getAnswerTextEng();
+                userAnswerGeo = userAnswerDTO.getAnswerTextGeo();
+            }
 
             isCorrect = correctAnswerDTO.getId().equals(submittedAnswer.getSelectedAnswerId());
         } else if (question.getQuestionType() == QuestionType.TEXT) {
-            correctAnswer = question.getAnswers().get(0).getAnswerText();
-            userAnswer = submittedAnswer.getTextAnswer();
-            isCorrect = correctAnswer.equalsIgnoreCase(userAnswer.trim());
+            correctAnswerEng = question.getAnswers().get(0).getAnswerTextEng();
+            correctAnswerGeo = question.getAnswers().get(0).getAnswerTextGeo();
+
+            String userAnswer = submittedAnswer.getTextAnswer();
+
+            isCorrect = correctAnswerEng.equalsIgnoreCase(userAnswer.trim()) ||
+                    correctAnswerGeo.equalsIgnoreCase(userAnswer.trim());
         }
 
         return GradedQuestion.builder()
                 .questionId(question.getId())
                 .correct(isCorrect)
-                .correctAnswer(correctAnswer)
-                .userAnswer(userAnswer)
+                .correctAnswer(language.equals("ENG") ? correctAnswerEng : correctAnswerGeo)
+                .userAnswer(language.equals("ENG") ? userAnswerEng : userAnswerGeo)
                 .build();
     }
+
 }

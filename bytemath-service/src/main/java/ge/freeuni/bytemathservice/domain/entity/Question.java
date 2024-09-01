@@ -28,7 +28,9 @@ public class Question {
     @SequenceGenerator(name = "seq_generator", schema = "BYTEMATH", sequenceName = "BYTEMATH_GLOBAL_SEQUENCE", allocationSize = 1)
     private Long id;
 
-    private String questionText;
+    private String questionTextEng;
+
+    private String questionTextGeo;
 
     @OneToMany(mappedBy = "question")
     @Cascade(CascadeType.ALL)
