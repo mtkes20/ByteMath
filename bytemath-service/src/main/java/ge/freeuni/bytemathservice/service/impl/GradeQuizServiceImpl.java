@@ -13,6 +13,7 @@ import ge.freeuni.bytemathservice.service.GradeQuizService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,6 +46,7 @@ public class GradeQuizServiceImpl implements GradeQuizService {
                         return createUnansweredGradedQuestion(question, language);
                     }
                 })
+                .sorted(Comparator.comparing(GradedQuestion::getQuestionId))
                 .collect(Collectors.toList());
 
         int correctCount = (int) results.stream().filter(GradedQuestion::isCorrect).count();
@@ -108,9 +110,10 @@ public class GradeQuizServiceImpl implements GradeQuizService {
             correctAnswerGeo = question.getAnswers().get(0).getAnswerTextGeo();
 
             String userAnswer = submittedAnswer.getTextAnswer();
+            userAnswerEng = userAnswer;
+            userAnswerGeo = userAnswer;
 
-            isCorrect = correctAnswerEng.equalsIgnoreCase(userAnswer.trim()) ||
-                    correctAnswerGeo.equalsIgnoreCase(userAnswer.trim());
+            isCorrect = correctAnswerEng.equalsIgnoreCase(userAnswer.trim()) || correctAnswerGeo.equalsIgnoreCase(userAnswer.trim());
         }
 
         return GradedQuestion.builder()
