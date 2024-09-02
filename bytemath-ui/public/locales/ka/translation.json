@@ -58,6 +58,7 @@
   "medium": "საშუალო",
   "hard": "რთული",
   "problemCompletion": "შესრულებული ამოცანები",
+  "binaryProblems": "ორობითი სისტემის ამოცანები",
   "problems": {
     "selectProblem": "აირჩიეთ ამოცანა",
     "description": "აღწერა:",

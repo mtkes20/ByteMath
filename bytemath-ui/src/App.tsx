@@ -28,6 +28,7 @@ import ModularArithmetic from "./components/number-theory/ModularArithmetic";
 import BinaryRepresentation from "./components/binary-system/BinaryRepresentation";
 import LogicalOperandsProblems from "./components/logical-operators/LogicalOperandsProblems";
 import Dashboard from "./components/user/NewUserPage";
+import BinarySystemProblems from "./components/binary-system/BinarySystemProblems";
 
 const router = createHashRouter([
     {
@@ -66,6 +67,10 @@ const router = createHashRouter([
                             {
                                 path: "BINARY_SYSTEM_ARITHMETIC",
                                 element: <Arithmetic/>
+                            },
+                            {
+                                path: "BINARY_SYSTEM_PROBLEMS",
+                                element: <BinarySystemProblems/>
                             }
                         ]
                     },

@@ -58,6 +58,7 @@
   "easy": "Easy",
   "medium": "Medium",
   "hard": "Hard",
+  "binaryProblems": "Binary System Problems",
   "problems": {
     "selectProblem": "Select a Problem",
     "description": "Description:",
