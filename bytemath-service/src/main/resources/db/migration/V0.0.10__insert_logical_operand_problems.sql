@@ -10,7 +10,7 @@ INSERT INTO BYTEMATH.PROBLEM (ID, IDENTIFIER,
                               JAVA_TEMPLATE_ENG, JAVA_TEMPLATE_GEO,
                               PYTHON, JAVA,
                               DIFFICULTY, COURSE_ID)
-VALUES (2, 'weather_conditions',
+VALUES (4, 'weather_conditions',
         'Weather Conditions', 'ამინდის პირობები',
         'Validate the given weather conditions.', 'შეამოწმეთ, არის თუ არა მოცემული ამინდის პირობები ვალიდური.',
         'Implement a function that takes three boolean parameters representing weather conditions: sunny, rainy, snowy) and returns true if the combination is valid, and false otherwise. A valid combination means only one condition can be true at a time, or all can be false.',
@@ -119,31 +119,31 @@ public class Solution {
         'EASY', 2);
 
 
-INSERT INTO BYTEMATH.TEST_CASE (ID, INPUT, EXPECTED_OUTPUT, PROBLEM_ID)
-VALUES (6, 'true
+INSERT INTO BYTEMATH.TEST_CASE (INPUT, EXPECTED_OUTPUT, PROBLEM_ID)
+VALUES ( 'true
 false
-false', 'true', 2),
-       (7, 'false
+false', 'true', 4),
+       ( 'false
 true
-false', 'true', 2),
-       (8, 'false
+false', 'true', 4),
+       ( 'false
 false
-true', 'true', 2),
-       (9, 'false
+true', 'true', 4),
+       ( 'false
 false
-false', 'true', 2),
-       (10, 'true
+false', 'true', 4),
+       ( 'true
 true
-false', 'false', 2),
-       (11, 'true
+false', 'false', 4),
+       ( 'true
 false
-true', 'false', 2),
-       (12, 'false
+true', 'false', 4),
+       ( 'false
 true
-true', 'false', 2),
-       (13, 'true
+true', 'false', 4),
+       ( 'true
 true
-true', 'false', 2);
+true', 'false', 4);
 
 
 ------------------------------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ INSERT INTO BYTEMATH.PROBLEM (ID, IDENTIFIER,
                               JAVA_TEMPLATE_ENG, JAVA_TEMPLATE_GEO,
                               PYTHON, JAVA,
                               DIFFICULTY, COURSE_ID)
-VALUES (4, 'advanced_logical_operators',
+VALUES (5, 'advanced_logical_operators',
         'Advanced Logical Operators', 'რთული ლოგიკური ოპერაციები',
         'Implement NAND, NOR, and XOR logical operations.', 'დააიმპლემენტირეთ NAND, NOR და XOR ლოგიკური ოპერაციები.',
         'Implement a function that takes two boolean inputs and a string representing the operation to perform (NAND, NOR, or XOR). The function should return the result of the specified operation on the input values.',
@@ -285,43 +285,37 @@ public class Solution {
         'MEDIUM', 2);
 
 
-INSERT INTO BYTEMATH.TEST_CASE (ID, INPUT, EXPECTED_OUTPUT, PROBLEM_ID)
-VALUES (18, 'true
+INSERT INTO BYTEMATH.TEST_CASE (INPUT, EXPECTED_OUTPUT, PROBLEM_ID)
+VALUES ('true
 true
-NAND', 'false', 4),
-       (19, 'true
+NAND', 'false', 5),
+       ('true
 false
-NAND', 'true', 4),
-       (20, 'false
+NAND', 'true', 5),
+       ('false
 true
-NAND', 'true', 4),
-       (21, 'false
+NAND', 'true', 5),
+       ('false
 false
-NAND', 'true', 4),
-       (22, 'true
+NAND', 'true', 5),
+       ('true
 true
-NOR', 'false', 4),
-       (23, 'true
+NOR', 'false', 5),
+       ('true
 false
-NOR', 'false', 4),
-       (24, 'false
+NOR', 'false', 5),
+       ('false
 true
-NOR', 'false', 4),
-       (25, 'false
+NOR', 'false', 5),
+       ('false
 false
-NOR', 'true', 4),
-       (26, 'true
+NOR', 'true', 5),
+       ('true
 true
-XOR', 'false', 4),
-       (27, 'true
+XOR', 'false', 5),
+       ('true
 false
-XOR', 'true', 4),
-       (28, 'false
-true
-XOR', 'true', 4),
-       (29, 'false
-false
-XOR', 'false', 4);
+XOR', 'true', 5);
 
 
 ------------------------------------------------------------------------------------------------------
@@ -339,7 +333,7 @@ INSERT INTO BYTEMATH.PROBLEM (ID, IDENTIFIER,
                               JAVA_TEMPLATE_ENG, JAVA_TEMPLATE_GEO,
                               PYTHON, JAVA,
                               DIFFICULTY, COURSE_ID)
-VALUES (5, 'expression_evaluator',
+VALUES (6, 'expression_evaluator',
         'Expression Evaluator', 'გამოსახულების გამომთვლელი',
         'Implement a function to evaluate complex logical expressions with multiple operators and nested parentheses.', 'დააიმპლემენტირეთ ფუნქცია რთული ლოგიკური გამოსახულებების შედეგის გამოსათვლელად მრავალი ოპერატორით და ჩადგმული ფრჩხილებით.',
         'Implement a function that takes a string representing a complex logical expression and evaluates it. The expression can contain boolean values (True, False), logical operators (AND, OR, NAND, NOR, XOR), and nested parentheses.',
@@ -459,14 +453,14 @@ public class Solution {
         'HARD', 2);
 
 
-INSERT INTO BYTEMATH.TEST_CASE (ID, INPUT, EXPECTED_OUTPUT, PROBLEM_ID)
-VALUES (30, '(((True AND False) NAND True) XOR True)', 'false', 5),
-       (31, '(True OR False) AND (False NOR (True XOR False))', 'false', 5),
-       (32, 'True XOR ((False AND True) OR (True NAND False))', 'false', 5),
-       (33, '(True AND False) OR (True XOR False)', 'true', 5),
-       (34, '((True NAND False) AND (False NOR True)) XOR (False OR True)', 'true', 5),
-       (35, 'True AND True AND True AND False', 'false', 5),
-       (36, 'False OR False OR True OR False', 'true', 5),
-       (37, '(True XOR False) NAND (False AND True)', 'true', 5),
-       (38, '((True OR False) AND (True NAND True)) XOR (False NOR False)', 'true', 5),
-       (39, '(((True XOR False) AND (False OR True)) NAND ((False AND True) OR (True XOR False))) XOR (True AND False)', 'false', 5);
+INSERT INTO BYTEMATH.TEST_CASE (INPUT, EXPECTED_OUTPUT, PROBLEM_ID)
+VALUES ('(((True AND False) NAND True) XOR True)', 'false', 6),
+       ('(True OR False) AND (False NOR (True XOR False))', 'false', 6),
+       ('True XOR ((False AND True) OR (True NAND False))', 'false', 6),
+       ('(True AND False) OR (True XOR False)', 'true', 6),
+       ('((True NAND False) AND (False NOR True)) XOR (False OR True)', 'true', 6),
+       ('True AND True AND True AND False', 'false', 6),
+       ('False OR False OR True OR False', 'true', 6),
+       ('(True XOR False) NAND (False AND True)', 'true', 6),
+       ('((True OR False) AND (True NAND True)) XOR (False NOR False)', 'true', 6),
+       ('(((True XOR False) AND (False OR True)) NAND ((False AND True) OR (True XOR False))) XOR (True AND False)', 'false', 6);
