@@ -53,7 +53,6 @@ const BasicOperators: React.FC = () => {
         and: [false, false],
         or: [false, false],
         not: [false],
-        xor: [false, false],
     });
 
     const toggleBit = (operatorKey: string, index: number) => {
@@ -126,19 +125,6 @@ const BasicOperators: React.FC = () => {
                 {A: true, result: false},
             ]
         },
-        {
-            title: t('logicalOperands.basicOperators.xor.title'),
-            symbol: t('logicalOperands.basicOperators.xor.symbol'),
-            description: t('logicalOperands.basicOperators.xor.description'),
-            explanation: t('logicalOperands.basicOperators.xor.explanation'),
-            calculator: () => createCalculator('xor', '⊕', (inputs) => inputs[0] !== inputs[1]),
-            truthTable: [
-                {A: false, B: false, result: false},
-                {A: false, B: true, result: true},
-                {A: true, B: false, result: true},
-                {A: true, B: true, result: false},
-            ]
-        }
     ];
 
     const isBinaryOperator = (table: OperatorRow[]): table is (OperatorRow & { B: boolean })[] => {

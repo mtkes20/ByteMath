@@ -313,12 +313,6 @@
         "explanation": "Imagine a mischievous sibling who always does the opposite of what you say. If you say 'don't touch that,' they'll touch it. That's exactly how NOT works! It's incredibly useful when you want to check if something is NOT true. For example, checking if a user is NOT logged in to show them a login prompt. NOT helps us flip our logic on its head when we need to!",
         "symbol": "!"
       },
-      "xor": {
-        "title": "XOR: The Exclusive Decider",
-        "description": "XOR is like a picky eater – it's only happy (returns true) when exactly one option is available, not both and not neither.",
-        "explanation": "Imagine you're deciding on a vacation: beach or mountains. XOR is like saying 'I want to go to either the beach or the mountains, but not both and not neither!' It's true when one option is true and the other is false. In programming, XOR is fantastic for when you need to ensure that exactly one of two conditions is met, but never both.",
-        "symbol": "⊕"
-      },
       "truthTables": {
         "title": "Truth Tables: The Logic Roadmap",
         "tableHeaderA": "Condition A",

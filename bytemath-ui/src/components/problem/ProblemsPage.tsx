@@ -30,6 +30,19 @@ const ProblemsPage = ({course}: { course: string }) => {
         }
     };
 
+    const getDifficultyLabel = (difficulty: ProblemDifficulty) => {
+        switch (difficulty) {
+            case ProblemDifficulty.EASY:
+                return t('easy');
+            case ProblemDifficulty.MEDIUM:
+                return t('medium');
+            case ProblemDifficulty.HARD:
+                return t('hard');
+            default:
+                return difficulty;
+        }
+    };
+
     return (
         !isAuthenticated ?
             <div style={{
@@ -61,7 +74,7 @@ const ProblemsPage = ({course}: { course: string }) => {
                             <StyledMenuItem key={problem.id} value={problem.id}>
                                 <span>{problem.title}</span>
                                 <StyledDifficulty color={getDifficultyColor(problem.difficulty)}>
-                                    {problem.difficulty}
+                                    {getDifficultyLabel(problem.difficulty)}
                                 </StyledDifficulty>
                             </StyledMenuItem>
                         ))}
