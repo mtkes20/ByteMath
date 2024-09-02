@@ -59,6 +59,7 @@
   "hard": "რთული",
   "problemCompletion": "შესრულებული ამოცანები",
   "binaryProblems": "ორობითი სისტემის ამოცანები",
+  "numberTheoryProblems": "რიცხვთა თეორიის ამოცანები",
   "problems": {
     "selectProblem": "აირჩიეთ ამოცანა",
     "description": "აღწერა:",

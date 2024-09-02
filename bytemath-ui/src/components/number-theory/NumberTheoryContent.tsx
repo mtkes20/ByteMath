@@ -58,7 +58,8 @@ const NumberTheoryContent = () => {
                 value: "NUMBER_THEORY_MODULAR_ARITHMETIC",
                 read: readPages.has("NUMBER_THEORY_MODULAR_ARITHMETIC"),
                 path: "NUMBER_THEORY_MODULAR_ARITHMETIC"
-            }
+            },
+            {title: t("numberTheoryProblems"), path: "NUMBER_THEORY_PROBLEMS"}
         ];
     }, [readPages, t])
 

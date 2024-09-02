@@ -34,7 +34,7 @@ const BinarySystemContent: React.FC = () => {
             {title: t("binaryRepresentation"), value: "BINARY_SYSTEM_REPRESENTATION", read: readPages.has("BINARY_SYSTEM_REPRESENTATION"), path: "BINARY_SYSTEM_REPRESENTATION"},
             {title: t("converting"), value: "BINARY_SYSTEM_CONVERTING", read: readPages.has("BINARY_SYSTEM_CONVERTING"), path: "BINARY_SYSTEM_CONVERTING"},
             {title: t("binaryArithmetic"), value: "BINARY_SYSTEM_ARITHMETIC", read: readPages.has("BINARY_SYSTEM_ARITHMETIC"), path: "BINARY_SYSTEM_ARITHMETIC"},
-            {title: "binary probs", path: "BINARY_SYSTEM_PROBLEMS"} //TODO translation
+            {title: t("binaryProblems"), path: "BINARY_SYSTEM_PROBLEMS"}
         ];
     }, [readPages, t])
 
