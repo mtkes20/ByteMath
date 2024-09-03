@@ -13,7 +13,7 @@ const BinaryGameWidget = () => {
     const { t } = useTranslation()
 
     const generateQuestion = () => {
-        const num = Math.floor(Math.random() * 256);
+        const num = Math.floor(Math.random() * 32);
         const isBinary = Math.random() < 0.5;
         setQuestion(isBinary ? num.toString(2) : num.toString());
         setIsBinary(isBinary);

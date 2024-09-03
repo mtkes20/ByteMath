@@ -12,7 +12,7 @@ INSERT INTO BYTEMATH.PROBLEM (ID, IDENTIFIER,
                               PYTHON, JAVA,
                               DIFFICULTY, COURSE_ID)
 VALUES (10, 'calculate_gcd',
-        'Calculate the Greatest Common Divisor', 'უდიდესი საერთო გამყოფის გამოთვლა',
+        'Calculate GCD', 'უსგ-ს გამოთვლა',
         'Implement the Euclidean algorithm to find the Greatest Common Divisor (GCD) of two positive integers.', 'განახორციელეთ ევკლიდეს ალგორითმი ორი დადებითი მთელი რიცხვის უდიდესი საერთო გამყოფის (GCD) მოსაძებნად.',
         'Write a function that takes two positive integers as input and returns their Greatest Common Divisor using the Euclidean algorithm.',
         'დაწერეთ ფუნქცია, რომელიც იღებს ორ დადებით მთელ რიცხვს და აბრუნებს მათ უდიდეს საერთო გამყოფს ევკლიდეს ალგორითმის გამოყენებით.',
@@ -134,13 +134,13 @@ INSERT INTO BYTEMATH.PROBLEM (ID, IDENTIFIER,
                               DIFFICULTY, COURSE_ID)
 VALUES (11, 'modular_exponentiation',
         'Efficient Modular Exponentiation', 'ეფექტური მოდულური ახარისხება',
-        'Implement an efficient algorithm to compute (base^exponent) mod modulus for large numbers.', 'განახორციელეთ ეფექტური ალგორითმი დიდი რიცხვებისთვის (ფუძე^ხარისხი) mod მოდული გამოსათვლელად.',
+        'Implement an efficient algorithm to compute (base^exponent) mod modulus for large numbers.', 'განახორციელეთ ეფექტური ალგორითმი დიდი რიცხვებისთვის (ფუძე^ხარისხი) mod მოდულის გამოსათვლელად.',
         'Write a function that takes three positive integers as input: base, exponent, and modulus. Return the result of (base^exponent) mod modulus using an efficient method that works for large numbers.',
         'დაწერეთ ფუნქცია, რომელიც იღებს სამ დადებით მთელ რიცხვს: ფუძე, ხარისხი და მოდული. დააბრუნეთ (ფუძე^ხარისხი) mod მოდული-ს შედეგი, გამოიყენეთ ეფექტური მეთოდი, რომელიც მუშაობს დიდი რიცხვებისთვის.',
         'Three positive integers base, exponent, and modulus, separated by spaces.',
-        'სამი დადებითი მთელი რიცხვი ფუძე, ხარისხი და მოდული, გამოყოფილი ჰარებით.',
+        'სამი დადებითი მთელი რიცხვი ფუძე, ხარისხი და მოდული, გამოყოფილი სფეისებით.',
         'A single integer representing (base^exponent) mod modulus.',
-        'ერთი მთელი რიცხვი, რომელიც წარმოადგენს (ფუძე^ხარისხი) mod მოდული-ს.',
+        'ერთი მთელი რიცხვი, რომელიც წარმოადგენს (ფუძე^ხარისხი) mod მოდულს.',
         '**Input:**
 3 7 10
 
@@ -162,9 +162,9 @@ Note: This is a small example. Your solution should work efficiently for much la
 3^7 = 2187
 2187 mod 10 = 7
 
-შენიშვნა: ეს არის პატარა მაგალითი. თქვენი გადაწყვეტა ეფექტურად უნდა მუშაობდეს გაცილებით დიდი რიცხვებისთვის.',
+შენიშვნა: ეს არის მაგალითი პატარა რიცხვებისთვის. თქვენი ამოხსნა ეფექტურად უნდა მუშაობდეს გაცილებით დიდ რიცხვებზეც.',
         'The input numbers can be very large (up to 10^18). A naive implementation of exponentiation followed by modulus will not work. Use the properties of modular arithmetic to perform the calculation efficiently. Research the "exponentiation by squaring" or "binary exponentiation" algorithm for an efficient solution.',
-        'შესატანი რიცხვები შეიძლება იყოს ძალიან დიდი (10^18-მდე). ახარისხების ნაივური იმპლემენტაცია, რომელსაც მოჰყვება მოდული, არ იმუშავებს. გამოიყენეთ მოდულური არითმეტიკის თვისებები გამოთვლების ეფექტურად შესასრულებლად. მოიძიეთ "კვადრატით ახარისხების" ან "ორობითი ახარისხების" ალგორითმი ეფექტური გადაწყვეტისთვის.',
+        'შესატანი რიცხვები შეიძლება იყოს ძალიან დიდი (10^18-მდე). გამოიყენეთ მოდულარული არითმეტიკის თვისებები გამოთვლების ეფექტურად შესასრულებლად. მოიძიეთ "კვადრატით ახარისხების" ან "ორობითი ახარისხების" ალგორითმი ეფექტური ამოხსნისთვის.',
         'def modular_exponentiation(base, exponent, modulus):
     # Your code here
     return 0
@@ -237,7 +237,3 @@ VALUES ('3 7 10', '7', 11),
        ('5 117 19', '1', 11),
        ('3 1000000000 1000000007', '525584', 11),
        ('123456789 987654321 1000000009', '652249174', 11);
-
-
-
-

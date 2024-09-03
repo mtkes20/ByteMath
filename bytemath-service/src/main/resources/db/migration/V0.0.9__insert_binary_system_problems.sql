@@ -247,7 +247,7 @@ INSERT INTO BYTEMATH.PROBLEM (ID, IDENTIFIER,
                               PYTHON, JAVA,
                               DIFFICULTY, COURSE_ID)
 VALUES (3, 'binary_expression_evaluator',
-        'Binary Expression Evaluator', 'ორობითი გამოსახულების შემფასებელი',
+        'Binary Expression Evaluator', 'გამოსახულების მთვლელი',
         'Evaluate arithmetic expressions with binary numbers.', 'შეაფასეთ არითმეტიკული გამოსახულებები ორობითი რიცხვებით.',
         'Create a function that takes an arithmetic expression with binary numbers as input and returns the result of the expression in binary.',
         'შექმენით ფუნქცია, რომელიც იღებს არითმეტიკულ გამოსახულებას ორობითი რიცხვებით და აბრუნებს გამოსახულების შედეგს ორობით ფორმატში.',
@@ -274,7 +274,7 @@ Explanation:
 1. 1000 (8 ათობითში) + 1001 (9 ათობითში) = 10001 (17 ათობითში)
 2. 10001 / 101 (5 ათობითში) = 11 (3 ათობითში)',
         'The input will always be a valid arithmetic expression with binary numbers. The division operation should perform integer division (floor division). The result should always be a non-negative binary number.',
-        'შესატანი ყოველთვის იქნება ვალიდური არითმეტიკული გამოსახულება ორობითი რიცხვებით. გაყოფის ოპერაცია უნდა შეასრულოს მთელრიცხვა გაყოფა (floor division). შედეგი ყოველთვის უნდა იყოს არაუარყოფითი ორობითი რიცხვი.',
+        'შესატანი ყოველთვის იქნება ვალიდური არითმეტიკული გამოსახულება ორობითი რიცხვებით. გაყოფა უნდა შესრულდეს მთელ რიცხვებზე (floor division). შედეგი ყოველთვის უნდა იყოს არაუარყოფითი ორობითი რიცხვი.',
         'def evaluate_binary_expression(expression):
     # Your code here
     return ""
