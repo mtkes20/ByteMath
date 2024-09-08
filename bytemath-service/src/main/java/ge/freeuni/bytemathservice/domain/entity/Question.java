@@ -40,6 +40,6 @@ public class Question {
     private QuestionType questionType;
 
     @ManyToOne
-    @JoinColumn(name = "QUIZ_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "QUIZ_ID", referencedColumnName = "ID")
     private Quiz quiz;
 }

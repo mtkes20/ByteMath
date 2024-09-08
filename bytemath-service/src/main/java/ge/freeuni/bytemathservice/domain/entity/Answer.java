@@ -28,6 +28,6 @@ public class Answer {
     private Boolean isCorrect;
 
     @ManyToOne
-    @JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID")
     private Question question;
 }

@@ -5,11 +5,13 @@ import ge.freeuni.bytemathservice.domain.api.QuizDTO;
 import ge.freeuni.bytemathservice.domain.api.QuizResponseWrapper;
 import ge.freeuni.bytemathservice.domain.api.SubmittedQuiz;
 import ge.freeuni.bytemathservice.domain.entity.BytemathUser;
+import ge.freeuni.bytemathservice.domain.request.QuizCreationRequest;
 import ge.freeuni.bytemathservice.service.BytemathUserService;
 import ge.freeuni.bytemathservice.service.GradeQuizService;
 import ge.freeuni.bytemathservice.service.QuizService;
 import ge.freeuni.bytemathservice.service.UserQuizSubmissionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,17 +37,18 @@ public class QuizController {
 
     private final BytemathUserService bytemathUserService;
 
+    @PostMapping
+    public ResponseEntity<QuizDTO> createQuiz(@RequestBody QuizCreationRequest request) {
+        QuizDTO createdQuiz = quizService.createQuiz(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdQuiz);
+    }
+
     @GetMapping("{identifier}")
     public ResponseEntity<QuizResponseWrapper> getQuizByIdentifier(@PathVariable String identifier, @RequestParam(required = false, defaultValue = "ENG") String language) {
         BytemathUser currentUser = bytemathUserService.getCurrentUser();
         Optional<GradedQuiz> gradedQuiz = userQuizSubmissionService.getGradedQuizForUser(currentUser, identifier, language);
-        if (gradedQuiz.isPresent()) {
-            QuizDTO quiz = quizService.getQuizByIdentifier(identifier, language);
-            return ResponseEntity.ok(new QuizResponseWrapper(true, quiz, gradedQuiz.get()));
-        } else {
-            QuizDTO quiz = quizService.getQuizByIdentifier(identifier, language);
-            return ResponseEntity.ok(new QuizResponseWrapper(quiz));
-        }
+        QuizDTO quiz = quizService.getQuizByIdentifier(identifier, language);
+        return gradedQuiz.map(value -> ResponseEntity.ok(new QuizResponseWrapper(true, quiz, value))).orElseGet(() -> ResponseEntity.ok(new QuizResponseWrapper(quiz)));
     }
 
     @PostMapping("{identifier}/submit")
