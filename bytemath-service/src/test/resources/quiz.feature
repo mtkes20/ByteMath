@@ -3,8 +3,8 @@ Feature: Quiz Creation
   Scenario: Successfully create a new quiz
     Given the quiz creation endpoint is "/api/v1/quiz"
     And I have the following quiz creation request:
-      | titleEng                | titleGeo                             |
-      | Math and Geography Quiz | მათემატიკისა და გეოგრაფიის ვიქტორინა |
+      | identifier         | titleEng                | titleGeo                             |
+      | MATH_AND_GEOGRAPHY | Math and Geography Quiz | მათემატიკისა და გეოგრაფიის ვიქტორინა |
     And I have the following questions in the quiz:
       | questionTextEng                | questionTextGeo                 | questionType  |
       | What is the capital of France? | რა არის საფრანგეთის დედაქალაქი? | SINGLE_CHOICE |
@@ -24,5 +24,5 @@ Feature: Quiz Creation
     When I send a POST request to the quiz creation endpoint with the quiz creation request
     Then the response status code should be 201
     And the response body should contain a quiz with the title "Math and Geography Quiz"
+    And the response body should contain a quiz with the identifier "MATH_AND_GEOGRAPHY"
     And the response body should contain a quiz with 2 questions
-    And the response body should contain a generated quiz id

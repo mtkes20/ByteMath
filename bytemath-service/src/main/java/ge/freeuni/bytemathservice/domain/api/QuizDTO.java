@@ -11,6 +11,8 @@ public class QuizDTO {
 
     private Long id;
 
+    private String identifier;
+
     private String title;
 
     private List<QuestionDTO> questions;

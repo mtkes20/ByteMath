@@ -15,6 +15,7 @@ public class QuizMapper {
     public QuizDTO entityToDto(Quiz quiz, String language) {
         return QuizDTO.builder()
                 .id(quiz.getId())
+                .identifier(quiz.getIdentifier())
                 .title(language.equals("ENG") ? quiz.getTitleEng() : quiz.getTitleGeo())
                 .questions(questionMapper.entitiesToDtos(quiz.getQuestions(), language))
                 .build();
@@ -23,6 +24,7 @@ public class QuizMapper {
     public Quiz requestToEntity(QuizCreationRequest request) {
         Quiz quiz = new Quiz();
         quiz.setId(0L);
+        quiz.setIdentifier(request.getIdentifier());
         quiz.setTitleEng(request.getTitleEng());
         quiz.setTitleGeo(request.getTitleGeo());
         quiz.setQuestions(questionMapper.requestsToEntities(request.getQuestions()));

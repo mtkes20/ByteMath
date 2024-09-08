@@ -13,6 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 public class QuizCreationRequest {
 
+    private String identifier;
+
     private String titleEng;
 
     private String titleGeo;

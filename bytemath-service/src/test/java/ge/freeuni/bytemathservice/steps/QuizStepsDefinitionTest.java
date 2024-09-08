@@ -91,13 +91,13 @@ public class QuizStepsDefinitionTest extends SpringIntegrationTest {
         resultActions.andExpect(jsonPath("$.title").value(expectedTitle));
     }
 
+    @And("the response body should contain a quiz with the identifier {string}")
+    public void checkQuizIdentifier(String expectedIdentifier) throws Exception {
+        resultActions.andExpect(jsonPath("$.identifier").value(expectedIdentifier));
+    }
+
     @And("the response body should contain a quiz with {int} questions")
     public void checkQuestionCount(int expectedCount) throws Exception {
         resultActions.andExpect(jsonPath("$.questions.length()").value(expectedCount));
-    }
-
-    @And("the response body should contain a generated quiz id")
-    public void checkQuizId() throws Exception {
-        resultActions.andExpect(jsonPath("$.id").isNumber());
     }
 }
